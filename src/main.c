@@ -19,12 +19,15 @@ ISR(TIMER1_OVF_vect)
     U8_T len;
     
 
-    spi_tx_q_add((U8_T*) "Hello, world!", (U8_T) 13);
+    spi_tx_q_add((U8_T*) "5", (U8_T) 1);
     spi_tx_q_remove(buf, &len);
 
-    if (0 == memcmp_by_U8((U8_T*) "Hello, world!", buf, len)) {
-         PORT_CANBOARD.bits.LED1 = HIGH;
+    if ((S32_T) 0 == memcmp_by_U8((U8_T*) "5", buf, len)) {
+        PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
     } 
+    if ((U8_T) 1 == len) {
+        PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
+    }
 }
 
 

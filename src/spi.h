@@ -3,8 +3,8 @@
 
 #include "types.h"
 
-#define FIFO_LEN 4
-extern FIFO_ENTRY_T g_spi_fifo[FIFO_LEN];
+#define SPI_FIFO_LEN 4
+extern FIFO_ENTRY_T g_spi_fifo[SPI_FIFO_LEN];
 extern U8_T g_spi_fifo_head;
 extern U8_T g_spi_fifo_tail;
 

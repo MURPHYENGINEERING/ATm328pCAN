@@ -3,9 +3,10 @@
 #include "memory.h"
 
 
-FIFO_ENTRY_T g_spi_fifo[FIFO_LEN];
+FIFO_ENTRY_T g_spi_fifo[SPI_FIFO_LEN];
 U8_T g_spi_fifo_head;
 U8_T g_spi_fifo_tail;
+
 
 FIFO_STATUS_T spi_tx_q_add(U8_T* src, U8_T len)
 {
@@ -16,11 +17,12 @@ FIFO_STATUS_T spi_tx_q_add(U8_T* src, U8_T len)
         status = FIFO_FULL;
     } else {
         p_fifo_entry = &g_spi_fifo[g_spi_fifo_tail];
-        memcpy_by_U8(p_fifo_entry->data, src, len);
+        memcpy_by_U8(p_fifo_entry->data, src, (U32_T) len);
         p_fifo_entry->len = len;
 
         ++g_spi_fifo_tail;
-        g_spi_fifo_tail = g_spi_fifo_tail % FIFO_LEN;
+        /* Wrap at SPI_FIFO_LENGTH */
+        g_spi_fifo_tail = g_spi_fifo_tail % SPI_FIFO_LEN;
     }
 
     return status;
@@ -41,7 +43,7 @@ FIFO_STATUS_T spi_tx_q_remove(U8_T* dst, U8_T* len)
 
         ++g_spi_fifo_head;
         /* Wrap at SPI_FIFO_LEN */
-        g_spi_fifo_head = g_spi_fifo_head % FIFO_LEN;
+        g_spi_fifo_head = g_spi_fifo_head % SPI_FIFO_LEN;
 
         status = FIFO_OK;
     }

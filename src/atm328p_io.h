@@ -43,8 +43,8 @@ typedef union {
         VBOOL_T Unused3 : 1;
         VBOOL_T Unused4 : 1;
         VBOOL_T Unused5 : 1;
-        VBOOL_T LED2 : 1;
         VBOOL_T LED1 : 1;
+        VBOOL_T LED2 : 1;
     } bits;
     VU8_T byte;
 } CANBOARD_T;
