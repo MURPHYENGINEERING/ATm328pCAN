@@ -5,5 +5,6 @@
 #include "atm328p_io.h"
 #include "atm328p_spi.h"
 #include "atm328p_timer.h"
+#include "atm328p_watchdog.h"
 
 #endif

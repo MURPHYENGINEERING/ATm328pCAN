@@ -63,6 +63,10 @@ SECTIONS
   OCR0B     = 0x48;
   TIMSK0    = 0x6E;
   TIFR0     = 0x35;
+
+  /* Watchdog */
+  WDTCSR    = 0x60;
+  
   /****************************************************************************/
 
   /* Read-only sections, merged into text segment: */

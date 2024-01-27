@@ -15,7 +15,16 @@ ISR(TIMER1_OVF_vect)
     /*
     TCNT1.halfword = (U16_T) 0;
     */
-   spi_tx_q_add((U8_T*) "Hello, world!", 13);
+    U8_T buf[MESSAGE_LEN_MAX];
+    U8_T len;
+    
+
+    spi_tx_q_add((U8_T*) "Hello, world!", (U8_T) 13);
+    spi_tx_q_remove(buf, &len);
+
+    if (0 == memcmp_by_U8((U8_T*) "Hello, world!", buf, len)) {
+         PORT_CANBOARD.bits.LED1 = HIGH;
+    } 
 }
 
 
@@ -28,6 +37,8 @@ ISR(SPI_STC_vect)
 S32_T main(void)
 {
     g_spi_fifo_item_len = 0;
+
+    WDTCSR.byte = WDTCSR_WATCHDOG_DISABLED;
 
     DDR_CANBOARD.bits.LED1 = DDR_OUTPUT;
     DDR_CANBOARD.bits.LED2 = DDR_OUTPUT;

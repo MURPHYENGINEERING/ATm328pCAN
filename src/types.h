@@ -71,4 +71,20 @@ typedef union {
 #define NULL 0
 
 
+#define MESSAGE_LEN_MAX 256
+
+typedef struct {
+    U8_T data[MESSAGE_LEN_MAX];
+    U8_T len;
+} FIFO_ENTRY_T;
+
+
+typedef enum {
+    FIFO_EMPTY,
+    FIFO_FULL,
+    FIFO_OK
+} FIFO_STATUS_T;
+
+
+
 #endif
