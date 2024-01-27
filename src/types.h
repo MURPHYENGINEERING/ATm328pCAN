@@ -75,7 +75,7 @@ typedef union {
 
 typedef struct {
     U8_T data[MESSAGE_LEN_MAX];
-    U8_T len;
+    U32_T len;
 } FIFO_ENTRY_T;
 
 

@@ -19,13 +19,13 @@ S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, U32_T len)
     S32_T result;
 
     i = 0;
-    result = *lhs - *rhs;
+    result = (S32_T) *lhs - (S32_T) *rhs;
 
-    while ( (0 == result) && (i < len) ) {
+    while ( ((S32_T) 0 == result) && (i < len) ) {
+        result = (S32_T) *lhs - (S32_T) *rhs;
         ++lhs;
         ++rhs;
         ++i;
-        result = *lhs - *rhs;
     }
 
     return result;

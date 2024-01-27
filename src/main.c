@@ -16,16 +16,16 @@ ISR(TIMER1_OVF_vect)
     TCNT1.halfword = (U16_T) 0;
     */
     U8_T buf[MESSAGE_LEN_MAX];
-    U8_T len;
+    U32_T len;
     
 
-    spi_tx_q_add((U8_T*) "5", (U8_T) 1);
+    spi_tx_q_add((U8_T*) "Hello, world!", (U32_T) 13);
     spi_tx_q_remove(buf, &len);
 
-    if ((S32_T) 0 == memcmp_by_U8((U8_T*) "5", buf, len)) {
+    if ((S32_T) 0 == memcmp_by_U8((U8_T*) "Hello, world!", buf, len)) {
         PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
     } 
-    if ((U8_T) 1 == len) {
+    if ((U32_T) 13 == len) {
         PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
     }
 }
