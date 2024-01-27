@@ -1,7 +1,7 @@
 #ifndef __INTERRUPTS_H__
 #define __INTERRUPTS_H__
 
-#define ISR(vect) __attribute__((interrupt, used)) void vect()
+#define ISR(vect) __attribute__((interrupt, used, externally_visible)) void vect()
 
 /* Timer/Counter 1 Compare Match A */
 #define TIMER1_COMPA_vect __vector_11

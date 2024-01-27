@@ -1,11 +1,21 @@
 #include "types.h"
 #include "atm328p.h"
+#include "memory.h"
+#include "spi.h"
 
 
-ISR(TIMER1_COMPA_vect)
+U8_T g_spi_fifo_item_len;
+
+ISR(TIMER1_OVF_vect)
 {
-    PORT_BUILTIN.bits.LED = !PORT_BUILTIN.bits.LED;
+    /*
+    PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
+    PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
+    */
+    /*
     TCNT1.halfword = (U16_T) 0;
+    */
+   spi_tx_q_add((U8_T*) "Hello, world!", 13);
 }
 
 
@@ -14,25 +24,34 @@ ISR(SPI_STC_vect)
 }
 
 
-S32_T main()
+
+S32_T main(void)
 {
-    DDR_BUILTIN.bits.LED = 1;
+    g_spi_fifo_item_len = 0;
+
+    DDR_CANBOARD.bits.LED1 = DDR_OUTPUT;
+    DDR_CANBOARD.bits.LED2 = DDR_OUTPUT;
+    PORT_CANBOARD.bits.LED1 = LOW;
+    PORT_CANBOARD.bits.LED2 = LOW;
+    /* PORT_CANBOARD.bits.LED2 = HIGH; */
 
     /* Normal timer mode */
-    TCCR1A.byte = (U8_T) TCCR1A_NORMAL_MODE;
+    TCCR1A.byte = TCCR1A_NORMAL_MODE;
 
     /* Enable prescaler (clk / 256) */
-    TCCR1B.bits.CS12 = 1;
+    TCCR1B.byte |= TCCR1B_PRESCALE_OVER_256;
 
     /* Enable timer overflow interrupt */
-    /* TIMSK1.bits.TOIE1 = 1; */
+    TIMSK1.bits.TOIE1 = TOIE1_ENABLE_INTERRUPT;
 
     /* Enable COMP A interrupt */
+    /*
     TIMSK1.bits.OCIE1A = OCIE1A_ENABLE_INTERRUPT;
     OCR1A.halfword = (U16_T) 0x0AFFu;
+    */
 
     /* Turn off Power Reduction for SPI */
-    PRR.bits.PRSPI = PRSPI_ENABLE_POWER_REDUCTION;
+    PRR.bits.PRSPI = PRSPI_DISABLE_POWER_REDUCTION;
 
     /* Enable SPI in master mode with interrupts enabled, */
     SPCR.bits.SPE = SPE_ENABLE_SPI;
@@ -42,8 +61,7 @@ S32_T main()
     SPCR.bits.CPOL = CPOL_LEADING_IS_RISING;
     SPCR.bits.CPHA = CPHA_SAMPLE_ON_LEADING;
     /* at clk/128. */
-    SPCR.bits.SPR0 = 1;
-    SPCR.bits.SPR1 = 1;
+    SPCR.byte |= SPCR_PRESCALE_OVER_128;
 
     /* Setup output and input pins */
     DDR_SPI.bits.SCK = DDR_OUTPUT;

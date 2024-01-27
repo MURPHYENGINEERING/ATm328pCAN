@@ -10,7 +10,14 @@
             "sam3xa.h": "c",
             "sam3x8e.h": "c",
             "types.h": "c",
-            "io.h": "c"
+            "io.h": "c",
+            "atm328p.h": "c",
+            "atm328p_io.h": "c",
+            "atm328p_interrupts.h": "c",
+            "memory.h": "c",
+            "spi.h": "c",
+            "atm328p_spi.h": "c",
+            "atm328p_timer.h": "c"
         }
     }
 }

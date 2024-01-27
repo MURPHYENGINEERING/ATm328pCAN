@@ -1,5 +1,5 @@
-#ifndef __SPI_H__
-#define __SPI_H__
+#ifndef __ATM328P_SPI_H__
+#define __ATM328P_SPI_H__
 
 #include "types.h"
 
@@ -64,6 +64,10 @@ extern volatile SPCR_T SPCR;
 #define MSTR_SLAVE_MODE 0
 #define CPOL_LEADING_IS_RISING 0
 #define CPHA_SAMPLE_ON_LEADING 1
+
+#define SPCR_SPR0 0
+#define SPCR_SPR1 1
+#define SPCR_PRESCALE_OVER_128 (U8_T) ( (1 << SPCR_SPR1) | (1 << SPCR_SPR0) )
 
 
 /* SPI Status Register */

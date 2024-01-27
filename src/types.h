@@ -4,7 +4,7 @@
 typedef _Bool BOOL_T;
 typedef volatile BOOL_T VBOOL_T;
 
-typedef char U8_T;
+typedef unsigned char U8_T;
 typedef volatile U8_T VU8_T;
 
 typedef short U16_T;
@@ -59,11 +59,14 @@ typedef union {
 #define TRUE 1
 #define FALSE 0
 
+#define HIGH 0
+#define LOW 1
+
 #define PASS 1
 #define FAIL 0
 
-#define GND 1
-#define OPEN 0
+#define GND 0
+#define OPEN 1
 
 #define NULL 0
 

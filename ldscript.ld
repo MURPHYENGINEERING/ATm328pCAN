@@ -30,11 +30,15 @@ SECTIONS
   /****************************************************************************/
   /* GPIO */
   DDRB          = 0x24;
+  DDRD          = 0x2A;
   DDR_SPI       = 0x24;
   DDR_BUILTIN   = 0x24;
+  DDR_CANBOARD  = 0x2A;
   
   PORTB         = 0x25;
+  PORTD         = 0x2B;
   PORT_BUILTIN  = 0x25;
+  PORT_CANBOARD = 0x2B;
 
   /* SPI */
   PRR   = 0x64;
@@ -50,6 +54,15 @@ SECTIONS
   TIFR1     = 0x36;
   OCR1A     = 0x88;
   OCR1B     = 0x8A;
+
+  /* Timer 0 */
+  TCCR0A    = 0x44;
+  TCCR0B    = 0x45;
+  TCNT0     = 0x46;
+  OCR0A     = 0x47;
+  OCR0B     = 0x48;
+  TIMSK0    = 0x6E;
+  TIFR0     = 0x35;
   /****************************************************************************/
 
   /* Read-only sections, merged into text segment: */
