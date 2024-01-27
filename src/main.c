@@ -5,7 +5,7 @@
 #include "fifo.h"
 
 
-U8_T g_spi_fifo_item_len;
+U8_T g_spi_q_item_len;
 
 ISR(TIMER1_OVF_vect)
 {
@@ -21,20 +21,20 @@ ISR(TIMER1_OVF_vect)
     
 
     FIFO_STATUS_T status;
-    status = fifo_q_add(&g_spi_fifo, (U8_T*) "1", (U32_T) 1);
-    status = fifo_q_add(&g_spi_fifo, (U8_T*) "2", (U32_T) 1);
-    status = fifo_q_add(&g_spi_fifo, (U8_T*) "3", (U32_T) 1);
-    status = fifo_q_add(&g_spi_fifo, (U8_T*) "4", (U32_T) 1);
-    status = fifo_q_add(&g_spi_fifo, (U8_T*) "5", (U32_T) 1);
+    status = fifo_q_add(&g_spi_q, (U8_T*) "1", (U32_T) 1);
+    status = fifo_q_add(&g_spi_q, (U8_T*) "2", (U32_T) 1);
+    status = fifo_q_add(&g_spi_q, (U8_T*) "3", (U32_T) 1);
+    status = fifo_q_add(&g_spi_q, (U8_T*) "4", (U32_T) 1);
+    status = fifo_q_add(&g_spi_q, (U8_T*) "5", (U32_T) 1);
 
-    status = fifo_q_remove(&g_spi_fifo, buf, &len);
-    status = fifo_q_remove(&g_spi_fifo, buf, &len);
-    status = fifo_q_remove(&g_spi_fifo, buf, &len);
-    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    status = fifo_q_remove(&g_spi_q, buf, &len);
+    status = fifo_q_remove(&g_spi_q, buf, &len);
+    status = fifo_q_remove(&g_spi_q, buf, &len);
+    status = fifo_q_remove(&g_spi_q, buf, &len);
     if (status == FIFO_OK) {
         PORT_CANBOARD.bits.LED1 = HIGH;
     }
-    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    status = fifo_q_remove(&g_spi_q, buf, &len);
     if (status == FIFO_EMPTY) {
         PORT_CANBOARD.bits.LED2 = HIGH;
     }

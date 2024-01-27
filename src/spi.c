@@ -3,15 +3,15 @@
 #include "memory.h"
 
 
-FIFO_ENTRY_T g_spi_fifo_buf[SPI_FIFO_LEN];
+FIFO_ENTRY_T g_spi_q_buf[SPI_FIFO_LEN];
 
 
 void spi_q_init(void)
 {
-    g_spi_fifo.buf = g_spi_fifo_buf;
-    g_spi_fifo.len = SPI_FIFO_LEN;
-    g_spi_fifo.head = (U8_T) 0;
-    g_spi_fifo.tail = (U8_T) 0;
+    g_spi_q.buf = g_spi_q_buf;
+    g_spi_q.len = SPI_FIFO_LEN;
+    g_spi_q.head = (U8_T) 0;
+    g_spi_q.tail = (U8_T) 0;
 }
 
 
@@ -20,5 +20,5 @@ void spi_tx_task(void) {
     U8_T buf[256];
     U32_T len;
 
-    len = fifo_q_remove(&g_spi_fifo, buf, &len);
+    len = fifo_q_remove(&g_spi_q, buf, &len);
 }
