@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+    ],
+    "settings": {
+        "files.associations": {
+            "sam3.h": "c",
+            "sam3xa.h": "c",
+            "sam3x8e.h": "c",
+            "types.h": "c",
+            "io.h": "c"
+        }
+    }
+}
