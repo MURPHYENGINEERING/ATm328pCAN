@@ -2,6 +2,7 @@
 #include "atm328p.h"
 #include "memory.h"
 #include "spi.h"
+#include "fifo.h"
 
 
 U8_T g_spi_fifo_item_len;
@@ -15,18 +16,27 @@ ISR(TIMER1_OVF_vect)
     /*
     TCNT1.halfword = (U16_T) 0;
     */
-    U8_T buf[MESSAGE_LEN_MAX];
+    U8_T buf[FIFO_DATA_LEN];
     U32_T len;
     
 
-    spi_tx_q_add((U8_T*) "Hello, world!", (U32_T) 13);
-    spi_tx_q_remove(buf, &len);
+    FIFO_STATUS_T status;
+    status = fifo_q_add(&g_spi_fifo, (U8_T*) "1", (U32_T) 1);
+    status = fifo_q_add(&g_spi_fifo, (U8_T*) "2", (U32_T) 1);
+    status = fifo_q_add(&g_spi_fifo, (U8_T*) "3", (U32_T) 1);
+    status = fifo_q_add(&g_spi_fifo, (U8_T*) "4", (U32_T) 1);
+    status = fifo_q_add(&g_spi_fifo, (U8_T*) "5", (U32_T) 1);
 
-    if ((S32_T) 0 == memcmp_by_U8((U8_T*) "Hello, world!", buf, len)) {
-        PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
-    } 
-    if ((U32_T) 13 == len) {
-        PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
+    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    if (status == FIFO_OK) {
+        PORT_CANBOARD.bits.LED1 = HIGH;
+    }
+    status = fifo_q_remove(&g_spi_fifo, buf, &len);
+    if (status == FIFO_EMPTY) {
+        PORT_CANBOARD.bits.LED2 = HIGH;
     }
 }
 
@@ -39,7 +49,7 @@ ISR(SPI_STC_vect)
 
 S32_T main(void)
 {
-    g_spi_fifo_item_len = 0;
+    spi_q_init();
 
     WDTCSR.byte = WDTCSR_WATCHDOG_DISABLED;
 

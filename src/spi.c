@@ -3,52 +3,15 @@
 #include "memory.h"
 
 
-FIFO_ENTRY_T g_spi_fifo[SPI_FIFO_LEN];
-U8_T g_spi_fifo_head;
-U8_T g_spi_fifo_tail;
+FIFO_ENTRY_T g_spi_fifo_buf[SPI_FIFO_LEN];
 
 
-FIFO_STATUS_T spi_tx_q_add(U8_T* src, U32_T len)
+void spi_q_init(void)
 {
-    FIFO_STATUS_T status;
-    FIFO_ENTRY_T* p_fifo_entry;
-
-    if (g_spi_fifo_tail == g_spi_fifo_head - 1) {
-        status = FIFO_FULL;
-    } else {
-        p_fifo_entry = &g_spi_fifo[g_spi_fifo_tail];
-        memcpy_by_U8(p_fifo_entry->data, src, len);
-        p_fifo_entry->len = len;
-
-        ++g_spi_fifo_tail;
-        g_spi_fifo_tail = g_spi_fifo_tail % SPI_FIFO_LEN;
-
-        status = FIFO_OK;
-    }
-
-    return status;
-}
-
-
-FIFO_STATUS_T spi_tx_q_remove(U8_T* dst, U32_T* len)
-{
-    FIFO_STATUS_T status;
-    FIFO_ENTRY_T* p_fifo_entry;
-
-    if (g_spi_fifo_head == g_spi_fifo_tail) {
-        status =  FIFO_EMPTY;
-    } else {
-        p_fifo_entry = &g_spi_fifo[g_spi_fifo_head];
-        memcpy_by_U8(dst, p_fifo_entry->data, p_fifo_entry->len);
-        *len = p_fifo_entry->len;
-
-        ++g_spi_fifo_head;
-        g_spi_fifo_head = g_spi_fifo_head % SPI_FIFO_LEN;
-
-        status = FIFO_OK;
-    }
-
-    return status;
+    g_spi_fifo.buf = g_spi_fifo_buf;
+    g_spi_fifo.len = SPI_FIFO_LEN;
+    g_spi_fifo.head = (U8_T) 0;
+    g_spi_fifo.tail = (U8_T) 0;
 }
 
 
@@ -57,5 +20,5 @@ void spi_tx_task(void) {
     U8_T buf[256];
     U32_T len;
 
-    len = spi_tx_q_remove(buf, &len);
+    len = fifo_q_remove(&g_spi_fifo, buf, &len);
 }
