@@ -59,6 +59,7 @@ typedef union {
 extern volatile SPCR_T SPCR;
 
 #define SPE_ENABLE_SPI 1
+#define SPIE_DISABLE_SPI_INTERRUPT 0
 #define SPIE_ENABLE_SPI_INTERRUPT 1
 #define MSTR_MODE_MASTER 1
 #define MSTR_MODE_SLAVE 0

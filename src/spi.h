@@ -3,7 +3,8 @@
 
 void spi_init(void);
 
-void spi_tx_task(void);
+void task_exec_spi_tx(void);
+void task_exec_spi_rx(void);
 
 
 #endif

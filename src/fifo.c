@@ -2,13 +2,13 @@
 #include "memory.h"
 
 
-void fifo_q_init(FIFO_T* q, FIFO_ENTRY_T* buf, U8_T size)
+void fifo_q_init(FIFO_T* q, FIFO_ENTRY_T* buf, SIZE_T size)
 {
     q->buf = buf;
     q->size = size;
     q->head = 0;
     q->tail = 0;
-    q->n = 0;
+    q->n = (SIZE_T) 0;
 }
 
 
@@ -39,7 +39,7 @@ FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, U32_T* len)
     FIFO_STATUS_T status;
     FIFO_ENTRY_T* p_fifo_entry;
 
-    if (0 == q->n) {
+    if ((SIZE_T) 0 == q->n) {
         status =  FIFO_EMPTY;
     } else {
         p_fifo_entry = &q->buf[q->head];

@@ -4,6 +4,8 @@
 #include "spi.h"
 #include "memory.h"
 #include "fifo.h"
+#include "dsc.h"
+
 
 /******************************************************************************/
 /* SPI Master/Slave Mode */
@@ -53,7 +55,7 @@ void spi_init(void)
     /* Detect strapping for SPI mode */
     DDR_SPI.bits.MODE = DDR_INPUT;
     PORT_SPI.bits.MODE = PORT_PULLUP;
-    if (LOW == PIN_SPI.bits.MODE) {
+    if (HIGH == PIN_SPI.bits.MODE) {
         g_spi_mode = SPI_MODE_MASTER;
     }
 
@@ -70,15 +72,42 @@ void spi_init(void)
 }
 
 
-void spi_tx_task(void) {
-    /* Dequeue a message from the software FIFO */
+void task_exec_spi_tx(void) {
+    /* Read a message from the software FIFO and write it to hardware */
+    U8_T buf[256];
+    U32_T len;
+    SIZE_T i;
+    FIFO_STATUS_T status;
+
+    dsc_led_toggle(DSC_LED_CANBOARD_1);
+
+    status = fifo_q_remove(&g_spi_tx_q, buf, &len);
+    if (FIFO_OK == status) {
+        for (i = 0; i < len; ++i) {
+            SPDR.byte = (U8_T) buf[i];
+            while (TRUE == SPSR.bits.SPIF) {
+                /* Wait for SPIF to be unset */
+            }
+        }
+    } else { 
+        /* Buffer underflow, nothing to transmit */
+    }
+}
+
+
+void task_exec_spi_rx(void) {
+    /* Read a message from hardware and write it to the software FIFO */
     U8_T buf[256];
     U32_T len;
     FIFO_STATUS_T status;
 
-    status = fifo_q_remove(&g_spi_tx_q, buf, &len);
+    memcpy_by_U8(buf, (U8_T*) "Hello, world!", (U32_T) 13);
+    len = 13;
+
+    status = fifo_q_add(&g_spi_tx_q, buf, len);
     if (FIFO_OK == status) {
 
     } else { 
+        /* Buffer overflow, packet is lost */
     }
 }

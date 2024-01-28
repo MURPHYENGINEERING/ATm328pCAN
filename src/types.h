@@ -7,12 +7,19 @@ typedef volatile BOOL_T VBOOL_T;
 typedef unsigned char U8_T;
 typedef volatile U8_T VU8_T;
 
-typedef short U16_T;
+typedef unsigned short U16_T;
 typedef volatile U16_T VU16_T;
+#define U16_T_MAX ((U16_T) 65535u)
 
-typedef unsigned int U32_T;
+typedef int S16_T;
+
+typedef unsigned long U32_T;
 typedef volatile U32_T VU32_T;
-typedef int S32_T;
+typedef long S32_T;
+
+typedef U16_T SIZE_T;
+
+typedef float FLOAT_T;
 
 
 typedef union {

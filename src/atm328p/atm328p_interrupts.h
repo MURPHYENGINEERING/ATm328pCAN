@@ -21,6 +21,6 @@
 #define SPI_STC_vect __vector_17
 
 #define sei() __asm volatile( "sei" ::: "memory" )
-#define cei() __asm volatile( "cei" ::: "memory" )
+#define cli() __asm volatile( "cli" ::: "memory" )
 
 #endif
