@@ -1,5 +1,5 @@
-#ifndef __INTERRUPTS_H__
-#define __INTERRUPTS_H__
+#ifndef __ATM328P_INTERRUPTS_H__
+#define __ATM328P_INTERRUPTS_H__
 
 #define ISR(vect) __attribute__((interrupt, used, externally_visible)) void vect()
 

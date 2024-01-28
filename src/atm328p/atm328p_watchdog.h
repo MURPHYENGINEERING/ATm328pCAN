@@ -1,5 +1,5 @@
-#ifndef __WATCHDOG_H__
-#define __WATCHDOG_H__
+#ifndef __ATM328P_WATCHDOG_H__
+#define __ATM328P_WATCHDOG_H__
 
 #include "types.h"
 
@@ -21,5 +21,6 @@ typedef union {
 extern volatile WDTCSR_T WDTCSR;
 
 #define WDTCSR_WATCHDOG_DISABLED (U8_T) 0
+#define WDTCSR_WATCHDOG_ENABLED (U8_T) 1
 
 #endif

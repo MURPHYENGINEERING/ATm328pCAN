@@ -1,10 +1,12 @@
-#ifndef __IO_H__
-#define __IO_H__
+#ifndef __ATM328P_DSC_H__
+#define __ATM328P_DSC_H__
 
 #include "types.h"
 
 #define DDR_OUTPUT 1
 #define DDR_INPUT 0
+
+#define PORT_PULLUP 1
 
 /* Port B Data Direction Register */
 extern volatile REGISTER_T DDRB;

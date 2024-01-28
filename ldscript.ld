@@ -28,17 +28,23 @@ SECTIONS
   /****************************************************************************/
   /* Hardware Registers */
   /****************************************************************************/
-  /* GPIO */
-  DDRB          = 0x24;
+  /* GPIO D */
   DDRD          = 0x2A;
+  DDR_CANBOARD  = 0x2A;
+  PORTD         = 0x2B;
+  PORT_CANBOARD = 0x2B;
+  
+  /* GPIO B */
+  DDRB          = 0x24;
   DDR_SPI       = 0x24;
   DDR_BUILTIN   = 0x24;
-  DDR_CANBOARD  = 0x2A;
-  
   PORTB         = 0x25;
-  PORTD         = 0x2B;
+  PORT_SPI      = 0x25;
   PORT_BUILTIN  = 0x25;
-  PORT_CANBOARD = 0x2B;
+  PINB          = 0x23;
+  PIN_SPI       = 0x23;
+
+
 
   /* SPI */
   PRR   = 0x64;

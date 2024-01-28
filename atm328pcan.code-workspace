@@ -17,7 +17,10 @@
             "memory.h": "c",
             "spi.h": "c",
             "atm328p_spi.h": "c",
-            "atm328p_timer.h": "c"
+            "atm328p_timer.h": "c",
+            "atm328p_dsc.h": "c",
+            "watchdog.h": "c",
+            "timer.h": "c"
         }
     }
 }
