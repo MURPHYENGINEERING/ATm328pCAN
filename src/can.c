@@ -46,7 +46,7 @@ void can_init(void)
 
     spi_activate();
     spi_tx_rx(CAN_MSG_RESET);
-    for (hold_reset = 0; 255 > hold_reset; ++hold_reset) {
+    for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
         /* Hold reset for 255 cycles per MCP2515 eval sample */
         /* Even though it appears to hold for 48-us without this,
          * which exceeds the 2-us requirement. */
