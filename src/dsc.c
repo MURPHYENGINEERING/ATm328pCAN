@@ -68,15 +68,15 @@ void dsc_led_set(DSC_LED_T led, DSC_LED_STATE_T state)
     if (DSC_LED_OFF == state) {
         switch (led) {
             case DSC_LED_BUILTIN:
-                PORT_BUILTIN.bits.LED = LOW;
+                PORT_BUILTIN.bits.LED = OPEN;
             break;
 
             case DSC_LED_CANBOARD_1:
-                PORT_CANBOARD.bits.LED1 = LOW;
+                PORT_CANBOARD.bits.LED1 = OPEN;
             break;
 
             case DSC_LED_CANBOARD_2:
-                PORT_CANBOARD.bits.LED2 = LOW;
+                PORT_CANBOARD.bits.LED2 = OPEN;
             break;
 
             default:
@@ -86,15 +86,15 @@ void dsc_led_set(DSC_LED_T led, DSC_LED_STATE_T state)
     } else {
         switch (led) {
             case DSC_LED_BUILTIN:
-                PORT_BUILTIN.bits.LED = HIGH;
+                PORT_BUILTIN.bits.LED = GND;
             break;
 
             case DSC_LED_CANBOARD_1:
-                PORT_CANBOARD.bits.LED1 = HIGH;
+                PORT_CANBOARD.bits.LED1 = GND;
             break;
 
             case DSC_LED_CANBOARD_2:
-                PORT_CANBOARD.bits.LED2 = HIGH;
+                PORT_CANBOARD.bits.LED2 = GND;
             break;
 
             default:

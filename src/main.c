@@ -3,18 +3,9 @@
 #include "watchdog.h"
 #include "interrupts.h"
 #include "timer.h"
-#include "scheduler.h"
 #include "dsc.h"
+#include "scheduler.h"
 #include "spi.h"
-#include "fifo.h"
-
-
-
-ISR(SPI_STC_vect)
-{
-}
-
-
 
 S16_T main(void)
 {
@@ -36,5 +27,6 @@ S16_T main(void)
     /* Run forever in interrupt-driven mode */
     while(TRUE)
     {
+        scheduler_step();
     }
 }

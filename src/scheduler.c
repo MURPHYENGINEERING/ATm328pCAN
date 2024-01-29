@@ -29,24 +29,28 @@ TASK_FN_T tasks[(SIZE_T) TASK_N] = {
     &task_empty             /* TASK_EMPTY19 */
 };
 
-SCHEDULER_TASK_T g_task;
+volatile SCHEDULER_TASK_T g_task;
+volatile SCHEDULER_STATE_T g_scheduler_state;
 
 
 ISR(TIMER1_OVF_vect)
 {
-    cli();
+    if (SCHEDULER_RUNNING == g_scheduler_state) {
+        /* Task overrun fault */
 
-    tasks[(SIZE_T) g_task]();
-
-    g_task = (SCHEDULER_TASK_T)( (SIZE_T) g_task + 1 );
-    if (TASK_N == g_task) {
-        g_task = (SCHEDULER_TASK_T) 0;
+    } else if (SCHEDULER_FINISHED == g_scheduler_state) {
+        /* Next task */
+        g_task = (SCHEDULER_TASK_T)( (SIZE_T) g_task + 1 );
+        if (TASK_N == g_task) {
+            g_task = (SCHEDULER_TASK_T) 0;
+        }
+        g_scheduler_state = SCHEDULER_IDLE;
+    } else {
+        /* Software error */
     }
 
     /* Reset timer to 50-ms */
     timer1_set(SCHEDULER_TIMER_BASE_VALUE);
-    
-    sei();
 }
 
 
@@ -56,6 +60,18 @@ void scheduler_init(void)
     timer1_set(SCHEDULER_TIMER_BASE_VALUE);
 
     g_task = (SCHEDULER_TASK_T) 0;
+    g_scheduler_state = SCHEDULER_IDLE;
+}
+
+
+void scheduler_step(void)
+{
+    if (SCHEDULER_IDLE == g_scheduler_state) {
+        dsc_led_toggle(DSC_LED_CANBOARD_1);
+        g_scheduler_state = SCHEDULER_RUNNING;
+        tasks[(SIZE_T) g_task]();
+        g_scheduler_state = SCHEDULER_FINISHED;
+    }
 }
 
 

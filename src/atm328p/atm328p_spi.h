@@ -22,8 +22,8 @@ typedef union {
 
 extern volatile PRR_T PRR;
 
-#define PRSPI_ENABLE_POWER_REDUCTION 1
 #define PRSPI_DISABLE_POWER_REDUCTION 0
+#define PRSPI_ENABLE_POWER_REDUCTION 1u
 
 
 
@@ -58,17 +58,21 @@ typedef union {
 
 extern volatile SPCR_T SPCR;
 
-#define SPE_ENABLE_SPI 1
+#define SPE_DISABLE_SPI 0
+#define SPE_ENABLE_SPI 1u
 #define SPIE_DISABLE_SPI_INTERRUPT 0
-#define SPIE_ENABLE_SPI_INTERRUPT 1
-#define MSTR_MODE_MASTER 1
+#define SPIE_ENABLE_SPI_INTERRUPT 1u
+#define DORD_MSB_FIRST 0
+#define DORD_LSB_FIRST 1u
 #define MSTR_MODE_SLAVE 0
-#define CPOL_LEADING_IS_RISING 0
-#define CPHA_SAMPLE_ON_LEADING 1
+#define MSTR_MODE_MASTER 1u
+#define CPOL_LEADING_EDGE_IS_RISING 0
+#define CPHA_SAMPLE_ON_LEADING_EDGE 0
+#define CPHA_SETUP_ON_LEADING_EDGE 1u
 
 #define SPCR_SPR0 0
 #define SPCR_SPR1 1
-#define SPCR_PRESCALE_OVER_128 (U8_T) ( (1 << SPCR_SPR1) | (1 << SPCR_SPR0) )
+#define SPCR_PRESCALE_OVER_128 (U8_T) ( (1u << SPCR_SPR1) | (1u << SPCR_SPR0) )
 
 
 /* SPI Status Register */
@@ -94,10 +98,15 @@ typedef union {
 extern volatile SPSR_T SPSR;
 
 
+/* SPI Data Register */
+extern volatile REGISTER_T SPDR;
+
+
 /* PORTB */
 typedef union {
     struct {
-        VBOOL_T Unused0 : 1;
+        /* Mode strapping */
+        VBOOL_T MODE : 1;
         VBOOL_T Unused1 : 1;
         /* SPI bus master slave select */
         VBOOL_T SS : 1;
@@ -107,8 +116,7 @@ typedef union {
         VBOOL_T MISO : 1;
         /* SPI bus master clock */
         VBOOL_T SCK : 1;
-        /* Mode strapping */
-        VBOOL_T MODE : 1;
+        VBOOL_T Unused6 : 1;
         VBOOL_T Unused7 : 1;
     } bits;
     VU8_T byte;
@@ -120,10 +128,6 @@ extern volatile REGISTER_SPI_T DDR_SPI;
 extern volatile REGISTER_SPI_T PORT_SPI;
 /* PINB */
 extern volatile REGISTER_SPI_T PIN_SPI;
-
-
-/* SPI Data Register */
-extern volatile REGISTER_T SPDR;
 
 
 #endif

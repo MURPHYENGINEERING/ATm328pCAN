@@ -36,42 +36,40 @@ SECTIONS
   
   /* GPIO B */
   DDRB          = 0x24;
-  DDR_SPI       = 0x24;
   DDR_BUILTIN   = 0x24;
   PORTB         = 0x25;
-  PORT_SPI      = 0x25;
   PORT_BUILTIN  = 0x25;
   PINB          = 0x23;
-  PIN_SPI       = 0x23;
-
-
 
   /* SPI */
-  PRR   = 0x64;
-  SPCR  = 0x4C;
-  SPSR  = 0x4D;
-  SPDR  = 0x4E;
+  PRR           = 0x64;
+  SPCR          = 0x4C;
+  SPSR          = 0x4D;
+  SPDR          = 0x4E;
+  DDR_SPI       = 0x24;
+  PORT_SPI      = 0x25;
+  PIN_SPI       = 0x23;
 
   /* Timer 1 */
-  TCCR1A    = 0x80;
-  TCCR1B    = 0x81;
-  TCNT1     = 0x84;
-  TIMSK1    = 0x6F;
-  TIFR1     = 0x36;
-  OCR1A     = 0x88;
-  OCR1B     = 0x8A;
+  TCCR1A        = 0x80;
+  TCCR1B        = 0x81;
+  TCNT1         = 0x84;
+  TIMSK1        = 0x6F;
+  TIFR1         = 0x36;
+  OCR1A         = 0x88;
+  OCR1B         = 0x8A;
 
   /* Timer 0 */
-  TCCR0A    = 0x44;
-  TCCR0B    = 0x45;
-  TCNT0     = 0x46;
-  OCR0A     = 0x47;
-  OCR0B     = 0x48;
-  TIMSK0    = 0x6E;
-  TIFR0     = 0x35;
+  TCCR0A        = 0x44;
+  TCCR0B        = 0x45;
+  TCNT0         = 0x46;
+  OCR0A         = 0x47;
+  OCR0B         = 0x48;
+  TIMSK0        = 0x6E;
+  TIFR0         = 0x35;
 
   /* Watchdog */
-  WDTCSR    = 0x60;
+  WDTCSR        = 0x60;
   
   /****************************************************************************/
 

@@ -43,10 +43,17 @@ typedef enum {
     TASK_N
 } SCHEDULER_TASK_T;
 
+typedef enum {
+    SCHEDULER_RUNNING,
+    SCHEDULER_FINISHED,
+    SCHEDULER_IDLE
+} SCHEDULER_STATE_T;
+
 typedef void ((*TASK_FN_T)(void));
 
 
 void scheduler_init(void);
+void scheduler_step(void);
 
 /* Runs when there is no other task to run this major cycle */
 void task_empty(void);
