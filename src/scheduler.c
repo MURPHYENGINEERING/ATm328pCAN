@@ -4,13 +4,15 @@
 #include "dsc.h"
 #include "spi.h"
 #include "bit.h"
+#include "can.h"
+#include "demo.h"
 
 
 TASK_FN_T tasks[(SIZE_T) TASK_N] = {
-    &task_exec_spi_tx,      /* TASK_EXEC_SPI_TX */
-    &task_exec_spi_rx,      /* TASK_EXEC_SPI_RX */
+    &task_can_tx,           /* TASK_EXEC_SPI_TX */
+    &task_can_rx,           /* TASK_EXEC_SPI_RX */
     &task_bit_rom,          /* TASK_EXEC_BIT_ROM */
-    &task_empty,            /* TASK_EMPTY3 */
+    &task_demo_tx,          /* TASK_DEMO_TX */
     &task_empty,            /* TASK_EMPTY4 */
     &task_empty,            /* TASK_EMPTY5 */
     &task_empty,            /* TASK_EMPTY6 */
@@ -68,6 +70,7 @@ void scheduler_step(void)
 {
     if (SCHEDULER_IDLE == g_scheduler_state) {
         dsc_led_toggle(DSC_LED_CANBOARD_1);
+
         g_scheduler_state = SCHEDULER_RUNNING;
         tasks[(SIZE_T) g_task]();
         g_scheduler_state = SCHEDULER_FINISHED;

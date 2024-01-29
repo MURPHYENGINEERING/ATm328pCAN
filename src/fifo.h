@@ -3,12 +3,12 @@
 
 #include "types.h"
 
-#define FIFO_DATA_LEN (SIZE_T) 128
+#define FIFO_DATA_LEN (SIZE_T) 32
 
 typedef struct {
     U8_T data[FIFO_DATA_LEN];
     /* Data length */
-    U32_T len;
+    SIZE_T len;
 } FIFO_ENTRY_T;
 
 
@@ -34,7 +34,7 @@ typedef enum {
 
 
 void fifo_q_init(FIFO_T* q, FIFO_ENTRY_T* buf, SIZE_T size);
-FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, U32_T len);
-FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, U32_T* len);
+FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, SIZE_T len);
+FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, SIZE_T* len);
 
 #endif

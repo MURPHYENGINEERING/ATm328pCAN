@@ -64,8 +64,8 @@ typedef union {
 } WORD_T;
 
 
-#define TRUE 1u
-#define FALSE 0
+#define TRUE (BOOL_T) 1u
+#define FALSE (BOOL_T) 0
 
 #define HIGH 1u
 #define LOW 0

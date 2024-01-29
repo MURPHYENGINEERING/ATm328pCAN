@@ -1,9 +1,9 @@
 #include "memory.h"
 
 
-void memcpy_by_U8(U8_T* dst, U8_T* src, U32_T len)
+void memcpy_by_U8(U8_T* dst, U8_T* src, SIZE_T len)
 {
-    U32_T i;
+    SIZE_T i;
 
     for (i = 0; i < len; ++i) {
         *dst = *src;
@@ -13,9 +13,20 @@ void memcpy_by_U8(U8_T* dst, U8_T* src, U32_T len)
 }
 
 
-S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, U32_T len)
+void memset_by_U8(U8_T* dst, U8_T value, SIZE_T len)
 {
-    U32_T i;
+    SIZE_T i;
+
+    for (i = 0; i < len; ++i) {
+        *dst = value;
+        ++dst;
+    }
+}
+
+
+S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, SIZE_T len)
+{
+    SIZE_T i;
     S32_T result;
 
     i = 0;

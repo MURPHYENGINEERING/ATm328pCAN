@@ -6,9 +6,14 @@
 #include "dsc.h"
 #include "scheduler.h"
 #include "spi.h"
+#include "can.h"
+
 
 S16_T main(void)
 {
+    /* Enable interrupts */
+    sei();
+
     /* Soft-reset if the watchdog doesn't get strobed */
     watchdog_enable();
 
@@ -18,11 +23,11 @@ S16_T main(void)
     /* Start SPI bus */
     spi_init();
 
+    /* Start CAN bus */
+    can_init();
+
     /* Start task timing */
     scheduler_init();
-
-    /* Enable interrupts */
-    sei();
 
     /* Run forever in interrupt-driven mode */
     while(TRUE)

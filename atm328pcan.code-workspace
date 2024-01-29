@@ -24,7 +24,8 @@
             "interrupts.h": "c",
             "fifo.h": "c",
             "dsc.h": "c",
-            "scheduler.h": "c"
+            "scheduler.h": "c",
+            "can.h": "c"
         }
     }
 }

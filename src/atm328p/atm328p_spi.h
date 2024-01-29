@@ -105,8 +105,7 @@ extern volatile REGISTER_T SPDR;
 /* PORTB */
 typedef union {
     struct {
-        /* Mode strapping */
-        VBOOL_T MODE : 1;
+        VBOOL_T Unused0 : 1;
         VBOOL_T Unused1 : 1;
         /* SPI bus master slave select */
         VBOOL_T SS : 1;

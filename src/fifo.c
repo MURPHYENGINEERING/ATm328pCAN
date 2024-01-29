@@ -9,10 +9,12 @@ void fifo_q_init(FIFO_T* q, FIFO_ENTRY_T* buf, SIZE_T size)
     q->head = 0;
     q->tail = 0;
     q->n = (SIZE_T) 0;
+
+    memset_by_U8((U8_T*) buf, (U8_T) 0, (SIZE_T)( size * sizeof(FIFO_ENTRY_T) ));
 }
 
 
-FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, U32_T len)
+FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, SIZE_T len)
 {
     FIFO_STATUS_T status;
     FIFO_ENTRY_T* p_fifo_entry;
@@ -34,7 +36,7 @@ FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, U32_T len)
 }
 
 
-FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, U32_T* len)
+FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, SIZE_T* len)
 {
     FIFO_STATUS_T status;
     FIFO_ENTRY_T* p_fifo_entry;
