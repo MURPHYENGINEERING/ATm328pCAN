@@ -1,4 +1,5 @@
 #include "dsc.h"
+#include "atm328p/atm328p_dsc.h"
 
 
 void dsc_init(void)

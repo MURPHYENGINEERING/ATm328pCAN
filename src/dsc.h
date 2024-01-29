@@ -1,8 +1,6 @@
 #ifndef __DSC_H__
 #define __DSC_H__
 
-#include "atm328p/atm328p_dsc.h"
-
 typedef enum {
     DSC_LED_CANBOARD_1,
     DSC_LED_CANBOARD_2,
