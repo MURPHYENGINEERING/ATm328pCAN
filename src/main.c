@@ -17,6 +17,9 @@ S16_T main(void)
     /* Soft-reset if the watchdog doesn't get strobed */
     watchdog_enable();
 
+    /* Initialize fault logging */
+    fai_init();
+
     /* Initialize GPIOs */
     dsc_init();
 

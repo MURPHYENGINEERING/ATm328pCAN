@@ -37,8 +37,10 @@ FIFO_T g_can_rx_q;
 #define CAN_MSG_RTS         0b10000000
 /******************************************************************************/
 
-
+/******************************************************************************/
+/* Statics */
 static void can_tx(U8_T* buf, SIZE_T len);
+/******************************************************************************/
 
 
 void can_init(void)
@@ -102,6 +104,8 @@ static void can_tx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
 
+    /* TODO: This doesn't work! */
+
     spi_activate();
     spi_tx_rx(CAN_MSG_WRITE);
     spi_tx_rx((U8_T) 0);
@@ -136,6 +140,8 @@ void task_can_rx(void)
     spi_activate();
     spi_tx_rx(CAN_MSG_READ);
     spi_deactivate();
+
+    /* TODO: read a message */
 
     dsc_led_set(DSC_LED_CANBOARD_2, OFF);
 }

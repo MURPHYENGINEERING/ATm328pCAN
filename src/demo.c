@@ -20,7 +20,7 @@ void task_demo_tx(void)
 
     if (FIFO_OK == status) {
     } else {
-        /* Buffer overflow, report fault */
+        /* TODO: Buffer overflow, report fault */
     }
 }
 
@@ -39,9 +39,10 @@ void task_demo_rx(void)
         status = can_rx_q_remove(buf, &len);
 
         if (FIFO_OK == status) {
+            /* TODO: What do we do with received messages? */
 
         } else {
-            /* Shouldn't underflow, report software error */
+            /* TODO: Shouldn't underflow, report software error */
         }
     }
 }
