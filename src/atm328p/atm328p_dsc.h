@@ -3,10 +3,10 @@
 
 #include "types.h"
 
-#define DDR_OUTPUT 1u
-#define DDR_INPUT 0
+#define DDR_OUTPUT TRUE
+#define DDR_INPUT FALSE
 
-#define PORT_PULLUP 1u
+#define PORT_PULLUP TRUE
 
 /* Port B Data Direction Register */
 extern volatile REGISTER_T DDRB;

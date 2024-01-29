@@ -6,6 +6,8 @@
 void watchdog_enable(void)
 {
     WDTCSR.bits.WDE = WDE_WATCHDOG_ENABLED;
+    /* Time out the watchdog in two major cycles */
+    WDTCSR.byte |= WDTCSR_PRESCALE_TIMEOUT_IN_2S
 }
 
 
