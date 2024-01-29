@@ -3,11 +3,23 @@
 
 #include "types.h"
 
+#define FAI_N_TS_DATA (SIZE_T) 16u
+
+#define FAI_NVM_BASE_ADDRESS (U8_T) 0
+
+
 typedef enum {
     FAI_FAULT_ID_FIRST,
     FAI_FAULT_ID_SW_ERROR
     FAI_FAULT_ID_N
 } FAI_FAULT_ID_T;
+
+
+typedef struct {
+    U8_T count;
+    U8_T head;
+    U32_T ts_data[FAI_N_TS_DATA];
+} FAI_FAULT_COUNTER_T;
 
 
 void fai_init(void);

@@ -49,5 +49,9 @@ typedef union {
 
 extern volatile EECR_T EECR;
 
+void atm328p_eeprom_write_byte(U8_T address, U8_T data);
+U8_T atm328p_eeprom_read_byte(U8_T address);
+void atm328p_eeprom_erase_byte(U8_T address);
+
 
 #endif
