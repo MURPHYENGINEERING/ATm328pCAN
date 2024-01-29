@@ -36,5 +36,6 @@ typedef enum {
 void fifo_q_init(FIFO_T* q, FIFO_ENTRY_T* buf, SIZE_T size);
 FIFO_STATUS_T fifo_q_add(FIFO_T* q, U8_T* src, SIZE_T len);
 FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, SIZE_T* len);
+SIZE_T fifo_q_len(FIFO_T* q);
 
 #endif

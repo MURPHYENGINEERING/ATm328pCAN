@@ -16,10 +16,32 @@ void task_demo_tx(void)
     memcpy_by_U8(buf, (U8_T*) "Hello, world!", (SIZE_T) 13);
     len = strnlen_by_U8((U8_T*) "Hello, world!", FIFO_DATA_LEN);
 
-    status = can_q_add(buf, len);
+    status = can_tx_q_add(buf, len);
 
     if (FIFO_OK == status) {
     } else {
-        /* Buffer overrun, report fault */
+        /* Buffer overflow, report fault */
+    }
+}
+
+
+void task_demo_rx(void)
+{
+    SIZE_T n_pending_msgs;
+    SIZE_T i;
+    FIFO_STATUS_T status;
+    U8_T buf[FIFO_DATA_LEN];
+    SIZE_T len;
+
+    n_pending_msgs = can_rx_q_len();
+
+    for (i = 0; i < n_pending_msgs; ++i) {
+        status = can_rx_q_remove(buf, &len);
+
+        if (FIFO_OK == status) {
+
+        } else {
+            /* Shouldn't underflow, report software error */
+        }
     }
 }

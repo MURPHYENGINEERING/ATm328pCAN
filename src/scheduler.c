@@ -9,10 +9,10 @@
 
 
 TASK_FN_T tasks[(SIZE_T) TASK_N] = {
+    &task_demo_tx,          /* TASK_EXEC_DEMO_TX */
     &task_can_tx,           /* TASK_EXEC_SPI_TX */
     &task_can_rx,           /* TASK_EXEC_SPI_RX */
     &task_bit_rom,          /* TASK_EXEC_BIT_ROM */
-    &task_demo_tx,          /* TASK_DEMO_TX */
     &task_empty,            /* TASK_EMPTY4 */
     &task_empty,            /* TASK_EMPTY5 */
     &task_empty,            /* TASK_EMPTY6 */

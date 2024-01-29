@@ -56,3 +56,9 @@ FIFO_STATUS_T fifo_q_remove(FIFO_T* q, U8_T* dst, SIZE_T* len)
 
     return status;
 }
+
+
+SIZE_T fifo_q_len(FIFO_T* q)
+{
+    return q->n;
+}

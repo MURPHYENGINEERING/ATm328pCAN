@@ -35,7 +35,14 @@ FIFO_T g_can_rx_q;
 #define CAN_MSG_RX_STATUS   0b10110000
 #define CAN_MSG_BIT_MODIFY  0b00000101
 #define CAN_MSG_RTS         0b10000000
+
+/* TODO: determine length of CAN message */
+#define CAN_MSG_LEN 17
 /******************************************************************************/
+
+
+static void can_tx(U8_T* buf, SIZE_T len);
+
 
 void can_init(void)
 {
@@ -60,7 +67,7 @@ void can_init(void)
 }
 
 
-FIFO_STATUS_T can_q_add(U8_T* buf, SIZE_T len)
+FIFO_STATUS_T can_tx_q_add(U8_T* buf, SIZE_T len)
 {
     FIFO_STATUS_T status;
 
@@ -70,52 +77,90 @@ FIFO_STATUS_T can_q_add(U8_T* buf, SIZE_T len)
 }
 
 
+SIZE_T can_rx_q_len(void)
+{
+    return fifo_q_len(&g_can_rx_q);
+}
+
+
 void task_can_tx(void)
+{
+    FIFO_STATUS_T status;
+    U8_T buf[FIFO_DATA_LEN];
+    SIZE_T n_pending_msgs;
+    SIZE_T len;
+    SIZE_T i;
+
+    n_pending_msgs = fifo_q_len(&g_can_tx_q);
+
+    for (i = 0; i < n_pending_msgs; ++i) {
+        status = fifo_q_remove(&g_can_tx_q, buf, &len);
+
+        if (FIFO_OK == status) {
+            can_tx(buf, len);
+        } else {
+            /* Shouldn't underflow, report software fault */
+        }
+    }
+
+    dsc_led_set(DSC_LED_CANBOARD_2, ON);
+}
+
+
+static void can_tx(U8_T* buf, SIZE_T len)
+{
+    SIZE_T i;
+
+    spi_activate();
+    spi_tx_rx(CAN_MSG_WRITE);
+    spi_tx_rx((U8_T) 0);
+    for (i = 0; i < len; ++i) {
+        spi_tx_rx(buf[i]);
+    }
+    spi_deactivate();
+
+    spi_activate();
+    spi_tx_rx(CAN_REG_TXB0CTRL);
+    spi_tx_rx((U8_T) 0x0);
+    spi_deactivate();
+
+    spi_activate();
+    spi_tx_rx(CAN_MSG_RTS | 0b0000000);
+    spi_deactivate();
+
+    spi_activate();
+    spi_tx_rx(CAN_REG_TX0RTS);
+    spi_tx_rx((U8_T) 0b00000001);
+}
+
+
+void task_can_rx(void)
 {
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T len;
     SIZE_T i;
 
-    status = fifo_q_remove(&g_can_tx_q, buf, &len);
-
-    if (FIFO_OK == status) {
-        spi_activate();
-        spi_tx_rx(CAN_MSG_WRITE);
-        spi_tx_rx((U8_T) 0);
-        for (i = 0; i < len; ++i) {
-            spi_tx_rx(buf[i]);
-        }
-        spi_deactivate();
-
-        spi_activate();
-        spi_tx_rx(CAN_REG_TXB0CTRL);
-        spi_tx_rx((U8_T) 0x0);
-        spi_deactivate();
-
-        spi_activate();
-        spi_tx_rx(CAN_MSG_RTS | 0b0000000);
-        spi_deactivate();
-
-        spi_activate();
-        spi_tx_rx(CAN_REG_TX0RTS);
-        spi_tx_rx((U8_T) 0b00000001);
-        
-        dsc_led_set(DSC_LED_CANBOARD_2, DSC_LED_ON);
-
-    } else {
-        /* Buffer underrun, do nothing */
-    }
-}
-
-
-void task_can_rx(void)
-{
     spi_activate();
-
     spi_tx_rx(CAN_MSG_READ);
-
     spi_deactivate();
 
-    dsc_led_set(DSC_LED_CANBOARD_2, DSC_LED_OFF);
+    /* TODO: determine messsage length from the first byte? */
+    len = CAN_MSG_LEN;
+
+    spi_activate();
+    for (i = 0; i < len; ++i) {
+        buf[i] = spi_tx_rx(CAN_MSG_READ_BYTE);
+    }
+    spi_deactivate();
+
+    status = fifo_q_add(&g_can_rx_q, buf, len);
+
+    if (FIFO_OK == status) {
+    } else {
+        /* Buffer overflow, message lost */
+        /* Report a fault */
+    }
+
+    dsc_led_set(DSC_LED_CANBOARD_2, OFF);
 }

@@ -20,10 +20,10 @@
 
 
 typedef enum {
+    TASK_EXEC_DEMO_TX,
     TASK_EXEC_SPI_TX_RX,
     TASK_EXEC_SPI_RX,
     TASK_BIT_ROM,
-    TASK_DEMO_TX,
     TASK_EMPTY4,
     TASK_EMPTY5,
     TASK_EMPTY6,
