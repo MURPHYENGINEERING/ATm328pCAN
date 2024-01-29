@@ -53,12 +53,19 @@ void dsc_led_mode(DSC_LED_T led, DSC_LED_MODE_T mode) {
 
 void dsc_led_toggle(DSC_LED_T led)
 {
-    if (DSC_LED_CANBOARD_1 == led) {
-        PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
-    } else if (DSC_LED_CANBOARD_2 == led) {
-        PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
-    } else if (DSC_LED_BUILTIN == led) {
-        PORT_BUILTIN.bits.LED = !PORT_BUILTIN.bits.LED;
+    switch (led) {
+        case DSC_LED_CANBOARD_1:
+            PORT_CANBOARD.bits.LED1 = !PORT_CANBOARD.bits.LED1;
+            break;
+        case DSC_LED_CANBOARD_2:
+            PORT_CANBOARD.bits.LED2 = !PORT_CANBOARD.bits.LED2;
+            break;
+        case DSC_LED_BUILTIN:
+            PORT_BUILTIN.bits.LED = !PORT_BUILTIN.bits.LED;
+            break;
+        default:
+            /* Software error */
+            break;
     }
 }
 

@@ -20,7 +20,7 @@ typedef union {
 
 extern volatile WDTCSR_T WDTCSR;
 
-#define WDTCSR_WATCHDOG_DISABLED (U8_T) 0
-#define WDTCSR_WATCHDOG_ENABLED (U8_T) 1
+#define WDE_WATCHDOG_DISABLED FALSE
+#define WDE_WATCHDOG_ENABLED TRUE
 
 #endif

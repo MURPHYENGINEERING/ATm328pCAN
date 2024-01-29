@@ -192,9 +192,9 @@ typedef union {
 
 extern volatile TIMSK1_T TIMSK1;
 
-#define TOIE1_ENABLE_INTERRUPT 1
-#define TOIE1_DISABLE_INTERRUPT 0
-#define OCIE1A_ENABLE_INTERRUPT 1
+#define TOIE1_ENABLE_INTERRUPT TRUE
+#define TOIE1_DISABLE_INTERRUPT FALSE
+#define OCIE1A_ENABLE_INTERRUPT TRUE
 
 
 /* Timer/Counter 1 Interrupt Flag Register */
