@@ -35,9 +35,6 @@ FIFO_T g_can_rx_q;
 #define CAN_MSG_RX_STATUS   0b10110000
 #define CAN_MSG_BIT_MODIFY  0b00000101
 #define CAN_MSG_RTS         0b10000000
-
-/* TODO: determine length of CAN message */
-#define CAN_MSG_LEN 17
 /******************************************************************************/
 
 
@@ -74,12 +71,6 @@ FIFO_STATUS_T can_tx_q_add(U8_T* buf, SIZE_T len)
     status = fifo_q_add(&g_can_tx_q, buf, len);
 
     return status;
-}
-
-
-SIZE_T can_rx_q_len(void)
-{
-    return fifo_q_len(&g_can_rx_q);
 }
 
 
@@ -134,33 +125,17 @@ static void can_tx(U8_T* buf, SIZE_T len)
 }
 
 
+SIZE_T can_rx_q_len(void)
+{
+    return fifo_q_len(&g_can_rx_q);
+}
+
+
 void task_can_rx(void)
 {
-    FIFO_STATUS_T status;
-    U8_T buf[FIFO_DATA_LEN];
-    SIZE_T len;
-    SIZE_T i;
-
     spi_activate();
     spi_tx_rx(CAN_MSG_READ);
     spi_deactivate();
-
-    /* TODO: determine messsage length from the first byte? */
-    len = CAN_MSG_LEN;
-
-    spi_activate();
-    for (i = 0; i < len; ++i) {
-        buf[i] = spi_tx_rx(CAN_MSG_READ_BYTE);
-    }
-    spi_deactivate();
-
-    status = fifo_q_add(&g_can_rx_q, buf, len);
-
-    if (FIFO_OK == status) {
-    } else {
-        /* Buffer overflow, message lost */
-        /* Report a fault */
-    }
 
     dsc_led_set(DSC_LED_CANBOARD_2, OFF);
 }
