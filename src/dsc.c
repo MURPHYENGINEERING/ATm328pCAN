@@ -4,15 +4,15 @@
 
 void dsc_init(void)
 {
-    dsc_led_mode(DSC_LED_CANBOARD_1, DSC_LED_ENABLED);
-    dsc_led_mode(DSC_LED_CANBOARD_2, DSC_LED_ENABLED);
-    dsc_led_set(DSC_LED_CANBOARD_1, DSC_LED_OFF);
-    dsc_led_set(DSC_LED_CANBOARD_2, DSC_LED_OFF);
+    dsc_led_mode(DSC_LED_CANBOARD_1, ENABLED);
+    dsc_led_mode(DSC_LED_CANBOARD_2, ENABLED);
+    dsc_led_set(DSC_LED_CANBOARD_1, OFF);
+    dsc_led_set(DSC_LED_CANBOARD_2, OFF);
 }
 
 
-void dsc_led_mode(DSC_LED_T led, DSC_LED_MODE_T mode) {
-    if (DSC_LED_ENABLED == mode) {
+void dsc_led_mode(DSC_LED_T led, ENABLE_T mode) {
+    if (ENABLED == mode) {
         switch (led) {
             case DSC_LED_BUILTIN:
                 DDR_BUILTIN.bits.LED = DDR_OUTPUT;
@@ -71,9 +71,9 @@ void dsc_led_toggle(DSC_LED_T led)
 }
 
 
-void dsc_led_set(DSC_LED_T led, DSC_LED_STATE_T state)
+void dsc_led_set(DSC_LED_T led, ON_T state)
 {
-    if (DSC_LED_OFF == state) {
+    if (OFF == state) {
         switch (led) {
             case DSC_LED_BUILTIN:
                 PORT_BUILTIN.bits.LED = OPEN;

@@ -67,14 +67,32 @@ typedef union {
 #define TRUE (BOOL_T) 1u
 #define FALSE (BOOL_T) 0
 
-#define HIGH 1u
-#define LOW 0
 
-#define PASS 1u
-#define FAIL 0
+typedef enum {
+    LOW = 0,
+    GND = LOW,
+    HIGH = 1,
+    OPEN = HIGH
+} BIT_T;
 
-#define GND 0
-#define OPEN 1u
+
+typedef enum {
+    OFF = 0,
+    ON = 1
+} ON_T;
+
+
+typedef enum {
+    DISABLED = 0,
+    ENABLED = 1
+} ENABLE_T;
+
+
+typedef enum {
+    FAIL,
+    PASS
+} PASS_T;
+
 
 #define NULL 0
 
