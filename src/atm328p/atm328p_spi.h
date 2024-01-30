@@ -4,29 +4,6 @@
 #include "types.h"
 
 
-/* Power Reduction Register */
-typedef union {
-    struct {
-        VBOOL_T Unused0 : 1;
-        VBOOL_T Unused1 : 1;
-        /* Power Reduction Serial Peripheral Interface */
-        VBOOL_T PRSPI : 1;
-        VBOOL_T Unused3 : 1;
-        VBOOL_T Unused4 : 1;
-        VBOOL_T Unused5 : 1;
-        VBOOL_T Unused6 : 1;
-        VBOOL_T Unused7 : 1;
-    } bits;
-    VU8_T byte;
-} PRR_T;
-
-extern volatile PRR_T PRR;
-
-#define PRSPI_DISABLE_POWER_REDUCTION FALSE
-#define PRSPI_ENABLE_POWER_REDUCTION TRUE
-
-
-
 /* SPI Control Register */
 typedef union {
     struct {
