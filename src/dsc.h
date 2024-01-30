@@ -1,6 +1,8 @@
 #ifndef __DSC_H__
 #define __DSC_H__
 
+#include "types.h"
+
 typedef enum {
     DSC_LED_CANBOARD_1,
     DSC_LED_CANBOARD_2,

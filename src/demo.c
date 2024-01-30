@@ -5,6 +5,7 @@
 #include "memory.h"
 #include "string.h"
 #include "dsc.h"
+#include "fai.h"
 
 
 void task_demo_tx(void)
@@ -20,7 +21,11 @@ void task_demo_tx(void)
 
     if (FIFO_OK == status) {
     } else {
-        /* TODO: Buffer overflow, report fault */
+        fai_pass_fail_logger(
+            FAI_FAULT_ID_BUFFER_OVERFLOW, 
+            FAIL, 
+            (U32_T) FAI_FAULT_SOURCE_CAN_TX
+        );
     }
 }
 
@@ -32,6 +37,7 @@ void task_demo_rx(void)
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T len;
+    FAI_FAULT_COUNTER_T fault;
 
     n_pending_msgs = can_rx_q_len();
 
@@ -42,7 +48,7 @@ void task_demo_rx(void)
             /* TODO: What do we do with received messages? */
 
         } else {
-            /* TODO: Shouldn't underflow, report software error */
+            fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
         }
     }
 }

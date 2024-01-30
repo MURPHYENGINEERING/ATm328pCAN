@@ -23,13 +23,20 @@ extern volatile WDTCSR_T WDTCSR;
 #define WDE_WATCHDOG_DISABLED FALSE
 #define WDE_WATCHDOG_ENABLED TRUE
 
+#define WDCE_CHANGE_WATCHDOG TRUE
+
 /* Watchdog Timer Prescaler 3, 2, 1, 0 */
 #define WDTCSR_WDP3 5
+#define WDTCSR_WDE 3
+#define WDTCSR_WDCE 4
 #define WDTCSR_WDP2 2
 #define WDTCSR_WDP1 1
 #define WDTCSR_WDP0 0
 /* 256K WDT Oscillator Cycles before Timeout (2.0s at 5V) */
 #define WDTCSR_PRESCALE_TIMEOUT_IN_2S \
     (U8_T) ( (1u << WDTCSR_WDP2) | (1u << WDTCSR_WDP1) | (1u << WDTCSR_WDP0) )
+
+#define WDTCSR_ENABLE_WATCHDOG (U8_T) (1u << WDTCSR_WDE)
+#define WDTCSR_CHANGE_WATCHDOG (U8_T) (1u << WDTCSR_WDCE)
 
 #endif

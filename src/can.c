@@ -5,8 +5,8 @@
 
 /******************************************************************************/
 /* CAN Queues */
-#define CAN_FIFO_TX_SIZE (SIZE_T) 16u
-#define CAN_FIFO_RX_SIZE (SIZE_T) 16u
+#define CAN_FIFO_TX_SIZE (SIZE_T) 4u
+#define CAN_FIFO_RX_SIZE (SIZE_T) 4u
 
 FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
 FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
@@ -76,6 +76,16 @@ FIFO_STATUS_T can_tx_q_add(U8_T* buf, SIZE_T len)
 }
 
 
+FIFO_STATUS_T can_rx_q_remove(U8_T* buf, SIZE_T* len)
+{
+    FIFO_STATUS_T status;
+
+    status = fifo_q_remove(&g_can_rx_q, buf, len);
+
+    return status;
+}
+
+
 void task_can_tx(void)
 {
     FIFO_STATUS_T status;
@@ -95,8 +105,6 @@ void task_can_tx(void)
             /* Shouldn't underflow, report software fault */
         }
     }
-
-    dsc_led_set(DSC_LED_CANBOARD_2, ON);
 }
 
 
@@ -142,6 +150,4 @@ void task_can_rx(void)
     spi_deactivate();
 
     /* TODO: read a message */
-
-    dsc_led_set(DSC_LED_CANBOARD_2, OFF);
 }

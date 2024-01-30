@@ -7,6 +7,7 @@
 #include "scheduler.h"
 #include "spi.h"
 #include "can.h"
+#include "fai.h"
 
 
 S16_T main(void)
@@ -14,7 +15,7 @@ S16_T main(void)
     /* Enable interrupts */
     sei();
 
-    /* Soft-reset if the watchdog doesn't get strobed */
+    /* Soft-reset if the watchdog doesn't get strobed in 2 major cycles */
     watchdog_enable();
 
     /* Initialize fault logging */
@@ -32,7 +33,8 @@ S16_T main(void)
     /* Start task timing */
     scheduler_init();
 
-    /* Run forever in interrupt-driven mode */
+    /* Run tasks forever. Tasks are switched by the scheduler on a 50-ms
+     * interval. */
     while(TRUE)
     {
         scheduler_step();

@@ -5,6 +5,8 @@
 #include "spi.h"
 #include "bit.h"
 #include "can.h"
+#include "fai.h"
+#include "watchdog.h"
 #include "demo.h"
 
 
@@ -28,7 +30,7 @@ TASK_FN_T tasks[N_TASKS] = {
     &task_empty,
     &task_empty,
     &task_empty,
-    &task_empty
+    &task_watchdog_strobe
 };
 
 volatile SIZE_T g_task_idx;

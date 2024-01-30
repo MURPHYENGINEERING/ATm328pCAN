@@ -25,7 +25,10 @@
             "fifo.h": "c",
             "dsc.h": "c",
             "scheduler.h": "c",
-            "can.h": "c"
+            "can.h": "c",
+            "string.h": "c",
+            "fai.h": "c",
+            "eeprom.h": "c"
         }
     }
 }

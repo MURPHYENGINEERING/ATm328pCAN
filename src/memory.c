@@ -41,3 +41,9 @@ S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, SIZE_T len)
 
     return result;
 }
+
+
+U32_T get_pc(void) 
+{
+    return (U32_T) __builtin_return_address(0);
+}
