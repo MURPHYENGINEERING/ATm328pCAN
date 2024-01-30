@@ -1,8 +1,10 @@
 #include "atm328p_eeprom.h"
 #include "atm328p_interrupts.h"
 
+#include "eeprom.h"
 
-void atm328p_eeprom_write_byte(U8_T address, U8_T data)
+
+void eeprom_write_byte(SIZE_T address, U8_T data)
 {
     cli();
     /* Wait for previous write to complete */
@@ -14,7 +16,7 @@ void atm328p_eeprom_write_byte(U8_T address, U8_T data)
     EECR.bits.EEPM1 = TRUE;
 
     /* Set up write */
-    EEAR.byte = address;
+    EEAR.byte = (U8_T) address;
     EEDR.byte = data;
 
     /* Enable master write */
@@ -25,7 +27,7 @@ void atm328p_eeprom_write_byte(U8_T address, U8_T data)
 }
 
 
-U8_T atm328p_eeprom_read_byte(U8_T address)
+U8_T eeprom_read_byte(SIZE_T address)
 {
     cli();
     /* Wait for previous write to complete */
@@ -33,7 +35,7 @@ U8_T atm328p_eeprom_read_byte(U8_T address)
     }
 
     /* Set up read */
-    EEAR.byte = address;
+    EEAR.byte = (U8_T) address;
     /* Enable read */
     EECR.bits.EERE = TRUE;
 
@@ -43,7 +45,22 @@ U8_T atm328p_eeprom_read_byte(U8_T address)
 }
 
 
-void atm328p_eeprom_erase_byte(U8_T address)
+void eeprom_erase_byte(SIZE_T address)
 {
-    atm328p_eeprom_write_byte(address, (U8_T) 0);
+    /* Wait for previous write to complete */
+    while (TRUE == EECR.bits.EEPE) {
+    }
+
+    /* Enable erase-only mode */
+    EECR.bits.EEPM0 = TRUE;
+    EECR.bits.EEPM1 = FALSE;
+
+    /* Set up write */
+    EEAR.byte = address;
+    EEDR.byte = (U8_T) 0;
+
+    /* Enable master write */
+    EECR.bits.EEMPE = TRUE;
+    /* Enable write */
+    EECR.bits.EEPE = TRUE;
 }

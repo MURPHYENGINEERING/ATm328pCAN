@@ -19,6 +19,7 @@ typedef volatile U32_T VU32_T;
 #define U32_T_MAX ((U32_T) 4294967295)
 
 typedef U16_T SIZE_T;
+typedef volatile SIZE_T VSIZE_T;
 
 typedef float FLOAT_T;
 
