@@ -31,6 +31,13 @@ SECTIONS
   /* MCU */
   MCUSR         = 0x55;
 
+  /* USART */
+  UCSR0A        = 0xC0;
+  UCSR0B        = 0xC1;
+  UCSR0C        = 0xC2;
+  UBRR0         = 0xC4;
+  UDR0          = 0xC6;
+
   /* EEPROM */
   EEAR          = 0x41;
   EEDR          = 0x40;
