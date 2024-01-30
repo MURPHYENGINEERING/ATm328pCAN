@@ -28,7 +28,8 @@
             "can.h": "c",
             "string.h": "c",
             "fai.h": "c",
-            "eeprom.h": "c"
+            "eeprom.h": "c",
+            "atm328p_eeprom.h": "c"
         }
     }
 }

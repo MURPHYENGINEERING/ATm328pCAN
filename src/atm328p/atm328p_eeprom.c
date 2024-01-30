@@ -47,6 +47,9 @@ U8_T eeprom_read_byte(SIZE_T address)
 
 void eeprom_erase_byte(SIZE_T address)
 {
+<<<<<<< HEAD
+    atm328p_eeprom_write_byte(address, (U8_T) 0);
+=======
     /* Wait for previous write to complete */
     while (TRUE == EECR.bits.EEPE) {
     }
@@ -56,11 +59,12 @@ void eeprom_erase_byte(SIZE_T address)
     EECR.bits.EEPM1 = FALSE;
 
     /* Set up write */
-    EEAR.byte = address;
+    EEAR.byte = (U8_T) address;
     EEDR.byte = (U8_T) 0;
 
     /* Enable master write */
     EECR.bits.EEMPE = TRUE;
     /* Enable write */
     EECR.bits.EEPE = TRUE;
+>>>>>>> refs/remotes/origin/main
 }
