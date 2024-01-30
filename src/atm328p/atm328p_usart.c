@@ -20,7 +20,7 @@ static BOOL_T usart_frame_error(void);
 static BOOL_T usart_data_register_empty(void);
 
 
-void usart_init(USART_CONFIG_T cfg)
+void usart_init_hardware(USART_CONFIG_T cfg)
 {
     usart_set_baud(cfg.baud);
     usart_set_parity(cfg.parity);

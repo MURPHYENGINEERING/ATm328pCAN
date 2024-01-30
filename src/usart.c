@@ -1,78 +1,140 @@
 #include "usart.h"
+#include "interrupts.h"
 
 
-USART_TX_RESULT_T usart_tx_blocking(U8_T* buf, SIZE_T len)
+U8_T g_usart_tx_buf[USART_BUF_LEN];
+VSIZE_T g_usart_tx_buf_n;
+VSIZE_T g_usart_tx_buf_write_idx;
+VSIZE_T g_usart_tx_buf_read_idx;
+
+VBOOL_T g_usart_tx_transmitting;
+
+U8_T g_usart_rx_buf[USART_BUF_LEN];
+VSIZE_T g_usart_rx_buf_write_idx;
+VSIZE_T g_usart_rx_buf_read_idx;
+VSIZE_T g_usart_rx_buf_n;
+
+
+static void usart_tx_byte_from_buffer(void)
 {
-    USART_TX_RESULT_T result;
-    SIZE_T i;
+    U8_T c;
 
-    memset_by_U8((U8_T*)(void*)&result, 0, sizeof(result));
+    if ((SIZE_T) 0 < g_usart_tx_buf_n) {
+        c = g_usart_tx_buf[g_usart_tx_buf_read_idx];
 
-    for (i = 0; i < len; ++i) {
-        usart_tx_byte(buf[i]);
-    }
-
-    result.len = len;
-}
-
-
-USART_TX_RESULT_T usart_tx_nonblocking(U8_T* buf, SIZE_T len)
-{
-    USART_TX_RESULT_T result;
-
-    memset_by_U8((U8_T*)(void*)&result, 0, sizeof(result));
-
-    if (usart_tx_ready()) {
-        result = usart_tx_blocking(buf, len);
-    }
-
-    return result;
-}
-
-
-USART_RX_RESULT_T usart_rx_blocking(U8_T* buf, SIZE_T len)
-{
-    USART_RX_RESULT_T result;
-    SIZE_T i;
-    
-    memset_by_U8((U8_T*)(void*)&result, 0, sizeof(result));
-
-    for (i = 0; i < len; ++i) {
-        /* Wait for a received byte so that parity and frame error will be set */
-        while (FALSE == usart_rx_pending()) {
+        ++g_usart_tx_buf_read_idx;
+        if (USART_BUF_LEN == g_usart_tx_buf_read_idx) {
+            g_usart_tx_buf_read_idx = (SIZE_T) 0;
         }
-        result.parity_error |= usart_parity_error();
-        result.frame_error  |= usart_frame_error();
-        result.overrun      |= usart_data_overrun();
-        buf[i] = usart_rx_byte();
+
+        g_usart_tx_transmitting = TRUE;
+
+        /* Set this last so we don't re-enter this interrupt while doing the above */
+        UDR0 = c;
+    } else {
+        g_usart_tx_transmitting = FALSE;
     }
-
-    result.len = len;
-
-    return result;
 }
 
 
-USART_RX_RESULT_T usart_rx_nonblocking(U8_T* buf, SIZE_T len)
+ISR(USART_TX_vect)
 {
-    USART_RX_RESULT_T result;
+    usart_tx_byte_from_buffer();
+}
+
+
+ISR(USART_RX_VECT)
+{
+    U8_T c;
+
+    if (FALSE == UCSR0A.bits.UPEn) {
+        /* No parity error */
+        c = UDR0.byte;
+        
+        if (g_usart_rx_buf_n < USART_BUF_LEN) {
+            g_usart_rx_buf[g_usart_rx_buf_write_idx] = c;
+
+            ++g_usart_rx_buf_n;
+            ++g_usart_rx_buf_write_idx;
+            if (USART_BUF_LEN == g_usart_rx_buf_write_idx) {
+                g_usart_rx_buf_write_idx = (SIZE_T) 0;
+            }
+        } else {
+            /* Buffer overflow, drop byte and report fault */
+        }
+    } else {
+        /* Parity error, report fault */
+
+        /* Read the byte to free the buffer */
+        c = UDR0.byte;
+    }
+}
+
+
+void usart_init(USART_CONFIG_T config)
+{
+    g_usart_rx_buf_write_idx    = (SIZE_T) 0;
+    g_usart_rx_buf_read_idx     = (SIZE_T) 0;
+    g_usart_rx_buf_n            = (SIZE_T) 0;
+
+    g_usart_tx_buf_write_idx    = (SIZE_T) 0;
+    g_usart_tx_buf_read_idx     = (SIZE_T) 0;
+    g_usart_tx_buf_n            = (SIZE_T) 0;
+
+    g_usart_tx_transmitting = FALSE;
+
+    usart_init_hardware(config);
+}
+
+
+SIZE_T usart_tx(U8_T* buf, SIZE_T len)
+{
     SIZE_T i;
 
-    memset_by_U8((U8_T*)(void*)&result, 0, sizeof(result));
+    /* Start buffering at the second index because we'll write out the first
+     * one manually to get the transfer started.
+     * Transfer will continue by interrupts after that. */
+    i = (SIZE_T) 0;
 
-    i = 0;
+    while ( (USART_BUF_LEN > i) && (i < len) ) {
+        g_usart_tx_buf[g_usart_tx_buf_write_idx] = buf[i];
 
-    /* Bail out as soon as there's no data to read */
-    while ((i < len) && usart_rx_pending()) {
-        result.parity_error |= usart_parity_error();
-        result.frame_error  |= usart_frame_error();
-        result.overrun      |= usart_data_overrun();
-        buf[i] = usart_rx_byte();
+        ++g_usart_tx_buf_write_idx;
+        if (USART_BUF_LEN == g_usart_tx_buf_write_idx) {
+            g_usart_tx_buf_write_idx = (SIZE_T) 0;
+        }
 
         ++i;
     }
 
-    result.len = i;
+    g_usart_tx_buf_n += i;
 
-    return result;
+    if (FALSE == g_usart_tx_transmitting) {
+        usart_tx_byte_from_buffer();
+    }
+
+    return i;
+}
+
+
+SIZE_T usart_rx(U8_T* buf, SIZE_T len)
+{
+    SIZE_T i;
+
+    i = (SIZE_T) 0;
+
+    while ( (i < g_usart_rx_buf_n) && (i < len) ) {
+        buf[i] = g_usart_rx_buf[g_usart_rx_buf_read_idx];
+        
+        ++g_usart_rx_buf_read_idx;
+        if (USART_BUF_LEN == g_usart_rx_buf_read_idx) {
+            g_usart_rx_buf_read_idx = (SIZE_T) 0;
+        }
+
+        ++i;
+    }
+
+    g_usart_rx_buf_n -= i;
+
+    return i;
 }
