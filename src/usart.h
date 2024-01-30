@@ -78,6 +78,18 @@ typedef struct {
 } USART_CONFIG_T;
 
 
+typedef struct {
+    BOOL_T parity_error;
+    BOOL_T frame_error;
+    BOOL_T overrun;
+    SIZE_T len;
+} USART_RX_RESULT_T;
+
+
+typedef struct {
+    SIZE_T len;
+} USART_TX_RESULT_T;
+
 void usart_init(USART_CONFIG_T cfg);
 
 void usart_tx_byte(U8_T data);
@@ -85,5 +97,16 @@ U8_T usart_rx_byte(void);
 
 BOOL_T usart_tx_ready(void);
 BOOL_T usart_rx_pending(void);
+
+void usart_tx_blocking(U8_T* buf, SIZE_T len);
+BOOL_T usart_tx_nonblocking(U8_T* buf, SIZE_T len);
+
+void usart_rx_blocking(U8_T* buf, SIZE_T len);
+SIZE_T usart_rx_nonblocking(U8_T* buf, SIZE_T len);
+
+
+BOOL_T usart_parity_error(void);
+BOOL_T usart_data_overrun(void);
+BOOL_T usart_frame_error(void);
 
 #endif

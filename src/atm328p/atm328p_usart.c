@@ -53,26 +53,26 @@ void usart_tx_byte(U8_T data)
 U8_T usart_rx_byte(void)
 {
     /* Wait for a byte to become available */
-    while (FALSE == UCSR0A.bits.RXC0) {
+    while (FALSE == UCSR0A.bits.RXCn) {
     }
 
-    return UDR0;
+    return UDR0.byte;
 }
 
 
-static BOOL_T usart_parity_error(void)
+BOOL_T usart_parity_error(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.UPEn );
 }
 
 
-static BOOL_T usart_data_overrun(void)
+BOOL_T usart_data_overrun(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.DORn );
 }
 
 
-static BOOL_T usart_frame_error(void)
+BOOL_T usart_frame_error(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.FEn );
 }
