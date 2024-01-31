@@ -25,6 +25,10 @@ static void usart_tx_byte_from_buffer(void)
 {
     U8_T c;
 
+    /* Disable interrupts so we don't get a TX interrupt while manipulating the
+     * buffer. */
+    cli();
+
     if ((SIZE_T) 0 < g_usart_tx_buf_n) {
         c = g_usart_tx_buf[g_usart_tx_buf_read_idx];
 
@@ -35,11 +39,12 @@ static void usart_tx_byte_from_buffer(void)
 
         g_usart_tx_transmitting = TRUE;
 
-        /* Do this last so we don't re-enter this interrupt */
         usart_tx_byte(c);
     } else {
         g_usart_tx_transmitting = FALSE;
     }
+
+    sei();
 }
 
 
@@ -52,6 +57,10 @@ ISR(USART_TX_vect)
 ISR(USART_RX_vect)
 {
     U8_T c;
+
+    /* Disable interupts so we don't get an RX interrupt while manipulating the
+     * buffer. */
+    cli();
 
     if (FALSE == usart_parity_error()) {
         /* Read the byte to disable the interrupt */
@@ -78,6 +87,8 @@ ISR(USART_RX_vect)
         /* Report a Parity fault */
         fai_pass_fail_logger(FAI_FAULT_ID_USART_PARITY_ERROR, FAIL, (U32_T) c);
     }
+
+    sei();
 }
 
 
@@ -101,6 +112,10 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
 
+    /* Disable interrupts so we don't get a TX interrupt while manipulating the
+     * buffer. */
+    cli();
+
     i = (SIZE_T) 0;
 
     while ( (USART_BUF_LEN > i) && (i < len) ) {
@@ -123,6 +138,8 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
         usart_tx_byte_from_buffer();
     }
 
+    sei();
+
     return i;
 }
 
@@ -130,6 +147,10 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 SIZE_T usart_rx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
+
+    /* Disable interrupts so we don't get an RX interrupt while manipulating the
+     * buffer. */
+    cli();
 
     i = (SIZE_T) 0;
 
@@ -144,5 +165,7 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
 
     g_usart_rx_buf_n -= i;
 
+    sei();
+    
     return i;
 }
