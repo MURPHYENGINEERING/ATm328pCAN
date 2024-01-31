@@ -3,29 +3,19 @@
 
 
 static void usart_set_mode(USART_MODE_T mode);
-static void usart_set_interrupts(USART_INTERRUPT_MODE_T mode);
 static void usart_set_baud(USART_BAUD_RATE_T baud);
 static void usart_set_parity(USART_PARITY_MODE_T parity);
 static void usart_set_stop_bits(USART_STOP_BITS_T stop_bits);
 static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size);
 static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity);
 
-/* Only valid until the receive buffer is read. */
-static BOOL_T usart_parity_error(void);
-/* Only valid until the receive buffer is read. */
-static BOOL_T usart_data_overrun(void);
-/* Only valid until the receive buffer is read. */
-static BOOL_T usart_frame_error(void);
-
-static BOOL_T usart_data_register_empty(void);
-
 
 void usart_init_hardware(USART_CONFIG_T cfg)
 {
+    usart_set_mode(cfg.mode);
     usart_set_baud(cfg.baud);
     usart_set_parity(cfg.parity);
     usart_set_stop_bits(cfg.stop_bits);
-    usart_set_interrupts(cfg.interrupt_mode);
     usart_set_character_size(cfg.character_size);
 
     if (USART_MODE_SYNCHRONOUS == cfg.mode) {
@@ -33,6 +23,11 @@ void usart_init_hardware(USART_CONFIG_T cfg)
          * - ATmega328P Datasheet page 162 */
         usart_set_clock_polarity(cfg.clock_polarity);
     }
+
+    /* Enable interrupts on RX and TX */
+    UCSR0B.bits.RXCIEn = TRUE;
+    UCSR0B.bits.TXCIEn = TRUE;
+    UCSR0B.bits.UDRIEn = FALSE;
 
     /* Enable TX and RX */
     UCSR0B.bits.RXENn = TRUE;
@@ -78,12 +73,6 @@ BOOL_T usart_frame_error(void)
 }
 
 
-static BOOL_T usart_data_register_empty(void)
-{
-    return (BOOL_T)( TRUE == UCSR0A.bits.UDREn );
-}
-
-
 BOOL_T usart_tx_ready(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.UDREn );
@@ -92,7 +81,7 @@ BOOL_T usart_tx_ready(void)
 
 BOOL_T usart_rx_pending(void)
 {
-    return (BOOL_T)( TRUE == UCSR0A.bits.RCEn );
+    return (BOOL_T)( TRUE == UCSR0A.bits.RXCn );
 }
 
 
@@ -101,8 +90,8 @@ static void usart_set_mode(USART_MODE_T mode)
     switch (mode)
     {
         case USART_MODE_ASYNCHRONOUS:
-            UCSR0C.UMSELn1 = FALSE;
-            UCSR0C.UMSELn0 = FALSE;
+            UCSR0C.bits.UMSELn1 = FALSE;
+            UCSR0C.bits.UMSELn0 = FALSE;
             /* This bit is used for synchronous mode only. 
              * Write this bit to zero when asynchronous mode is used.
              * - ATmega328P Datasheet page 162 */
@@ -122,28 +111,6 @@ static void usart_set_mode(USART_MODE_T mode)
         default:
         /* S/W Error */
         break;
-    }
-}
-
-
-static void usart_set_interrupts(USART_INTERRUPT_MODE_T mode)
-{
-    if (0 == (MODE & USART_INTERRUPT_ON_RX)) {
-        UCSR0B.bits.RXCIEn = FALSE;
-    } else {
-        UCSR0B.bits.RXCIEn = TRUE;
-    }
-
-    if (0 == (MODE & USART_INTERRUPT_ON_TX)) {
-        UCSR0B.bits.TXCIEn = FALSE;
-    } else {
-        UCSR0B.bits.TXCIEn = TRUE;
-    }
-
-    if (0 == (MODE & USART_INTERRUPT_ON_DATA_EMPTY)) {
-        UCSR0B.bits.UDRIEn = FALSE;
-    } else {
-        UCSR0B.bits.UDRIEn = TRUE;
     }
 }
 

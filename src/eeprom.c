@@ -6,7 +6,7 @@ void eeprom_write(SIZE_T base_address, U8_T* buf, SIZE_T len)
     SIZE_T i;
 
     for (i = 0; i < len; ++i) {
-        eeprom_write_byte((SIZE_T)( base_address + i, buf[i] ));
+        eeprom_write_byte((SIZE_T)( base_address + i ), buf[i] );
     }
 }
 

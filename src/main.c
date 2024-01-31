@@ -8,6 +8,7 @@
 #include "spi.h"
 #include "can.h"
 #include "fai.h"
+#include "usart.h"
 
 
 S16_T main(void)
@@ -29,6 +30,15 @@ S16_T main(void)
 
     /* Start CAN bus */
     can_init();
+
+    USART_CONFIG_T usart_config;
+    usart_config.mode = USART_MODE_ASYNCHRONOUS;
+    usart_config.baud = USART_BAUD_9600;
+    usart_config.character_size = USART_CHARACTER_SIZE_8;
+    usart_config.stop_bits = USART_STOP_BITS_1;
+    usart_config.parity = USART_PARITY_MODE_EVEN;
+
+    usart_init(usart_config);
 
     /* Start task timing */
     scheduler_init();

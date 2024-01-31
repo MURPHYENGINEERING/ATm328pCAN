@@ -6,6 +6,7 @@
 #include "string.h"
 #include "dsc.h"
 #include "fai.h"
+#include "usart.h"
 
 
 void task_demo_tx(void)
@@ -27,6 +28,8 @@ void task_demo_tx(void)
             (U32_T) FAI_FAULT_SOURCE_CAN_TX
         );
     }
+
+    usart_tx((U8_T*) "Hello, world!\n", 14);
 }
 
 
@@ -37,7 +40,6 @@ void task_demo_rx(void)
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T len;
-    FAI_FAULT_COUNTER_T fault;
 
     n_pending_msgs = can_rx_q_len();
 

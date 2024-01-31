@@ -7,7 +7,7 @@
 typedef enum {
     USART_MODE_ASYNCHRONOUS,
     USART_MODE_SYNCHRONOUS,
-    UART_MODE_MASTERSPI
+    USART_MODE_MASTERSPI
 } USART_MODE_T;
 
 
@@ -59,14 +59,6 @@ typedef enum {
 } USART_CLOCK_POLARITY_T;
 
 
-typedef enum {
-    USART_INTERRUPT_OFF = 0,
-    USART_INTERRUPT_ON_RX = 1,
-    USART_INTERRUPT_ON_TX = 2,
-    USART_INTERRUPT_ON_DATA_EMPTY = 4
-} USART_INTERRUPT_MODE_T;
-
-
 typedef struct {
     USART_MODE_T mode;
     USART_BAUD_RATE_T baud;
@@ -74,7 +66,6 @@ typedef struct {
     USART_STOP_BITS_T stop_bits;
     USART_PARITY_MODE_T parity;
     USART_CLOCK_POLARITY_T clock_polarity;
-    USART_INTERRUPT_MODE_T interrupt_mode;
 } USART_CONFIG_T;
 
 
@@ -89,6 +80,7 @@ typedef struct {
 typedef struct {
     SIZE_T len;
 } USART_TX_RESULT_T;
+
 
 void usart_init(USART_CONFIG_T cfg);
 void usart_init_hardware(USART_CONFIG_T cfg);
@@ -105,5 +97,6 @@ BOOL_T usart_rx_pending(void);
 BOOL_T usart_parity_error(void);
 BOOL_T usart_data_overrun(void);
 BOOL_T usart_frame_error(void);
+
 
 #endif

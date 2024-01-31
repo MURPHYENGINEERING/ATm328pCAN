@@ -10,4 +10,6 @@ void spi_deactivate(void);
 U8_T spi_tx_rx(U8_T tx_data);
 /******************************************************************************/
 
+extern VBOOL_T g_spi_ready;
+
 #endif
