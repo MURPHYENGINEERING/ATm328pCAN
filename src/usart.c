@@ -9,6 +9,10 @@ VSIZE_T g_usart_tx_buf_n;
 VSIZE_T g_usart_tx_buf_write_idx;
 VSIZE_T g_usart_tx_buf_read_idx;
 
+/* True if we're currently driving bytes out of the buffer by interrupts.
+ * False when we run out of bytes and the interrupt cycle stops.
+ * This dictates whether we should initiate interrupts by manually driving a
+ * byte out of the buffer after writing to it. */
 VBOOL_T g_usart_tx_transmitting;
 
 U8_T g_usart_rx_buf[USART_BUF_LEN];
@@ -49,11 +53,27 @@ ISR(USART_TX_vect)
 
 ISR(USART_RX_vect)
 {
-    VU8_T c;
+    U8_T c;
 
-    c = usart_rx_byte();
+    if (FALSE == usart_parity_error()) {
+        c = usart_rx_byte();
 
-    dsc_led_set(DSC_LED_CANBOARD_2, ON);
+        if (USART_BUF_LEN > g_usart_rx_buf_n) {
+            g_usart_rx_buf[g_usart_rx_buf_write_idx] = c;
+
+            g_usart_rx_buf_write_idx = 
+                (SIZE_T)(g_usart_rx_buf_write_idx + 1u) % USART_BUF_LEN;
+
+            ++g_usart_rx_buf_n;
+        } else {
+            /* Buffer overflow, byte is lost. */
+            /* Report a fault */
+        }
+    } else {
+        /* Read the byte to disable the interrupt */
+        c = usart_rx_byte();
+        /* Report a Parity fault */
+    }
 }
 
 
@@ -82,10 +102,8 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
     while ( (USART_BUF_LEN > i) && (i < len) ) {
         g_usart_tx_buf[g_usart_tx_buf_write_idx] = buf[i];
 
-        ++g_usart_tx_buf_write_idx;
-        if (USART_BUF_LEN == g_usart_tx_buf_write_idx) {
-            g_usart_tx_buf_write_idx = (SIZE_T) 0;
-        }
+        g_usart_tx_buf_write_idx = 
+            (SIZE_T)(g_usart_tx_buf_write_idx + 1u) % USART_BUF_LEN;
 
         ++i;
     }
@@ -110,10 +128,8 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
     while ( (i < g_usart_rx_buf_n) && (i < len) ) {
         buf[i] = g_usart_rx_buf[g_usart_rx_buf_read_idx];
         
-        ++g_usart_rx_buf_read_idx;
-        if (USART_BUF_LEN == g_usart_rx_buf_read_idx) {
-            g_usart_rx_buf_read_idx = (SIZE_T) 0;
-        }
+        g_usart_rx_buf_read_idx =
+            (SIZE_T)(g_usart_rx_buf_read_idx + 1u) % USART_BUF_LEN;
 
         ++i;
     }
