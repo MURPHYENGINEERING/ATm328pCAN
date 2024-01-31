@@ -24,14 +24,14 @@ void usart_init_hardware(USART_CONFIG_T cfg)
         usart_set_clock_polarity(cfg.clock_polarity);
     }
 
-    /* Enable TX and RX */
-    UCSR0B.bits.RXENn = TRUE;
-    UCSR0B.bits.TXENn = TRUE;
-
     /* Enable interrupts on RX and TX */
     UCSR0B.bits.RXCIEn = TRUE;
     UCSR0B.bits.TXCIEn = TRUE;
     UCSR0B.bits.UDRIEn = FALSE;
+
+    /* Enable TX and RX */
+    UCSR0B.bits.RXENn = TRUE;
+    UCSR0B.bits.TXENn = TRUE;
 }
 
 
