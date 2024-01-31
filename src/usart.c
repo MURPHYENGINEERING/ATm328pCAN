@@ -1,5 +1,6 @@
 #include "usart.h"
 #include "interrupts.h"
+#include "dsc.h"
 
 #define USART_BUF_LEN 256
 
@@ -48,6 +49,8 @@ ISR(USART_TX_vect)
 
 ISR(USART_RX_vect)
 {
+    dsc_led_toggle(DSC_LED_CANBOARD_2);
+
     U8_T c;
 
     if (FALSE == usart_parity_error()) {

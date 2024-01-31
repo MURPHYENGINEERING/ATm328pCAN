@@ -29,7 +29,11 @@ void task_demo_tx(void)
         );
     }
 
-    usart_tx((U8_T*) "Hello, world!\n", 14);
+    /* usart_tx((U8_T*) "Hello, world!\n", 14); */
+    //len = usart_rx(buf, 13);
+    if (0 < len) {
+        //usart_tx(buf, len);
+    }
 }
 
 
