@@ -28,16 +28,14 @@ static void usart_tx_byte_from_buffer(void)
     if ((SIZE_T) 0 < g_usart_tx_buf_n) {
         c = g_usart_tx_buf[g_usart_tx_buf_read_idx];
 
-        ++g_usart_tx_buf_read_idx;
-        if (USART_BUF_LEN == g_usart_tx_buf_read_idx) {
-            g_usart_tx_buf_read_idx = (SIZE_T) 0;
-        }
+        g_usart_tx_buf_read_idx = 
+            (SIZE_T)(g_usart_tx_buf_read_idx + 1u) % USART_BUF_LEN;
 
         --g_usart_tx_buf_n;
 
         g_usart_tx_transmitting = TRUE;
 
-        /* Set this last so we don't re-enter this interrupt while doing the above */
+        /* Do this last so we don't re-enter this interrupt */
         usart_tx_byte(c);
     } else {
         g_usart_tx_transmitting = FALSE;
@@ -56,6 +54,7 @@ ISR(USART_RX_vect)
     U8_T c;
 
     if (FALSE == usart_parity_error()) {
+        /* Read the byte to disable the interrupt */
         c = usart_rx_byte();
 
         if (USART_BUF_LEN > g_usart_rx_buf_n) {
@@ -67,12 +66,17 @@ ISR(USART_RX_vect)
             ++g_usart_rx_buf_n;
         } else {
             /* Buffer overflow, byte is lost. */
-            /* Report a fault */
+            fai_pass_fail_logger(
+                FAI_FAULT_ID_USART_RX_BUFFER_OVERFLOW, 
+                FAIL, 
+                (U32_T) c
+            );
         }
     } else {
         /* Read the byte to disable the interrupt */
         c = usart_rx_byte();
         /* Report a Parity fault */
+        fai_pass_fail_logger(FAI_FAULT_ID_USART_PARITY_ERROR, FAIL, (U32_T) c);
     }
 }
 

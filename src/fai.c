@@ -58,7 +58,7 @@ void fai_pass_fail_logger(
         if (PASS == indicator) {
             p_fault->count = (U8_T) 0;
             p_fault->head = (U8_T) 0;
-            for (i = 0; FAI_TS_DATA_N > i; ++i) {
+            for (i = 0; FAI_TS_DATA_LEN > i; ++i) {
                 p_fault->ts_data[i] = (U32_T) 0;
             }
         } else {
@@ -69,7 +69,7 @@ void fai_pass_fail_logger(
             /* Wrap the head so we're always writing fresh data over old data */
             /* Don't wrap the fault counter so we can count them even if they
              * aren't stored. */
-            if (FAI_TS_DATA_N == p_fault->head) {
+            if (FAI_TS_DATA_LEN == p_fault->head) {
                 p_fault->head = (U8_T) 0;
             }
         }
