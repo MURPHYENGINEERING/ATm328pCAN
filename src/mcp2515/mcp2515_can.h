@@ -226,24 +226,24 @@ volatile REGISTER_T TXB2Dm;
 /******************************************************************************/
 
 /******************************************************************************/
-/* CAN Messages */
-#define CAN_MSG_RESET       0b11000000
+/* CAN Messages/Commands/Instructions */
+#define CAN_CMD_RESET       0b11000000
 /* Read a register */
-#define CAN_MSG_READ        0b00000011
+#define CAN_CMD_READ        0b00000011
 /* Write a register */
-#define CAN_MSG_WRITE       0b00000010
-#define CAN_MSG_READ_STATUS 0b10100000
-#define CAN_MSG_RX_STATUS   0b10110000
-#define CAN_MSG_BIT_MODIFY  0b00000101
+#define CAN_CMD_WRITE       0b00000010
+#define CAN_CMD_READ_STATUS 0b10100000
+#define CAN_CMD_RX_STATUS   0b10110000
+#define CAN_CMD_BIT_MODIFY  0b00000101
 
 /* Request To Send */
-#define CAN_MSG_RTS         0b10000000
-#define CAN_MSG_RTS_B0      0b00000001
+#define CAN_CMD_RTS         0b10000000
+#define CAN_CMD_RTS_B0      0b00000001
 
 /* Start writing directly into a data buffer */
-#define CAN_MSG_LOAD_TX                     0b01000000
-#define CAN_MSG_LOAD_TX_START_AT_TXB0SIDH   0b00000000
-#define CAN_MSG_LOAD_TX_START_AT_TXB0D0     0b00000001
+#define CAN_CMD_LOAD_TX                     0b01000000
+#define CAN_CMD_LOAD_TX_START_AT_TXB0SIDH   0b00000000
+#define CAN_CMD_LOAD_TX_START_AT_TXB0D0     0b00000001
 /******************************************************************************/
 
 

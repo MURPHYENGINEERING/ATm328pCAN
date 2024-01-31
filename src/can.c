@@ -1,4 +1,8 @@
+#include "types.h"
 #include "can.h"
+#include "memory.h"
+#include "fai.h"
+
 
 /******************************************************************************/
 /* CAN Queues */
@@ -30,7 +34,7 @@ void task_can_tx(void)
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T n_pending_msgs;
-    U16_T identifier;
+    CAN_IDENT_T identifier;
     SIZE_T len;
     SIZE_T i;
 
@@ -42,13 +46,13 @@ void task_can_tx(void)
         if (FIFO_OK == status) {
             can_tx(identifier, buf, len);
         } else {
-            /* Shouldn't underflow, report software fault */
+            fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
         }
     }
 }
 
 
-FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len)
+FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 {
     FIFO_STATUS_T status;
 
@@ -58,7 +62,7 @@ FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len)
 }
 
 
-FIFO_STATUS_T can_rx_q_remove(U16_T* identifier, U8_T* buf, SIZE_T* len)
+FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
 {
     FIFO_STATUS_T status;
 
@@ -90,7 +94,12 @@ void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 }
 
 
-FIFO_STATUS_T can_fifo_q_add(CAN_FIFO_T* q, U16_T identifier, U8_T* src, SIZE_T len)
+FIFO_STATUS_T can_fifo_q_add(
+    CAN_FIFO_T* q, 
+    CAN_IDENT_T identifier, 
+    U8_T* src, 
+    SIZE_T len
+)
 {
     FIFO_STATUS_T status;
     CAN_FIFO_ENTRY_T* p_fifo_entry;
@@ -113,7 +122,12 @@ FIFO_STATUS_T can_fifo_q_add(CAN_FIFO_T* q, U16_T identifier, U8_T* src, SIZE_T 
 }
 
 
-FIFO_STATUS_T can_fifo_q_remove(CAN_FIFO_T* q, U16_T* identifier, U8_T* dst, SIZE_T* len)
+FIFO_STATUS_T can_fifo_q_remove(
+    CAN_FIFO_T* q, 
+    CAN_IDENT_T* identifier, 
+    U8_T* dst, 
+    SIZE_T* len
+)
 {
     FIFO_STATUS_T status;
     CAN_FIFO_ENTRY_T* p_fifo_entry;
