@@ -21,7 +21,7 @@ typedef enum {
 typedef struct {
     U8_T count;
     U8_T head;
-    U32_T ts_data[FAI_TS_DATA_N];
+    U32_T ts_data[FAI_TS_DATA_LEN];
 } FAI_FAULT_COUNTER_T;
 
 
