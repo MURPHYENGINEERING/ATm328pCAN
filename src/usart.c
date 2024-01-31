@@ -111,6 +111,10 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
     g_usart_tx_buf_n += i;
 
     if (FALSE == g_usart_tx_transmitting) {
+        /* Put the busy-wait here because none of the underlying functions do
+         * it (because they run in the ISR) */
+        while (!usart_tx_ready()) {
+        }
         /* Kick off the transmission; it will be interrupt-driven after that. */
         usart_tx_byte_from_buffer();
     }
