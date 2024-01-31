@@ -1,5 +1,20 @@
 #include "can.h"
 
+/******************************************************************************/
+/* CAN Queues */
+CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
+CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
+
+CAN_FIFO_T g_can_tx_q;
+CAN_FIFO_T g_can_rx_q;
+/******************************************************************************/
+
+
+void can_init(void)
+{
+
+}
+
 
 void task_can_rx(void)
 {
@@ -26,4 +41,66 @@ void task_can_tx(void)
             /* Shouldn't underflow, report software fault */
         }
     }
+}
+
+
+void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
+{
+    q->buf = buf;
+    q->size = size;
+    q->head = 0;
+    q->tail = 0;
+    q->n = (SIZE_T) 0;
+
+    memset_by_U8(
+        (U8_T*)(void*) buf, 
+        (U8_T) 0, 
+        (SIZE_T)( size * sizeof(CAN_FIFO_ENTRY_T) )
+    );
+}
+
+
+FIFO_STATUS_T can_fifo_q_add(CAN_FIFO_T* q, U16_T identifier, U8_T* src, SIZE_T len)
+{
+    FIFO_STATUS_T status;
+    CAN_FIFO_ENTRY_T* p_fifo_entry;
+
+    if (q->n == q->size) {
+        status = FIFO_FULL;
+    } else {
+        p_fifo_entry = &q->buf[q->tail];
+        p_fifo_entry->identifier = identifier;
+        memcpy_by_U8(p_fifo_entry->data, src, len);
+        p_fifo_entry->len = len;
+
+        q->tail = (SIZE_T)( (q->tail + 1u) % q->size );
+        ++q->n;
+
+        status = FIFO_OK;
+    }
+
+    return status;
+}
+
+
+FIFO_STATUS_T can_fifo_q_remove(CAN_FIFO_T* q, U16_T* identifier, U8_T* dst, SIZE_T* len)
+{
+    FIFO_STATUS_T status;
+    CAN_FIFO_ENTRY_T* p_fifo_entry;
+
+    if ((SIZE_T) 0 == q->n) {
+        status =  FIFO_EMPTY;
+    } else {
+        p_fifo_entry = &q->buf[q->head];
+        *identifier = p_fifo_entry->identifier;
+        memcpy_by_U8(dst, p_fifo_entry->data, p_fifo_entry->len);
+        *len = p_fifo_entry->len;
+
+        q->head = (SIZE_T)( (q->head + 1u) % q->size );
+        --q->n;
+
+        status = FIFO_OK;
+    }
+
+    return status;
 }

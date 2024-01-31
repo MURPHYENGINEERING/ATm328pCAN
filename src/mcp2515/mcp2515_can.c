@@ -5,14 +5,6 @@
 #include "spi.h"
 #include "dsc.h"
 
-/******************************************************************************/
-/* CAN Queues */
-FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
-FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
-
-FIFO_T g_can_tx_q;
-FIFO_T g_can_rx_q;
-/******************************************************************************/
 
 /******************************************************************************/
 /* CAN Modes */
@@ -235,7 +227,7 @@ static void can_tx(U8_T* buf, SIZE_T len);
 /******************************************************************************/
 
 
-void can_init(void)
+void can_init_hardware(void)
 {
     U8_T hold_reset;
 
@@ -262,17 +254,17 @@ FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len)
 {
     FIFO_STATUS_T status;
 
-    status = fifo_q_add(&g_can_tx_q, buf, len);
+    status = can_fifo_q_add(&g_can_tx_q, identifier, buf, len);
 
     return status;
 }
 
 
-FIFO_STATUS_T can_rx_q_remove(U8_T* buf, SIZE_T* len)
+FIFO_STATUS_T can_rx_q_remove(U16_T* identifier, U8_T* buf, SIZE_T* len)
 {
     FIFO_STATUS_T status;
 
-    status = fifo_q_remove(&g_can_rx_q, buf, len);
+    status = can_fifo_q_remove(&g_can_rx_q, identifier, buf, len);
 
     return status;
 }

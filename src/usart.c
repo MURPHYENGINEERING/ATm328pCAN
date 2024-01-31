@@ -33,7 +33,7 @@ static void usart_tx_byte_from_buffer(void)
         c = g_usart_tx_buf[g_usart_tx_buf_read_idx];
 
         g_usart_tx_buf_read_idx = 
-            (SIZE_T)(g_usart_tx_buf_read_idx + 1u) % USART_BUF_LEN;
+            (SIZE_T)( (g_usart_tx_buf_read_idx + 1u) % USART_BUF_LEN );
 
         --g_usart_tx_buf_n;
 
@@ -70,7 +70,7 @@ ISR(USART_RX_vect)
             g_usart_rx_buf[g_usart_rx_buf_write_idx] = c;
 
             g_usart_rx_buf_write_idx = 
-                (SIZE_T)(g_usart_rx_buf_write_idx + 1u) % USART_BUF_LEN;
+                (SIZE_T)( (g_usart_rx_buf_write_idx + 1u) % USART_BUF_LEN );
 
             ++g_usart_rx_buf_n;
         } else {
@@ -122,7 +122,7 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
         g_usart_tx_buf[g_usart_tx_buf_write_idx] = buf[i];
 
         g_usart_tx_buf_write_idx = 
-            (SIZE_T)(g_usart_tx_buf_write_idx + 1u) % USART_BUF_LEN;
+            (SIZE_T)( (g_usart_tx_buf_write_idx + 1u) % USART_BUF_LEN );
 
         ++i;
     }
@@ -158,7 +158,7 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
         buf[i] = g_usart_rx_buf[g_usart_rx_buf_read_idx];
         
         g_usart_rx_buf_read_idx =
-            (SIZE_T)(g_usart_rx_buf_read_idx + 1u) % USART_BUF_LEN;
+            (SIZE_T)( (g_usart_rx_buf_read_idx + 1u) % USART_BUF_LEN );
 
         ++i;
     }
@@ -166,6 +166,6 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
     g_usart_rx_buf_n -= i;
 
     sei();
-    
+
     return i;
 }
