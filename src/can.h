@@ -60,6 +60,8 @@ FIFO_STATUS_T can_fifo_q_remove(
     SIZE_T* len
 );
 
+SIZE_T can_fifo_q_len(CAN_FIFO_T* q);
+
 FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len);
 FIFO_STATUS_T can_rx_q_remove(U16_T* identifier, U8_T* buf, SIZE_T* len);
 SIZE_T can_rx_q_len(void);

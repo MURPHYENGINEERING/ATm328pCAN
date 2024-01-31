@@ -12,7 +12,10 @@ CAN_FIFO_T g_can_rx_q;
 
 void can_init(void)
 {
+    can_fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
+    can_fifo_q_init(&g_can_rx_q, g_can_rx_q_buf, CAN_FIFO_RX_SIZE);
 
+    can_init_hardware();
 }
 
 
@@ -41,6 +44,32 @@ void task_can_tx(void)
             /* Shouldn't underflow, report software fault */
         }
     }
+}
+
+
+FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len)
+{
+    FIFO_STATUS_T status;
+
+    status = can_fifo_q_add(&g_can_tx_q, identifier, buf, len);
+
+    return status;
+}
+
+
+FIFO_STATUS_T can_rx_q_remove(U16_T* identifier, U8_T* buf, SIZE_T* len)
+{
+    FIFO_STATUS_T status;
+
+    status = can_fifo_q_remove(&g_can_rx_q, identifier, buf, len);
+
+    return status;
+}
+
+
+SIZE_T can_rx_q_len(void)
+{
+    return can_fifo_q_len(&g_can_rx_q);
 }
 
 
@@ -103,4 +132,10 @@ FIFO_STATUS_T can_fifo_q_remove(CAN_FIFO_T* q, U16_T* identifier, U8_T* dst, SIZ
     }
 
     return status;
+}
+
+
+SIZE_T can_fifo_q_len(CAN_FIFO_T* q)
+{
+    return q->n;
 }

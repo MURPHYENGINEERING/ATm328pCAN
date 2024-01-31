@@ -231,9 +231,6 @@ void can_init_hardware(void)
 {
     U8_T hold_reset;
 
-    fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
-    fifo_q_init(&g_can_rx_q, g_can_rx_q_buf, CAN_FIFO_RX_SIZE);
-
     spi_activate();
     spi_tx_rx(CAN_MSG_RESET);
     for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
@@ -247,26 +244,6 @@ void can_init_hardware(void)
     spi_tx_rx(CAN_MSG_BIT_MODIFY);
     spi_tx_rx(CAN_MODE_NORMAL);
     spi_deactivate();
-}
-
-
-FIFO_STATUS_T can_tx_q_add(U16_T identifier, U8_T* buf, SIZE_T len)
-{
-    FIFO_STATUS_T status;
-
-    status = can_fifo_q_add(&g_can_tx_q, identifier, buf, len);
-
-    return status;
-}
-
-
-FIFO_STATUS_T can_rx_q_remove(U16_T* identifier, U8_T* buf, SIZE_T* len)
-{
-    FIFO_STATUS_T status;
-
-    status = can_fifo_q_remove(&g_can_rx_q, identifier, buf, len);
-
-    return status;
 }
 
 
@@ -298,8 +275,3 @@ static void can_tx(U8_T* buf, SIZE_T len)
     spi_tx_rx((U8_T) 0b00000001);
 }
 
-
-SIZE_T can_rx_q_len(void)
-{
-    return fifo_q_len(&g_can_rx_q);
-}
