@@ -24,33 +24,25 @@ void usart_init_hardware(USART_CONFIG_T cfg)
         usart_set_clock_polarity(cfg.clock_polarity);
     }
 
+    /* Enable TX and RX */
+    UCSR0B.bits.RXENn = TRUE;
+    UCSR0B.bits.TXENn = TRUE;
+
     /* Enable interrupts on RX and TX */
     UCSR0B.bits.RXCIEn = TRUE;
     UCSR0B.bits.TXCIEn = TRUE;
     UCSR0B.bits.UDRIEn = FALSE;
-
-    /* Enable TX and RX */
-    UCSR0B.bits.RXENn = TRUE;
-    UCSR0B.bits.TXENn = TRUE;
 }
 
 
 void usart_tx_byte(U8_T data)
 {
-    /* Wait for the data buffer to be empty */
-    while (FALSE == UCSR0A.bits.UDREn) {
-    }
-
     UDR0.byte = data;
 }
 
 
-U8_T usart_rx_byte(void)
+VU8_T usart_rx_byte(void)
 {
-    /* Wait for a byte to become available */
-    while (FALSE == UCSR0A.bits.RXCn) {
-    }
-
     return UDR0.byte;
 }
 

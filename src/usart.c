@@ -49,36 +49,11 @@ ISR(USART_TX_vect)
 
 ISR(USART_RX_vect)
 {
-    dsc_led_toggle(DSC_LED_CANBOARD_2);
+    VU8_T c;
 
-    U8_T c;
+    c = usart_rx_byte();
 
-    if (FALSE == usart_parity_error()) {
-        /* No parity error */
-        c = usart_rx_byte();
-        
-        if (g_usart_rx_buf_n < USART_BUF_LEN) {
-            g_usart_rx_buf[g_usart_rx_buf_write_idx] = c;
-
-            ++g_usart_rx_buf_n;
-            ++g_usart_rx_buf_write_idx;
-            if (USART_BUF_LEN == g_usart_rx_buf_write_idx) {
-                g_usart_rx_buf_write_idx = (SIZE_T) 0;
-            }
-        } else {
-            /* Buffer overflow, drop byte and report fault */
-        }
-    } else {
-        /* Parity error, report fault */
-
-        /* Read the byte to free the buffer */
-        c = usart_rx_byte();
-    }
-}
-
-
-ISR(USART_UDRE_vect)
-{
+    dsc_led_set(DSC_LED_CANBOARD_2, ON);
 }
 
 

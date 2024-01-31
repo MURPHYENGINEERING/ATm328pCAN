@@ -86,7 +86,7 @@ void usart_init(USART_CONFIG_T cfg);
 void usart_init_hardware(USART_CONFIG_T cfg);
 
 void usart_tx_byte(U8_T data);
-U8_T usart_rx_byte(void);
+VU8_T usart_rx_byte(void);
 
 SIZE_T usart_tx(U8_T* buf, SIZE_T len);
 SIZE_T usart_rx(U8_T* buf, SIZE_T len);
