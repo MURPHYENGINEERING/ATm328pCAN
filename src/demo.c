@@ -9,6 +9,9 @@
 #include "usart.h"
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 void task_demo_tx(void)
 {
     U8_T buf[CAN_FIFO_DATA_LEN];
@@ -24,6 +27,7 @@ void task_demo_tx(void)
     status = can_tx_q_add(identifier, buf, len);
 
     if (FIFO_OK == status) {
+        usart_tx((U8_T*) "Hello, world!\n", 14);
     } else {
         fai_pass_fail_logger(
             FAI_FAULT_ID_CAN_TX_BUFFER_OVERFLOW, 
@@ -32,14 +36,18 @@ void task_demo_tx(void)
         );
     }
 
-    usart_tx((U8_T*) "Hello, world!\n", 14);
-    /*len = usart_rx(buf, 13);
+    /*
+    len = usart_rx(buf, 14);
     if (0 < len) {
         usart_tx(buf, len);
-    }*/
+    }
+    */
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 void task_demo_rx(void)
 {
     SIZE_T n_pending_msgs;

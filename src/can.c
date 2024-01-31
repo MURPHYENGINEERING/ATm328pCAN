@@ -52,6 +52,9 @@ void task_can_tx(void)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 {
     FIFO_STATUS_T status;
@@ -62,6 +65,9 @@ FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
 {
     FIFO_STATUS_T status;
@@ -72,12 +78,23 @@ FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 SIZE_T can_rx_q_len(void)
 {
     return can_fifo_q_len(&g_can_rx_q);
 }
 
 
+/*******************************************************************************
+ * Initialize the given CAN FIFO queue to zero/empty.
+ * \param[in] q     The given queue to be initialized.
+ * \param[in] buf   Pointer to the underlying buffer for this queue. The queue
+ *                  data will be stored in this buffer. The buffer is treated as
+ *                  a ring, with reads and writes constantly advancing, wrapping
+ *                  at 
+ ******************************************************************************/ 
 void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 {
     q->buf = buf;
@@ -94,6 +111,16 @@ void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 }
 
 
+/*******************************************************************************
+ * Add an element to the given CAN FIFO queue.
+ * \param[in] q             The given CAN FIFO queue to add an element to.
+ * \param[in] identifier    The 11-bit CAN message identifier.
+ * \param[in] src           Pointer to the CAN message data buffer.
+ * \param[in] len           Length in bytes of data in the CAN message data buffer.
+ *
+ * \retval      FIFO_OK     The element was added to the queue.
+ * \retval      FIFO_FULL   The queue is full and no element was added to it.
+ ******************************************************************************/ 
 FIFO_STATUS_T can_fifo_q_add(
     CAN_FIFO_T* q, 
     CAN_IDENT_T identifier, 
@@ -122,6 +149,17 @@ FIFO_STATUS_T can_fifo_q_add(
 }
 
 
+/*******************************************************************************
+ * Remove an element from the given CAN FIFO queue, returning it.
+ * \param[in] q             The given CAN FIFO queue to remove an element from.
+ * \param[out] identifier   The 11-bit CAN message identifier will be returned 
+ *                          into this pointer.
+ * \param[out] dst          The CAN message data will be returned into this buffer.
+ * \param[out] len          The length of the CAN message data in bytes will be
+ *                          returned into this pointer.
+ * \retval                  FIFO_OK     The element was removed and returned.
+ * \retval                  FIFO_EMPTY  There are no elements to remove.
+ ******************************************************************************/ 
 FIFO_STATUS_T can_fifo_q_remove(
     CAN_FIFO_T* q, 
     CAN_IDENT_T* identifier, 
@@ -150,6 +188,11 @@ FIFO_STATUS_T can_fifo_q_remove(
 }
 
 
+/*******************************************************************************
+ * Get the number of elements in the given CAN FIFO queue.
+ * \param[in] q     The FIFO queue of CAN messages.
+ * \return          The number of elements in the given CAN FIFO queue.
+ ******************************************************************************/ 
 SIZE_T can_fifo_q_len(CAN_FIFO_T* q)
 {
     return q->n;

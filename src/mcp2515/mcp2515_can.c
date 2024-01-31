@@ -6,6 +6,9 @@
 #include "dsc.h"
 
 
+/***************************************************************************//**
+ *
+ ******************************************************************************/ 
 void can_init_hardware(void)
 {
     U8_T hold_reset;
@@ -32,6 +35,16 @@ void can_init_hardware(void)
 }
 
 
+/*******************************************************************************
+ * Write the given message to the CAN hardware via SPI.
+ *
+ * This function manipulates the MCP2515 via SPI to write the given identifier
+ * and data to the first available hardware tx buffer.
+ *
+ * \param[in] identifier    11-bit CAN message identifier.
+ * \param[in] buf           Pointer to data buffer to populate CAN message with.
+ * \param[in] len           Length of data in the given data buffer.
+ ******************************************************************************/     
 void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
