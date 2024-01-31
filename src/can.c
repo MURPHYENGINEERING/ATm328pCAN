@@ -30,16 +30,17 @@ void task_can_tx(void)
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T n_pending_msgs;
+    U16_T identifier;
     SIZE_T len;
     SIZE_T i;
 
     n_pending_msgs = fifo_q_len(&g_can_tx_q);
 
     for (i = 0; i < n_pending_msgs; ++i) {
-        status = fifo_q_remove(&g_can_tx_q, buf, &len);
+        status = can_fifo_q_remove(&g_can_tx_q, &identifier, buf, &len);
 
         if (FIFO_OK == status) {
-            can_tx(buf, len);
+            can_tx(identifier, buf, len);
         } else {
             /* Shouldn't underflow, report software fault */
         }

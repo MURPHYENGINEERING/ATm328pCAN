@@ -46,13 +46,13 @@ typedef union
 #define TXP0_PRIORITY_LOW 0
 
 #define TXB0CTRL_ADDR 0x30
-volatile TXBnCTRL_T TXB0CTRL;
+TXBnCTRL_T TXB0CTRL;
 
 #define TXB1CTRL_ADDR 0x40
-volatile TXBnCTRL_T TXB1CTRL;
+TXBnCTRL_T TXB1CTRL;
 
 #define TXB2CTRL_ADDR 0x50
-volatile TXBnCTRL_T TXB2CTRL;
+TXBnCTRL_T TXB2CTRL;
 
 
 /* ~TXnRTS Pin Control and Status Register */
@@ -81,7 +81,7 @@ typedef union
 #define BnRTS_REQUEST_TO_SEND 0
 
 #define TXRTSCTRL_ADDR 0x0D
-volatile TXRTSCTRL_T TXRTSCTRL;
+TXRTSCTRL_T TXRTSCTRL;
 
 /* Transmit Buffer n Standard Identifier Register */
 typedef union 
@@ -131,18 +131,18 @@ typedef union
 
 #define TXB0SIDH_ADDR 0x31
 #define TXB0SIDL_ADDR 0x32
-volatile TXBnSIDH_T TXB0SIDH;
-volatile TXBnSIDL_T TXB0SIDL;
+TXBnSIDH_T TXB0SIDH;
+TXBnSIDL_T TXB0SIDL;
 
 #define TXB1SIDH_ADDR 0x41
 #define TXB1SIDL_ADDR 0x42
-volatile TXBnSIDH_T TXB1SIDH;
-volatile TXBnSIDL_T TXB1SIDL;
+TXBnSIDH_T TXB1SIDH;
+TXBnSIDL_T TXB1SIDL;
 
 #define TXB2SIDH_ADDR 0x51
 #define TXB2SIDL_ADDR 0x52
-volatile TXBnSIDH_T TXB2SIDH;
-volatile TXBnSIDL_T TXB2SIDL;
+TXBnSIDH_T TXB2SIDH;
+TXBnSIDL_T TXB2SIDL;
 
 
 /* Transmit Buffer n Data Length Code Register */
@@ -168,24 +168,46 @@ typedef union
 
 #define DLC_MASK 0b00001111
 
+
 #define TXB0DLC_ADDR 0x35
-volatile TXBnDLC_T TXB0DLC;
+TXBnDLC_T TXB0DLC;
 
 #define TXB1DLC_ADDR 0x45
-volatile TXBnDLC_T TXB1DLC;
+TXBnDLC_T TXB1DLC;
 
 #define TXB2DLC_ADDR 0x55
-volatile TXBnDLC_T TXB2DLC;
+TXBnDLC_T TXB2DLC;
+
+
+/* Can Control Register */
+typedef union {
+    struct {
+        /* Clock Out Prescaler bits */
+        VBOOL_T CLKPRE0 : 1;
+        VBOOL_T CLKPRE1 : 1;
+        /* Clock Out Enable bit */
+        VBOOL_T CLKEN   : 1;
+        /* One-Shot Mode bit */
+        VBOOL_T OSM     : 1;
+        /* Abort All Pending Transmissions bit */
+        VBOOL_T ABAT    : 1;
+        /* Request Operation Mode bits */
+        VBOOL_T REQOP0  : 1;
+        VBOOL_T REQOP1  : 1;
+        VBOOL_T REQOP2  : 1;
+    } bits;
+    VU8_T byte;
+} CANCTRL_T;
+
+#define CANCTRL_ADDR 0x0F
+CANCTRL_T CANCTRL;
+
+#define CANCTRL_MODE_NORMAL     0b00000000
+#define CANCTRL_MODE_LOOPBACK   0b00000010
+#define CANCTRL_MODE_CONFIG     0b00000100
 
 /* Transmit Buffer n Data Byte m registers */
-#define TXB0D0_ADDR 0x36
-#define TXB0D1_ADDR 0x37
-#define TXB0D2_ADDR 0x38
-#define TXB0D3_ADDR 0x39
-#define TXB0D4_ADDR 0x3A
-#define TXB0D5_ADDR 0x3B
-#define TXB0D6_ADDR 0x3C
-#define TXB0D7_ADDR 0x3D
+#define TXB0D_BASE_ADDR 0x36
 volatile REGISTER_T TXB0Dm;
 
 #define TXB1D0_ADDR 0x46
@@ -213,17 +235,22 @@ volatile REGISTER_T TXB2Dm;
 /******************************************************************************/
 /* CAN Messages */
 #define CAN_MSG_RESET       0b11000000
+/* Read a register */
 #define CAN_MSG_READ        0b00000011
+/* Write a register */
 #define CAN_MSG_WRITE       0b00000010
 #define CAN_MSG_READ_STATUS 0b10100000
 #define CAN_MSG_RX_STATUS   0b10110000
 #define CAN_MSG_BIT_MODIFY  0b00000101
-#define CAN_MSG_RTS         0b10000000
-/******************************************************************************/
 
-/******************************************************************************/
-/* Statics */
-static void can_tx(U8_T* buf, SIZE_T len);
+/* Request To Send */
+#define CAN_MSG_RTS         0b10000000
+#define CAN_MSG_RTS_B0      0b00000001
+
+/* Start writing directly into a data buffer */
+#define CAN_MSG_LOAD_TX                     0b01000000
+#define CAN_MSG_LOAD_TX_START_AT_TXB0SIDH   0b00000000
+#define CAN_MSG_LOAD_TX_START_AT_TXB0D0     0b00000001
 /******************************************************************************/
 
 
@@ -232,46 +259,60 @@ void can_init_hardware(void)
     U8_T hold_reset;
 
     spi_activate();
-    spi_tx_rx(CAN_MSG_RESET);
-    for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
-        /* Hold reset for 255 cycles per MCP2515 eval sample */
-        /* Even though it appears to hold for 48-us without this,
-         * which exceeds the 2-us requirement. */
-    }
+        spi_tx_rx(CAN_MSG_RESET);
+        for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
+            /* Hold reset for 255 cycles per MCP2515 eval sample */
+            /* Even though it appears to hold for 48-us without this,
+            * which exceeds the 2-us requirement. */
+        }
     spi_deactivate();
 
+    /* Disable One-Shot Mode, CLKOUT pin, and don't Abort */
+    CANCTRL.byte = (U8_T) 0;
+    /* Exit configuration mode */
+    CANCTRL.byte |= CANCTRL_MODE_NORMAL;
+
     spi_activate();
-    spi_tx_rx(CAN_MSG_BIT_MODIFY);
-    spi_tx_rx(CAN_MODE_NORMAL);
+        spi_tx_rx(CAN_MSG_WRITE);
+        spi_tx_rx(CANCTRL_ADDR);
+        spi_tx_rx(CANCTRL.byte);
     spi_deactivate();
 }
 
 
-static void can_tx(U8_T* buf, SIZE_T len)
+void can_tx(U16_T identifier, U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
 
-    /* TODO: This doesn't work! */
-
+    /* Transfer the buffer into the data registers */
     spi_activate();
-    spi_tx_rx(CAN_MSG_WRITE);
-    spi_tx_rx((U8_T) 0);
-    for (i = 0; i < len; ++i) {
-        spi_tx_rx(buf[i]);
-    }
+        /* Select Buffer 0, Start at TXB0D0 */
+        spi_tx_rx((U8_T)( CAN_MSG_LOAD_TX | CAN_MSG_LOAD_TX_START_AT_TXB0D0 ));
+        /* It is possible to write to sequential registers by continuing to 
+         * clock in data bytes as long as CS is held low.
+         * - MCP2515 Datasheet page 65 */
+        for (i = 0; (8 > i) && (i < len); ++i) {
+            spi_tx_rx(buf[i]);
+        }
+        /* Zero the unused portion of the frame. */
+        for (; 8 > i; ++i) {
+            spi_tx_rx((U8_T) 0);
+        }
+    spi_deactivate();
+    
+    /* Write the data length */
+    /* The masking has the side effect of setting RTR to Data Frame. */
+    spi_activate();
+        spi_tx_rx(CAN_MSG_WRITE);
+        spi_tx_rx(TXB0DLC_ADDR);
+        /* It's ok if len > 8, MCP2515 will ignore anything past 8 bytes. */
+        spi_tx_rx((U8_T)( len & DLC_MASK ));
     spi_deactivate();
 
+    /* Trigger the transmission */
     spi_activate();
-    spi_tx_rx(CAN_REG_TXB0CTRL);
-    spi_tx_rx((U8_T) 0x0);
+        /* Request To Send the 0th buffer */
+        spi_tx_rx((U8_T)( CAN_MSG_RTS | CAN_MSG_RTS_B0 ));
     spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_MSG_RTS | 0b0000000);
-    spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_REG_TX0RTS);
-    spi_tx_rx((U8_T) 0b00000001);
 }
 

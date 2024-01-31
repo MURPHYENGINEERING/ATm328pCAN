@@ -44,6 +44,8 @@ extern CAN_FIFO_T g_can_rx_q;
 void can_init(void);
 void can_init_hardware(void);
 
+void can_tx(U16_T identifier, U8_T* buf, SIZE_T len);
+
 void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size);
 
 FIFO_STATUS_T can_fifo_q_add(
@@ -68,6 +70,7 @@ SIZE_T can_rx_q_len(void);
 
 void task_can_tx(void);
 void task_can_rx(void);
+
 
 
 #endif

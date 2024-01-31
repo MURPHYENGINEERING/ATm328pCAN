@@ -11,12 +11,12 @@
 
 void task_demo_tx(void)
 {
-    U8_T buf[FIFO_DATA_LEN];
+    U8_T buf[CAN_FIFO_DATA_LEN];
     SIZE_T len;
     FIFO_STATUS_T status;
 
-    memcpy_by_U8(buf, (U8_T*) "Hello, world!", (SIZE_T) 13);
-    len = strnlen_by_U8((U8_T*) "Hello, world!", FIFO_DATA_LEN);
+    memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6);
+    len = strnlen_by_U8((U8_T*) "Hello!", CAN_FIFO_DATA_LEN);
 
     status = can_tx_q_add(buf, len);
 
@@ -42,7 +42,7 @@ void task_demo_rx(void)
     SIZE_T n_pending_msgs;
     SIZE_T i;
     FIFO_STATUS_T status;
-    U8_T buf[FIFO_DATA_LEN];
+    U8_T buf[CAN_FIFO_DATA_LEN];
     SIZE_T len;
 
     n_pending_msgs = can_rx_q_len();
