@@ -1,5 +1,29 @@
-project(rawuno)
+project(atm328pcan)
 
-add_executable(rawuno
+add_executable(atm328pcan
     src/main.c
+    src/bit.c
+    src/can.c
+    src/cnc.c
+    src/demo.c
+    src/dsc.c
+    src/eeprom.c
+    src/fai.c
+    src/fifo.c
+    src/interrupts.c
+    src/memory.c
+    src/scheduler.c
+    src/serialize.c
+    src/spi.c
+    src/string.c
+    src/timer.c
+    src/usart.c
+    src/watchdog.c
+    src/mcp2515/mcp2515_can.c
+    src/atm328p/atm328p_dsc.c
+    src/atm328p/atm328p_eeprom.c
+    src/atm328p/atm328p_spi.c
+    src/atm328p/atm328p_timer.c
+    src/atm328p/atm328p_usart.c
+    src/atm328p/atm328p_watchdog.c
 )
