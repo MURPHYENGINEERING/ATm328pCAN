@@ -35,7 +35,7 @@ typedef enum {
 /** Represents a 10-bit result from the ADC. */
 typedef U16_T ADC_RESULT_T;
 
-void adc_init_hardware(ADC_MODE_T mode);
+void adc_init(ADC_MODE_T mode);
 ADC_RESULT_T adc_sample(void);
 void adc_select(ADC_T adc);
 

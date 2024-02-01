@@ -31,7 +31,7 @@ ISR(ADC_vect)
  *                  ADC is constantly converting and sampling returns the last
  *                  conversion result.
  ******************************************************************************/
-void adc_init_hardware(ADC_MODE_T mode)
+void adc_init(ADC_MODE_T mode)
 {
     g_adc_mode = mode;
 
