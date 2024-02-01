@@ -23,7 +23,7 @@ VSIZE_T g_usart_rx_buf_n;
 
 
 /*******************************************************************************
- *
+ * Transmit a byte from the USART TX buffer to the USART hardware device.
  ******************************************************************************/
 static void usart_tx_byte_from_buffer(void)
 {
@@ -53,7 +53,8 @@ static void usart_tx_byte_from_buffer(void)
 
 
 /*******************************************************************************
- *
+ * Transmit a byte from the TX buffer when the TX register is ready for the next
+ * byte.
  ******************************************************************************/
 ISR(USART0_TX_vect)
 {
@@ -62,7 +63,9 @@ ISR(USART0_TX_vect)
 
 
 /*******************************************************************************
- *
+ * Receive a byte from the USART hardware and store it in the RX buffer.
+ * This function logs a fault if the RX buffer is full and the incoming byte
+ * is lost.
  ******************************************************************************/
 ISR(USART0_RX_vect)
 {
@@ -103,7 +106,8 @@ ISR(USART0_RX_vect)
 
 
 /*******************************************************************************
- *
+ * Initialize the USART software and hardware device by setting all buffers to
+ * zero and çalling the appropriate hardware initializer.
  ******************************************************************************/
 void usart_init(USART_CONFIG_T config)
 {
@@ -122,7 +126,13 @@ void usart_init(USART_CONFIG_T config)
 
 
 /*******************************************************************************
- *
+ * Write the given buffer to the USART TX buffer to be transmitted byte-by-byte
+ * as the hardware becomes available.
+ * This function starts writing if the hardware is not currently in a write cycle.
+ * \param[in] buf The data to be written to the TX buffer.
+ * \param[in] len The length of the data to be written to the TX buffer.
+ * \return  The number of bytes actually written to the buffer. This may be less
+ *          than `len` if the TX buffer becomes full.
  ******************************************************************************/
 SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 {
@@ -161,7 +171,12 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 
 
 /*******************************************************************************
- *
+ * Receive data from the USART RX buffer into the given buffer, up to the given
+ * number of bytes. 
+ * \param[out] buf  The buffer into which the read data will be written.
+ * \param[in] len   The number of bytes to be read from the RX buffer.
+ * \return  The number of bytes actually read from the RX buffer. This may be
+ *          less than `len` if the RX buffer becomes empty.
  ******************************************************************************/
 SIZE_T usart_rx(U8_T* buf, SIZE_T len)
 {

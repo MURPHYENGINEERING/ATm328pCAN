@@ -12,7 +12,9 @@
 
 
 /*******************************************************************************
- *
+ * Start the application, enabling all hardware and software devices and starting
+ * the task scheduler.
+ * This function enters an infinite loop, executing scheduled tasks until forever.
  ******************************************************************************/
 S16_T main(void)
 {

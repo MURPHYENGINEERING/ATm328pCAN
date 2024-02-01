@@ -7,7 +7,9 @@
 
 
 /*******************************************************************************
- *
+ * Initialize the SPI device hardware by setting registers on the microcontroller.
+ * Additionally, clear the SPI read and write buffers, and set the state of the
+ * SPI software device to "ready."
  ******************************************************************************/
 void spi_init(void)
 {
@@ -50,7 +52,7 @@ void spi_init(void)
 
 
 /*******************************************************************************
- *
+ * Pull the SPI device chip select line DOWN to activate the device.
  ******************************************************************************/
 void spi_activate(void) {
     PORT_SPI.bits.SS = LOW;
@@ -58,7 +60,7 @@ void spi_activate(void) {
 
 
 /*******************************************************************************
- *
+ * Pull the SPI device chip select line UP to deactivate the device.
  ******************************************************************************/
 void spi_deactivate(void) {
     PORT_SPI.bits.SS = HIGH;
@@ -66,7 +68,10 @@ void spi_deactivate(void) {
 
 
 /*******************************************************************************
- *
+ * Transmit the given byte to the SPI device hardware and receive the shifted-in
+ * response byte.
+ * \param[in] tx_data The byte to be shifted out to the SPI device shift register.
+ * \return The byte shifted in to the SPI device shift register.
  ******************************************************************************/
 U8_T spi_tx_rx(U8_T tx_data) {
     U8_T rx_data;

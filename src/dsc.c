@@ -2,7 +2,8 @@
 
 
 /*******************************************************************************
- *
+ * Initialize the state of the discretes to their initial values.
+ * This enables the built-in LEDs.
  ******************************************************************************/
 void dsc_init(void)
 {

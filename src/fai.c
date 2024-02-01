@@ -15,7 +15,7 @@ static void fai_read_faults_from_nvm(void);
 
 
 /*******************************************************************************
- *
+ * Erase the fault section of the NVM and set all fault counters to 0.
  ******************************************************************************/
 void fai_clear_faults(void)
 {
@@ -33,7 +33,7 @@ void fai_clear_faults(void)
 
 
 /*******************************************************************************
- *
+ * Initialize the fault counters to zero.
  ******************************************************************************/
 void fai_init(void)
 {
@@ -50,7 +50,10 @@ void fai_init(void)
 
 
 /*******************************************************************************
- *
+ * Log a fault, `PASS` or `FAIL`, with the given troubleshooting data.
+ * \param[in] fault_id  The ID of the fault to be logged.
+ * \param[in] indicator Whether the fault is `PASS` or `FAIL`.
+ * \param[in] ts_data   The fault troubleshooting data to be logged.
  ******************************************************************************/
 void fai_pass_fail_logger(
     FAI_FAULT_ID_T fault_id, 
@@ -90,7 +93,10 @@ void fai_pass_fail_logger(
 
 
 /*******************************************************************************
- *
+ * Report on the status of the given fault ID.
+ * \param[in] fault_id The fault ID to be reported.
+ * \return  The fault counter for the given fault, indicating number of faults
+ *          and associated troubleshooting data.
  ******************************************************************************/
 FAI_FAULT_COUNTER_T fai_fault_reporter(FAI_FAULT_ID_T fault_id)
 {
@@ -108,7 +114,7 @@ FAI_FAULT_COUNTER_T fai_fault_reporter(FAI_FAULT_ID_T fault_id)
 
 
 /*******************************************************************************
- *
+ * Perform the FAI task, writing faults to NVM if any new faults are pending.
  ******************************************************************************/
 void task_fai(void)
 {
@@ -120,7 +126,7 @@ void task_fai(void)
 
 
 /*******************************************************************************
- *
+ * Write the fault array to the NVM.
  ******************************************************************************/
 static void fai_write_faults_to_nvm(void)
 {
@@ -139,7 +145,7 @@ static void fai_write_faults_to_nvm(void)
 
 
 /*******************************************************************************
- *
+ * Read the fault array from NVM, overwriting any current faults. 
  ******************************************************************************/
 static void fai_read_faults_from_nvm(void)
 {

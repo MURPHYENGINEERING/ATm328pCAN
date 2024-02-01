@@ -2,11 +2,15 @@
 #include "timer.h"
 
 /*******************************************************************************
- *
+ * Enable the Timer 1 device hardware.
+ * \param[in] prescale          The divisor to be used to configure the timer 
+ *                              prescaler.
+ * \param[in] interrupt_mode    Specifies whether timer interrupts are to be 
+ *                              enabled or disabled.
  ******************************************************************************/
 void timer1_enable(
     TIMER1_PRESCALE_T prescale, 
-    TIMER1_INTERRUPT_MODE_T interrupt_mode
+    ENABLE_T interrupt_mode
 )
 {
     /* Normal timer mode */
@@ -23,7 +27,8 @@ void timer1_enable(
 
 
 /*******************************************************************************
- *
+ * Set the value of the Timer/Counter 1 to the given value.
+ * \param[in] value The value to which the Timer/Counter 1 will be set.
  ******************************************************************************/
 void timer1_set(U16_T value)
 {

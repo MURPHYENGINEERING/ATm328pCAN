@@ -3,7 +3,10 @@
 
 
 /*******************************************************************************
- *
+ * Change the pin mode of the given LED pin.
+ * \param[in] led   The given LED to be configured.
+ * \param[in] mode  `ENABLED` to enable output mode and `DISABLED` to configure
+ *                  the pin as an input.
  ******************************************************************************/
 void dsc_led_mode(DSC_LED_T led, ENABLE_T mode) {
     if (ENABLED == mode) {
@@ -47,7 +50,8 @@ void dsc_led_mode(DSC_LED_T led, ENABLE_T mode) {
 
 
 /*******************************************************************************
- *
+ * Toggle the state (on or off) of the given LED.
+ * \param[in] led   The given LED whose state will be toggled.
  ******************************************************************************/
 void dsc_led_toggle(DSC_LED_T led)
 {
@@ -69,7 +73,9 @@ void dsc_led_toggle(DSC_LED_T led)
 
 
 /*******************************************************************************
- *
+ * Set the state of the given LED pin to the given state.
+ * \param[in] led   The given LED whose state will be set.
+ * \param[in] state The state (`ON` or `OFF`) to be set.
  ******************************************************************************/
 void dsc_led_set(DSC_LED_T led, ON_T state)
 {

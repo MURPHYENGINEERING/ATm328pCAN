@@ -28,12 +28,15 @@ volatile SCHEDULER_STATE_T g_scheduler_state;
 
 
 /*******************************************************************************
- *
+ * Iterate to the next task on a regular interval, or log a fault if the current
+ * task is overrunning its minor cycle period.
+ * This function resets the Timer/Counter 1 value to ensure a regular period of
+ * 50-ms.
  ******************************************************************************/
 ISR(TIMER1_OVF_vect)
 {
     if (SCHEDULER_RUNNING == g_scheduler_state) {
-        /* Task overrun fault */
+        fai_pass_fail_logger(FAI_FAULT_ID_TASK_OVERRUN, FAIL, g_task_idx);
 
     } else if (SCHEDULER_FINISHED == g_scheduler_state) {
         /* Next task */
@@ -52,7 +55,8 @@ ISR(TIMER1_OVF_vect)
 
 
 /*******************************************************************************
- *
+ * Initialize the scheduler, including the scheduler timer, to the default/idle
+ * state.
  ******************************************************************************/
 void scheduler_init(void)
 {
@@ -65,7 +69,8 @@ void scheduler_init(void)
 
 
 /*******************************************************************************
- *
+ * Perform the current scheduler task.
+ * This function toggles the built-in LED on the CAN board (LED 1) every step.
  ******************************************************************************/
 void scheduler_step(void)
 {
@@ -80,7 +85,7 @@ void scheduler_step(void)
 
 
 /*******************************************************************************
- *
+ * This task does nothing and exists solely to occupy an unused minor cycle.
  ******************************************************************************/
 void task_empty(void)
 {

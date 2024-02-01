@@ -5,7 +5,8 @@
 
 
 /*******************************************************************************
- *
+ * Enable the watchdog to timeout and reset the microcontroller in 2-seconds if
+ * not strobed before that period expires.
  ******************************************************************************/
 void watchdog_enable(void)
 {
@@ -22,7 +23,8 @@ void watchdog_enable(void)
 
 
 /*******************************************************************************
- *
+ * Disable the watchdog so that it won't reset the microcontroller in any amount
+ * of time.
  ******************************************************************************/
 void watchdog_disable(void)
 {

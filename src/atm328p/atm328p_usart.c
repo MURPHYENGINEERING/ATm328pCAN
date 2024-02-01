@@ -11,7 +11,9 @@ static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity);
 
 
 /*******************************************************************************
- *
+ * Initialize the USART hardware device with the given configuration parameters.
+ * \param[in] cfg   The configuration parameters with which the hardware device
+ *                  will be configured.
  ******************************************************************************/
 void usart_init_hardware(USART_CONFIG_T cfg)
 {
@@ -39,7 +41,9 @@ void usart_init_hardware(USART_CONFIG_T cfg)
 
 
 /*******************************************************************************
- *
+ * Transmit a single byte to the USART hardware device by writing the data-out
+ * register.
+ * \param[in] data  The byte to be transmitted to the USART hardware device.
  ******************************************************************************/
 void usart_tx_byte(U8_T data)
 {
@@ -48,16 +52,20 @@ void usart_tx_byte(U8_T data)
 
 
 /*******************************************************************************
- *
+ * Receive a single byte from the USART hardware device by reading the data-in
+ * register.
+ * \return The byte read from the USART hardware device.
  ******************************************************************************/
-VU8_T usart_rx_byte(void)
+U8_T usart_rx_byte(void)
 {
     return UDR0.byte;
 }
 
 
 /*******************************************************************************
- *
+ * Get the state of the parity error bit from the USART hardware device by
+ * reading the parity-error register.
+ * \return The state of the parity error bit.
  ******************************************************************************/
 BOOL_T usart_parity_error(void)
 {
@@ -66,7 +74,9 @@ BOOL_T usart_parity_error(void)
 
 
 /*******************************************************************************
- *
+ * Get the state of the data overrun error bit from the USART hardware device by
+ * reading the data-overrun register.
+ * \return The state of the data-overrun bit.
  ******************************************************************************/
 BOOL_T usart_data_overrun(void)
 {
@@ -75,7 +85,9 @@ BOOL_T usart_data_overrun(void)
 
 
 /*******************************************************************************
- *
+ * Get the state of the frame error bit from the USART hardware device by
+ * reading the frame-error register.
+ * \return The state of the frame-error bit.
  ******************************************************************************/
 BOOL_T usart_frame_error(void)
 {
@@ -84,7 +96,9 @@ BOOL_T usart_frame_error(void)
 
 
 /*******************************************************************************
- *
+ * Get the state of the transmitter from the USART hardware device by reading
+ * the state of the TX-data-empty register.
+ * \return The state of the TX-data-empty bit.
  ******************************************************************************/
 BOOL_T usart_tx_ready(void)
 {
@@ -93,7 +107,9 @@ BOOL_T usart_tx_ready(void)
 
 
 /*******************************************************************************
- *
+ * Get the state of the receiver from the USART hardware device by reading the
+ * state of the RX-data-ready register.
+ * \return The state of the RX-data-ready bit.
  ******************************************************************************/
 BOOL_T usart_rx_pending(void)
 {
@@ -102,7 +118,9 @@ BOOL_T usart_rx_pending(void)
 
 
 /*******************************************************************************
- *
+ * Configure the mode of the USART hardware device by setting the appropriate
+ * mode registers.
+ * \param[in] mode  The given mode to which the USART hardware device will be set.
  ******************************************************************************/
 static void usart_set_mode(USART_MODE_T mode)
 {
@@ -135,7 +153,9 @@ static void usart_set_mode(USART_MODE_T mode)
 
 
 /*******************************************************************************
- *
+ * Set the baud rate of the USART hardware device by setting the appropriate
+ * register.
+ * \param[in] baud The baud rate to be set on the hardware device.
  ******************************************************************************/
 static void usart_set_baud(USART_BAUD_RATE_T baud)
 {
@@ -163,7 +183,9 @@ static void usart_set_baud(USART_BAUD_RATE_T baud)
 
 
 /*******************************************************************************
- *
+ * Set the parity mode of the USART hardware device by setting the appropriate
+ * register.
+ * \param[in] parity The parity mode to be set on the hardware device.
  ******************************************************************************/
 static void usart_set_parity(USART_PARITY_MODE_T parity)
 {
@@ -192,7 +214,9 @@ static void usart_set_parity(USART_PARITY_MODE_T parity)
 
 
 /*******************************************************************************
- *
+ * Set the number of stop bits on the USART hardware device by setting the
+ * appropriate register.
+ * \param[in] stop_bits The number of stop bits to be set on the hardware device.
  ******************************************************************************/
 static void usart_set_stop_bits(USART_STOP_BITS_T stop_bits)
 {
@@ -209,7 +233,9 @@ static void usart_set_stop_bits(USART_STOP_BITS_T stop_bits)
 
 
 /*******************************************************************************
- *
+ * Set the character size on the USART hardware device by setting the appropriate
+ * register.
+ * \param[in] character_size The character size to be set on the hardware device.
  ******************************************************************************/
 static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size)
 {
@@ -255,7 +281,9 @@ static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size)
 
 
 /*******************************************************************************
- *
+ * Set the clock polarity of the USART hardware device by setting the appropriate 
+ * register.
+ * \param[in] clock_polarity The clock polarity to be set on the hardware device.
  ******************************************************************************/
 static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity)
 {
