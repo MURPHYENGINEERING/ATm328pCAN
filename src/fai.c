@@ -11,7 +11,6 @@ FAI_FAULT_COUNTER_T g_fai_fault_empty;
 
 
 static void fai_write_faults_to_nvm(void);
-static void fai_read_faults_from_nvm(void);
 
 
 /*******************************************************************************
@@ -29,6 +28,8 @@ void fai_clear_faults(void)
         (U8_T) 0, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
+
+    g_pending_faults = FALSE;
 }
 
 
@@ -147,7 +148,7 @@ static void fai_write_faults_to_nvm(void)
 /*******************************************************************************
  * Read the fault array from NVM, overwriting any current faults. 
  ******************************************************************************/
-static void fai_read_faults_from_nvm(void)
+void fai_read_faults_from_nvm(void)
 {
     SIZE_T i;
     SIZE_T len;
