@@ -41,13 +41,13 @@ static void usart_tx_byte_from_buffer(void)
 }
 
 
-ISR(USART_TX_vect)
+ISR(USART0_TX_vect)
 {
     usart_tx_byte_from_buffer();
 }
 
 
-ISR(USART_RX_vect)
+ISR(USART0_RX_vect)
 {
     VU8_T c;
 

@@ -22,9 +22,9 @@
 #define SPI_STC_vect        __vector_17
 
 /* USART Interrupts */
-#define USART_RX_vect       __vector_18
-#define USART_UDRE_vect     __vector_19
-#define USART_TX_vect       __vector_20
+#define USART0_RX_vect       __vector_18
+#define USART0_UDRE_vect     __vector_19
+#define USART0_TX_vect       __vector_20
 
 
 #define sei() __asm volatile( "sei" ::: "memory" )
