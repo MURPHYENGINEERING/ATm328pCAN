@@ -47,7 +47,7 @@ ISR(TIMER1_OVF_vect)
         }
         g_scheduler_state = SCHEDULER_IDLE;
     } else {
-        /* Software error */
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
     }
 
     /* Reset timer to 50-ms */
