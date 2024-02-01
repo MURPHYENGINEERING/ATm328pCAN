@@ -1,4 +1,5 @@
 #include "atm328p_timer.h"
+#include "atm328p_mcu.h"
 #include "timer.h"
 
 /*******************************************************************************
@@ -13,6 +14,9 @@ void timer1_enable(
     TIMER1_OVF_INTERRUPT_MODE_T ovf_interrupt_mode
 )
 {
+    /* Disable power reduction mode */
+    PRR.bits.PRTIM1 = PRTIM1_ENABLE_TIMER;
+
     /* Normal timer mode */
     TCCR1A.byte = TCCR1A_NORMAL_MODE;
     if (TIMER1_PRESCALE_OVER_256 == prescale) {

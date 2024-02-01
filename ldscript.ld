@@ -31,6 +31,11 @@ SECTIONS
   /* MCU */
   MCUSR         = 0x55;
 
+  /* ADC */
+  ADMUX         = 0x7C;
+  ADCSRA        = 0x7A;
+  ADC           = 0x78;
+  
   /* USART */
   UCSR0A        = 0xC0;
   UCSR0B        = 0xC1;

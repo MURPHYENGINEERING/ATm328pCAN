@@ -1,4 +1,5 @@
 #include "atm328p_usart.h"
+#include "atm328p_mcu.h"
 #include "usart.h"
 
 
@@ -17,6 +18,9 @@ static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity);
  ******************************************************************************/
 void usart_init_hardware(USART_CONFIG_T cfg)
 {
+    /* Disable power reduction mode */
+    PRR.bits.PRUSART0 = PRUSART0_ENABLE_USART;
+
     usart_set_mode(cfg.mode);
     usart_set_baud(cfg.baud);
     usart_set_parity(cfg.parity);

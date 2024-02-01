@@ -19,7 +19,7 @@ void spi_init(void)
     #pragma GCC diagnostic pop
 
     /* Turn off Power Reduction for SPI */
-    PRR.bits.PRSPI = PRSPI_DISABLE_POWER_REDUCTION;
+    PRR.bits.PRSPI = PRSPI_ENABLE_SPI;
 
     /* MSB first */
     SPCR.bits.DORD = DORD_MSB_FIRST;
