@@ -1,0 +1,70 @@
+\hypertarget{sdl__event__type__name_8h_source}{}\doxysection{sdl\+\_\+event\+\_\+type\+\_\+name.\+h}
+\label{sdl__event__type__name_8h_source}\index{src/sdl/sdl\_event\_type\_name.h@{src/sdl/sdl\_event\_type\_name.h}}
+\mbox{\hyperlink{sdl__event__type__name_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_EVENT\_TYPE\_NAME\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_EVENT\_TYPE\_NAME\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \mbox{\hyperlink{sdl__event__type__name_8h_a1c3d131d6cb0927c796e3e96ddbf26fa}{lm\_sdl\_event\_type\_name}}(SDL\_EventType type)}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9   \textcolor{keywordflow}{switch} (type) }
+\DoxyCodeLine{10   \{ \textcolor{comment}{// clang-\/format off}}
+\DoxyCodeLine{11 \textcolor{keywordflow}{case} SDL\_QUIT:                     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_QUIT (user-\/requested quit)"{}};}
+\DoxyCodeLine{12 \textcolor{keywordflow}{case} SDL\_APP\_TERMINATING:          \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_TERMINATING (OS is terminating the application)"{}};}
+\DoxyCodeLine{13 \textcolor{keywordflow}{case} SDL\_APP\_LOWMEMORY:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_LOWMEMORY (OS is low on memory; free some)"{}};}
+\DoxyCodeLine{14 \textcolor{keywordflow}{case} SDL\_APP\_WILLENTERBACKGROUND:  \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_WILLENTERBACKGROUND (application is entering background)"{}};}
+\DoxyCodeLine{15 \textcolor{keywordflow}{case} SDL\_APP\_DIDENTERBACKGROUND:   \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_DIDENTERBACKGROUND (application entered background)"{}};}
+\DoxyCodeLine{16 \textcolor{keywordflow}{case} SDL\_APP\_WILLENTERFOREGROUND:  \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_WILLENTERFOREGROUND (application is entering foreground)"{}};}
+\DoxyCodeLine{17 \textcolor{keywordflow}{case} SDL\_APP\_DIDENTERFOREGROUND:   \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_APP\_DIDENTERFOREGROUND (application entered foreground)"{}};}
+\DoxyCodeLine{18 \textcolor{keywordflow}{case} SDL\_WINDOWEVENT:              \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_WINDOWEVENT (window state change)"{}};}
+\DoxyCodeLine{19 \textcolor{keywordflow}{case} SDL\_SYSWMEVENT:               \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_SYSWMEVENT (system specific event)"{}};}
+\DoxyCodeLine{20 \textcolor{keywordflow}{case} SDL\_KEYDOWN:                  \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_KEYDOWN (key pressed)"{}};}
+\DoxyCodeLine{21 \textcolor{keywordflow}{case} SDL\_KEYUP:                    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_KEYUP (key released)"{}};}
+\DoxyCodeLine{22 \textcolor{keywordflow}{case} SDL\_TEXTEDITING:              \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_TEXTEDITING (keyboard text editing (composition))"{}};}
+\DoxyCodeLine{23 \textcolor{keywordflow}{case} SDL\_TEXTINPUT:                \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_TEXTINPUT (keyboard text input)"{}};}
+\DoxyCodeLine{24 \textcolor{keywordflow}{case} SDL\_KEYMAPCHANGED:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_KEYMAPCHANGED (keymap changed due to a system event such as an input language or keyboard layout change (>= SDL 2.0.4))"{}};}
+\DoxyCodeLine{25 \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:              \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_MOUSEMOTION (mouse moved)"{}};}
+\DoxyCodeLine{26 \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONDOWN:          \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_MOUSEBUTTONDOWN (mouse button pressed)"{}};}
+\DoxyCodeLine{27 \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONUP:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_MOUSEBUTTONUP (mouse button released)"{}};}
+\DoxyCodeLine{28 \textcolor{keywordflow}{case} SDL\_MOUSEWHEEL:               \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_MOUSEWHEEL (mouse wheel motion)"{}};}
+\DoxyCodeLine{29 \textcolor{keywordflow}{case} SDL\_JOYAXISMOTION:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYAXISMOTION (joystick axis motion)"{}};}
+\DoxyCodeLine{30 \textcolor{keywordflow}{case} SDL\_JOYBALLMOTION:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYBALLMOTION (joystick trackball motion)"{}};}
+\DoxyCodeLine{31 \textcolor{keywordflow}{case} SDL\_JOYHATMOTION:             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYHATMOTION (joystick hat position change)"{}};}
+\DoxyCodeLine{32 \textcolor{keywordflow}{case} SDL\_JOYBUTTONDOWN:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYBUTTONDOWN (joystick button pressed)"{}};}
+\DoxyCodeLine{33 \textcolor{keywordflow}{case} SDL\_JOYBUTTONUP:              \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYBUTTONUP (joystick button released)"{}};}
+\DoxyCodeLine{34 \textcolor{keywordflow}{case} SDL\_JOYDEVICEADDED:           \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYDEVICEADDED (joystick connected)"{}};}
+\DoxyCodeLine{35 \textcolor{keywordflow}{case} SDL\_JOYDEVICEREMOVED:         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_JOYDEVICEREMOVED (joystick disconnected)"{}};}
+\DoxyCodeLine{36 \textcolor{keywordflow}{case} SDL\_CONTROLLERAXISMOTION:     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERAXISMOTION (controller axis motion)"{}};}
+\DoxyCodeLine{37 \textcolor{keywordflow}{case} SDL\_CONTROLLERBUTTONDOWN:     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERBUTTONDOWN (controller button pressed)"{}};}
+\DoxyCodeLine{38 \textcolor{keywordflow}{case} SDL\_CONTROLLERBUTTONUP:       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERBUTTONUP (controller button released)"{}};}
+\DoxyCodeLine{39 \textcolor{keywordflow}{case} SDL\_CONTROLLERDEVICEADDED:    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERDEVICEADDED (controller connected)"{}};}
+\DoxyCodeLine{40 \textcolor{keywordflow}{case} SDL\_CONTROLLERDEVICEREMOVED:  \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERDEVICEREMOVED (controller disconnected)"{}};}
+\DoxyCodeLine{41 \textcolor{keywordflow}{case} SDL\_CONTROLLERDEVICEREMAPPED: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CONTROLLERDEVICEREMAPPED (controller mapping updated)"{}};}
+\DoxyCodeLine{42 \textcolor{keywordflow}{case} SDL\_FINGERDOWN:               \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_FINGERDOWN (user has touched input device)"{}};}
+\DoxyCodeLine{43 \textcolor{keywordflow}{case} SDL\_FINGERUP:                 \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_FINGERUP (user stopped touching input device)"{}};}
+\DoxyCodeLine{44 \textcolor{keywordflow}{case} SDL\_FINGERMOTION:             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_FINGERMOTION (user is dragging finger on input device)"{}};}
+\DoxyCodeLine{45 \textcolor{keywordflow}{case} SDL\_DOLLARGESTURE:            \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DOLLARGESTURE ()"{}};}
+\DoxyCodeLine{46 \textcolor{keywordflow}{case} SDL\_DOLLARRECORD:             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DOLLARRECORD ()"{}};}
+\DoxyCodeLine{47 \textcolor{keywordflow}{case} SDL\_MULTIGESTURE:             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_MULTIGESTURE ()"{}};}
+\DoxyCodeLine{48 \textcolor{keywordflow}{case} SDL\_CLIPBOARDUPDATE:          \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_CLIPBOARDUPDATE (the clipboard changed)"{}};}
+\DoxyCodeLine{49 \textcolor{keywordflow}{case} SDL\_DROPFILE:                 \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DROPFILE (the system requests a file open)"{}};}
+\DoxyCodeLine{50 \textcolor{keywordflow}{case} SDL\_DROPTEXT:                 \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DROPTEXT (text/plain drag-\/and-\/drop event)"{}};}
+\DoxyCodeLine{51 \textcolor{keywordflow}{case} SDL\_DROPBEGIN:                \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DROPBEGIN (a new set of drops is beginning (>= SDL 2.0.5))"{}};}
+\DoxyCodeLine{52 \textcolor{keywordflow}{case} SDL\_DROPCOMPLETE:             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_DROPCOMPLETE (current set of drops is now complete (>= SDL 2.0.5))"{}};}
+\DoxyCodeLine{53 \textcolor{keywordflow}{case} SDL\_AUDIODEVICEADDED:         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_AUDIODEVICEADDED (a new audio device is available (>= SDL 2.0.4))"{}};}
+\DoxyCodeLine{54 \textcolor{keywordflow}{case} SDL\_AUDIODEVICEREMOVED:       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_AUDIODEVICEREMOVED (an audio device has been removed (>= SDL 2.0.4))"{}};}
+\DoxyCodeLine{55 \textcolor{keywordflow}{case} SDL\_RENDER\_TARGETS\_RESET:     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_RENDER\_TARGETS\_RESET (the render targets have been reset and their contents need to be updated (>= SDL 2.0.2))"{}};}
+\DoxyCodeLine{56 \textcolor{keywordflow}{case} SDL\_RENDER\_DEVICE\_RESET:      \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_RENDER\_DEVICE\_RESET (the device has been reset and all textures need to be recreated (>= SDL 2.0.4))"{}};}
+\DoxyCodeLine{57 \textcolor{keywordflow}{case} SDL\_USEREVENT:                \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_USEREVENT (a user-\/specified event)"{}};}
+\DoxyCodeLine{58 \textcolor{keywordflow}{case} SDL\_LASTEVENT:                \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SDL\_LASTEVENT (only for bounding internal arrays)"{}};}
+\DoxyCodeLine{59 \textcolor{keywordflow}{default}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}<unknown>"{}};}
+\DoxyCodeLine{60   \} \textcolor{comment}{// clang-\/format on}}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_EVENT\_TYPE\_NAME\_H\_}}
+
+\end{DoxyCode}

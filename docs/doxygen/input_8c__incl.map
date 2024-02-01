@@ -1,0 +1,7 @@
+<map id="src/game/input.c" name="src/game/input.c">
+<area shape="rect" id="node1" title="High&#45;level operations for managing input state and bindings." alt="" coords="183,5,333,32"/>
+<area shape="rect" id="node2" href="$input_8h.html" title="The game&#39;s interface to the user input devices." alt="" coords="132,80,251,107"/>
+<area shape="rect" id="node5" href="$log_8h.html" title=" " alt="" coords="275,80,377,107"/>
+<area shape="rect" id="node3" href="$keyboard_8h.html" title="Defines symbols for SDL keyboard key identifiers." alt="" coords="5,155,196,181"/>
+<area shape="rect" id="node4" href="$signal_8h.html" title="Declares the types of signal transitions that may represent a state change." alt="" coords="220,155,347,181"/>
+</map>

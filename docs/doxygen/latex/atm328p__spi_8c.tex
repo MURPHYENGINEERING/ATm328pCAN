@@ -1,0 +1,85 @@
+\hypertarget{atm328p__spi_8c}{}\doxysection{src/atm328p/atm328p\+\_\+spi.c File Reference}
+\label{atm328p__spi_8c}\index{src/atm328p/atm328p\_spi.c@{src/atm328p/atm328p\_spi.c}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}atm328p\+\_\+spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}atm328p\+\_\+mcu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}atm328p\+\_\+dsc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+Include dependency graph for atm328p\+\_\+spi.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__spi_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__spi_8c_ae909944aa85ae98323073c628be541aa}{spi\+\_\+init}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__spi_8c_a52e29b9a0596a38390b0a245c4c2d593}{spi\+\_\+activate}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__spi_8c_a73c3d9ea4295599b7f59d2b26343a170}{spi\+\_\+deactivate}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8c_a695a4a16d5ea8390a3c3dc6815fca21b}{spi\+\_\+tx\+\_\+rx}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} tx\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{atm328p__spi_8c_a52e29b9a0596a38390b0a245c4c2d593}\label{atm328p__spi_8c_a52e29b9a0596a38390b0a245c4c2d593}} 
+\index{atm328p\_spi.c@{atm328p\_spi.c}!spi\_activate@{spi\_activate}}
+\index{spi\_activate@{spi\_activate}!atm328p\_spi.c@{atm328p\_spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_activate()}{spi\_activate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} spi\+\_\+activate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__spi_8c_a52e29b9a0596a38390b0a245c4c2d593_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{atm328p__spi_8c_a73c3d9ea4295599b7f59d2b26343a170}\label{atm328p__spi_8c_a73c3d9ea4295599b7f59d2b26343a170}} 
+\index{atm328p\_spi.c@{atm328p\_spi.c}!spi\_deactivate@{spi\_deactivate}}
+\index{spi\_deactivate@{spi\_deactivate}!atm328p\_spi.c@{atm328p\_spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_deactivate()}{spi\_deactivate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} spi\+\_\+deactivate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__spi_8c_a73c3d9ea4295599b7f59d2b26343a170_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{atm328p__spi_8c_ae909944aa85ae98323073c628be541aa}\label{atm328p__spi_8c_ae909944aa85ae98323073c628be541aa}} 
+\index{atm328p\_spi.c@{atm328p\_spi.c}!spi\_init@{spi\_init}}
+\index{spi\_init@{spi\_init}!atm328p\_spi.c@{atm328p\_spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_init()}{spi\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} spi\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{atm328p__spi_8c_ae909944aa85ae98323073c628be541aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{atm328p__spi_8c_a695a4a16d5ea8390a3c3dc6815fca21b}\label{atm328p__spi_8c_a695a4a16d5ea8390a3c3dc6815fca21b}} 
+\index{atm328p\_spi.c@{atm328p\_spi.c}!spi\_tx\_rx@{spi\_tx\_rx}}
+\index{spi\_tx\_rx@{spi\_tx\_rx}!atm328p\_spi.c@{atm328p\_spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_tx\_rx()}{spi\_tx\_rx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} spi\+\_\+tx\+\_\+rx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{tx\+\_\+data }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{atm328p__spi_8c_a695a4a16d5ea8390a3c3dc6815fca21b_icgraph}
+\end{center}
+\end{figure}

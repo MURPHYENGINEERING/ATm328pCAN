@@ -1,0 +1,200 @@
+\hypertarget{atm328p__spi_8h}{}\doxysection{src/atm328p/atm328p\+\_\+spi.h File Reference}
+\label{atm328p__spi_8h}\index{src/atm328p/atm328p\_spi.h@{src/atm328p/atm328p\_spi.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for atm328p\+\_\+spi.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{atm328p__spi_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__spi_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_s_p_c_r___t}{SPCR\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_s_p_s_r___t}{SPSR\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_abd20388f3885e55b34e034946da5f7ee}{SPE\+\_\+\+DISABLE\+\_\+\+SPI}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a1b18fcc8993a8b3b0acc666483c6baff}{SPE\+\_\+\+ENABLE\+\_\+\+SPI}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_af72392845d2e7c6ca7f2ce63caf0e012}{SPIE\+\_\+\+DISABLE\+\_\+\+SPI\+\_\+\+INTERRUPT}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a60e98dd1063fcf4dc70ba365ea40bd5b}{SPIE\+\_\+\+ENABLE\+\_\+\+SPI\+\_\+\+INTERRUPT}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a07e3a1dce33f9d8b2fbe4330bde0b0c5}{DORD\+\_\+\+MSB\+\_\+\+FIRST}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a4e35e596af351ef089ce0151cc079ba7}{DORD\+\_\+\+LSB\+\_\+\+FIRST}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a2f6c283a1127441cf3206b8d6c9f1561}{MSTR\+\_\+\+MODE\+\_\+\+SLAVE}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a4a444a619e3a7506223f34f7266dbe6b}{MSTR\+\_\+\+MODE\+\_\+\+MASTER}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_af70dbc73dacf69b1ad0edb0ef8f6d5f4}{CPOL\+\_\+\+LEADING\+\_\+\+EDGE\+\_\+\+IS\+\_\+\+RISING}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a765275eda169e8003818073bb4edea9b}{CPHA\+\_\+\+SAMPLE\+\_\+\+ON\+\_\+\+LEADING\+\_\+\+EDGE}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a36a0754647e6d7d37e3c8c5a4242fa69}{CPHA\+\_\+\+SETUP\+\_\+\+ON\+\_\+\+LEADING\+\_\+\+EDGE}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_a1fed3de06e1be8c40c6b6c42d04bf266}{SPCR\+\_\+\+SPR0}}~0
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_ab38ee97e6c589d169c4c909efe6743f8}{SPCR\+\_\+\+SPR1}}~1
+\item 
+\#define \mbox{\hyperlink{atm328p__spi_8h_adfdd59a0f310d547714b80efca455fe5}{SPCR\+\_\+\+PRESCALE\+\_\+\+OVER\+\_\+128}}~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) ( (1u $<$$<$ \mbox{\hyperlink{atm328p__spi_8h_ab38ee97e6c589d169c4c909efe6743f8}{SPCR\+\_\+\+SPR1}}) $\vert$ (1u $<$$<$ \mbox{\hyperlink{atm328p__spi_8h_a1fed3de06e1be8c40c6b6c42d04bf266}{SPCR\+\_\+\+SPR0}}) )
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \mbox{\hyperlink{union_s_p_c_r___t}{SPCR\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_a7921638bfebb01adb82443740526d10a}{SPCR}}
+\item 
+volatile \mbox{\hyperlink{union_s_p_s_r___t}{SPSR\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_af88a5e0a581a8932cc0ab7b400d4247e}{SPSR}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_a94977340f551e1b4a99499e7a3df1f47}{SPDR}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_a34559b12ccae45b135f0cd4ce7177931}{DDR\+\_\+\+SPI}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_a79f0faabe980a6c1d0c575d1f0b1a9fd}{PORT\+\_\+\+SPI}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} \mbox{\hyperlink{atm328p__spi_8h_ad81b22efae76868fac4cfacc0b5088a9}{PIN\+\_\+\+SPI}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{atm328p__spi_8h_a765275eda169e8003818073bb4edea9b}\label{atm328p__spi_8h_a765275eda169e8003818073bb4edea9b}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!CPHA\_SAMPLE\_ON\_LEADING\_EDGE@{CPHA\_SAMPLE\_ON\_LEADING\_EDGE}}
+\index{CPHA\_SAMPLE\_ON\_LEADING\_EDGE@{CPHA\_SAMPLE\_ON\_LEADING\_EDGE}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{CPHA\_SAMPLE\_ON\_LEADING\_EDGE}{CPHA\_SAMPLE\_ON\_LEADING\_EDGE}}
+{\footnotesize\ttfamily \#define CPHA\+\_\+\+SAMPLE\+\_\+\+ON\+\_\+\+LEADING\+\_\+\+EDGE~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a36a0754647e6d7d37e3c8c5a4242fa69}\label{atm328p__spi_8h_a36a0754647e6d7d37e3c8c5a4242fa69}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!CPHA\_SETUP\_ON\_LEADING\_EDGE@{CPHA\_SETUP\_ON\_LEADING\_EDGE}}
+\index{CPHA\_SETUP\_ON\_LEADING\_EDGE@{CPHA\_SETUP\_ON\_LEADING\_EDGE}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{CPHA\_SETUP\_ON\_LEADING\_EDGE}{CPHA\_SETUP\_ON\_LEADING\_EDGE}}
+{\footnotesize\ttfamily \#define CPHA\+\_\+\+SETUP\+\_\+\+ON\+\_\+\+LEADING\+\_\+\+EDGE~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_af70dbc73dacf69b1ad0edb0ef8f6d5f4}\label{atm328p__spi_8h_af70dbc73dacf69b1ad0edb0ef8f6d5f4}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!CPOL\_LEADING\_EDGE\_IS\_RISING@{CPOL\_LEADING\_EDGE\_IS\_RISING}}
+\index{CPOL\_LEADING\_EDGE\_IS\_RISING@{CPOL\_LEADING\_EDGE\_IS\_RISING}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{CPOL\_LEADING\_EDGE\_IS\_RISING}{CPOL\_LEADING\_EDGE\_IS\_RISING}}
+{\footnotesize\ttfamily \#define CPOL\+\_\+\+LEADING\+\_\+\+EDGE\+\_\+\+IS\+\_\+\+RISING~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a4e35e596af351ef089ce0151cc079ba7}\label{atm328p__spi_8h_a4e35e596af351ef089ce0151cc079ba7}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!DORD\_LSB\_FIRST@{DORD\_LSB\_FIRST}}
+\index{DORD\_LSB\_FIRST@{DORD\_LSB\_FIRST}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{DORD\_LSB\_FIRST}{DORD\_LSB\_FIRST}}
+{\footnotesize\ttfamily \#define DORD\+\_\+\+LSB\+\_\+\+FIRST~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a07e3a1dce33f9d8b2fbe4330bde0b0c5}\label{atm328p__spi_8h_a07e3a1dce33f9d8b2fbe4330bde0b0c5}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!DORD\_MSB\_FIRST@{DORD\_MSB\_FIRST}}
+\index{DORD\_MSB\_FIRST@{DORD\_MSB\_FIRST}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{DORD\_MSB\_FIRST}{DORD\_MSB\_FIRST}}
+{\footnotesize\ttfamily \#define DORD\+\_\+\+MSB\+\_\+\+FIRST~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a4a444a619e3a7506223f34f7266dbe6b}\label{atm328p__spi_8h_a4a444a619e3a7506223f34f7266dbe6b}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!MSTR\_MODE\_MASTER@{MSTR\_MODE\_MASTER}}
+\index{MSTR\_MODE\_MASTER@{MSTR\_MODE\_MASTER}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{MSTR\_MODE\_MASTER}{MSTR\_MODE\_MASTER}}
+{\footnotesize\ttfamily \#define MSTR\+\_\+\+MODE\+\_\+\+MASTER~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a2f6c283a1127441cf3206b8d6c9f1561}\label{atm328p__spi_8h_a2f6c283a1127441cf3206b8d6c9f1561}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!MSTR\_MODE\_SLAVE@{MSTR\_MODE\_SLAVE}}
+\index{MSTR\_MODE\_SLAVE@{MSTR\_MODE\_SLAVE}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{MSTR\_MODE\_SLAVE}{MSTR\_MODE\_SLAVE}}
+{\footnotesize\ttfamily \#define MSTR\+\_\+\+MODE\+\_\+\+SLAVE~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_adfdd59a0f310d547714b80efca455fe5}\label{atm328p__spi_8h_adfdd59a0f310d547714b80efca455fe5}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPCR\_PRESCALE\_OVER\_128@{SPCR\_PRESCALE\_OVER\_128}}
+\index{SPCR\_PRESCALE\_OVER\_128@{SPCR\_PRESCALE\_OVER\_128}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPCR\_PRESCALE\_OVER\_128}{SPCR\_PRESCALE\_OVER\_128}}
+{\footnotesize\ttfamily \#define SPCR\+\_\+\+PRESCALE\+\_\+\+OVER\+\_\+128~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) ( (1u $<$$<$ \mbox{\hyperlink{atm328p__spi_8h_ab38ee97e6c589d169c4c909efe6743f8}{SPCR\+\_\+\+SPR1}}) $\vert$ (1u $<$$<$ \mbox{\hyperlink{atm328p__spi_8h_a1fed3de06e1be8c40c6b6c42d04bf266}{SPCR\+\_\+\+SPR0}}) )}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a1fed3de06e1be8c40c6b6c42d04bf266}\label{atm328p__spi_8h_a1fed3de06e1be8c40c6b6c42d04bf266}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPCR\_SPR0@{SPCR\_SPR0}}
+\index{SPCR\_SPR0@{SPCR\_SPR0}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPCR\_SPR0}{SPCR\_SPR0}}
+{\footnotesize\ttfamily \#define SPCR\+\_\+\+SPR0~0}
+
+\mbox{\Hypertarget{atm328p__spi_8h_ab38ee97e6c589d169c4c909efe6743f8}\label{atm328p__spi_8h_ab38ee97e6c589d169c4c909efe6743f8}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPCR\_SPR1@{SPCR\_SPR1}}
+\index{SPCR\_SPR1@{SPCR\_SPR1}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPCR\_SPR1}{SPCR\_SPR1}}
+{\footnotesize\ttfamily \#define SPCR\+\_\+\+SPR1~1}
+
+\mbox{\Hypertarget{atm328p__spi_8h_abd20388f3885e55b34e034946da5f7ee}\label{atm328p__spi_8h_abd20388f3885e55b34e034946da5f7ee}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPE\_DISABLE\_SPI@{SPE\_DISABLE\_SPI}}
+\index{SPE\_DISABLE\_SPI@{SPE\_DISABLE\_SPI}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPE\_DISABLE\_SPI}{SPE\_DISABLE\_SPI}}
+{\footnotesize\ttfamily \#define SPE\+\_\+\+DISABLE\+\_\+\+SPI~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a1b18fcc8993a8b3b0acc666483c6baff}\label{atm328p__spi_8h_a1b18fcc8993a8b3b0acc666483c6baff}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPE\_ENABLE\_SPI@{SPE\_ENABLE\_SPI}}
+\index{SPE\_ENABLE\_SPI@{SPE\_ENABLE\_SPI}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPE\_ENABLE\_SPI}{SPE\_ENABLE\_SPI}}
+{\footnotesize\ttfamily \#define SPE\+\_\+\+ENABLE\+\_\+\+SPI~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_af72392845d2e7c6ca7f2ce63caf0e012}\label{atm328p__spi_8h_af72392845d2e7c6ca7f2ce63caf0e012}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPIE\_DISABLE\_SPI\_INTERRUPT@{SPIE\_DISABLE\_SPI\_INTERRUPT}}
+\index{SPIE\_DISABLE\_SPI\_INTERRUPT@{SPIE\_DISABLE\_SPI\_INTERRUPT}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPIE\_DISABLE\_SPI\_INTERRUPT}{SPIE\_DISABLE\_SPI\_INTERRUPT}}
+{\footnotesize\ttfamily \#define SPIE\+\_\+\+DISABLE\+\_\+\+SPI\+\_\+\+INTERRUPT~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a60e98dd1063fcf4dc70ba365ea40bd5b}\label{atm328p__spi_8h_a60e98dd1063fcf4dc70ba365ea40bd5b}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPIE\_ENABLE\_SPI\_INTERRUPT@{SPIE\_ENABLE\_SPI\_INTERRUPT}}
+\index{SPIE\_ENABLE\_SPI\_INTERRUPT@{SPIE\_ENABLE\_SPI\_INTERRUPT}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPIE\_ENABLE\_SPI\_INTERRUPT}{SPIE\_ENABLE\_SPI\_INTERRUPT}}
+{\footnotesize\ttfamily \#define SPIE\+\_\+\+ENABLE\+\_\+\+SPI\+\_\+\+INTERRUPT~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{atm328p__spi_8h_a34559b12ccae45b135f0cd4ce7177931}\label{atm328p__spi_8h_a34559b12ccae45b135f0cd4ce7177931}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!DDR\_SPI@{DDR\_SPI}}
+\index{DDR\_SPI@{DDR\_SPI}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{DDR\_SPI}{DDR\_SPI}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} DDR\+\_\+\+SPI\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_ad81b22efae76868fac4cfacc0b5088a9}\label{atm328p__spi_8h_ad81b22efae76868fac4cfacc0b5088a9}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!PIN\_SPI@{PIN\_SPI}}
+\index{PIN\_SPI@{PIN\_SPI}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_SPI}{PIN\_SPI}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} PIN\+\_\+\+SPI\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a79f0faabe980a6c1d0c575d1f0b1a9fd}\label{atm328p__spi_8h_a79f0faabe980a6c1d0c575d1f0b1a9fd}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!PORT\_SPI@{PORT\_SPI}}
+\index{PORT\_SPI@{PORT\_SPI}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_SPI}{PORT\_SPI}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\+\_\+\+SPI\+\_\+T}} PORT\+\_\+\+SPI\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a7921638bfebb01adb82443740526d10a}\label{atm328p__spi_8h_a7921638bfebb01adb82443740526d10a}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPCR@{SPCR}}
+\index{SPCR@{SPCR}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPCR}{SPCR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_s_p_c_r___t}{SPCR\+\_\+T}} SPCR\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_a94977340f551e1b4a99499e7a3df1f47}\label{atm328p__spi_8h_a94977340f551e1b4a99499e7a3df1f47}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPDR@{SPDR}}
+\index{SPDR@{SPDR}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPDR}{SPDR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} SPDR\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__spi_8h_af88a5e0a581a8932cc0ab7b400d4247e}\label{atm328p__spi_8h_af88a5e0a581a8932cc0ab7b400d4247e}} 
+\index{atm328p\_spi.h@{atm328p\_spi.h}!SPSR@{SPSR}}
+\index{SPSR@{SPSR}!atm328p\_spi.h@{atm328p\_spi.h}}
+\doxysubsubsection{\texorpdfstring{SPSR}{SPSR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_s_p_s_r___t}{SPSR\+\_\+T}} SPSR\hspace{0.3cm}{\ttfamily [extern]}}
+

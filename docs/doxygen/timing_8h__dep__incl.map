@@ -1,0 +1,11 @@
+<map id="src/include/lmda/timing.h" name="src/include/lmda/timing.h">
+<area shape="rect" id="node1" title="Platform&#45;independent high&#45;resolution timing interface, for measurement and delays." alt="" coords="343,5,565,32"/>
+<area shape="rect" id="node2" href="$main_8c.html" title="Entrypoint to game application (i.e. game plugin host)." alt="" coords="5,177,140,203"/>
+<area shape="rect" id="node3" href="$sdl_8c.html" title="High&#45;level SDL operations, e.g. opening a window." alt="" coords="164,177,331,203"/>
+<area shape="rect" id="node4" href="$plugin_8h.html" title="Declares the interface to the game library; implementing that interface defines a game plugin." alt="" coords="343,87,565,114"/>
+<area shape="rect" id="node8" href="$timing__mac_8c.html" title="High&#45;resolution timing on MacOS." alt="" coords="1007,169,1213,211"/>
+<area shape="rect" id="node9" href="$timing_8c.html" title="Platform&#45;independent timing operations." alt="" coords="641,80,816,121"/>
+<area shape="rect" id="node5" href="$game__plugin_8c.html" title="The game plugin itself; implements the plugin interface to run the game." alt="" coords="355,177,553,203"/>
+<area shape="rect" id="node6" href="$plugin_8c.html" title="Platform&#45;independent plugin loading operations." alt="" coords="577,169,752,211"/>
+<area shape="rect" id="node7" href="$plugin__mac_8c.html" title="Plugin loading on MacOS." alt="" coords="776,169,983,211"/>
+</map>

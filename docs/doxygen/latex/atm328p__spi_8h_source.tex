@@ -1,0 +1,115 @@
+\hypertarget{atm328p__spi_8h_source}{}\doxysection{atm328p\+\_\+spi.\+h}
+\label{atm328p__spi_8h_source}\index{src/atm328p/atm328p\_spi.h@{src/atm328p/atm328p\_spi.h}}
+\mbox{\hyperlink{atm328p__spi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_ATM328P\_SPI\_H\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_ATM328P\_SPI\_H\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/* SPI Control Register */}}
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{9     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{10         \textcolor{comment}{/* SPI Clock Rate Select */}}
+\DoxyCodeLine{11         \textcolor{comment}{/* 0, 0 = fosc/4 }}
+\DoxyCodeLine{12 \textcolor{comment}{         * 0, 1 = fosc/16}}
+\DoxyCodeLine{13 \textcolor{comment}{         * 1, 0 = fosc/64}}
+\DoxyCodeLine{14 \textcolor{comment}{         * 1, 1 = fosc/128 */}}
+\DoxyCodeLine{15         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a71a43042efb68a02244dfe8b8cce7e11}{SPR0}} : 1;}
+\DoxyCodeLine{16         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a0ce4767c7d59a2209e7de39172e06bf6}{SPR1}} : 1;}
+\DoxyCodeLine{17         \textcolor{comment}{/* Clock Phase */}}
+\DoxyCodeLine{18         \textcolor{comment}{/* When written to 1, SETUP is on the leading edge. }}
+\DoxyCodeLine{19 \textcolor{comment}{         * When 0, SAMPLE is on the leading edge. */}}
+\DoxyCodeLine{20         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a1d25bb68d4bbdd1811f1226c08b40f5c}{CPHA}} : 1;}
+\DoxyCodeLine{21         \textcolor{comment}{/* Clock Polarity */}}
+\DoxyCodeLine{22         \textcolor{comment}{/* When written to 1, SCK is HIGH when idle. When 0, SCK is LOW when idle. */}}
+\DoxyCodeLine{23         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a41546f6585f62b74209af08157bcaa55}{CPOL}} : 1;}
+\DoxyCodeLine{24         \textcolor{comment}{/* Master/Slave Select */}}
+\DoxyCodeLine{25         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a69d18648b2cec97a7cedc87caf23bfeb}{MSTR}} : 1;}
+\DoxyCodeLine{26         \textcolor{comment}{/* Data Order */}}
+\DoxyCodeLine{27         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_ac825aa436ac765f80401a425a3afb52f}{DORD}} : 1;}
+\DoxyCodeLine{28         \textcolor{comment}{/* SPI Enable */}}
+\DoxyCodeLine{29         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_a1e655f576f4002aed318f19b6b6cd509}{SPE}} : 1;}
+\DoxyCodeLine{30         \textcolor{comment}{/* SPI Interrupt Enable */}}
+\DoxyCodeLine{31         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_c_r___t_af15ee199aa056da0db9e3ab1e0aa8a43}{SPIE}} : 1;}
+\DoxyCodeLine{32     \} bits;}
+\DoxyCodeLine{33     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_s_p_c_r___t_acc04701df618c71172f3f4736076c79f}{byte}};}
+\DoxyCodeLine{34 \} \mbox{\hyperlink{union_s_p_c_r___t}{SPCR\_T}};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_s_p_c_r___t}{SPCR\_T}} \mbox{\hyperlink{atm328p__spi_8h_a7921638bfebb01adb82443740526d10a}{SPCR}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define SPE\_DISABLE\_SPI FALSE}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define SPE\_ENABLE\_SPI TRUE}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define SPIE\_DISABLE\_SPI\_INTERRUPT FALSE}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define SPIE\_ENABLE\_SPI\_INTERRUPT TRUE}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define DORD\_MSB\_FIRST FALSE}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define DORD\_LSB\_FIRST TRUE}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define MSTR\_MODE\_SLAVE FALSE}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define MSTR\_MODE\_MASTER TRUE}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define CPOL\_LEADING\_EDGE\_IS\_RISING FALSE}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define CPHA\_SAMPLE\_ON\_LEADING\_EDGE FALSE}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define CPHA\_SETUP\_ON\_LEADING\_EDGE TRUE}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define SPCR\_SPR0 0}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define SPCR\_SPR1 1}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define SPCR\_PRESCALE\_OVER\_128 (U8\_T) ( (1u << SPCR\_SPR1) | (1u << SPCR\_SPR0) )}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{/* SPI Status Register */}}
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{57     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{58         \textcolor{comment}{/* Double SPI Speed Bit */}}
+\DoxyCodeLine{59         \textcolor{comment}{/* When set, the clock speed selected by SPR1, SPR0 will be doubled. }}
+\DoxyCodeLine{60 \textcolor{comment}{         * I.e., fosc/2, 8, 32, or 64 */}}
+\DoxyCodeLine{61         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_af9dc222a6efa8e3bbdbfa550109ea49b}{SPI2X}} : 1;}
+\DoxyCodeLine{62         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a2503559fc0718901a871a1173d9fe220}{Unused1}} : 1;}
+\DoxyCodeLine{63         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_ac066eff68d6578138f028b94d2c8426e}{Unused2}} : 1;}
+\DoxyCodeLine{64         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a0fcaa975e5058d18b868b92244c81d98}{Unused3}} : 1;}
+\DoxyCodeLine{65         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_acdcb6b4e79ef822940b4cd3902ac867b}{Unused4}} : 1;}
+\DoxyCodeLine{66         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a4b65674467573f134dbdc555d833e6a2}{Unused5}} : 1;}
+\DoxyCodeLine{67         \textcolor{comment}{/* Write Collision Flag */}}
+\DoxyCodeLine{68         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a7a1cc3c52d119b37de748aacd722ef18}{WCOL}} : 1;}
+\DoxyCodeLine{69         \textcolor{comment}{/* SPI Interrupt Flag */}}
+\DoxyCodeLine{70         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a3f72ba40ab674d9b32c282f4d47f9546}{SPIF}} : 1;}
+\DoxyCodeLine{71     \} bits;}
+\DoxyCodeLine{72     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_s_p_s_r___t_a51b7566b30dbfeade6c329072a33aa08}{byte}};}
+\DoxyCodeLine{73 \} \mbox{\hyperlink{union_s_p_s_r___t}{SPSR\_T}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_s_p_s_r___t}{SPSR\_T}} \mbox{\hyperlink{atm328p__spi_8h_af88a5e0a581a8932cc0ab7b400d4247e}{SPSR}};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{/* SPI Data Register */}}
+\DoxyCodeLine{79 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\_T}} \mbox{\hyperlink{atm328p__spi_8h_a94977340f551e1b4a99499e7a3df1f47}{SPDR}};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{/* PORTB */}}
+\DoxyCodeLine{83 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{84     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{85         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_ab96dabd287838e418e555bfe5d905dfd}{Unused0}} : 1;}
+\DoxyCodeLine{86         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a326a47add22b712f7c3b7a12960da43f}{Unused1}} : 1;}
+\DoxyCodeLine{87         \textcolor{comment}{/* SPI bus master slave select */}}
+\DoxyCodeLine{88         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a9244e0b3caf504935c3bbe91ac67bb62}{SS}} : 1;}
+\DoxyCodeLine{89         \textcolor{comment}{/* SPI bus Master Out Slave In */}}
+\DoxyCodeLine{90         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a30d79dd7fdff27681c994dac42de80a6}{MOSI}} : 1;}
+\DoxyCodeLine{91         \textcolor{comment}{/* SPI bus Master In Slave Out */}}
+\DoxyCodeLine{92         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a0476b30e526b544e81323a3407094272}{MISO}} : 1;}
+\DoxyCodeLine{93         \textcolor{comment}{/* SPI bus master clock */}}
+\DoxyCodeLine{94         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a4657a83ef5a8a8380285643546c382f6}{SCK}} : 1;}
+\DoxyCodeLine{95         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a4201b1dc0ae7fed46fa428a425af65cb}{Unused6}} : 1;}
+\DoxyCodeLine{96         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_af18b3b2925fabc137cfe335269b1a858}{Unused7}} : 1;}
+\DoxyCodeLine{97     \} bits;}
+\DoxyCodeLine{98     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t_a54952eac0f882f0589360f64348b18e4}{byte}};}
+\DoxyCodeLine{99 \} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\_SPI\_T}};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{/* DDRB */}}
+\DoxyCodeLine{102 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\_SPI\_T}} \mbox{\hyperlink{atm328p__spi_8h_a34559b12ccae45b135f0cd4ce7177931}{DDR\_SPI}};}
+\DoxyCodeLine{103 \textcolor{comment}{/* PORTB */}}
+\DoxyCodeLine{104 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\_SPI\_T}} \mbox{\hyperlink{atm328p__spi_8h_a79f0faabe980a6c1d0c575d1f0b1a9fd}{PORT\_SPI}};}
+\DoxyCodeLine{105 \textcolor{comment}{/* PINB */}}
+\DoxyCodeLine{106 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___s_p_i___t}{REGISTER\_SPI\_T}} \mbox{\hyperlink{atm328p__spi_8h_ad81b22efae76868fac4cfacc0b5088a9}{PIN\_SPI}};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

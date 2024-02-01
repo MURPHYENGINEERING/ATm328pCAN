@@ -1,0 +1,129 @@
+\hypertarget{eeprom_8h}{}\doxysection{src/eeprom.h File Reference}
+\label{eeprom_8h}\index{src/eeprom.h@{src/eeprom.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for eeprom.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{eeprom_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eeprom_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{eeprom_8h_a2014a68c0d0c120098d270eb4c65473c}{eeprom\+\_\+write\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} data)
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{eeprom_8h_a50c100c2b8e37f091697ab4a9419fab0}{eeprom\+\_\+read\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{eeprom_8h_a7e027b0b673727aeeefe77b1a474e2bc}{eeprom\+\_\+erase\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{eeprom_8h_a87d7be3e41af08f72b091a30fcb38b65}{eeprom\+\_\+write}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} base\+\_\+address, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{eeprom_8h_a2c2eba6c32a4edc1ace45551d3fb5766}{eeprom\+\_\+read}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} base\+\_\+address, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{eeprom_8h_aa6b3892d9672074cfd105e6596e617c0}{eeprom\+\_\+erase}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} base\+\_\+address, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{eeprom_8h_aa6b3892d9672074cfd105e6596e617c0}\label{eeprom_8h_aa6b3892d9672074cfd105e6596e617c0}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_erase@{eeprom\_erase}}
+\index{eeprom\_erase@{eeprom\_erase}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_erase()}{eeprom\_erase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{base\+\_\+address,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{eeprom_8h_aa6b3892d9672074cfd105e6596e617c0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{eeprom_8h_aa6b3892d9672074cfd105e6596e617c0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{eeprom_8h_a7e027b0b673727aeeefe77b1a474e2bc}\label{eeprom_8h_a7e027b0b673727aeeefe77b1a474e2bc}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_erase\_byte@{eeprom\_erase\_byte}}
+\index{eeprom\_erase\_byte@{eeprom\_erase\_byte}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_erase\_byte()}{eeprom\_erase\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+erase\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eeprom_8h_a7e027b0b673727aeeefe77b1a474e2bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{eeprom_8h_a2c2eba6c32a4edc1ace45551d3fb5766}\label{eeprom_8h_a2c2eba6c32a4edc1ace45551d3fb5766}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_read@{eeprom\_read}}
+\index{eeprom\_read@{eeprom\_read}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_read()}{eeprom\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{base\+\_\+address,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{eeprom_8h_a2c2eba6c32a4edc1ace45551d3fb5766_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{eeprom_8h_a50c100c2b8e37f091697ab4a9419fab0}\label{eeprom_8h_a50c100c2b8e37f091697ab4a9419fab0}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_read\_byte@{eeprom\_read\_byte}}
+\index{eeprom\_read\_byte@{eeprom\_read\_byte}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_read\_byte()}{eeprom\_read\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} eeprom\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{eeprom_8h_a50c100c2b8e37f091697ab4a9419fab0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{eeprom_8h_a87d7be3e41af08f72b091a30fcb38b65}\label{eeprom_8h_a87d7be3e41af08f72b091a30fcb38b65}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_write@{eeprom\_write}}
+\index{eeprom\_write@{eeprom\_write}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_write()}{eeprom\_write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{base\+\_\+address,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{eeprom_8h_a87d7be3e41af08f72b091a30fcb38b65_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{eeprom_8h_a2014a68c0d0c120098d270eb4c65473c}\label{eeprom_8h_a2014a68c0d0c120098d270eb4c65473c}} 
+\index{eeprom.h@{eeprom.h}!eeprom\_write\_byte@{eeprom\_write\_byte}}
+\index{eeprom\_write\_byte@{eeprom\_write\_byte}!eeprom.h@{eeprom.h}}
+\doxysubsubsection{\texorpdfstring{eeprom\_write\_byte()}{eeprom\_write\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{data }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{eeprom_8h_a2014a68c0d0c120098d270eb4c65473c_icgraph}
+\end{center}
+\end{figure}

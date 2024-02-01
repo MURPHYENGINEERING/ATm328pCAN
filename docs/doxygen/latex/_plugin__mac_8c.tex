@@ -1,0 +1,65 @@
+\hypertarget{_plugin__mac_8c}{}\doxysection{src/platform/mac/\+Plugin\+\_\+mac.c File Reference}
+\label{_plugin__mac_8c}\index{src/platform/mac/Plugin\_mac.c@{src/platform/mac/Plugin\_mac.c}}
+{\ttfamily \#include $<$lmda/stddef.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/app/\+Plugin.\+h$>$}\newline
+Include dependency graph for Plugin\+\_\+mac.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{_plugin__mac_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+FILE $\ast$ \mbox{\hyperlink{_plugin__mac_8c_a36b19d6afeb027970f119160aa0eb9ae}{lm\+\_\+plugin\+\_\+lib\+\_\+get\+\_\+cache}} (char $\ast$cache\+Path)
+\begin{DoxyCompactList}\small\item\em Get a path suitable for temporarily caching the plugin library file, open the file for writing, and return an open file descriptor. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{_plugin__mac_8c_a6216ed29f28e0a867448c0c574ebe669}{lm\+\_\+plugin\+\_\+lib\+\_\+load}} (char const $\ast$path)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+ensure\+\_\+loaded} \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{_plugin__mac_8c_aa3890010b9e1e64328c4f095d4d5d14f}{lm\+\_\+plugin\+\_\+lib\+\_\+bind}} (void $\ast$lib, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+bind} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin__mac_8c_a616a650e8ac80103fe3be5b32f50285b}{lm\+\_\+plugin\+\_\+lib\+\_\+unload}} (void $\ast$lib)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+unload} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_plugin__mac_8c_aa3890010b9e1e64328c4f095d4d5d14f}\label{_plugin__mac_8c_aa3890010b9e1e64328c4f095d4d5d14f}} 
+\index{Plugin\_mac.c@{Plugin\_mac.c}!lm\_plugin\_lib\_bind@{lm\_plugin\_lib\_bind}}
+\index{lm\_plugin\_lib\_bind@{lm\_plugin\_lib\_bind}!Plugin\_mac.c@{Plugin\_mac.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_bind()}{lm\_plugin\_lib\_bind()}}
+{\footnotesize\ttfamily void $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+bind (\begin{DoxyParamCaption}\item[{void $\ast$}]{lib,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+bind} 
+
+\mbox{\Hypertarget{_plugin__mac_8c_a36b19d6afeb027970f119160aa0eb9ae}\label{_plugin__mac_8c_a36b19d6afeb027970f119160aa0eb9ae}} 
+\index{Plugin\_mac.c@{Plugin\_mac.c}!lm\_plugin\_lib\_get\_cache@{lm\_plugin\_lib\_get\_cache}}
+\index{lm\_plugin\_lib\_get\_cache@{lm\_plugin\_lib\_get\_cache}!Plugin\_mac.c@{Plugin\_mac.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_get\_cache()}{lm\_plugin\_lib\_get\_cache()}}
+{\footnotesize\ttfamily FILE $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+get\+\_\+cache (\begin{DoxyParamCaption}\item[{char $\ast$}]{cache\+Path }\end{DoxyParamCaption})}
+
+
+
+Get a path suitable for temporarily caching the plugin library file, open the file for writing, and return an open file descriptor. 
+
+\mbox{\Hypertarget{_plugin__mac_8c_a6216ed29f28e0a867448c0c574ebe669}\label{_plugin__mac_8c_a6216ed29f28e0a867448c0c574ebe669}} 
+\index{Plugin\_mac.c@{Plugin\_mac.c}!lm\_plugin\_lib\_load@{lm\_plugin\_lib\_load}}
+\index{lm\_plugin\_lib\_load@{lm\_plugin\_lib\_load}!Plugin\_mac.c@{Plugin\_mac.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_load()}{lm\_plugin\_lib\_load()}}
+{\footnotesize\ttfamily void $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+load (\begin{DoxyParamCaption}\item[{char const $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+ensure\+\_\+loaded} 
+
+\mbox{\Hypertarget{_plugin__mac_8c_a616a650e8ac80103fe3be5b32f50285b}\label{_plugin__mac_8c_a616a650e8ac80103fe3be5b32f50285b}} 
+\index{Plugin\_mac.c@{Plugin\_mac.c}!lm\_plugin\_lib\_unload@{lm\_plugin\_lib\_unload}}
+\index{lm\_plugin\_lib\_unload@{lm\_plugin\_lib\_unload}!Plugin\_mac.c@{Plugin\_mac.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_unload()}{lm\_plugin\_lib\_unload()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+lib\+\_\+unload (\begin{DoxyParamCaption}\item[{void $\ast$}]{lib }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+unload} 
+

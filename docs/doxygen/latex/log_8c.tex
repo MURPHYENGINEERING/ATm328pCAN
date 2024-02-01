@@ -1,0 +1,94 @@
+\hypertarget{log_8c}{}\doxysection{src/game/log.c File Reference}
+\label{log_8c}\index{src/game/log.c@{src/game/log.c}}
+
+
+Write log messages to the console and to a file.  
+
+
+{\ttfamily \#include $<$lmda/log.\+h$>$}\newline
+Include dependency graph for log.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{log_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{log_8c_a16309b47eea60fb8f69ef568e22ab89f}{lm\+\_\+log\+\_\+init}} (\mbox{\hyperlink{struct_log_state}{Log\+State}} $\ast$log)
+\item 
+char const $\ast$ \mbox{\hyperlink{log_8c_abbc9c03c87a423057656353fc0ff2253}{log\+\_\+level\+\_\+string}} (int level)
+\item 
+void \mbox{\hyperlink{log_8c_af2493e94f152a28b2ba4e3a2e2bba65d}{log\+\_\+set\+\_\+level}} (int level)
+\item 
+void \mbox{\hyperlink{log_8c_a6de5d12252f1b48279d28769b7c130eb}{log\+\_\+set\+\_\+quiet}} (bool enable)
+\item 
+void \mbox{\hyperlink{log_8c_ab7066b4c1396e08e51e0b989afda098f}{log\+\_\+log}} (int level, char const $\ast$file, int line, char const $\ast$fmt,...)
+\item 
+FILE $\ast$ \mbox{\hyperlink{log_8c_a1b639b03a15ed21adbcd111fe9d85db3}{lm\+\_\+log\+\_\+create\+\_\+file}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_log_state}{Log\+State}} $\ast$ \mbox{\hyperlink{log_8c_a57df2f5e9b5a70bc21d0dcf92bc5e884}{L}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Write log messages to the console and to a file. 
+
+\begin{DoxyAuthor}{Author}
+rxi, modified by Matt Murphy (\href{mailto:matt@murphysys.com}{\texttt{ matt@murphysys.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/06 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{log_8c_a1b639b03a15ed21adbcd111fe9d85db3}\label{log_8c_a1b639b03a15ed21adbcd111fe9d85db3}} 
+\index{log.c@{log.c}!lm\_log\_create\_file@{lm\_log\_create\_file}}
+\index{lm\_log\_create\_file@{lm\_log\_create\_file}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{lm\_log\_create\_file()}{lm\_log\_create\_file()}}
+{\footnotesize\ttfamily FILE $\ast$ lm\+\_\+log\+\_\+create\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{log_8c_a16309b47eea60fb8f69ef568e22ab89f}\label{log_8c_a16309b47eea60fb8f69ef568e22ab89f}} 
+\index{log.c@{log.c}!lm\_log\_init@{lm\_log\_init}}
+\index{lm\_log\_init@{lm\_log\_init}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{lm\_log\_init()}{lm\_log\_init()}}
+{\footnotesize\ttfamily void lm\+\_\+log\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_log_state}{Log\+State}} $\ast$}]{log }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{log_8c_abbc9c03c87a423057656353fc0ff2253}\label{log_8c_abbc9c03c87a423057656353fc0ff2253}} 
+\index{log.c@{log.c}!log\_level\_string@{log\_level\_string}}
+\index{log\_level\_string@{log\_level\_string}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{log\_level\_string()}{log\_level\_string()}}
+{\footnotesize\ttfamily char const  $\ast$ log\+\_\+level\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{log_8c_ab7066b4c1396e08e51e0b989afda098f}\label{log_8c_ab7066b4c1396e08e51e0b989afda098f}} 
+\index{log.c@{log.c}!log\_log@{log\_log}}
+\index{log\_log@{log\_log}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{log\_log()}{log\_log()}}
+{\footnotesize\ttfamily void log\+\_\+log (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{char const $\ast$}]{file,  }\item[{int}]{line,  }\item[{char const $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{log_8c_af2493e94f152a28b2ba4e3a2e2bba65d}\label{log_8c_af2493e94f152a28b2ba4e3a2e2bba65d}} 
+\index{log.c@{log.c}!log\_set\_level@{log\_set\_level}}
+\index{log\_set\_level@{log\_set\_level}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{log\_set\_level()}{log\_set\_level()}}
+{\footnotesize\ttfamily void log\+\_\+set\+\_\+level (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{log_8c_a6de5d12252f1b48279d28769b7c130eb}\label{log_8c_a6de5d12252f1b48279d28769b7c130eb}} 
+\index{log.c@{log.c}!log\_set\_quiet@{log\_set\_quiet}}
+\index{log\_set\_quiet@{log\_set\_quiet}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{log\_set\_quiet()}{log\_set\_quiet()}}
+{\footnotesize\ttfamily void log\+\_\+set\+\_\+quiet (\begin{DoxyParamCaption}\item[{bool}]{enable }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{log_8c_a57df2f5e9b5a70bc21d0dcf92bc5e884}\label{log_8c_a57df2f5e9b5a70bc21d0dcf92bc5e884}} 
+\index{log.c@{log.c}!L@{L}}
+\index{L@{L}!log.c@{log.c}}
+\doxysubsubsection{\texorpdfstring{L}{L}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_log_state}{Log\+State}}$\ast$ L}
+

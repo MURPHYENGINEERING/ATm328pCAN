@@ -1,0 +1,4 @@
+<map id="src/game/input/keyboard.c" name="src/game/input/keyboard.c">
+<area shape="rect" id="node1" title="Implementation of mappings between SDL and LMDA keyboard data." alt="" coords="5,5,228,32"/>
+<area shape="rect" id="node2" href="$keyboard_8h.html" title="Defines symbols for SDL keyboard key identifiers." alt="" coords="21,80,212,107"/>
+</map>

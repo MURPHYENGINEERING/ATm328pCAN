@@ -1,0 +1,66 @@
+\hypertarget{atm328p__dsc_8h_source}{}\doxysection{atm328p\+\_\+dsc.\+h}
+\label{atm328p__dsc_8h_source}\index{src/atm328p/atm328p\_dsc.h@{src/atm328p/atm328p\_dsc.h}}
+\mbox{\hyperlink{atm328p__dsc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_ATM328P\_DSC\_H\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_ATM328P\_DSC\_H\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DDR\_OUTPUT TRUE}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define DDR\_INPUT FALSE}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PORT\_PULLUP TRUE}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{/* Port B Data Direction Register */}}
+\DoxyCodeLine{12 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\_T}} \mbox{\hyperlink{atm328p__dsc_8h_a1a375bdec1a738050dcc2fa92cb1f4e7}{DDRB}};}
+\DoxyCodeLine{13 \textcolor{comment}{/* Port B Data Register */}}
+\DoxyCodeLine{14 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\_T}} \mbox{\hyperlink{atm328p__dsc_8h_ae33f6570ca59b0c8675201f671552565}{PORTB}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{/* Port D Data Direction Register */}}
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\_T}} \mbox{\hyperlink{atm328p__dsc_8h_ae1ea22d52a3a72c85da8887e2019355e}{DDRD}};}
+\DoxyCodeLine{18 \textcolor{comment}{/* Port D Data Register */}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\_T}} \mbox{\hyperlink{atm328p__dsc_8h_a9698cb05aed8748af8afdfdda4d9c5ba}{PORTD}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{23     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{24         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_af1709df1be140c6466d1778cd069c3c1}{Unused0}} : 1;}
+\DoxyCodeLine{25         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_a6fc91e438d707aec483b6cc139ec158e}{Unused1}} : 1;}
+\DoxyCodeLine{26         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_ab81f376c34701a2d783d8186eafea0dd}{Unused2}} : 1;}
+\DoxyCodeLine{27         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_a6a918e895c411e2a827bbfb466c16237}{Unused3}} : 1;}
+\DoxyCodeLine{28         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_a6df2be3d0c1907894751c647cc569db3}{Unused4}} : 1;}
+\DoxyCodeLine{29         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_abb47a04eebfe41e7160f6e575885aa1b}{LED}} : 1;}
+\DoxyCodeLine{30         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_a0c80a7d0da6d2f1bb689758337fc36ba}{Unused6}} : 1;}
+\DoxyCodeLine{31         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_a20697659ff6b2088253124802c661a92}{Unused7}} : 1;}
+\DoxyCodeLine{32     \} bits;}
+\DoxyCodeLine{33     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t_ad845e76d730389d6b102d0bb6190906c}{byte}};}
+\DoxyCodeLine{34 \} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t}{BUILTIN\_T}};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t}{BUILTIN\_T}} \mbox{\hyperlink{atm328p__dsc_8h_a2acb5b17681f415e4a39a8a144df4160}{DDR\_BUILTIN}};}
+\DoxyCodeLine{37 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_b_u_i_l_t_i_n___t}{BUILTIN\_T}} \mbox{\hyperlink{atm328p__dsc_8h_af9e57b3fbf4f27d6fdd43f5bcbed8be6}{PORT\_BUILTIN}};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{41     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{42         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_afc135e5f9b4526c3a04ebf867ae6ab4b}{Unused0}} : 1;}
+\DoxyCodeLine{43         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_a910036d809f61e38e301ba8b82c91f39}{Unused1}} : 1;}
+\DoxyCodeLine{44         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_a0a6499302570684c805269eb61e5c5e6}{Unused2}} : 1;}
+\DoxyCodeLine{45         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_ac9df921ac3ae5d3d159aa4e8ee16dc22}{Unused3}} : 1;}
+\DoxyCodeLine{46         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_aa60f86c3a645976dadf68a76d828af45}{Unused4}} : 1;}
+\DoxyCodeLine{47         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_ad578089db70ec81486a7f032d70cc050}{Unused5}} : 1;}
+\DoxyCodeLine{48         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_a031c69473716ea61492c3c60eb85f593}{LED1}} : 1;}
+\DoxyCodeLine{49         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_a3996332f73ddb8cf6e63756c48e2c8e5}{LED2}} : 1;}
+\DoxyCodeLine{50     \} bits;}
+\DoxyCodeLine{51     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t_a9366129e03bdc479fd55a2fe560dd509}{byte}};}
+\DoxyCodeLine{52 \} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t}{CANBOARD\_T}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t}{CANBOARD\_T}} \mbox{\hyperlink{atm328p__dsc_8h_a692610fb348a79e58c3765fb10b922e5}{DDR\_CANBOARD}};}
+\DoxyCodeLine{55 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_c_a_n_b_o_a_r_d___t}{CANBOARD\_T}} \mbox{\hyperlink{atm328p__dsc_8h_a038d062793991e5798d8b39a0adb9840}{PORT\_CANBOARD}};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

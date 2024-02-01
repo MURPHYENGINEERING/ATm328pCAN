@@ -1,0 +1,95 @@
+\hypertarget{struct_action_binding}{}\doxysection{Action\+Binding Struct Reference}
+\label{struct_action_binding}\index{ActionBinding@{ActionBinding}}
+
+
+Closes over the callback for an input binding to a particular type of input device, as well as information about the state change that triggered this binding.  
+
+
+
+
+{\ttfamily \#include $<$input.\+h$>$}
+
+
+
+Collaboration diagram for Action\+Binding\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_action_binding__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_input_action}{Input\+Action}} $\ast$ \mbox{\hyperlink{struct_action_binding_afa9f18392168c37b155a04d32a482bb0}{action}}
+\begin{DoxyCompactList}\small\item\em Action representing a callback to an input event handler. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}} \mbox{\hyperlink{struct_action_binding_a42f1b53fabfc9034fc68357d70aef81e}{transition}}
+\begin{DoxyCompactList}\small\item\em Identifies the direction of the state change. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{Input\+Device\+Type}} \mbox{\hyperlink{struct_action_binding_afe300b03299ab2d2ba598c1f8194f04a}{type}}
+\begin{DoxyCompactList}\small\item\em Identifies the input device. \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{struct_keybind}{Keybind}} \mbox{\hyperlink{struct_action_binding_ab884f94970185313d5e43e5d00bacffe}{keybind}}\\
+\>\mbox{\hyperlink{struct_mousebind}{Mousebind}} \mbox{\hyperlink{struct_action_binding_ae05284e9e85948ca06d0c3eb2abc8090}{mousebind}}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Closes over the callback for an input binding to a particular type of input device, as well as information about the state change that triggered this binding. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_action_binding_a312f661ad95a59c46bcb3721e56f9b13}\label{struct_action_binding_a312f661ad95a59c46bcb3721e56f9b13}} 
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  Action\+Binding\+::@1}
+
+\mbox{\Hypertarget{struct_action_binding_afa9f18392168c37b155a04d32a482bb0}\label{struct_action_binding_afa9f18392168c37b155a04d32a482bb0}} 
+\index{ActionBinding@{ActionBinding}!action@{action}}
+\index{action@{action}!ActionBinding@{ActionBinding}}
+\doxysubsubsection{\texorpdfstring{action}{action}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_input_action}{Input\+Action}}$\ast$ Action\+Binding\+::action}
+
+
+
+Action representing a callback to an input event handler. 
+
+\mbox{\Hypertarget{struct_action_binding_ab884f94970185313d5e43e5d00bacffe}\label{struct_action_binding_ab884f94970185313d5e43e5d00bacffe}} 
+\index{ActionBinding@{ActionBinding}!keybind@{keybind}}
+\index{keybind@{keybind}!ActionBinding@{ActionBinding}}
+\doxysubsubsection{\texorpdfstring{keybind}{keybind}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_keybind}{Keybind}} Action\+Binding\+::keybind}
+
+\mbox{\Hypertarget{struct_action_binding_ae05284e9e85948ca06d0c3eb2abc8090}\label{struct_action_binding_ae05284e9e85948ca06d0c3eb2abc8090}} 
+\index{ActionBinding@{ActionBinding}!mousebind@{mousebind}}
+\index{mousebind@{mousebind}!ActionBinding@{ActionBinding}}
+\doxysubsubsection{\texorpdfstring{mousebind}{mousebind}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_mousebind}{Mousebind}} Action\+Binding\+::mousebind}
+
+\mbox{\Hypertarget{struct_action_binding_a42f1b53fabfc9034fc68357d70aef81e}\label{struct_action_binding_a42f1b53fabfc9034fc68357d70aef81e}} 
+\index{ActionBinding@{ActionBinding}!transition@{transition}}
+\index{transition@{transition}!ActionBinding@{ActionBinding}}
+\doxysubsubsection{\texorpdfstring{transition}{transition}}
+{\footnotesize\ttfamily \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}} Action\+Binding\+::transition}
+
+
+
+Identifies the direction of the state change. 
+
+Iactive to active is a {\itshape rising} transition and active to inactive is a {\itshape falling} transition. \mbox{\Hypertarget{struct_action_binding_afe300b03299ab2d2ba598c1f8194f04a}\label{struct_action_binding_afe300b03299ab2d2ba598c1f8194f04a}} 
+\index{ActionBinding@{ActionBinding}!type@{type}}
+\index{type@{type}!ActionBinding@{ActionBinding}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{Input\+Device\+Type}} Action\+Binding\+::type}
+
+
+
+Identifies the input device. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/lmda/\mbox{\hyperlink{input_8h}{input.\+h}}\end{DoxyCompactItemize}

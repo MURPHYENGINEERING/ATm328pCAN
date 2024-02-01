@@ -1,0 +1,4 @@
+<map id="src/include/lmda/platform.h" name="src/include/lmda/platform.h">
+<area shape="rect" id="node1" title="Declares generic platform initialization to allow platforms to do specialized setup (e...." alt="" coords="5,5,244,32"/>
+<area shape="rect" id="node2" href="$version_8h.html" title="Defines the build version; the build system labels output based on this." alt="" coords="57,80,192,107"/>
+</map>

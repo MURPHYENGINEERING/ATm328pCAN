@@ -1,0 +1,106 @@
+\hypertarget{_plugin_8c}{}\doxysection{src/common/app/\+Plugin.c File Reference}
+\label{_plugin_8c}\index{src/common/app/Plugin.c@{src/common/app/Plugin.c}}
+{\ttfamily \#include $<$lmda/stddef.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/app/\+Plugin.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/app/\+App\+Context.\+h$>$}\newline
+Include dependency graph for Plugin.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{_plugin_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_plugin_8c_a0b9cabe945a75de730e279b1647afd3d}{hot\+Reload\+Banner}} ()
+\item 
+void \mbox{\hyperlink{_plugin_8c_a7deddff085105a70bf075543fe15424d}{lmda\+\_\+plugin\+\_\+common\+\_\+init}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\begin{DoxyCompactList}\small\item\em Plugins must call this before anything else in their init function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin_8c_aee856d61dc4bec0f7bdaae15efac8b16}{lmda\+\_\+plugin\+\_\+common\+\_\+resume}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\begin{DoxyCompactList}\small\item\em Plugins must call this before anything else in their resume function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin_8c_a9afa985b2b152faa86b9d9632fc068bf}{lm\+\_\+plugin\+\_\+init}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin, \mbox{\hyperlink{struct_app_context}{App\+Context}} $\ast$ctx, char const $\ast$name, char const $\ast$path)
+\begin{DoxyCompactList}\small\item\em Zero-\/initialize the given plugin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8c_a38924f76ed4b53b466aa2380da06d938}{lm\+\_\+plugin\+\_\+bind}} (void $\ast$$\ast$fn, \mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em Attempt to bind the given function to one in the given plugin that goes by by the given name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8c_a82a5d7bf25db3ec5a75cf1aaaf8e0219}{lm\+\_\+plugin\+\_\+cache\+\_\+lib}} (char const $\ast$src\+Path, FILE $\ast$dst)
+\item 
+bool \mbox{\hyperlink{_plugin_8c_ab7d3ac9343e5acbe2295701eeafa9c93}{lm\+\_\+plugin\+\_\+ensure\+\_\+loaded}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\begin{DoxyCompactList}\small\item\em Attempt to load a plugin by the given name from the library at the given path. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8c_a5920818e59eaa10bac29bc8c3d380f3a}{lm\+\_\+plugin\+\_\+unload}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\begin{DoxyCompactList}\small\item\em Attempt to unload the given plugin\textquotesingle{}s code libary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_plugin_8c_a0b9cabe945a75de730e279b1647afd3d}\label{_plugin_8c_a0b9cabe945a75de730e279b1647afd3d}} 
+\index{Plugin.c@{Plugin.c}!hotReloadBanner@{hotReloadBanner}}
+\index{hotReloadBanner@{hotReloadBanner}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{hotReloadBanner()}{hotReloadBanner()}}
+{\footnotesize\ttfamily void hot\+Reload\+Banner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8c_a38924f76ed4b53b466aa2380da06d938}\label{_plugin_8c_a38924f76ed4b53b466aa2380da06d938}} 
+\index{Plugin.c@{Plugin.c}!lm\_plugin\_bind@{lm\_plugin\_bind}}
+\index{lm\_plugin\_bind@{lm\_plugin\_bind}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_bind()}{lm\_plugin\_bind()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+bind (\begin{DoxyParamCaption}\item[{void $\ast$$\ast$}]{fn,  }\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Attempt to bind the given function to one in the given plugin that goes by by the given name. 
+
+If the result is {\ttfamily true}, then calling the given function will execute the bound function in the plugin library. \mbox{\Hypertarget{_plugin_8c_a82a5d7bf25db3ec5a75cf1aaaf8e0219}\label{_plugin_8c_a82a5d7bf25db3ec5a75cf1aaaf8e0219}} 
+\index{Plugin.c@{Plugin.c}!lm\_plugin\_cache\_lib@{lm\_plugin\_cache\_lib}}
+\index{lm\_plugin\_cache\_lib@{lm\_plugin\_cache\_lib}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_cache\_lib()}{lm\_plugin\_cache\_lib()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+cache\+\_\+lib (\begin{DoxyParamCaption}\item[{char const $\ast$}]{src\+Path,  }\item[{FILE $\ast$}]{dst }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8c_ab7d3ac9343e5acbe2295701eeafa9c93}\label{_plugin_8c_ab7d3ac9343e5acbe2295701eeafa9c93}} 
+\index{Plugin.c@{Plugin.c}!lm\_plugin\_ensure\_loaded@{lm\_plugin\_ensure\_loaded}}
+\index{lm\_plugin\_ensure\_loaded@{lm\_plugin\_ensure\_loaded}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_ensure\_loaded()}{lm\_plugin\_ensure\_loaded()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+ensure\+\_\+loaded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Attempt to load a plugin by the given name from the library at the given path. 
+
+If the plugin is loaded successfully then its {\ttfamily initialized} flag will be set. \mbox{\Hypertarget{_plugin_8c_a9afa985b2b152faa86b9d9632fc068bf}\label{_plugin_8c_a9afa985b2b152faa86b9d9632fc068bf}} 
+\index{Plugin.c@{Plugin.c}!lm\_plugin\_init@{lm\_plugin\_init}}
+\index{lm\_plugin\_init@{lm\_plugin\_init}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_init()}{lm\_plugin\_init()}}
+{\footnotesize\ttfamily void lm\+\_\+plugin\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin,  }\item[{\mbox{\hyperlink{struct_app_context}{App\+Context}} $\ast$}]{ctx,  }\item[{char const $\ast$}]{name,  }\item[{char const $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Zero-\/initialize the given plugin. 
+
+\mbox{\Hypertarget{_plugin_8c_a5920818e59eaa10bac29bc8c3d380f3a}\label{_plugin_8c_a5920818e59eaa10bac29bc8c3d380f3a}} 
+\index{Plugin.c@{Plugin.c}!lm\_plugin\_unload@{lm\_plugin\_unload}}
+\index{lm\_plugin\_unload@{lm\_plugin\_unload}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_unload()}{lm\_plugin\_unload()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+unload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Attempt to unload the given plugin\textquotesingle{}s code libary. 
+
+The plugin is considered unloaded regardless of whether its memory is successfully freed. The plugin state is not affected. \mbox{\Hypertarget{_plugin_8c_a7deddff085105a70bf075543fe15424d}\label{_plugin_8c_a7deddff085105a70bf075543fe15424d}} 
+\index{Plugin.c@{Plugin.c}!lmda\_plugin\_common\_init@{lmda\_plugin\_common\_init}}
+\index{lmda\_plugin\_common\_init@{lmda\_plugin\_common\_init}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_common\_init()}{lmda\_plugin\_common\_init()}}
+{\footnotesize\ttfamily void lmda\+\_\+plugin\+\_\+common\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Plugins must call this before anything else in their init function. 
+
+\mbox{\Hypertarget{_plugin_8c_aee856d61dc4bec0f7bdaae15efac8b16}\label{_plugin_8c_aee856d61dc4bec0f7bdaae15efac8b16}} 
+\index{Plugin.c@{Plugin.c}!lmda\_plugin\_common\_resume@{lmda\_plugin\_common\_resume}}
+\index{lmda\_plugin\_common\_resume@{lmda\_plugin\_common\_resume}!Plugin.c@{Plugin.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_common\_resume()}{lmda\_plugin\_common\_resume()}}
+{\footnotesize\ttfamily void lmda\+\_\+plugin\+\_\+common\+\_\+resume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Plugins must call this before anything else in their resume function. 
+

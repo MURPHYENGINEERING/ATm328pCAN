@@ -1,0 +1,85 @@
+\hypertarget{input_8c}{}\doxysection{src/game/input.c File Reference}
+\label{input_8c}\index{src/game/input.c@{src/game/input.c}}
+
+
+High-\/level operations for managing input state and bindings.  
+
+
+{\ttfamily \#include $<$lmda/input.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/log.\+h$>$}\newline
+Include dependency graph for input.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{input_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{input_8c_a16b39ef5c06ccba57deba1956b4566c1}{lm\+\_\+input\+\_\+state\+\_\+init}} (\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$input)
+\begin{DoxyCompactList}\small\item\em Initialize the input state to all inactive controls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{input_8c_a2d8d69b0f6fd2e64cd8d8318af2ffcb9}{unbind\+\_\+action\+\_\+from}} (\mbox{\hyperlink{struct_action_binding}{Action\+Binding}} $\ast$bindings, size\+\_\+t $\ast$n\+Bindings, char const $\ast$name)
+\item 
+void \mbox{\hyperlink{input_8c_ab50cd0f77c16f9d1f8354ab1e9ead5f6}{lm\+\_\+input\+\_\+unbind}} (\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$input, char const $\ast$action\+Name)
+\item 
+void \mbox{\hyperlink{input_8c_a78e66513f85823b5db10acf38d5efe7b}{lm\+\_\+input\+\_\+bind\+\_\+key}} (\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$input, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}} key, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}} mod, \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}} transition, \mbox{\hyperlink{struct_input_action}{Input\+Action}} $\ast$action)
+\begin{DoxyCompactList}\small\item\em Bind an action signal to a key\textquotesingle{}s {\itshape pressed} state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{input_8c_a78067e18109eb71572d9135ca21cc247}{lm\+\_\+input\+\_\+bind\+\_\+mouse\+\_\+button}} (struct \mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$input, \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{Mouse\+Buttons}} button, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}} mod, \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}} transition, \mbox{\hyperlink{struct_input_action}{Input\+Action}} $\ast$action)
+\begin{DoxyCompactList}\small\item\em Bind an action signal to a mouse button\textquotesingle{}s {\itshape pressed} state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High-\/level operations for managing input state and bindings. 
+
+\begin{DoxyAuthor}{Author}
+Matt Murphy (\href{mailto:matt@murphysys.com}{\texttt{ matt@murphysys.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/06
+\end{DoxyDate}
+Copyright (c) 2022 Murphy Engineering LLC 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{input_8c_a78e66513f85823b5db10acf38d5efe7b}\label{input_8c_a78e66513f85823b5db10acf38d5efe7b}} 
+\index{input.c@{input.c}!lm\_input\_bind\_key@{lm\_input\_bind\_key}}
+\index{lm\_input\_bind\_key@{lm\_input\_bind\_key}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{lm\_input\_bind\_key()}{lm\_input\_bind\_key()}}
+{\footnotesize\ttfamily void lm\+\_\+input\+\_\+bind\+\_\+key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$}]{input,  }\item[{\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}}}]{key,  }\item[{\mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}}}]{mod,  }\item[{\mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}}}]{transition,  }\item[{\mbox{\hyperlink{struct_input_action}{Input\+Action}} $\ast$}]{action }\end{DoxyParamCaption})}
+
+
+
+Bind an action signal to a key\textquotesingle{}s {\itshape pressed} state. 
+
+\mbox{\Hypertarget{input_8c_a78067e18109eb71572d9135ca21cc247}\label{input_8c_a78067e18109eb71572d9135ca21cc247}} 
+\index{input.c@{input.c}!lm\_input\_bind\_mouse\_button@{lm\_input\_bind\_mouse\_button}}
+\index{lm\_input\_bind\_mouse\_button@{lm\_input\_bind\_mouse\_button}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{lm\_input\_bind\_mouse\_button()}{lm\_input\_bind\_mouse\_button()}}
+{\footnotesize\ttfamily void lm\+\_\+input\+\_\+bind\+\_\+mouse\+\_\+button (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$}]{input,  }\item[{\mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{Mouse\+Buttons}}}]{button,  }\item[{\mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}}}]{mod,  }\item[{\mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{Signal\+Transition}}}]{transition,  }\item[{\mbox{\hyperlink{struct_input_action}{Input\+Action}} $\ast$}]{action }\end{DoxyParamCaption})}
+
+
+
+Bind an action signal to a mouse button\textquotesingle{}s {\itshape pressed} state. 
+
+\mbox{\Hypertarget{input_8c_a16b39ef5c06ccba57deba1956b4566c1}\label{input_8c_a16b39ef5c06ccba57deba1956b4566c1}} 
+\index{input.c@{input.c}!lm\_input\_state\_init@{lm\_input\_state\_init}}
+\index{lm\_input\_state\_init@{lm\_input\_state\_init}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{lm\_input\_state\_init()}{lm\_input\_state\_init()}}
+{\footnotesize\ttfamily void lm\+\_\+input\+\_\+state\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$}]{input }\end{DoxyParamCaption})}
+
+
+
+Initialize the input state to all inactive controls. 
+
+\mbox{\Hypertarget{input_8c_ab50cd0f77c16f9d1f8354ab1e9ead5f6}\label{input_8c_ab50cd0f77c16f9d1f8354ab1e9ead5f6}} 
+\index{input.c@{input.c}!lm\_input\_unbind@{lm\_input\_unbind}}
+\index{lm\_input\_unbind@{lm\_input\_unbind}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{lm\_input\_unbind()}{lm\_input\_unbind()}}
+{\footnotesize\ttfamily void lm\+\_\+input\+\_\+unbind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_input_context}{Input\+Context}} $\ast$}]{input,  }\item[{char const $\ast$}]{action\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{input_8c_a2d8d69b0f6fd2e64cd8d8318af2ffcb9}\label{input_8c_a2d8d69b0f6fd2e64cd8d8318af2ffcb9}} 
+\index{input.c@{input.c}!unbind\_action\_from@{unbind\_action\_from}}
+\index{unbind\_action\_from@{unbind\_action\_from}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{unbind\_action\_from()}{unbind\_action\_from()}}
+{\footnotesize\ttfamily void unbind\+\_\+action\+\_\+from (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_action_binding}{Action\+Binding}} $\ast$}]{bindings,  }\item[{size\+\_\+t $\ast$}]{n\+Bindings,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+

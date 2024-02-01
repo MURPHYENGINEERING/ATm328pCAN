@@ -1,0 +1,1389 @@
+\hypertarget{keyboard_8h}{}\doxysection{src/include/lmda/input/keyboard.h File Reference}
+\label{keyboard_8h}\index{src/include/lmda/input/keyboard.h@{src/include/lmda/input/keyboard.h}}
+
+
+Defines symbols for SDL keyboard key identifiers.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}} \mbox{\hyperlink{keyboard_8h_ac472624e787b58b7b7e2fa6797a5828b}{Modifier\+Keys}}
+\item 
+typedef enum \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}} \mbox{\hyperlink{keyboard_8h_abf962aed097418f5f8a33293962f2a87}{Virtual\+Key}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}} \{ \newline
+\mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa2c0f2a0ea1c82c6cca92880ebd4be39f}{LMVK\+\_\+\+MOD\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa70eeec5d289ec565cf86c81db739485b}{LMVK\+\_\+\+MOD\+\_\+\+LSHIFT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa3075206fa5012b1419b94a73536cb1a1}{LMVK\+\_\+\+MOD\+\_\+\+RSHIFT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa270497a08d22c76b322ef4b326c2405e}{LMVK\+\_\+\+MOD\+\_\+\+LCTRL}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \newline
+\mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad868836cba7ac6b5fac5ebe74c775342}{LMVK\+\_\+\+MOD\+\_\+\+RCTRL}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa108b3f1ba871d1d9ab089279d5be1c1d}{LMVK\+\_\+\+MOD\+\_\+\+LALT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 8
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b53b291ce75ddfc742a055a800bae22}{LMVK\+\_\+\+MOD\+\_\+\+RALT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 9
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad95e61141a6a98b3b0925d4e1227c75c}{LMVK\+\_\+\+MOD\+\_\+\+LGUI}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 10
+, \newline
+\mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa9f5948b9ee9d3b4666bca555526528fd}{LMVK\+\_\+\+MOD\+\_\+\+RGUI}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 11
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa1c3d121bd134c02e0d92c4cb033b9bff}{LMVK\+\_\+\+MOD\+\_\+\+NUM}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 12
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b049561d27dd40042631ebc13d1bc80}{LMVK\+\_\+\+MOD\+\_\+\+CAPS}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 13
+, \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa26c9f3bbc86ab227a46ac4a33197841a}{LMVK\+\_\+\+MOD\+\_\+\+MODE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 14
+ \}
+\item 
+enum \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}} \{ \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37264f2fe47d4f99e51fbd37c6cc5f76}{LMVK\+\_\+\+UNKNOWN}} = 0x00
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a206c104912374f556dfdb79a2a41b6b0}{LMVK\+\_\+\+BACKSPACE}} = 0x08
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a52feb5058911b9169a4867d9b0cfd3b3}{LMVK\+\_\+\+TAB}} = 0x09
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a513919bfcf3f57d30f5a2ee78ff14a71}{LMVK\+\_\+\+RETURN}} = 0x0D
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa06dcccaa3b9af07287d7de746dfaeb2}{LMVK\+\_\+\+ESCAPE}} = 0x1B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a422bdd29ef6f5607df8c706e23b9035d}{LMVK\+\_\+\+SPACE}} = 0x20
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedc1ec727dcc10aa0ed6398f15544a2a}{LMVK\+\_\+\+EXCLAIM}} = 0x21
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad112b4878bec9eba7dfc2581df7b20cf}{LMVK\+\_\+\+QUOTEDBL}} = 0x22
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adffbc6b4801de5205eb2e599262eda74}{LMVK\+\_\+\+HASH}} = 0x23
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acdcebcf7528736ebfd6e4e4522547a0e}{LMVK\+\_\+\+DOLLAR}} = 0x24
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8dd206daee13fc6068d40d9dad3168e}{LMVK\+\_\+\+PERCENT}} = 0x25
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8b8d1b1e56b0d32df648b587c87eec1}{LMVK\+\_\+\+AMPERSAND}} = 0x26
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a62fa7fa52e5a5cbead9c04684721f42d}{LMVK\+\_\+\+QUOTE}} = 0x27
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac5bc2775d211dbf3c04eb76b73d8ce17}{LMVK\+\_\+\+LEFTPAREN}} = 0x28
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7b6aabe1d3f0d529d8cfa9a246e288c2}{LMVK\+\_\+\+RIGHTPAREN}} = 0x29
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa72f55eb7fc4e93eefdb5a5d9104cd1e}{LMVK\+\_\+\+ASTERISK}} = 0x2A
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a095c12ddd1fbfb2a88b4365f5d67ca07}{LMVK\+\_\+\+PLUS}} = 0x2B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af42187d421acb13e882662598cc0f969}{LMVK\+\_\+\+COMMA}} = 0x2C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6b269aa57539da5f6056b2daa60a4899}{LMVK\+\_\+\+MINUS}} = 0x2D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd23044f6c1a132504d414d172fb02db}{LMVK\+\_\+\+PERIOD}} = 0x2E
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8150d32b94c1ed7dd07b52ed5b32f823}{LMVK\+\_\+\+SLASH}} = 0x2F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9b8840148e7e090b5b57c629bffac846}{LMVK\+\_\+0}} = 0x30
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0ef6e4b634a7042c97ed65f01447c03}{LMVK\+\_\+1}} = 0x31
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1840c56ae3b066ee94da7da16fae2490}{LMVK\+\_\+2}} = 0x32
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1f6423e04a2550951085bb4f27782d08}{LMVK\+\_\+3}} = 0x33
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a27ef467d9cfeba40bf0b4f0afa6ebd6c}{LMVK\+\_\+4}} = 0x34
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc1b6c655795077e430a32a3d6586d45}{LMVK\+\_\+5}} = 0x35
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a440b1476619bbd78f57e1e3544678d1e}{LMVK\+\_\+6}} = 0x36
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2987bda7a158de87f1f2b19ef593459a}{LMVK\+\_\+7}} = 0x37
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4aacbd1ed72c72232a1492acf43295d1}{LMVK\+\_\+8}} = 0x38
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c1943849b92d0995d8eb390627ef7e9}{LMVK\+\_\+9}} = 0x39
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8bbf2090593c09ed3eb7890de60cc24}{LMVK\+\_\+\+COLON}} = 0x3A
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a592bef423a3ee60b13f6952f1a02f0ba}{LMVK\+\_\+\+SEMICOLON}} = 0x3B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a281ef81f8c65fd1a2278f5b8a64200}{LMVK\+\_\+\+LESS}} = 0x3C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d8c96736aa42fe6bc637e026b88dbd4}{LMVK\+\_\+\+EQUALS}} = 0x3D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92e4f20f6f239a2c40deccad4dd8000b}{LMVK\+\_\+\+GREATER}} = 0x3E
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e979f6018954e6a1ba6dfedcc81a944}{LMVK\+\_\+\+QUESTION}} = 0x3F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8f6079c1cc21fad6d826e9d6fc699b0e}{LMVK\+\_\+\+AT}} = 0x40
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6661824ef58043501b542d934580eea8}{LMVK\+\_\+\+LEFTBRACKET}} = 0x5B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a194240e4ce33f4da846b5255b9176e82}{LMVK\+\_\+\+BACKSLASH}} = 0x5C
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a60ff5ef857ace9221977a1780eb24426}{LMVK\+\_\+\+RIGHTBRACKET}} = 0x5D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8ccdd03e6a2f452ca57194cc721316d}{LMVK\+\_\+\+CARET}} = 0x5E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5fdb84880b2013da94923386d8f634ce}{LMVK\+\_\+\+UNDERSCORE}} = 0x5F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc9b2ee3d5b5fe75de195b97d053168e}{LMVK\+\_\+\+BACKQUOTE}} = 0x60
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad742f618417c7302345d7a4d63ce4878}{LMVK\+\_\+A}} = 0x61
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a105d1a38ecc41875a6c9712cd02276c7}{LMVK\+\_\+B}} = 0x62
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a36fb82d6b7148e6585833f1210161876}{LMVK\+\_\+C}} = 0x63
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf55c8571bcd83a7f86fb4611bd6415b}{LMVK\+\_\+D}} = 0x64
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df663dbc57208055dfd675b219f3124}{LMVK\+\_\+E}} = 0x65
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e0938462b0ecc778ed861379ba6f17d}{LMVK\+\_\+F}} = 0x66
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0cfcd858417de03d94f54b72b3b91b24}{LMVK\+\_\+G}} = 0x67
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a41308e70d2faa0a619caf05737944460}{LMVK\+\_\+H}} = 0x68
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a87f799501f64ad45585cceab1b424a83}{LMVK\+\_\+I}} = 0x69
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adfa0af7f739bf6989e072a3b4cd2c816}{LMVK\+\_\+J}} = 0x6A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a802c2bdd5e3851e4ff7e30324b27e63a}{LMVK\+\_\+K}} = 0x6B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e76a44f6b6c89f70ab6f9e0249043dc}{LMVK\+\_\+L}} = 0x6C
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a366fdaa72df1f834fc7abc77e1f13f2f}{LMVK\+\_\+M}} = 0x6D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8ae8bf56f4b763d9b73287a4aca85e85}{LMVK\+\_\+N}} = 0x6E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4747bddf62dc72ed877c0a9f20ded89}{LMVK\+\_\+O}} = 0x6F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a94e7bcfa91c0fc089024cb7d7f3d0d4e}{LMVK\+\_\+P}} = 0x70
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53cc615b81985c2f6190a380689a76ed}{LMVK\+\_\+Q}} = 0x71
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a266208a3955811a3172ccc1eb6b01585}{LMVK\+\_\+R}} = 0x72
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a357ec3174115c9a67f5994016b5c57af}{LMVK\+\_\+S}} = 0x73
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a02e61fa4b888b8bff77ac1692391910f}{LMVK\+\_\+T}} = 0x74
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab175ee1716a2eeb7292de2ce4b4290b1}{LMVK\+\_\+U}} = 0x75
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9cc7f425ac64ec8d854e1fb34122e961}{LMVK\+\_\+V}} = 0x76
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4653c5b3ff1c79154b564a4357b2567}{LMVK\+\_\+W}} = 0x77
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8be12403e9d2e8af1a5d074101ae1e3e}{LMVK\+\_\+X}} = 0x78
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af7194303e0b673a707f0a62494aaf942}{LMVK\+\_\+Y}} = 0x79
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e6586c60de3c77950bb7f9188fffb74}{LMVK\+\_\+Z}} = 0x7A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3673c4119e021462fc2cf20422705139}{LMVK\+\_\+\+DELETE}} = 0x7F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae1a24d7573d3388159f9e269e16dc18c}{LMVK\+\_\+\+CAPSLOCK}} = 0x40000039
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a928fb924c7f8b4fd5be48cf6f0f95753}{LMVK\+\_\+\+F1}} = 0x4000003A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aad9499ff90488c85fb636f37edc9418f}{LMVK\+\_\+\+F2}} = 0x4000003B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5097ad54fa3634a98e34b9963b5602bc}{LMVK\+\_\+\+F3}} = 0x4000003C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3cf2f7130d9ccbe8cface22042e6c910}{LMVK\+\_\+\+F4}} = 0x4000003D
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aed9ddd2a8e8897a511d37376e0d4af5f}{LMVK\+\_\+\+F5}} = 0x4000003E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc79f9d60b4e31e463a8fb080aec400f}{LMVK\+\_\+\+F6}} = 0x4000003F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1015f1cb94b4a14311375409a7f0caaf}{LMVK\+\_\+\+F7}} = 0x40000040
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e7db113da41a1fb13445fb98fa7a28}{LMVK\+\_\+\+F8}} = 0x40000041
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab7a58815749ef68fd322893a7927ab99}{LMVK\+\_\+\+F9}} = 0x40000042
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad4badf7bdf24b18199a4c0bb361358b8}{LMVK\+\_\+\+F10}} = 0x40000043
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a380a058d6d206dc6a8a4b347b0917428}{LMVK\+\_\+\+F11}} = 0x40000044
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac741e76bbf662ffef5c12039b0e79aaa}{LMVK\+\_\+\+F12}} = 0x40000045
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af22a1d993dfa6f4e3a06fef7b7ba1c46}{LMVK\+\_\+\+PRINTSCREEN}} = 0x40000046
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab1487e2ddd54f1a31a6a40c838c58008}{LMVK\+\_\+\+SCROLLLOCK}} = 0x40000047
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a35cd5c47517119c471d74d580008cd9f}{LMVK\+\_\+\+PAUSE}} = 0x40000048
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a25f0e4cd84fd0549ccd913365c2b67af}{LMVK\+\_\+\+INSERT}} = 0x40000049
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3a2e303bdbaf52d0d115cdce15979eff}{LMVK\+\_\+\+HOME}} = 0x4000004A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a148c83580fa3e97f428bab8abe24ff20}{LMVK\+\_\+\+PAGEUP}} = 0x4000004B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d555abd557bb0a0c1ead519ac57013}{LMVK\+\_\+\+END}} = 0x4000004D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3aaf4085cc474dcfe98a79d4e9f3e2c6}{LMVK\+\_\+\+PAGEDOWN}} = 0x4000004E
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad40a7c9ce0fe3402d24ba0b827c65c50}{LMVK\+\_\+\+RIGHT}} = 0x4000004F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab4cbca5854a6c31d5fabad03d7d1f3c8}{LMVK\+\_\+\+LEFT}} = 0x40000050
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4899b44567f64386a6740226db256439}{LMVK\+\_\+\+DOWN}} = 0x40000051
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0e7293eb28c60f737e323d9c92a26acb}{LMVK\+\_\+\+UP}} = 0x40000052
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2fe222976b2519398d0e918a5461e1e5}{LMVK\+\_\+\+NUMLOCKCLEAR}} = 0x40000053
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1268b5c6b0a66ddcfc8a0d73c25057b}{LMVK\+\_\+\+KP\+\_\+\+DIVIDE}} = 0x40000054
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a44229c4932cfe9c773d24a693db53aa2}{LMVK\+\_\+\+KP\+\_\+\+MULTIPLY}} = 0x40000055
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adaabd63c5267fc21d008f3ad475f0083}{LMVK\+\_\+\+KP\+\_\+\+MINUS}} = 0x40000056
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac31c460855d3effdf9abc4c8edbda719}{LMVK\+\_\+\+KP\+\_\+\+PLUS}} = 0x40000057
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5b13295da5cf9abe78be1076dd7b571c}{LMVK\+\_\+\+KP\+\_\+\+ENTER}} = 0x40000058
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a86d34c841f684f7b94f2144a30a9f370}{LMVK\+\_\+\+KP\+\_\+1}} = 0x40000059
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a657b966227e3f580fd550cf5bd22dd06}{LMVK\+\_\+\+KP\+\_\+2}} = 0x4000005A
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9ff3e03c2f496a871d69a4443da7bb4b}{LMVK\+\_\+\+KP\+\_\+3}} = 0x4000005B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa68f63a9a39639c3938754f8b387be9f}{LMVK\+\_\+\+KP\+\_\+4}} = 0x4000005C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad1d152e19815f18c7f3913663759441f}{LMVK\+\_\+\+KP\+\_\+5}} = 0x4000005D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a03230082cc63e17c522541574689151c}{LMVK\+\_\+\+KP\+\_\+6}} = 0x4000005E
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4d428bb5296231170c99af2212eaca14}{LMVK\+\_\+\+KP\+\_\+7}} = 0x4000005F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf6db5daa8878c41966d29c0c4bcb6a3}{LMVK\+\_\+\+KP\+\_\+8}} = 0x40000060
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8963fd0a15b1be57fe6851f1a13051b3}{LMVK\+\_\+\+KP\+\_\+9}} = 0x40000061
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92b3bf36d2752c5114dea33eb4c96cb0}{LMVK\+\_\+\+KP\+\_\+0}} = 0x40000062
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9c2239fc9e9227c6a8f0f224874e13a6}{LMVK\+\_\+\+KP\+\_\+\+PERIOD}} = 0x40000063
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aec21dfe018f2a8118727ca730dbc35e9}{LMVK\+\_\+\+APPLICATION}} = 0x40000065
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa59c6a57d98436ba6aea9cb7f0be7517}{LMVK\+\_\+\+POWER}} = 0x40000066
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53354ceaeb9aa41d4cc3d06e13c2b75b}{LMVK\+\_\+\+KP\+\_\+\+EQUALS}} = 0x40000067
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a56778a7e5011ae5a93d2b03d938c452f}{LMVK\+\_\+\+F13}} = 0x40000068
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0435edb7b91c9853bab5df4b99e4a8db}{LMVK\+\_\+\+F14}} = 0x40000069
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae22a3a95d25250e3f204d40706d8d6b2}{LMVK\+\_\+\+F15}} = 0x4000006A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6de105cae926cdf4c75acb9fb3f1081d}{LMVK\+\_\+\+F16}} = 0x4000006B
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae64097b2f4b7f64b3001069c8e59e5f9}{LMVK\+\_\+\+F17}} = 0x4000006C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d14fac897f8de0a4d0b46c53488449f}{LMVK\+\_\+\+F18}} = 0x4000006D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aae333f452f52993d8182ec6a5ae8aa3a}{LMVK\+\_\+\+F19}} = 0x4000006E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0711525cd7a292822a3de743e2c8a37f}{LMVK\+\_\+\+F20}} = 0x4000006F
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab6ce03d2182a9808e788ef7c06064637}{LMVK\+\_\+\+F21}} = 0x40000070
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af305a7e9d12fa01bf98fea45af303ba4}{LMVK\+\_\+\+F22}} = 0x40000071
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9fd54f9d9b45e68de9152db4de279faf}{LMVK\+\_\+\+F23}} = 0x40000072
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0e42ae9297201eba15750afe3ce4453}{LMVK\+\_\+\+F24}} = 0x40000073
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3933f58f8e352aff199a66b3987f4451}{LMVK\+\_\+\+EXECUTE}} = 0x40000074
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac85ba925210667e96b10b9eab035c894}{LMVK\+\_\+\+HELP}} = 0x40000075
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a55f855d99a5a957436527a08d6912533}{LMVK\+\_\+\+MENU}} = 0x40000076
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a91876b373abeb701fc4b4bbc0f83b379}{LMVK\+\_\+\+SELECT}} = 0x40000077
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd29ca3187dd19e47268326234cff4c6}{LMVK\+\_\+\+STOP}} = 0x40000078
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67bfc13ae1da038aca51bc82bf408de4}{LMVK\+\_\+\+AGAIN}} = 0x40000079
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedbfdf1cf445380b9eed928ec096e586}{LMVK\+\_\+\+UNDO}} = 0x4000007A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a48c3327d5c18a539241e9b4ea2fdc72b}{LMVK\+\_\+\+CUT}} = 0x4000007B
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a68f6c33edba132168cbca15ec3260088}{LMVK\+\_\+\+COPY}} = 0x4000007C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cb9b640bf43e82ca85ed984dd5d726c}{LMVK\+\_\+\+PASTE}} = 0x4000007D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aeaa258e6de4bd0acd822b4dac601d1a3}{LMVK\+\_\+\+FIND}} = 0x4000007E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1b1c531fa26355b947c1fd067ab1f61f}{LMVK\+\_\+\+MUTE}} = 0x4000007F
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96c21f512075d073f77284c97b5f1cb8}{LMVK\+\_\+\+VOLUMEUP}} = 0x40000080
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afb119e33875221bef004b22dac047ce4}{LMVK\+\_\+\+VOLUMEDOWN}} = 0x40000081
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab36b8561adf3483a295ee94bb44595ad}{LMVK\+\_\+\+KP\+\_\+\+COMMA}} = 0x40000085
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1df0382d56653275d54b1155da4b1455}{LMVK\+\_\+\+KP\+\_\+\+EQUALSAS400}} = 0x40000086
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d8d97c1ffdc5736034c3c0e9deda324}{LMVK\+\_\+\+ALTERASE}} = 0x40000099
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a11f1a206c629b05a14bf6fd182d71ef3}{LMVK\+\_\+\+SYSREQ}} = 0x4000009A
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1169fcd14a47de0683e10e3cf16aef44}{LMVK\+\_\+\+CANCEL}} = 0x4000009B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad2a852bfea07b9713524dc87fb019eca}{LMVK\+\_\+\+CLEAR}} = 0x4000009C
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a01994ed5a4194a9ca910ee646ae4d082}{LMVK\+\_\+\+PRIOR}} = 0x4000009D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a047c4e6b358f0168b71df688b17efb7b}{LMVK\+\_\+\+RETURN2}} = 0x4000009E
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a06a97d82e5dbd5f1c32e8d18c0d9a148}{LMVK\+\_\+\+SEPARATOR}} = 0x4000009F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a049ea5e5e1886ca6dd8fe56839fe1de7}{LMVK\+\_\+\+OUT}} = 0x400000\+A0
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a807286bd407a09d4ee9d24ea33929509}{LMVK\+\_\+\+OPER}} = 0x400000\+A1
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae4a779bbe7c15bf2bc3a1f9b76596d41}{LMVK\+\_\+\+CLEARAGAIN}} = 0x400000\+A2
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5d3e5e35d0eafcd341a3cf7cae91be4a}{LMVK\+\_\+\+CRSEL}} = 0x400000\+A3
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a482e044b3ab5eb65a19bc7914225dc05}{LMVK\+\_\+\+EXSEL}} = 0x400000\+A4
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8d99bd18a9c2cb524ae14fad5b2b24af}{LMVK\+\_\+\+KP\+\_\+00}} = 0x400000\+B0
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3220061fda855176afed54bdcd6698aa}{LMVK\+\_\+\+KP\+\_\+000}} = 0x400000\+B1
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c868947c2bc43f7233f6dd99741d3af}{LMVK\+\_\+\+THOUSANDSSEPARATOR}} = 0x400000\+B2
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9330c91f8530e8ada2174ffe411bb2e0}{LMVK\+\_\+\+DECIMALSEPARATOR}} = 0x400000\+B3
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9857a564b6669f303e3b8fa34e018bf9}{LMVK\+\_\+\+CURRENCYUNIT}} = 0x400000\+B4
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0fe0557b9698fd6291b4868e80184812}{LMVK\+\_\+\+CURRENCYSUBUNIT}} = 0x400000\+B5
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1162fc28f3fc366224cb101c4e3a4c9}{LMVK\+\_\+\+KP\+\_\+\+LEFTPAREN}} = 0x400000\+B6
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e94f083d0aa4bc014c63c48941b3a40}{LMVK\+\_\+\+KP\+\_\+\+RIGHTPAREN}} = 0x400000\+B7
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a922c0c07d3c8735f00dba703be3a5d52}{LMVK\+\_\+\+KP\+\_\+\+LEFTBRACE}} = 0x400000\+B8
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d4f984c9b47b391af492a5bf6e57d03}{LMVK\+\_\+\+KP\+\_\+\+RIGHTBRACE}} = 0x400000\+B9
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9630f02dc4fc46db9e02f4ed0b599ead}{LMVK\+\_\+\+KP\+\_\+\+TAB}} = 0x400000\+BA
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e5213028a5ba5ebc80475018ac2db3f}{LMVK\+\_\+\+KP\+\_\+\+BACKSPACE}} = 0x400000\+BB
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad37e15f14d68058c6d002be9935f02ce}{LMVK\+\_\+\+KP\+\_\+A}} = 0x400000\+BC
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a851761d1e4a5765bd7c4408326be95eb}{LMVK\+\_\+\+KP\+\_\+B}} = 0x400000\+BD
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3f2a3a73c9552997eff5cd70c8b404e5}{LMVK\+\_\+\+KP\+\_\+C}} = 0x400000\+BE
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a305750bcea8acac008546cb481bec587}{LMVK\+\_\+\+KP\+\_\+D}} = 0x400000\+BF
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a31c00ba1103a6c49dddd273a8d3ea3d7}{LMVK\+\_\+\+KP\+\_\+E}} = 0x400000\+C0
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af0800953bad78765db4a078aa00cc311}{LMVK\+\_\+\+KP\+\_\+F}} = 0x400000\+C1
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ef2b02bb582eff3a8c22b96a68b8f48}{LMVK\+\_\+\+KP\+\_\+\+XOR}} = 0x400000\+C2
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a74ef009798640a790d56acb0519f4417}{LMVK\+\_\+\+KP\+\_\+\+POWER}} = 0x400000\+C3
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8846535d5e35cc8f526cfb9ce4a3b65}{LMVK\+\_\+\+KP\+\_\+\+PERCENT}} = 0x400000\+C4
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac8b30cd2c5d634cc53ae6a00cfa3da40}{LMVK\+\_\+\+KP\+\_\+\+LESS}} = 0x400000\+C5
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8cc4b05315795a1f9b87cd03f015a731}{LMVK\+\_\+\+KP\+\_\+\+GREATER}} = 0x400000\+C6
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a806c01fecd2fdf7898d06c8a6418d713}{LMVK\+\_\+\+KP\+\_\+\+AMPERSAND}} = 0x400000\+C7
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc26e43861bfbfc41552bff897b079fd}{LMVK\+\_\+\+KP\+\_\+\+DBLAMPERSAND}} = 0x400000\+C8
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1b621238351e87826734890a8daad06}{LMVK\+\_\+\+KP\+\_\+\+VERTICALBAR}} = 0x400000\+C9
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df682247a1cfd03ecaa944c3afebb58}{LMVK\+\_\+\+KP\+\_\+\+DBLVERTICALBAR}} = 0x400000\+CA
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ccebcdca7a186765c5686a17960fd0d}{LMVK\+\_\+\+KP\+\_\+\+COLON}} = 0x400000\+CB
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67d8c8281b3e5d7a9e127762a989fec2}{LMVK\+\_\+\+KP\+\_\+\+HASH}} = 0x400000\+CC
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a57ae177a07505d229f7c0d17a9a19630}{LMVK\+\_\+\+KP\+\_\+\+SPACE}} = 0x400000\+CD
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac2866a07e5c8d3c2d942ad988f8f30a2}{LMVK\+\_\+\+KP\+\_\+\+AT}} = 0x400000\+CE
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a881e3538b0b1d08f952632441af8dc72}{LMVK\+\_\+\+KP\+\_\+\+EXCLAM}} = 0x400000\+CF
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d1219b39e239fd1d78ac8bd38ab5db}{LMVK\+\_\+\+KP\+\_\+\+MEMSTORE}} = 0x400000\+D0
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a40152de401a61e2cdcce8eacd55172b6}{LMVK\+\_\+\+KP\+\_\+\+MEMRECALL}} = 0x400000\+D1
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a623f4e39f99b8506bd026a78672bfdfe}{LMVK\+\_\+\+KP\+\_\+\+MEMCLEAR}} = 0x400000\+D2
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a84ae12d3e50200ba19e5bc7205120ab8}{LMVK\+\_\+\+KP\+\_\+\+MEMADD}} = 0x400000\+D3
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac211cc829dc930883d66c66589799d8a}{LMVK\+\_\+\+KP\+\_\+\+MEMSUBTRACT}} = 0x400000\+D4
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a42995cd24c830993c042646f4ff85043}{LMVK\+\_\+\+KP\+\_\+\+MEMMULTIPLY}} = 0x400000\+D5
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a174e35e9c0c663bc1912650743632317}{LMVK\+\_\+\+KP\+\_\+\+MEMDIVIDE}} = 0x400000\+D6
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a69875f72ad9cd40be149993d58c96c98}{LMVK\+\_\+\+KP\+\_\+\+PLUSMINUS}} = 0x400000\+D7
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a71fc4e63a96db0a22fcc8f2ae0377a17}{LMVK\+\_\+\+KP\+\_\+\+CLEAR}} = 0x400000\+D8
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa3d47b29b298aaac308534f39db8da2a}{LMVK\+\_\+\+KP\+\_\+\+CLEARENTRY}} = 0x400000\+D9
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e224de934b758c27e7f6b268d86952f}{LMVK\+\_\+\+KP\+\_\+\+BINARY}} = 0x400000\+DA
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496a47126544bde31aceee08c91d53d5}{LMVK\+\_\+\+KP\+\_\+\+OCTAL}} = 0x400000\+DB
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a255c2563b9c654280d11d9c7be413e1c}{LMVK\+\_\+\+KP\+\_\+\+DECIMAL}} = 0x400000\+DC
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a22b26dff5e2519f50b56ebb79aa595e7}{LMVK\+\_\+\+KP\+\_\+\+HEXADECIMAL}} = 0x400000\+DD
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02abac6eaabfbcf3524ed930c8e31b84f47}{LMVK\+\_\+\+LCTRL}} = 0x400000\+E0
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e8c90c1a48759c41884e2b3c01fb06a}{LMVK\+\_\+\+LSHIFT}} = 0x400000\+E1
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37ccc749eefa2bbfecc773b09082778e}{LMVK\+\_\+\+LALT}} = 0x400000\+E2
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e45b378bc56646441c76c98b57a02c}{LMVK\+\_\+\+LGUI}} = 0x400000\+E3
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa97a67a3bf136a5357946ef2142979de}{LMVK\+\_\+\+RCTRL}} = 0x400000\+E4
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1f529788dd92066c599e37278a9361e}{LMVK\+\_\+\+RSHIFT}} = 0x400000\+E5
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab33fbf6253cf2dc41bb2ccc50c087ce6}{LMVK\+\_\+\+RALT}} = 0x400000\+E6
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae3740b90da4710da5c039098bdfff209}{LMVK\+\_\+\+RGUI}} = 0x400000\+E7
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7191e7d83d86aa96edbbe0f688ab4362}{LMVK\+\_\+\+MODE}} = 0x40000101
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6aa8d9b498b276c139a0a96498a68f16}{LMVK\+\_\+\+AUDIONEXT}} = 0x40000102
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad49b2f07d2f9908606c4d745f12cc2be}{LMVK\+\_\+\+AUDIOPREV}} = 0x40000103
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c5c6e449bba0c2603631bd4917c2a7b}{LMVK\+\_\+\+AUDIOSTOP}} = 0x40000104
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af09558936e326beb209fa7aab73c7eb2}{LMVK\+\_\+\+AUDIOPLAY}} = 0x40000105
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96fc07050379ca4b33f334322c47ff9d}{LMVK\+\_\+\+AUDIOMUTE}} = 0x40000106
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c34d09f755b62830c87d77f9083b948}{LMVK\+\_\+\+MEDIASELECT}} = 0x40000107
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8898d77627b613eb218ff56e74611fa2}{LMVK\+\_\+\+WWW}} = 0x40000108
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a980f549a53b990218b44b0309518f5cb}{LMVK\+\_\+\+MAIL}} = 0x40000109
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae7d39fdab25cd19f4a485dbdc6516cbb}{LMVK\+\_\+\+CALCULATOR}} = 0x4000010A
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a8c937e1004c69bb7c227e9ab7e2c82}{LMVK\+\_\+\+COMPUTER}} = 0x4000010B
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a731c84c865b1f363eff5f87951fabbe0}{LMVK\+\_\+\+AC\+\_\+\+SEARCH}} = 0x4000010C
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7addf2783076eac38e84e7dac020c42d}{LMVK\+\_\+\+AC\+\_\+\+HOME}} = 0x4000010D
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3b8f1b9a3013e54232e05ebf27cd4109}{LMVK\+\_\+\+AC\+\_\+\+BACK}} = 0x4000010E
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa1390b05e9a9c97b91266b32f609d7cd}{LMVK\+\_\+\+AC\+\_\+\+FORWARD}} = 0x4000010F
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1253046da239cd04138df167f0095f61}{LMVK\+\_\+\+AC\+\_\+\+STOP}} = 0x40000110
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6c3c8abea7fd50b0a027ddcdfb954ad2}{LMVK\+\_\+\+AC\+\_\+\+REFRESH}} = 0x40000111
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496c62b70dcc340ba924f6988870d185}{LMVK\+\_\+\+AC\+\_\+\+BOOKMARKS}} = 0x40000112
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a471232650ab322caf1685e73219f1b78}{LMVK\+\_\+\+BRIGHTNESSDOWN}} = 0x40000113
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4c5082c19e51c944fd4069589824b77f}{LMVK\+\_\+\+BRIGHTNESSUP}} = 0x40000114
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae11ea9831b953062d72eded227810f74}{LMVK\+\_\+\+DISPLAYSWITCH}} = 0x40000115
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aadf27fcdc341456e3dbce3a17ba2a958}{LMVK\+\_\+\+KBDILLUMTOGGLE}} = 0x40000116
+, \newline
+\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a549c51d6f7e3dc5788b67c5a31564b62}{LMVK\+\_\+\+KBDILLUMDOWN}} = 0x40000117
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cccc385789a357c4fe9d635c953bcee}{LMVK\+\_\+\+KBDILLUMUP}} = 0x40000118
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a891bfc34bceefcf3d7a5ca0b89a3006c}{LMVK\+\_\+\+EJECT}} = 0x40000119
+, \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aefd1eca034b46eae0bb7bb8af606027e}{LMVK\+\_\+\+SLEEP}} = 0x4000011A
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{keyboard_8h_aa5912c0bd99aaa30a5cc67ae262c7b40}{lm\+\_\+input\+\_\+vk\+\_\+index}} (\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}} key)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines symbols for SDL keyboard key identifiers. 
+
+\begin{DoxyAuthor}{Author}
+Matt Murphy (\href{mailto:matt@murphysys.com}{\texttt{ matt@murphysys.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/06
+\end{DoxyDate}
+Copyright (c) 2022 Murphy Engineering LLC 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{keyboard_8h_ac472624e787b58b7b7e2fa6797a5828b}\label{keyboard_8h_ac472624e787b58b7b7e2fa6797a5828b}} 
+\index{keyboard.h@{keyboard.h}!ModifierKeys@{ModifierKeys}}
+\index{ModifierKeys@{ModifierKeys}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{ModifierKeys}{ModifierKeys}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}} \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}}}
+
+\mbox{\Hypertarget{keyboard_8h_abf962aed097418f5f8a33293962f2a87}\label{keyboard_8h_abf962aed097418f5f8a33293962f2a87}} 
+\index{keyboard.h@{keyboard.h}!VirtualKey@{VirtualKey}}
+\index{VirtualKey@{VirtualKey}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{VirtualKey}{VirtualKey}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}} \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}} 
+\index{keyboard.h@{keyboard.h}!ModifierKeys@{ModifierKeys}}
+\index{ModifierKeys@{ModifierKeys}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{ModifierKeys}{ModifierKeys}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{Modifier\+Keys}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_NONE@{LMVK\_MOD\_NONE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_NONE@{LMVK\_MOD\_NONE}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa2c0f2a0ea1c82c6cca92880ebd4be39f}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa2c0f2a0ea1c82c6cca92880ebd4be39f}} 
+LMVK\+\_\+\+MOD\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_LSHIFT@{LMVK\_MOD\_LSHIFT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_LSHIFT@{LMVK\_MOD\_LSHIFT}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa70eeec5d289ec565cf86c81db739485b}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa70eeec5d289ec565cf86c81db739485b}} 
+LMVK\+\_\+\+MOD\+\_\+\+LSHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_RSHIFT@{LMVK\_MOD\_RSHIFT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_RSHIFT@{LMVK\_MOD\_RSHIFT}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa3075206fa5012b1419b94a73536cb1a1}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa3075206fa5012b1419b94a73536cb1a1}} 
+LMVK\+\_\+\+MOD\+\_\+\+RSHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_LCTRL@{LMVK\_MOD\_LCTRL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_LCTRL@{LMVK\_MOD\_LCTRL}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa270497a08d22c76b322ef4b326c2405e}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa270497a08d22c76b322ef4b326c2405e}} 
+LMVK\+\_\+\+MOD\+\_\+\+LCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_RCTRL@{LMVK\_MOD\_RCTRL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_RCTRL@{LMVK\_MOD\_RCTRL}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad868836cba7ac6b5fac5ebe74c775342}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad868836cba7ac6b5fac5ebe74c775342}} 
+LMVK\+\_\+\+MOD\+\_\+\+RCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_LALT@{LMVK\_MOD\_LALT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_LALT@{LMVK\_MOD\_LALT}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa108b3f1ba871d1d9ab089279d5be1c1d}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa108b3f1ba871d1d9ab089279d5be1c1d}} 
+LMVK\+\_\+\+MOD\+\_\+\+LALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_RALT@{LMVK\_MOD\_RALT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_RALT@{LMVK\_MOD\_RALT}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b53b291ce75ddfc742a055a800bae22}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b53b291ce75ddfc742a055a800bae22}} 
+LMVK\+\_\+\+MOD\+\_\+\+RALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_LGUI@{LMVK\_MOD\_LGUI}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_LGUI@{LMVK\_MOD\_LGUI}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad95e61141a6a98b3b0925d4e1227c75c}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad95e61141a6a98b3b0925d4e1227c75c}} 
+LMVK\+\_\+\+MOD\+\_\+\+LGUI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_RGUI@{LMVK\_MOD\_RGUI}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_RGUI@{LMVK\_MOD\_RGUI}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa9f5948b9ee9d3b4666bca555526528fd}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa9f5948b9ee9d3b4666bca555526528fd}} 
+LMVK\+\_\+\+MOD\+\_\+\+RGUI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_NUM@{LMVK\_MOD\_NUM}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_NUM@{LMVK\_MOD\_NUM}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa1c3d121bd134c02e0d92c4cb033b9bff}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa1c3d121bd134c02e0d92c4cb033b9bff}} 
+LMVK\+\_\+\+MOD\+\_\+\+NUM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_CAPS@{LMVK\_MOD\_CAPS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_CAPS@{LMVK\_MOD\_CAPS}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b049561d27dd40042631ebc13d1bc80}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b049561d27dd40042631ebc13d1bc80}} 
+LMVK\+\_\+\+MOD\+\_\+\+CAPS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MOD\_MODE@{LMVK\_MOD\_MODE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MOD\_MODE@{LMVK\_MOD\_MODE}}}\mbox{\Hypertarget{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa26c9f3bbc86ab227a46ac4a33197841a}\label{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa26c9f3bbc86ab227a46ac4a33197841a}} 
+LMVK\+\_\+\+MOD\+\_\+\+MODE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}} 
+\index{keyboard.h@{keyboard.h}!VirtualKey@{VirtualKey}}
+\index{VirtualKey@{VirtualKey}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{VirtualKey}{VirtualKey}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_UNKNOWN@{LMVK\_UNKNOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_UNKNOWN@{LMVK\_UNKNOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37264f2fe47d4f99e51fbd37c6cc5f76}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37264f2fe47d4f99e51fbd37c6cc5f76}} 
+LMVK\+\_\+\+UNKNOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_BACKSPACE@{LMVK\_BACKSPACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_BACKSPACE@{LMVK\_BACKSPACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a206c104912374f556dfdb79a2a41b6b0}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a206c104912374f556dfdb79a2a41b6b0}} 
+LMVK\+\_\+\+BACKSPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_TAB@{LMVK\_TAB}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_TAB@{LMVK\_TAB}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a52feb5058911b9169a4867d9b0cfd3b3}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a52feb5058911b9169a4867d9b0cfd3b3}} 
+LMVK\+\_\+\+TAB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RETURN@{LMVK\_RETURN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RETURN@{LMVK\_RETURN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a513919bfcf3f57d30f5a2ee78ff14a71}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a513919bfcf3f57d30f5a2ee78ff14a71}} 
+LMVK\+\_\+\+RETURN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_ESCAPE@{LMVK\_ESCAPE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_ESCAPE@{LMVK\_ESCAPE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa06dcccaa3b9af07287d7de746dfaeb2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa06dcccaa3b9af07287d7de746dfaeb2}} 
+LMVK\+\_\+\+ESCAPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SPACE@{LMVK\_SPACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SPACE@{LMVK\_SPACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a422bdd29ef6f5607df8c706e23b9035d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a422bdd29ef6f5607df8c706e23b9035d}} 
+LMVK\+\_\+\+SPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_EXCLAIM@{LMVK\_EXCLAIM}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_EXCLAIM@{LMVK\_EXCLAIM}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedc1ec727dcc10aa0ed6398f15544a2a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedc1ec727dcc10aa0ed6398f15544a2a}} 
+LMVK\+\_\+\+EXCLAIM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_QUOTEDBL@{LMVK\_QUOTEDBL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_QUOTEDBL@{LMVK\_QUOTEDBL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad112b4878bec9eba7dfc2581df7b20cf}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad112b4878bec9eba7dfc2581df7b20cf}} 
+LMVK\+\_\+\+QUOTEDBL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_HASH@{LMVK\_HASH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_HASH@{LMVK\_HASH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adffbc6b4801de5205eb2e599262eda74}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adffbc6b4801de5205eb2e599262eda74}} 
+LMVK\+\_\+\+HASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_DOLLAR@{LMVK\_DOLLAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_DOLLAR@{LMVK\_DOLLAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acdcebcf7528736ebfd6e4e4522547a0e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acdcebcf7528736ebfd6e4e4522547a0e}} 
+LMVK\+\_\+\+DOLLAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PERCENT@{LMVK\_PERCENT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PERCENT@{LMVK\_PERCENT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8dd206daee13fc6068d40d9dad3168e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8dd206daee13fc6068d40d9dad3168e}} 
+LMVK\+\_\+\+PERCENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AMPERSAND@{LMVK\_AMPERSAND}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AMPERSAND@{LMVK\_AMPERSAND}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8b8d1b1e56b0d32df648b587c87eec1}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8b8d1b1e56b0d32df648b587c87eec1}} 
+LMVK\+\_\+\+AMPERSAND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_QUOTE@{LMVK\_QUOTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_QUOTE@{LMVK\_QUOTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a62fa7fa52e5a5cbead9c04684721f42d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a62fa7fa52e5a5cbead9c04684721f42d}} 
+LMVK\+\_\+\+QUOTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LEFTPAREN@{LMVK\_LEFTPAREN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LEFTPAREN@{LMVK\_LEFTPAREN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac5bc2775d211dbf3c04eb76b73d8ce17}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac5bc2775d211dbf3c04eb76b73d8ce17}} 
+LMVK\+\_\+\+LEFTPAREN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RIGHTPAREN@{LMVK\_RIGHTPAREN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RIGHTPAREN@{LMVK\_RIGHTPAREN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7b6aabe1d3f0d529d8cfa9a246e288c2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7b6aabe1d3f0d529d8cfa9a246e288c2}} 
+LMVK\+\_\+\+RIGHTPAREN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_ASTERISK@{LMVK\_ASTERISK}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_ASTERISK@{LMVK\_ASTERISK}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa72f55eb7fc4e93eefdb5a5d9104cd1e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa72f55eb7fc4e93eefdb5a5d9104cd1e}} 
+LMVK\+\_\+\+ASTERISK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PLUS@{LMVK\_PLUS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PLUS@{LMVK\_PLUS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a095c12ddd1fbfb2a88b4365f5d67ca07}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a095c12ddd1fbfb2a88b4365f5d67ca07}} 
+LMVK\+\_\+\+PLUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_COMMA@{LMVK\_COMMA}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_COMMA@{LMVK\_COMMA}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af42187d421acb13e882662598cc0f969}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af42187d421acb13e882662598cc0f969}} 
+LMVK\+\_\+\+COMMA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MINUS@{LMVK\_MINUS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MINUS@{LMVK\_MINUS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6b269aa57539da5f6056b2daa60a4899}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6b269aa57539da5f6056b2daa60a4899}} 
+LMVK\+\_\+\+MINUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PERIOD@{LMVK\_PERIOD}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PERIOD@{LMVK\_PERIOD}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd23044f6c1a132504d414d172fb02db}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd23044f6c1a132504d414d172fb02db}} 
+LMVK\+\_\+\+PERIOD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SLASH@{LMVK\_SLASH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SLASH@{LMVK\_SLASH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8150d32b94c1ed7dd07b52ed5b32f823}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8150d32b94c1ed7dd07b52ed5b32f823}} 
+LMVK\+\_\+\+SLASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_0@{LMVK\_0}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_0@{LMVK\_0}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9b8840148e7e090b5b57c629bffac846}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9b8840148e7e090b5b57c629bffac846}} 
+LMVK\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_1@{LMVK\_1}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_1@{LMVK\_1}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0ef6e4b634a7042c97ed65f01447c03}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0ef6e4b634a7042c97ed65f01447c03}} 
+LMVK\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_2@{LMVK\_2}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_2@{LMVK\_2}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1840c56ae3b066ee94da7da16fae2490}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1840c56ae3b066ee94da7da16fae2490}} 
+LMVK\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_3@{LMVK\_3}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_3@{LMVK\_3}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1f6423e04a2550951085bb4f27782d08}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1f6423e04a2550951085bb4f27782d08}} 
+LMVK\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_4@{LMVK\_4}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_4@{LMVK\_4}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a27ef467d9cfeba40bf0b4f0afa6ebd6c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a27ef467d9cfeba40bf0b4f0afa6ebd6c}} 
+LMVK\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_5@{LMVK\_5}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_5@{LMVK\_5}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc1b6c655795077e430a32a3d6586d45}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc1b6c655795077e430a32a3d6586d45}} 
+LMVK\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_6@{LMVK\_6}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_6@{LMVK\_6}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a440b1476619bbd78f57e1e3544678d1e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a440b1476619bbd78f57e1e3544678d1e}} 
+LMVK\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_7@{LMVK\_7}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_7@{LMVK\_7}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2987bda7a158de87f1f2b19ef593459a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2987bda7a158de87f1f2b19ef593459a}} 
+LMVK\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_8@{LMVK\_8}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_8@{LMVK\_8}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4aacbd1ed72c72232a1492acf43295d1}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4aacbd1ed72c72232a1492acf43295d1}} 
+LMVK\+\_\+8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_9@{LMVK\_9}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_9@{LMVK\_9}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c1943849b92d0995d8eb390627ef7e9}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c1943849b92d0995d8eb390627ef7e9}} 
+LMVK\+\_\+9&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_COLON@{LMVK\_COLON}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_COLON@{LMVK\_COLON}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8bbf2090593c09ed3eb7890de60cc24}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8bbf2090593c09ed3eb7890de60cc24}} 
+LMVK\+\_\+\+COLON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SEMICOLON@{LMVK\_SEMICOLON}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SEMICOLON@{LMVK\_SEMICOLON}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a592bef423a3ee60b13f6952f1a02f0ba}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a592bef423a3ee60b13f6952f1a02f0ba}} 
+LMVK\+\_\+\+SEMICOLON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LESS@{LMVK\_LESS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LESS@{LMVK\_LESS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a281ef81f8c65fd1a2278f5b8a64200}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a281ef81f8c65fd1a2278f5b8a64200}} 
+LMVK\+\_\+\+LESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_EQUALS@{LMVK\_EQUALS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_EQUALS@{LMVK\_EQUALS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d8c96736aa42fe6bc637e026b88dbd4}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d8c96736aa42fe6bc637e026b88dbd4}} 
+LMVK\+\_\+\+EQUALS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_GREATER@{LMVK\_GREATER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_GREATER@{LMVK\_GREATER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92e4f20f6f239a2c40deccad4dd8000b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92e4f20f6f239a2c40deccad4dd8000b}} 
+LMVK\+\_\+\+GREATER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_QUESTION@{LMVK\_QUESTION}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_QUESTION@{LMVK\_QUESTION}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e979f6018954e6a1ba6dfedcc81a944}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e979f6018954e6a1ba6dfedcc81a944}} 
+LMVK\+\_\+\+QUESTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AT@{LMVK\_AT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AT@{LMVK\_AT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8f6079c1cc21fad6d826e9d6fc699b0e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8f6079c1cc21fad6d826e9d6fc699b0e}} 
+LMVK\+\_\+\+AT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LEFTBRACKET@{LMVK\_LEFTBRACKET}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LEFTBRACKET@{LMVK\_LEFTBRACKET}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6661824ef58043501b542d934580eea8}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6661824ef58043501b542d934580eea8}} 
+LMVK\+\_\+\+LEFTBRACKET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_BACKSLASH@{LMVK\_BACKSLASH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_BACKSLASH@{LMVK\_BACKSLASH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a194240e4ce33f4da846b5255b9176e82}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a194240e4ce33f4da846b5255b9176e82}} 
+LMVK\+\_\+\+BACKSLASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RIGHTBRACKET@{LMVK\_RIGHTBRACKET}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RIGHTBRACKET@{LMVK\_RIGHTBRACKET}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a60ff5ef857ace9221977a1780eb24426}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a60ff5ef857ace9221977a1780eb24426}} 
+LMVK\+\_\+\+RIGHTBRACKET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CARET@{LMVK\_CARET}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CARET@{LMVK\_CARET}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8ccdd03e6a2f452ca57194cc721316d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8ccdd03e6a2f452ca57194cc721316d}} 
+LMVK\+\_\+\+CARET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_UNDERSCORE@{LMVK\_UNDERSCORE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_UNDERSCORE@{LMVK\_UNDERSCORE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5fdb84880b2013da94923386d8f634ce}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5fdb84880b2013da94923386d8f634ce}} 
+LMVK\+\_\+\+UNDERSCORE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_BACKQUOTE@{LMVK\_BACKQUOTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_BACKQUOTE@{LMVK\_BACKQUOTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc9b2ee3d5b5fe75de195b97d053168e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc9b2ee3d5b5fe75de195b97d053168e}} 
+LMVK\+\_\+\+BACKQUOTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_A@{LMVK\_A}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_A@{LMVK\_A}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad742f618417c7302345d7a4d63ce4878}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad742f618417c7302345d7a4d63ce4878}} 
+LMVK\+\_\+A&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_B@{LMVK\_B}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_B@{LMVK\_B}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a105d1a38ecc41875a6c9712cd02276c7}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a105d1a38ecc41875a6c9712cd02276c7}} 
+LMVK\+\_\+B&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_C@{LMVK\_C}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_C@{LMVK\_C}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a36fb82d6b7148e6585833f1210161876}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a36fb82d6b7148e6585833f1210161876}} 
+LMVK\+\_\+C&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_D@{LMVK\_D}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_D@{LMVK\_D}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf55c8571bcd83a7f86fb4611bd6415b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf55c8571bcd83a7f86fb4611bd6415b}} 
+LMVK\+\_\+D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_E@{LMVK\_E}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_E@{LMVK\_E}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df663dbc57208055dfd675b219f3124}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df663dbc57208055dfd675b219f3124}} 
+LMVK\+\_\+E&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F@{LMVK\_F}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F@{LMVK\_F}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e0938462b0ecc778ed861379ba6f17d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e0938462b0ecc778ed861379ba6f17d}} 
+LMVK\+\_\+F&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_G@{LMVK\_G}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_G@{LMVK\_G}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0cfcd858417de03d94f54b72b3b91b24}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0cfcd858417de03d94f54b72b3b91b24}} 
+LMVK\+\_\+G&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_H@{LMVK\_H}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_H@{LMVK\_H}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a41308e70d2faa0a619caf05737944460}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a41308e70d2faa0a619caf05737944460}} 
+LMVK\+\_\+H&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_I@{LMVK\_I}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_I@{LMVK\_I}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a87f799501f64ad45585cceab1b424a83}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a87f799501f64ad45585cceab1b424a83}} 
+LMVK\+\_\+I&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_J@{LMVK\_J}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_J@{LMVK\_J}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adfa0af7f739bf6989e072a3b4cd2c816}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adfa0af7f739bf6989e072a3b4cd2c816}} 
+LMVK\+\_\+J&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_K@{LMVK\_K}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_K@{LMVK\_K}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a802c2bdd5e3851e4ff7e30324b27e63a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a802c2bdd5e3851e4ff7e30324b27e63a}} 
+LMVK\+\_\+K&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_L@{LMVK\_L}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_L@{LMVK\_L}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e76a44f6b6c89f70ab6f9e0249043dc}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e76a44f6b6c89f70ab6f9e0249043dc}} 
+LMVK\+\_\+L&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_M@{LMVK\_M}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_M@{LMVK\_M}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a366fdaa72df1f834fc7abc77e1f13f2f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a366fdaa72df1f834fc7abc77e1f13f2f}} 
+LMVK\+\_\+M&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_N@{LMVK\_N}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_N@{LMVK\_N}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8ae8bf56f4b763d9b73287a4aca85e85}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8ae8bf56f4b763d9b73287a4aca85e85}} 
+LMVK\+\_\+N&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_O@{LMVK\_O}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_O@{LMVK\_O}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4747bddf62dc72ed877c0a9f20ded89}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4747bddf62dc72ed877c0a9f20ded89}} 
+LMVK\+\_\+O&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_P@{LMVK\_P}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_P@{LMVK\_P}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a94e7bcfa91c0fc089024cb7d7f3d0d4e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a94e7bcfa91c0fc089024cb7d7f3d0d4e}} 
+LMVK\+\_\+P&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_Q@{LMVK\_Q}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_Q@{LMVK\_Q}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53cc615b81985c2f6190a380689a76ed}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53cc615b81985c2f6190a380689a76ed}} 
+LMVK\+\_\+Q&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_R@{LMVK\_R}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_R@{LMVK\_R}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a266208a3955811a3172ccc1eb6b01585}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a266208a3955811a3172ccc1eb6b01585}} 
+LMVK\+\_\+R&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_S@{LMVK\_S}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_S@{LMVK\_S}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a357ec3174115c9a67f5994016b5c57af}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a357ec3174115c9a67f5994016b5c57af}} 
+LMVK\+\_\+S&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_T@{LMVK\_T}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_T@{LMVK\_T}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a02e61fa4b888b8bff77ac1692391910f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a02e61fa4b888b8bff77ac1692391910f}} 
+LMVK\+\_\+T&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_U@{LMVK\_U}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_U@{LMVK\_U}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab175ee1716a2eeb7292de2ce4b4290b1}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab175ee1716a2eeb7292de2ce4b4290b1}} 
+LMVK\+\_\+U&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_V@{LMVK\_V}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_V@{LMVK\_V}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9cc7f425ac64ec8d854e1fb34122e961}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9cc7f425ac64ec8d854e1fb34122e961}} 
+LMVK\+\_\+V&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_W@{LMVK\_W}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_W@{LMVK\_W}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4653c5b3ff1c79154b564a4357b2567}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4653c5b3ff1c79154b564a4357b2567}} 
+LMVK\+\_\+W&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_X@{LMVK\_X}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_X@{LMVK\_X}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8be12403e9d2e8af1a5d074101ae1e3e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8be12403e9d2e8af1a5d074101ae1e3e}} 
+LMVK\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_Y@{LMVK\_Y}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_Y@{LMVK\_Y}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af7194303e0b673a707f0a62494aaf942}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af7194303e0b673a707f0a62494aaf942}} 
+LMVK\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_Z@{LMVK\_Z}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_Z@{LMVK\_Z}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e6586c60de3c77950bb7f9188fffb74}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e6586c60de3c77950bb7f9188fffb74}} 
+LMVK\+\_\+Z&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_DELETE@{LMVK\_DELETE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_DELETE@{LMVK\_DELETE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3673c4119e021462fc2cf20422705139}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3673c4119e021462fc2cf20422705139}} 
+LMVK\+\_\+\+DELETE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CAPSLOCK@{LMVK\_CAPSLOCK}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CAPSLOCK@{LMVK\_CAPSLOCK}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae1a24d7573d3388159f9e269e16dc18c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae1a24d7573d3388159f9e269e16dc18c}} 
+LMVK\+\_\+\+CAPSLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F1@{LMVK\_F1}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F1@{LMVK\_F1}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a928fb924c7f8b4fd5be48cf6f0f95753}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a928fb924c7f8b4fd5be48cf6f0f95753}} 
+LMVK\+\_\+\+F1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F2@{LMVK\_F2}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F2@{LMVK\_F2}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aad9499ff90488c85fb636f37edc9418f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aad9499ff90488c85fb636f37edc9418f}} 
+LMVK\+\_\+\+F2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F3@{LMVK\_F3}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F3@{LMVK\_F3}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5097ad54fa3634a98e34b9963b5602bc}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5097ad54fa3634a98e34b9963b5602bc}} 
+LMVK\+\_\+\+F3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F4@{LMVK\_F4}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F4@{LMVK\_F4}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3cf2f7130d9ccbe8cface22042e6c910}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3cf2f7130d9ccbe8cface22042e6c910}} 
+LMVK\+\_\+\+F4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F5@{LMVK\_F5}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F5@{LMVK\_F5}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aed9ddd2a8e8897a511d37376e0d4af5f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aed9ddd2a8e8897a511d37376e0d4af5f}} 
+LMVK\+\_\+\+F5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F6@{LMVK\_F6}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F6@{LMVK\_F6}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc79f9d60b4e31e463a8fb080aec400f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc79f9d60b4e31e463a8fb080aec400f}} 
+LMVK\+\_\+\+F6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F7@{LMVK\_F7}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F7@{LMVK\_F7}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1015f1cb94b4a14311375409a7f0caaf}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1015f1cb94b4a14311375409a7f0caaf}} 
+LMVK\+\_\+\+F7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F8@{LMVK\_F8}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F8@{LMVK\_F8}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e7db113da41a1fb13445fb98fa7a28}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e7db113da41a1fb13445fb98fa7a28}} 
+LMVK\+\_\+\+F8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F9@{LMVK\_F9}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F9@{LMVK\_F9}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab7a58815749ef68fd322893a7927ab99}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab7a58815749ef68fd322893a7927ab99}} 
+LMVK\+\_\+\+F9&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F10@{LMVK\_F10}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F10@{LMVK\_F10}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad4badf7bdf24b18199a4c0bb361358b8}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad4badf7bdf24b18199a4c0bb361358b8}} 
+LMVK\+\_\+\+F10&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F11@{LMVK\_F11}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F11@{LMVK\_F11}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a380a058d6d206dc6a8a4b347b0917428}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a380a058d6d206dc6a8a4b347b0917428}} 
+LMVK\+\_\+\+F11&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F12@{LMVK\_F12}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F12@{LMVK\_F12}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac741e76bbf662ffef5c12039b0e79aaa}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac741e76bbf662ffef5c12039b0e79aaa}} 
+LMVK\+\_\+\+F12&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PRINTSCREEN@{LMVK\_PRINTSCREEN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PRINTSCREEN@{LMVK\_PRINTSCREEN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af22a1d993dfa6f4e3a06fef7b7ba1c46}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af22a1d993dfa6f4e3a06fef7b7ba1c46}} 
+LMVK\+\_\+\+PRINTSCREEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SCROLLLOCK@{LMVK\_SCROLLLOCK}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SCROLLLOCK@{LMVK\_SCROLLLOCK}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab1487e2ddd54f1a31a6a40c838c58008}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab1487e2ddd54f1a31a6a40c838c58008}} 
+LMVK\+\_\+\+SCROLLLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PAUSE@{LMVK\_PAUSE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PAUSE@{LMVK\_PAUSE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a35cd5c47517119c471d74d580008cd9f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a35cd5c47517119c471d74d580008cd9f}} 
+LMVK\+\_\+\+PAUSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_INSERT@{LMVK\_INSERT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_INSERT@{LMVK\_INSERT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a25f0e4cd84fd0549ccd913365c2b67af}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a25f0e4cd84fd0549ccd913365c2b67af}} 
+LMVK\+\_\+\+INSERT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_HOME@{LMVK\_HOME}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_HOME@{LMVK\_HOME}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3a2e303bdbaf52d0d115cdce15979eff}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3a2e303bdbaf52d0d115cdce15979eff}} 
+LMVK\+\_\+\+HOME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PAGEUP@{LMVK\_PAGEUP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PAGEUP@{LMVK\_PAGEUP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a148c83580fa3e97f428bab8abe24ff20}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a148c83580fa3e97f428bab8abe24ff20}} 
+LMVK\+\_\+\+PAGEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_END@{LMVK\_END}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_END@{LMVK\_END}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d555abd557bb0a0c1ead519ac57013}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d555abd557bb0a0c1ead519ac57013}} 
+LMVK\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PAGEDOWN@{LMVK\_PAGEDOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PAGEDOWN@{LMVK\_PAGEDOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3aaf4085cc474dcfe98a79d4e9f3e2c6}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3aaf4085cc474dcfe98a79d4e9f3e2c6}} 
+LMVK\+\_\+\+PAGEDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RIGHT@{LMVK\_RIGHT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RIGHT@{LMVK\_RIGHT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad40a7c9ce0fe3402d24ba0b827c65c50}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad40a7c9ce0fe3402d24ba0b827c65c50}} 
+LMVK\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LEFT@{LMVK\_LEFT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LEFT@{LMVK\_LEFT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab4cbca5854a6c31d5fabad03d7d1f3c8}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab4cbca5854a6c31d5fabad03d7d1f3c8}} 
+LMVK\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_DOWN@{LMVK\_DOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_DOWN@{LMVK\_DOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4899b44567f64386a6740226db256439}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4899b44567f64386a6740226db256439}} 
+LMVK\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_UP@{LMVK\_UP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_UP@{LMVK\_UP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0e7293eb28c60f737e323d9c92a26acb}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0e7293eb28c60f737e323d9c92a26acb}} 
+LMVK\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_NUMLOCKCLEAR@{LMVK\_NUMLOCKCLEAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_NUMLOCKCLEAR@{LMVK\_NUMLOCKCLEAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2fe222976b2519398d0e918a5461e1e5}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2fe222976b2519398d0e918a5461e1e5}} 
+LMVK\+\_\+\+NUMLOCKCLEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_DIVIDE@{LMVK\_KP\_DIVIDE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_DIVIDE@{LMVK\_KP\_DIVIDE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1268b5c6b0a66ddcfc8a0d73c25057b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1268b5c6b0a66ddcfc8a0d73c25057b}} 
+LMVK\+\_\+\+KP\+\_\+\+DIVIDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MULTIPLY@{LMVK\_KP\_MULTIPLY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MULTIPLY@{LMVK\_KP\_MULTIPLY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a44229c4932cfe9c773d24a693db53aa2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a44229c4932cfe9c773d24a693db53aa2}} 
+LMVK\+\_\+\+KP\+\_\+\+MULTIPLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MINUS@{LMVK\_KP\_MINUS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MINUS@{LMVK\_KP\_MINUS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adaabd63c5267fc21d008f3ad475f0083}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adaabd63c5267fc21d008f3ad475f0083}} 
+LMVK\+\_\+\+KP\+\_\+\+MINUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_PLUS@{LMVK\_KP\_PLUS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_PLUS@{LMVK\_KP\_PLUS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac31c460855d3effdf9abc4c8edbda719}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac31c460855d3effdf9abc4c8edbda719}} 
+LMVK\+\_\+\+KP\+\_\+\+PLUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_ENTER@{LMVK\_KP\_ENTER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_ENTER@{LMVK\_KP\_ENTER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5b13295da5cf9abe78be1076dd7b571c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5b13295da5cf9abe78be1076dd7b571c}} 
+LMVK\+\_\+\+KP\+\_\+\+ENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_1@{LMVK\_KP\_1}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_1@{LMVK\_KP\_1}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a86d34c841f684f7b94f2144a30a9f370}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a86d34c841f684f7b94f2144a30a9f370}} 
+LMVK\+\_\+\+KP\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_2@{LMVK\_KP\_2}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_2@{LMVK\_KP\_2}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a657b966227e3f580fd550cf5bd22dd06}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a657b966227e3f580fd550cf5bd22dd06}} 
+LMVK\+\_\+\+KP\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_3@{LMVK\_KP\_3}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_3@{LMVK\_KP\_3}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9ff3e03c2f496a871d69a4443da7bb4b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9ff3e03c2f496a871d69a4443da7bb4b}} 
+LMVK\+\_\+\+KP\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_4@{LMVK\_KP\_4}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_4@{LMVK\_KP\_4}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa68f63a9a39639c3938754f8b387be9f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa68f63a9a39639c3938754f8b387be9f}} 
+LMVK\+\_\+\+KP\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_5@{LMVK\_KP\_5}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_5@{LMVK\_KP\_5}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad1d152e19815f18c7f3913663759441f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad1d152e19815f18c7f3913663759441f}} 
+LMVK\+\_\+\+KP\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_6@{LMVK\_KP\_6}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_6@{LMVK\_KP\_6}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a03230082cc63e17c522541574689151c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a03230082cc63e17c522541574689151c}} 
+LMVK\+\_\+\+KP\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_7@{LMVK\_KP\_7}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_7@{LMVK\_KP\_7}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4d428bb5296231170c99af2212eaca14}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4d428bb5296231170c99af2212eaca14}} 
+LMVK\+\_\+\+KP\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_8@{LMVK\_KP\_8}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_8@{LMVK\_KP\_8}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf6db5daa8878c41966d29c0c4bcb6a3}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf6db5daa8878c41966d29c0c4bcb6a3}} 
+LMVK\+\_\+\+KP\+\_\+8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_9@{LMVK\_KP\_9}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_9@{LMVK\_KP\_9}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8963fd0a15b1be57fe6851f1a13051b3}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8963fd0a15b1be57fe6851f1a13051b3}} 
+LMVK\+\_\+\+KP\+\_\+9&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_0@{LMVK\_KP\_0}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_0@{LMVK\_KP\_0}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92b3bf36d2752c5114dea33eb4c96cb0}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92b3bf36d2752c5114dea33eb4c96cb0}} 
+LMVK\+\_\+\+KP\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_PERIOD@{LMVK\_KP\_PERIOD}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_PERIOD@{LMVK\_KP\_PERIOD}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9c2239fc9e9227c6a8f0f224874e13a6}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9c2239fc9e9227c6a8f0f224874e13a6}} 
+LMVK\+\_\+\+KP\+\_\+\+PERIOD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_APPLICATION@{LMVK\_APPLICATION}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_APPLICATION@{LMVK\_APPLICATION}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aec21dfe018f2a8118727ca730dbc35e9}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aec21dfe018f2a8118727ca730dbc35e9}} 
+LMVK\+\_\+\+APPLICATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_POWER@{LMVK\_POWER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_POWER@{LMVK\_POWER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa59c6a57d98436ba6aea9cb7f0be7517}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa59c6a57d98436ba6aea9cb7f0be7517}} 
+LMVK\+\_\+\+POWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_EQUALS@{LMVK\_KP\_EQUALS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_EQUALS@{LMVK\_KP\_EQUALS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53354ceaeb9aa41d4cc3d06e13c2b75b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53354ceaeb9aa41d4cc3d06e13c2b75b}} 
+LMVK\+\_\+\+KP\+\_\+\+EQUALS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F13@{LMVK\_F13}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F13@{LMVK\_F13}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a56778a7e5011ae5a93d2b03d938c452f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a56778a7e5011ae5a93d2b03d938c452f}} 
+LMVK\+\_\+\+F13&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F14@{LMVK\_F14}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F14@{LMVK\_F14}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0435edb7b91c9853bab5df4b99e4a8db}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0435edb7b91c9853bab5df4b99e4a8db}} 
+LMVK\+\_\+\+F14&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F15@{LMVK\_F15}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F15@{LMVK\_F15}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae22a3a95d25250e3f204d40706d8d6b2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae22a3a95d25250e3f204d40706d8d6b2}} 
+LMVK\+\_\+\+F15&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F16@{LMVK\_F16}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F16@{LMVK\_F16}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6de105cae926cdf4c75acb9fb3f1081d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6de105cae926cdf4c75acb9fb3f1081d}} 
+LMVK\+\_\+\+F16&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F17@{LMVK\_F17}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F17@{LMVK\_F17}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae64097b2f4b7f64b3001069c8e59e5f9}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae64097b2f4b7f64b3001069c8e59e5f9}} 
+LMVK\+\_\+\+F17&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F18@{LMVK\_F18}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F18@{LMVK\_F18}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d14fac897f8de0a4d0b46c53488449f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d14fac897f8de0a4d0b46c53488449f}} 
+LMVK\+\_\+\+F18&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F19@{LMVK\_F19}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F19@{LMVK\_F19}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aae333f452f52993d8182ec6a5ae8aa3a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aae333f452f52993d8182ec6a5ae8aa3a}} 
+LMVK\+\_\+\+F19&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F20@{LMVK\_F20}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F20@{LMVK\_F20}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0711525cd7a292822a3de743e2c8a37f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0711525cd7a292822a3de743e2c8a37f}} 
+LMVK\+\_\+\+F20&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F21@{LMVK\_F21}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F21@{LMVK\_F21}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab6ce03d2182a9808e788ef7c06064637}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab6ce03d2182a9808e788ef7c06064637}} 
+LMVK\+\_\+\+F21&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F22@{LMVK\_F22}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F22@{LMVK\_F22}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af305a7e9d12fa01bf98fea45af303ba4}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af305a7e9d12fa01bf98fea45af303ba4}} 
+LMVK\+\_\+\+F22&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F23@{LMVK\_F23}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F23@{LMVK\_F23}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9fd54f9d9b45e68de9152db4de279faf}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9fd54f9d9b45e68de9152db4de279faf}} 
+LMVK\+\_\+\+F23&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_F24@{LMVK\_F24}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_F24@{LMVK\_F24}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0e42ae9297201eba15750afe3ce4453}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0e42ae9297201eba15750afe3ce4453}} 
+LMVK\+\_\+\+F24&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_EXECUTE@{LMVK\_EXECUTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_EXECUTE@{LMVK\_EXECUTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3933f58f8e352aff199a66b3987f4451}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3933f58f8e352aff199a66b3987f4451}} 
+LMVK\+\_\+\+EXECUTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_HELP@{LMVK\_HELP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_HELP@{LMVK\_HELP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac85ba925210667e96b10b9eab035c894}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac85ba925210667e96b10b9eab035c894}} 
+LMVK\+\_\+\+HELP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MENU@{LMVK\_MENU}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MENU@{LMVK\_MENU}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a55f855d99a5a957436527a08d6912533}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a55f855d99a5a957436527a08d6912533}} 
+LMVK\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SELECT@{LMVK\_SELECT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SELECT@{LMVK\_SELECT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a91876b373abeb701fc4b4bbc0f83b379}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a91876b373abeb701fc4b4bbc0f83b379}} 
+LMVK\+\_\+\+SELECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_STOP@{LMVK\_STOP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_STOP@{LMVK\_STOP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd29ca3187dd19e47268326234cff4c6}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd29ca3187dd19e47268326234cff4c6}} 
+LMVK\+\_\+\+STOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AGAIN@{LMVK\_AGAIN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AGAIN@{LMVK\_AGAIN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67bfc13ae1da038aca51bc82bf408de4}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67bfc13ae1da038aca51bc82bf408de4}} 
+LMVK\+\_\+\+AGAIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_UNDO@{LMVK\_UNDO}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_UNDO@{LMVK\_UNDO}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedbfdf1cf445380b9eed928ec096e586}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedbfdf1cf445380b9eed928ec096e586}} 
+LMVK\+\_\+\+UNDO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CUT@{LMVK\_CUT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CUT@{LMVK\_CUT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a48c3327d5c18a539241e9b4ea2fdc72b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a48c3327d5c18a539241e9b4ea2fdc72b}} 
+LMVK\+\_\+\+CUT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_COPY@{LMVK\_COPY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_COPY@{LMVK\_COPY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a68f6c33edba132168cbca15ec3260088}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a68f6c33edba132168cbca15ec3260088}} 
+LMVK\+\_\+\+COPY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PASTE@{LMVK\_PASTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PASTE@{LMVK\_PASTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cb9b640bf43e82ca85ed984dd5d726c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cb9b640bf43e82ca85ed984dd5d726c}} 
+LMVK\+\_\+\+PASTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_FIND@{LMVK\_FIND}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_FIND@{LMVK\_FIND}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aeaa258e6de4bd0acd822b4dac601d1a3}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aeaa258e6de4bd0acd822b4dac601d1a3}} 
+LMVK\+\_\+\+FIND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MUTE@{LMVK\_MUTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MUTE@{LMVK\_MUTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1b1c531fa26355b947c1fd067ab1f61f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1b1c531fa26355b947c1fd067ab1f61f}} 
+LMVK\+\_\+\+MUTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_VOLUMEUP@{LMVK\_VOLUMEUP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_VOLUMEUP@{LMVK\_VOLUMEUP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96c21f512075d073f77284c97b5f1cb8}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96c21f512075d073f77284c97b5f1cb8}} 
+LMVK\+\_\+\+VOLUMEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_VOLUMEDOWN@{LMVK\_VOLUMEDOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_VOLUMEDOWN@{LMVK\_VOLUMEDOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afb119e33875221bef004b22dac047ce4}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afb119e33875221bef004b22dac047ce4}} 
+LMVK\+\_\+\+VOLUMEDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_COMMA@{LMVK\_KP\_COMMA}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_COMMA@{LMVK\_KP\_COMMA}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab36b8561adf3483a295ee94bb44595ad}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab36b8561adf3483a295ee94bb44595ad}} 
+LMVK\+\_\+\+KP\+\_\+\+COMMA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_EQUALSAS400@{LMVK\_KP\_EQUALSAS400}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_EQUALSAS400@{LMVK\_KP\_EQUALSAS400}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1df0382d56653275d54b1155da4b1455}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1df0382d56653275d54b1155da4b1455}} 
+LMVK\+\_\+\+KP\+\_\+\+EQUALSAS400&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_ALTERASE@{LMVK\_ALTERASE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_ALTERASE@{LMVK\_ALTERASE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d8d97c1ffdc5736034c3c0e9deda324}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d8d97c1ffdc5736034c3c0e9deda324}} 
+LMVK\+\_\+\+ALTERASE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SYSREQ@{LMVK\_SYSREQ}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SYSREQ@{LMVK\_SYSREQ}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a11f1a206c629b05a14bf6fd182d71ef3}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a11f1a206c629b05a14bf6fd182d71ef3}} 
+LMVK\+\_\+\+SYSREQ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CANCEL@{LMVK\_CANCEL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CANCEL@{LMVK\_CANCEL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1169fcd14a47de0683e10e3cf16aef44}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1169fcd14a47de0683e10e3cf16aef44}} 
+LMVK\+\_\+\+CANCEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CLEAR@{LMVK\_CLEAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CLEAR@{LMVK\_CLEAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad2a852bfea07b9713524dc87fb019eca}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad2a852bfea07b9713524dc87fb019eca}} 
+LMVK\+\_\+\+CLEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_PRIOR@{LMVK\_PRIOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_PRIOR@{LMVK\_PRIOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a01994ed5a4194a9ca910ee646ae4d082}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a01994ed5a4194a9ca910ee646ae4d082}} 
+LMVK\+\_\+\+PRIOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RETURN2@{LMVK\_RETURN2}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RETURN2@{LMVK\_RETURN2}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a047c4e6b358f0168b71df688b17efb7b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a047c4e6b358f0168b71df688b17efb7b}} 
+LMVK\+\_\+\+RETURN2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SEPARATOR@{LMVK\_SEPARATOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SEPARATOR@{LMVK\_SEPARATOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a06a97d82e5dbd5f1c32e8d18c0d9a148}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a06a97d82e5dbd5f1c32e8d18c0d9a148}} 
+LMVK\+\_\+\+SEPARATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_OUT@{LMVK\_OUT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_OUT@{LMVK\_OUT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a049ea5e5e1886ca6dd8fe56839fe1de7}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a049ea5e5e1886ca6dd8fe56839fe1de7}} 
+LMVK\+\_\+\+OUT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_OPER@{LMVK\_OPER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_OPER@{LMVK\_OPER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a807286bd407a09d4ee9d24ea33929509}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a807286bd407a09d4ee9d24ea33929509}} 
+LMVK\+\_\+\+OPER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CLEARAGAIN@{LMVK\_CLEARAGAIN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CLEARAGAIN@{LMVK\_CLEARAGAIN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae4a779bbe7c15bf2bc3a1f9b76596d41}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae4a779bbe7c15bf2bc3a1f9b76596d41}} 
+LMVK\+\_\+\+CLEARAGAIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CRSEL@{LMVK\_CRSEL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CRSEL@{LMVK\_CRSEL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5d3e5e35d0eafcd341a3cf7cae91be4a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5d3e5e35d0eafcd341a3cf7cae91be4a}} 
+LMVK\+\_\+\+CRSEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_EXSEL@{LMVK\_EXSEL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_EXSEL@{LMVK\_EXSEL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a482e044b3ab5eb65a19bc7914225dc05}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a482e044b3ab5eb65a19bc7914225dc05}} 
+LMVK\+\_\+\+EXSEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_00@{LMVK\_KP\_00}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_00@{LMVK\_KP\_00}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8d99bd18a9c2cb524ae14fad5b2b24af}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8d99bd18a9c2cb524ae14fad5b2b24af}} 
+LMVK\+\_\+\+KP\+\_\+00&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_000@{LMVK\_KP\_000}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_000@{LMVK\_KP\_000}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3220061fda855176afed54bdcd6698aa}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3220061fda855176afed54bdcd6698aa}} 
+LMVK\+\_\+\+KP\+\_\+000&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_THOUSANDSSEPARATOR@{LMVK\_THOUSANDSSEPARATOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_THOUSANDSSEPARATOR@{LMVK\_THOUSANDSSEPARATOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c868947c2bc43f7233f6dd99741d3af}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c868947c2bc43f7233f6dd99741d3af}} 
+LMVK\+\_\+\+THOUSANDSSEPARATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_DECIMALSEPARATOR@{LMVK\_DECIMALSEPARATOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_DECIMALSEPARATOR@{LMVK\_DECIMALSEPARATOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9330c91f8530e8ada2174ffe411bb2e0}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9330c91f8530e8ada2174ffe411bb2e0}} 
+LMVK\+\_\+\+DECIMALSEPARATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CURRENCYUNIT@{LMVK\_CURRENCYUNIT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CURRENCYUNIT@{LMVK\_CURRENCYUNIT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9857a564b6669f303e3b8fa34e018bf9}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9857a564b6669f303e3b8fa34e018bf9}} 
+LMVK\+\_\+\+CURRENCYUNIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CURRENCYSUBUNIT@{LMVK\_CURRENCYSUBUNIT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CURRENCYSUBUNIT@{LMVK\_CURRENCYSUBUNIT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0fe0557b9698fd6291b4868e80184812}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0fe0557b9698fd6291b4868e80184812}} 
+LMVK\+\_\+\+CURRENCYSUBUNIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_LEFTPAREN@{LMVK\_KP\_LEFTPAREN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_LEFTPAREN@{LMVK\_KP\_LEFTPAREN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1162fc28f3fc366224cb101c4e3a4c9}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1162fc28f3fc366224cb101c4e3a4c9}} 
+LMVK\+\_\+\+KP\+\_\+\+LEFTPAREN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_RIGHTPAREN@{LMVK\_KP\_RIGHTPAREN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_RIGHTPAREN@{LMVK\_KP\_RIGHTPAREN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e94f083d0aa4bc014c63c48941b3a40}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e94f083d0aa4bc014c63c48941b3a40}} 
+LMVK\+\_\+\+KP\+\_\+\+RIGHTPAREN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_LEFTBRACE@{LMVK\_KP\_LEFTBRACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_LEFTBRACE@{LMVK\_KP\_LEFTBRACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a922c0c07d3c8735f00dba703be3a5d52}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a922c0c07d3c8735f00dba703be3a5d52}} 
+LMVK\+\_\+\+KP\+\_\+\+LEFTBRACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_RIGHTBRACE@{LMVK\_KP\_RIGHTBRACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_RIGHTBRACE@{LMVK\_KP\_RIGHTBRACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d4f984c9b47b391af492a5bf6e57d03}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d4f984c9b47b391af492a5bf6e57d03}} 
+LMVK\+\_\+\+KP\+\_\+\+RIGHTBRACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_TAB@{LMVK\_KP\_TAB}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_TAB@{LMVK\_KP\_TAB}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9630f02dc4fc46db9e02f4ed0b599ead}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9630f02dc4fc46db9e02f4ed0b599ead}} 
+LMVK\+\_\+\+KP\+\_\+\+TAB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_BACKSPACE@{LMVK\_KP\_BACKSPACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_BACKSPACE@{LMVK\_KP\_BACKSPACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e5213028a5ba5ebc80475018ac2db3f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e5213028a5ba5ebc80475018ac2db3f}} 
+LMVK\+\_\+\+KP\+\_\+\+BACKSPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_A@{LMVK\_KP\_A}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_A@{LMVK\_KP\_A}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad37e15f14d68058c6d002be9935f02ce}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad37e15f14d68058c6d002be9935f02ce}} 
+LMVK\+\_\+\+KP\+\_\+A&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_B@{LMVK\_KP\_B}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_B@{LMVK\_KP\_B}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a851761d1e4a5765bd7c4408326be95eb}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a851761d1e4a5765bd7c4408326be95eb}} 
+LMVK\+\_\+\+KP\+\_\+B&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_C@{LMVK\_KP\_C}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_C@{LMVK\_KP\_C}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3f2a3a73c9552997eff5cd70c8b404e5}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3f2a3a73c9552997eff5cd70c8b404e5}} 
+LMVK\+\_\+\+KP\+\_\+C&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_D@{LMVK\_KP\_D}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_D@{LMVK\_KP\_D}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a305750bcea8acac008546cb481bec587}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a305750bcea8acac008546cb481bec587}} 
+LMVK\+\_\+\+KP\+\_\+D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_E@{LMVK\_KP\_E}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_E@{LMVK\_KP\_E}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a31c00ba1103a6c49dddd273a8d3ea3d7}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a31c00ba1103a6c49dddd273a8d3ea3d7}} 
+LMVK\+\_\+\+KP\+\_\+E&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_F@{LMVK\_KP\_F}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_F@{LMVK\_KP\_F}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af0800953bad78765db4a078aa00cc311}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af0800953bad78765db4a078aa00cc311}} 
+LMVK\+\_\+\+KP\+\_\+F&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_XOR@{LMVK\_KP\_XOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_XOR@{LMVK\_KP\_XOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ef2b02bb582eff3a8c22b96a68b8f48}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ef2b02bb582eff3a8c22b96a68b8f48}} 
+LMVK\+\_\+\+KP\+\_\+\+XOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_POWER@{LMVK\_KP\_POWER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_POWER@{LMVK\_KP\_POWER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a74ef009798640a790d56acb0519f4417}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a74ef009798640a790d56acb0519f4417}} 
+LMVK\+\_\+\+KP\+\_\+\+POWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_PERCENT@{LMVK\_KP\_PERCENT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_PERCENT@{LMVK\_KP\_PERCENT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8846535d5e35cc8f526cfb9ce4a3b65}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8846535d5e35cc8f526cfb9ce4a3b65}} 
+LMVK\+\_\+\+KP\+\_\+\+PERCENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_LESS@{LMVK\_KP\_LESS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_LESS@{LMVK\_KP\_LESS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac8b30cd2c5d634cc53ae6a00cfa3da40}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac8b30cd2c5d634cc53ae6a00cfa3da40}} 
+LMVK\+\_\+\+KP\+\_\+\+LESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_GREATER@{LMVK\_KP\_GREATER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_GREATER@{LMVK\_KP\_GREATER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8cc4b05315795a1f9b87cd03f015a731}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8cc4b05315795a1f9b87cd03f015a731}} 
+LMVK\+\_\+\+KP\+\_\+\+GREATER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_AMPERSAND@{LMVK\_KP\_AMPERSAND}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_AMPERSAND@{LMVK\_KP\_AMPERSAND}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a806c01fecd2fdf7898d06c8a6418d713}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a806c01fecd2fdf7898d06c8a6418d713}} 
+LMVK\+\_\+\+KP\+\_\+\+AMPERSAND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_DBLAMPERSAND@{LMVK\_KP\_DBLAMPERSAND}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_DBLAMPERSAND@{LMVK\_KP\_DBLAMPERSAND}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc26e43861bfbfc41552bff897b079fd}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc26e43861bfbfc41552bff897b079fd}} 
+LMVK\+\_\+\+KP\+\_\+\+DBLAMPERSAND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_VERTICALBAR@{LMVK\_KP\_VERTICALBAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_VERTICALBAR@{LMVK\_KP\_VERTICALBAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1b621238351e87826734890a8daad06}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1b621238351e87826734890a8daad06}} 
+LMVK\+\_\+\+KP\+\_\+\+VERTICALBAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_DBLVERTICALBAR@{LMVK\_KP\_DBLVERTICALBAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_DBLVERTICALBAR@{LMVK\_KP\_DBLVERTICALBAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df682247a1cfd03ecaa944c3afebb58}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df682247a1cfd03ecaa944c3afebb58}} 
+LMVK\+\_\+\+KP\+\_\+\+DBLVERTICALBAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_COLON@{LMVK\_KP\_COLON}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_COLON@{LMVK\_KP\_COLON}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ccebcdca7a186765c5686a17960fd0d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ccebcdca7a186765c5686a17960fd0d}} 
+LMVK\+\_\+\+KP\+\_\+\+COLON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_HASH@{LMVK\_KP\_HASH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_HASH@{LMVK\_KP\_HASH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67d8c8281b3e5d7a9e127762a989fec2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67d8c8281b3e5d7a9e127762a989fec2}} 
+LMVK\+\_\+\+KP\+\_\+\+HASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_SPACE@{LMVK\_KP\_SPACE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_SPACE@{LMVK\_KP\_SPACE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a57ae177a07505d229f7c0d17a9a19630}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a57ae177a07505d229f7c0d17a9a19630}} 
+LMVK\+\_\+\+KP\+\_\+\+SPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_AT@{LMVK\_KP\_AT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_AT@{LMVK\_KP\_AT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac2866a07e5c8d3c2d942ad988f8f30a2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac2866a07e5c8d3c2d942ad988f8f30a2}} 
+LMVK\+\_\+\+KP\+\_\+\+AT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_EXCLAM@{LMVK\_KP\_EXCLAM}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_EXCLAM@{LMVK\_KP\_EXCLAM}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a881e3538b0b1d08f952632441af8dc72}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a881e3538b0b1d08f952632441af8dc72}} 
+LMVK\+\_\+\+KP\+\_\+\+EXCLAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMSTORE@{LMVK\_KP\_MEMSTORE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMSTORE@{LMVK\_KP\_MEMSTORE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d1219b39e239fd1d78ac8bd38ab5db}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d1219b39e239fd1d78ac8bd38ab5db}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMSTORE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMRECALL@{LMVK\_KP\_MEMRECALL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMRECALL@{LMVK\_KP\_MEMRECALL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a40152de401a61e2cdcce8eacd55172b6}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a40152de401a61e2cdcce8eacd55172b6}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMRECALL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMCLEAR@{LMVK\_KP\_MEMCLEAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMCLEAR@{LMVK\_KP\_MEMCLEAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a623f4e39f99b8506bd026a78672bfdfe}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a623f4e39f99b8506bd026a78672bfdfe}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMCLEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMADD@{LMVK\_KP\_MEMADD}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMADD@{LMVK\_KP\_MEMADD}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a84ae12d3e50200ba19e5bc7205120ab8}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a84ae12d3e50200ba19e5bc7205120ab8}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMADD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMSUBTRACT@{LMVK\_KP\_MEMSUBTRACT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMSUBTRACT@{LMVK\_KP\_MEMSUBTRACT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac211cc829dc930883d66c66589799d8a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac211cc829dc930883d66c66589799d8a}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMSUBTRACT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMMULTIPLY@{LMVK\_KP\_MEMMULTIPLY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMMULTIPLY@{LMVK\_KP\_MEMMULTIPLY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a42995cd24c830993c042646f4ff85043}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a42995cd24c830993c042646f4ff85043}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMMULTIPLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_MEMDIVIDE@{LMVK\_KP\_MEMDIVIDE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_MEMDIVIDE@{LMVK\_KP\_MEMDIVIDE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a174e35e9c0c663bc1912650743632317}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a174e35e9c0c663bc1912650743632317}} 
+LMVK\+\_\+\+KP\+\_\+\+MEMDIVIDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_PLUSMINUS@{LMVK\_KP\_PLUSMINUS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_PLUSMINUS@{LMVK\_KP\_PLUSMINUS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a69875f72ad9cd40be149993d58c96c98}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a69875f72ad9cd40be149993d58c96c98}} 
+LMVK\+\_\+\+KP\+\_\+\+PLUSMINUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_CLEAR@{LMVK\_KP\_CLEAR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_CLEAR@{LMVK\_KP\_CLEAR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a71fc4e63a96db0a22fcc8f2ae0377a17}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a71fc4e63a96db0a22fcc8f2ae0377a17}} 
+LMVK\+\_\+\+KP\+\_\+\+CLEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_CLEARENTRY@{LMVK\_KP\_CLEARENTRY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_CLEARENTRY@{LMVK\_KP\_CLEARENTRY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa3d47b29b298aaac308534f39db8da2a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa3d47b29b298aaac308534f39db8da2a}} 
+LMVK\+\_\+\+KP\+\_\+\+CLEARENTRY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_BINARY@{LMVK\_KP\_BINARY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_BINARY@{LMVK\_KP\_BINARY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e224de934b758c27e7f6b268d86952f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e224de934b758c27e7f6b268d86952f}} 
+LMVK\+\_\+\+KP\+\_\+\+BINARY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_OCTAL@{LMVK\_KP\_OCTAL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_OCTAL@{LMVK\_KP\_OCTAL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496a47126544bde31aceee08c91d53d5}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496a47126544bde31aceee08c91d53d5}} 
+LMVK\+\_\+\+KP\+\_\+\+OCTAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_DECIMAL@{LMVK\_KP\_DECIMAL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_DECIMAL@{LMVK\_KP\_DECIMAL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a255c2563b9c654280d11d9c7be413e1c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a255c2563b9c654280d11d9c7be413e1c}} 
+LMVK\+\_\+\+KP\+\_\+\+DECIMAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KP\_HEXADECIMAL@{LMVK\_KP\_HEXADECIMAL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KP\_HEXADECIMAL@{LMVK\_KP\_HEXADECIMAL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a22b26dff5e2519f50b56ebb79aa595e7}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a22b26dff5e2519f50b56ebb79aa595e7}} 
+LMVK\+\_\+\+KP\+\_\+\+HEXADECIMAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LCTRL@{LMVK\_LCTRL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LCTRL@{LMVK\_LCTRL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02abac6eaabfbcf3524ed930c8e31b84f47}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02abac6eaabfbcf3524ed930c8e31b84f47}} 
+LMVK\+\_\+\+LCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LSHIFT@{LMVK\_LSHIFT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LSHIFT@{LMVK\_LSHIFT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e8c90c1a48759c41884e2b3c01fb06a}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e8c90c1a48759c41884e2b3c01fb06a}} 
+LMVK\+\_\+\+LSHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LALT@{LMVK\_LALT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LALT@{LMVK\_LALT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37ccc749eefa2bbfecc773b09082778e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37ccc749eefa2bbfecc773b09082778e}} 
+LMVK\+\_\+\+LALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_LGUI@{LMVK\_LGUI}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_LGUI@{LMVK\_LGUI}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e45b378bc56646441c76c98b57a02c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e45b378bc56646441c76c98b57a02c}} 
+LMVK\+\_\+\+LGUI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RCTRL@{LMVK\_RCTRL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RCTRL@{LMVK\_RCTRL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa97a67a3bf136a5357946ef2142979de}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa97a67a3bf136a5357946ef2142979de}} 
+LMVK\+\_\+\+RCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RSHIFT@{LMVK\_RSHIFT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RSHIFT@{LMVK\_RSHIFT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1f529788dd92066c599e37278a9361e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1f529788dd92066c599e37278a9361e}} 
+LMVK\+\_\+\+RSHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RALT@{LMVK\_RALT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RALT@{LMVK\_RALT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab33fbf6253cf2dc41bb2ccc50c087ce6}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab33fbf6253cf2dc41bb2ccc50c087ce6}} 
+LMVK\+\_\+\+RALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_RGUI@{LMVK\_RGUI}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_RGUI@{LMVK\_RGUI}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae3740b90da4710da5c039098bdfff209}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae3740b90da4710da5c039098bdfff209}} 
+LMVK\+\_\+\+RGUI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MODE@{LMVK\_MODE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MODE@{LMVK\_MODE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7191e7d83d86aa96edbbe0f688ab4362}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7191e7d83d86aa96edbbe0f688ab4362}} 
+LMVK\+\_\+\+MODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AUDIONEXT@{LMVK\_AUDIONEXT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AUDIONEXT@{LMVK\_AUDIONEXT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6aa8d9b498b276c139a0a96498a68f16}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6aa8d9b498b276c139a0a96498a68f16}} 
+LMVK\+\_\+\+AUDIONEXT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AUDIOPREV@{LMVK\_AUDIOPREV}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AUDIOPREV@{LMVK\_AUDIOPREV}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad49b2f07d2f9908606c4d745f12cc2be}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad49b2f07d2f9908606c4d745f12cc2be}} 
+LMVK\+\_\+\+AUDIOPREV&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AUDIOSTOP@{LMVK\_AUDIOSTOP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AUDIOSTOP@{LMVK\_AUDIOSTOP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c5c6e449bba0c2603631bd4917c2a7b}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c5c6e449bba0c2603631bd4917c2a7b}} 
+LMVK\+\_\+\+AUDIOSTOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AUDIOPLAY@{LMVK\_AUDIOPLAY}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AUDIOPLAY@{LMVK\_AUDIOPLAY}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af09558936e326beb209fa7aab73c7eb2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af09558936e326beb209fa7aab73c7eb2}} 
+LMVK\+\_\+\+AUDIOPLAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AUDIOMUTE@{LMVK\_AUDIOMUTE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AUDIOMUTE@{LMVK\_AUDIOMUTE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96fc07050379ca4b33f334322c47ff9d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96fc07050379ca4b33f334322c47ff9d}} 
+LMVK\+\_\+\+AUDIOMUTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MEDIASELECT@{LMVK\_MEDIASELECT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MEDIASELECT@{LMVK\_MEDIASELECT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c34d09f755b62830c87d77f9083b948}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c34d09f755b62830c87d77f9083b948}} 
+LMVK\+\_\+\+MEDIASELECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_WWW@{LMVK\_WWW}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_WWW@{LMVK\_WWW}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8898d77627b613eb218ff56e74611fa2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8898d77627b613eb218ff56e74611fa2}} 
+LMVK\+\_\+\+WWW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_MAIL@{LMVK\_MAIL}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_MAIL@{LMVK\_MAIL}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a980f549a53b990218b44b0309518f5cb}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a980f549a53b990218b44b0309518f5cb}} 
+LMVK\+\_\+\+MAIL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_CALCULATOR@{LMVK\_CALCULATOR}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_CALCULATOR@{LMVK\_CALCULATOR}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae7d39fdab25cd19f4a485dbdc6516cbb}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae7d39fdab25cd19f4a485dbdc6516cbb}} 
+LMVK\+\_\+\+CALCULATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_COMPUTER@{LMVK\_COMPUTER}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_COMPUTER@{LMVK\_COMPUTER}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a8c937e1004c69bb7c227e9ab7e2c82}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a8c937e1004c69bb7c227e9ab7e2c82}} 
+LMVK\+\_\+\+COMPUTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_SEARCH@{LMVK\_AC\_SEARCH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_SEARCH@{LMVK\_AC\_SEARCH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a731c84c865b1f363eff5f87951fabbe0}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a731c84c865b1f363eff5f87951fabbe0}} 
+LMVK\+\_\+\+AC\+\_\+\+SEARCH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_HOME@{LMVK\_AC\_HOME}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_HOME@{LMVK\_AC\_HOME}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7addf2783076eac38e84e7dac020c42d}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7addf2783076eac38e84e7dac020c42d}} 
+LMVK\+\_\+\+AC\+\_\+\+HOME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_BACK@{LMVK\_AC\_BACK}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_BACK@{LMVK\_AC\_BACK}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3b8f1b9a3013e54232e05ebf27cd4109}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3b8f1b9a3013e54232e05ebf27cd4109}} 
+LMVK\+\_\+\+AC\+\_\+\+BACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_FORWARD@{LMVK\_AC\_FORWARD}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_FORWARD@{LMVK\_AC\_FORWARD}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa1390b05e9a9c97b91266b32f609d7cd}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa1390b05e9a9c97b91266b32f609d7cd}} 
+LMVK\+\_\+\+AC\+\_\+\+FORWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_STOP@{LMVK\_AC\_STOP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_STOP@{LMVK\_AC\_STOP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1253046da239cd04138df167f0095f61}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1253046da239cd04138df167f0095f61}} 
+LMVK\+\_\+\+AC\+\_\+\+STOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_REFRESH@{LMVK\_AC\_REFRESH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_REFRESH@{LMVK\_AC\_REFRESH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6c3c8abea7fd50b0a027ddcdfb954ad2}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6c3c8abea7fd50b0a027ddcdfb954ad2}} 
+LMVK\+\_\+\+AC\+\_\+\+REFRESH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_AC\_BOOKMARKS@{LMVK\_AC\_BOOKMARKS}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_AC\_BOOKMARKS@{LMVK\_AC\_BOOKMARKS}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496c62b70dcc340ba924f6988870d185}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496c62b70dcc340ba924f6988870d185}} 
+LMVK\+\_\+\+AC\+\_\+\+BOOKMARKS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_BRIGHTNESSDOWN@{LMVK\_BRIGHTNESSDOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_BRIGHTNESSDOWN@{LMVK\_BRIGHTNESSDOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a471232650ab322caf1685e73219f1b78}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a471232650ab322caf1685e73219f1b78}} 
+LMVK\+\_\+\+BRIGHTNESSDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_BRIGHTNESSUP@{LMVK\_BRIGHTNESSUP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_BRIGHTNESSUP@{LMVK\_BRIGHTNESSUP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4c5082c19e51c944fd4069589824b77f}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4c5082c19e51c944fd4069589824b77f}} 
+LMVK\+\_\+\+BRIGHTNESSUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_DISPLAYSWITCH@{LMVK\_DISPLAYSWITCH}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_DISPLAYSWITCH@{LMVK\_DISPLAYSWITCH}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae11ea9831b953062d72eded227810f74}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae11ea9831b953062d72eded227810f74}} 
+LMVK\+\_\+\+DISPLAYSWITCH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KBDILLUMTOGGLE@{LMVK\_KBDILLUMTOGGLE}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KBDILLUMTOGGLE@{LMVK\_KBDILLUMTOGGLE}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aadf27fcdc341456e3dbce3a17ba2a958}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aadf27fcdc341456e3dbce3a17ba2a958}} 
+LMVK\+\_\+\+KBDILLUMTOGGLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KBDILLUMDOWN@{LMVK\_KBDILLUMDOWN}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KBDILLUMDOWN@{LMVK\_KBDILLUMDOWN}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a549c51d6f7e3dc5788b67c5a31564b62}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a549c51d6f7e3dc5788b67c5a31564b62}} 
+LMVK\+\_\+\+KBDILLUMDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_KBDILLUMUP@{LMVK\_KBDILLUMUP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_KBDILLUMUP@{LMVK\_KBDILLUMUP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cccc385789a357c4fe9d635c953bcee}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cccc385789a357c4fe9d635c953bcee}} 
+LMVK\+\_\+\+KBDILLUMUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_EJECT@{LMVK\_EJECT}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_EJECT@{LMVK\_EJECT}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a891bfc34bceefcf3d7a5ca0b89a3006c}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a891bfc34bceefcf3d7a5ca0b89a3006c}} 
+LMVK\+\_\+\+EJECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LMVK\_SLEEP@{LMVK\_SLEEP}!keyboard.h@{keyboard.h}}\index{keyboard.h@{keyboard.h}!LMVK\_SLEEP@{LMVK\_SLEEP}}}\mbox{\Hypertarget{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aefd1eca034b46eae0bb7bb8af606027e}\label{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aefd1eca034b46eae0bb7bb8af606027e}} 
+LMVK\+\_\+\+SLEEP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keyboard_8h_aa5912c0bd99aaa30a5cc67ae262c7b40}\label{keyboard_8h_aa5912c0bd99aaa30a5cc67ae262c7b40}} 
+\index{keyboard.h@{keyboard.h}!lm\_input\_vk\_index@{lm\_input\_vk\_index}}
+\index{lm\_input\_vk\_index@{lm\_input\_vk\_index}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{lm\_input\_vk\_index()}{lm\_input\_vk\_index()}}
+{\footnotesize\ttfamily size\+\_\+t lm\+\_\+input\+\_\+vk\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{Virtual\+Key}}}]{key }\end{DoxyParamCaption})}
+

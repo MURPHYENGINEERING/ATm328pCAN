@@ -1,0 +1,86 @@
+\hypertarget{atm328p__eeprom_8h}{}\doxysection{src/atm328p/atm328p\+\_\+eeprom.h File Reference}
+\label{atm328p__eeprom_8h}\index{src/atm328p/atm328p\_eeprom.h@{src/atm328p/atm328p\_eeprom.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for atm328p\+\_\+eeprom.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{atm328p__eeprom_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{atm328p__eeprom_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_e_e_a_r___t}{EEAR\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_e_e_c_r___t}{EECR\+\_\+T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__eeprom_8h_a6d72360d4501024c0cb55e2d38e51034}{atm328p\+\_\+eeprom\+\_\+write\+\_\+byte}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} address, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} data)
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{atm328p__eeprom_8h_aa04ed1ee418fe3b03340bc83bb75c736}{atm328p\+\_\+eeprom\+\_\+read\+\_\+byte}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} address)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__eeprom_8h_ae600ec49298cfbc0e3419f2eb4d0db1a}{atm328p\+\_\+eeprom\+\_\+erase\+\_\+byte}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} address)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \mbox{\hyperlink{union_e_e_a_r___t}{EEAR\+\_\+T}} \mbox{\hyperlink{atm328p__eeprom_8h_ae52350a3989616585fdc3fad25cddef1}{EEAR}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} \mbox{\hyperlink{atm328p__eeprom_8h_a285ea1f68c822fbc604cb7c14c1bd350}{EEDR}}
+\item 
+volatile \mbox{\hyperlink{union_e_e_c_r___t}{EECR\+\_\+T}} \mbox{\hyperlink{atm328p__eeprom_8h_a5e1e205361677f21cb43e64000a4e9f0}{EECR}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{atm328p__eeprom_8h_ae600ec49298cfbc0e3419f2eb4d0db1a}\label{atm328p__eeprom_8h_ae600ec49298cfbc0e3419f2eb4d0db1a}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!atm328p\_eeprom\_erase\_byte@{atm328p\_eeprom\_erase\_byte}}
+\index{atm328p\_eeprom\_erase\_byte@{atm328p\_eeprom\_erase\_byte}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{atm328p\_eeprom\_erase\_byte()}{atm328p\_eeprom\_erase\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} atm328p\+\_\+eeprom\+\_\+erase\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{atm328p__eeprom_8h_aa04ed1ee418fe3b03340bc83bb75c736}\label{atm328p__eeprom_8h_aa04ed1ee418fe3b03340bc83bb75c736}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!atm328p\_eeprom\_read\_byte@{atm328p\_eeprom\_read\_byte}}
+\index{atm328p\_eeprom\_read\_byte@{atm328p\_eeprom\_read\_byte}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{atm328p\_eeprom\_read\_byte()}{atm328p\_eeprom\_read\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} atm328p\+\_\+eeprom\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{atm328p__eeprom_8h_a6d72360d4501024c0cb55e2d38e51034}\label{atm328p__eeprom_8h_a6d72360d4501024c0cb55e2d38e51034}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!atm328p\_eeprom\_write\_byte@{atm328p\_eeprom\_write\_byte}}
+\index{atm328p\_eeprom\_write\_byte@{atm328p\_eeprom\_write\_byte}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{atm328p\_eeprom\_write\_byte()}{atm328p\_eeprom\_write\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} atm328p\+\_\+eeprom\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{address,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{atm328p__eeprom_8h_ae52350a3989616585fdc3fad25cddef1}\label{atm328p__eeprom_8h_ae52350a3989616585fdc3fad25cddef1}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!EEAR@{EEAR}}
+\index{EEAR@{EEAR}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{EEAR}{EEAR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_e_e_a_r___t}{EEAR\+\_\+T}} EEAR\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__eeprom_8h_a5e1e205361677f21cb43e64000a4e9f0}\label{atm328p__eeprom_8h_a5e1e205361677f21cb43e64000a4e9f0}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!EECR@{EECR}}
+\index{EECR@{EECR}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{EECR}{EECR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_e_e_c_r___t}{EECR\+\_\+T}} EECR\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__eeprom_8h_a285ea1f68c822fbc604cb7c14c1bd350}\label{atm328p__eeprom_8h_a285ea1f68c822fbc604cb7c14c1bd350}} 
+\index{atm328p\_eeprom.h@{atm328p\_eeprom.h}!EEDR@{EEDR}}
+\index{EEDR@{EEDR}!atm328p\_eeprom.h@{atm328p\_eeprom.h}}
+\doxysubsubsection{\texorpdfstring{EEDR}{EEDR}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} EEDR\hspace{0.3cm}{\ttfamily [extern]}}
+

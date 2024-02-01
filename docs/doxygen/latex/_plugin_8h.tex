@@ -1,0 +1,271 @@
+\hypertarget{_plugin_8h}{}\doxysection{src/common/include/lmda/app/\+Plugin.h File Reference}
+\label{_plugin_8h}\index{src/common/include/lmda/app/Plugin.h@{src/common/include/lmda/app/Plugin.h}}
+{\ttfamily \#include $<$lmda/platform/fs.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/stddef.\+h$>$}\newline
+Include dependency graph for Plugin.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{_plugin_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_plugin_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_plugin}{Plugin}}
+\begin{DoxyCompactList}\small\item\em A plugin packages some functionality in a form that can be swapped out live while the program is running (\char`\"{}hot reloading\char`\"{}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}{Plugin\+Type}} \mbox{\hyperlink{_plugin_8h_adbcb4be3de818941022a9c685b429fda}{Plugin\+Type}}
+\item 
+typedef struct \mbox{\hyperlink{struct_plugin}{Plugin}} \mbox{\hyperlink{_plugin_8h_a2fbb5c3326275cd375be335ab6caff18}{Plugin}}
+\item 
+typedef bool($\ast$ \mbox{\hyperlink{_plugin_8h_a02028dca0a911549fa4ead227dc69e75}{Plugin\+Init\+Fn}}) (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Type of plugin functions that (re)initialize the plugin from a given state. \end{DoxyCompactList}\item 
+typedef bool($\ast$ \mbox{\hyperlink{_plugin_8h_a5319d4dba5919282011c319b19779653}{Plugin\+Fn}}) ()
+\begin{DoxyCompactList}\small\item\em Type of plugin functions that perform some operation without additional arguments, e.\+g. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}{Plugin\+Type}} \{ \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a2e14aef53aad82865280c658867bd092}{LM\+\_\+\+PLUGIN\+\_\+\+GAME}} = 0
+, \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a8880ce4cf51d2291e2c86f10a5db809c}{LM\+\_\+\+PLUGIN\+\_\+\+PRESENTATION}}
+, \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a6fd0611254ae5a6ee5584851b2dcd73e}{LM\+\_\+\+PLUGIN\+\_\+\+NET}}
+, \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a7ee83e9793fed1b5bd6f2d685898295d}{LM\+\_\+\+PLUGIN\+\_\+\+COUNT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_plugin_8h_a1644a97331ea4b1b20ef8dde10835e79}{lmda\+\_\+plugin\+\_\+init\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\item 
+bool \mbox{\hyperlink{_plugin_8h_ad6050c7ca7c7d80e935dc71c268e614c}{lmda\+\_\+plugin\+\_\+update\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin_8h_a1c11a70fc2f27d2b327eddc4579f0442}{lmda\+\_\+plugin\+\_\+suspend\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin_8h_af46e05ccb761cc8617b73c19c6c347a3}{lmda\+\_\+plugin\+\_\+resume\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\item 
+bool \mbox{\hyperlink{_plugin_8h_a0db071d42c10d5da02e56e1c09275452}{lmda\+\_\+plugin\+\_\+destroy\+\_\+impl}} ()
+\item 
+void \mbox{\hyperlink{_plugin_8h_ac8254d1d0c3fbbc50b6bfa9233df7711}{lmda\+\_\+plugin\+\_\+common\+\_\+init}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Plugins must call this before anything else in their init function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin_8h_af5e2fe269c1cf718179ddf9b94cef0d7}{lmda\+\_\+plugin\+\_\+common\+\_\+resume}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Plugins must call this before anything else in their resume function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin_8h_aaab23c5cba270b4e8a29434ef56dd236}{lm\+\_\+plugin\+\_\+init}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$, struct \mbox{\hyperlink{struct_app_context}{App\+Context}} $\ast$, char const $\ast$name, char const $\ast$path)
+\begin{DoxyCompactList}\small\item\em Zero-\/initialize the given plugin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8h_a05b7920377abadd4dd730a7e44000eb5}{lm\+\_\+plugin\+\_\+ensure\+\_\+loaded}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Attempt to load a plugin by the given name from the library at the given path. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8h_a39556278a9c2132708d6f36911b58623}{lm\+\_\+plugin\+\_\+unload}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Attempt to unload the given plugin\textquotesingle{}s code libary. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8h_abc12e9c805e745fc190cbd5e3cea5851}{lm\+\_\+plugin\+\_\+bind}} (void $\ast$$\ast$fn, \mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em Attempt to bind the given function to one in the given plugin that goes by by the given name. \end{DoxyCompactList}\item 
+FILE $\ast$ \mbox{\hyperlink{_plugin_8h_a36b19d6afeb027970f119160aa0eb9ae}{lm\+\_\+plugin\+\_\+lib\+\_\+get\+\_\+cache}} (char $\ast$cache\+Path)
+\begin{DoxyCompactList}\small\item\em Get a path suitable for temporarily caching the plugin library file, open the file for writing, and return an open file descriptor. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{_plugin_8h_a6216ed29f28e0a867448c0c574ebe669}{lm\+\_\+plugin\+\_\+lib\+\_\+load}} (char const $\ast$path)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+ensure\+\_\+loaded} \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{_plugin_8h_aa3890010b9e1e64328c4f095d4d5d14f}{lm\+\_\+plugin\+\_\+lib\+\_\+bind}} (void $\ast$lib, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+bind} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin_8h_a616a650e8ac80103fe3be5b32f50285b}{lm\+\_\+plugin\+\_\+lib\+\_\+unload}} (void $\ast$lib)
+\begin{DoxyCompactList}\small\item\em Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+unload} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_plugin_8h_a2fbb5c3326275cd375be335ab6caff18}\label{_plugin_8h_a2fbb5c3326275cd375be335ab6caff18}} 
+\index{Plugin.h@{Plugin.h}!Plugin@{Plugin}}
+\index{Plugin@{Plugin}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{Plugin}{Plugin}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_plugin}{Plugin}} \mbox{\hyperlink{struct_plugin}{Plugin}}}
+
+\mbox{\Hypertarget{_plugin_8h_a5319d4dba5919282011c319b19779653}\label{_plugin_8h_a5319d4dba5919282011c319b19779653}} 
+\index{Plugin.h@{Plugin.h}!PluginFn@{PluginFn}}
+\index{PluginFn@{PluginFn}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{PluginFn}{PluginFn}}
+{\footnotesize\ttfamily typedef bool($\ast$ Plugin\+Fn) ()}
+
+
+
+Type of plugin functions that perform some operation without additional arguments, e.\+g. 
+
+because they capture state during initialization. \mbox{\Hypertarget{_plugin_8h_a02028dca0a911549fa4ead227dc69e75}\label{_plugin_8h_a02028dca0a911549fa4ead227dc69e75}} 
+\index{Plugin.h@{Plugin.h}!PluginInitFn@{PluginInitFn}}
+\index{PluginInitFn@{PluginInitFn}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{PluginInitFn}{PluginInitFn}}
+{\footnotesize\ttfamily typedef bool($\ast$ Plugin\+Init\+Fn) (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$)}
+
+
+
+Type of plugin functions that (re)initialize the plugin from a given state. 
+
+\mbox{\Hypertarget{_plugin_8h_adbcb4be3de818941022a9c685b429fda}\label{_plugin_8h_adbcb4be3de818941022a9c685b429fda}} 
+\index{Plugin.h@{Plugin.h}!PluginType@{PluginType}}
+\index{PluginType@{PluginType}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{PluginType}{PluginType}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}{Plugin\+Type}} \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}{Plugin\+Type}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}\label{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}} 
+\index{Plugin.h@{Plugin.h}!PluginType@{PluginType}}
+\index{PluginType@{PluginType}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{PluginType}{PluginType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2}{Plugin\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_PLUGIN\_GAME@{LM\_PLUGIN\_GAME}!Plugin.h@{Plugin.h}}\index{Plugin.h@{Plugin.h}!LM\_PLUGIN\_GAME@{LM\_PLUGIN\_GAME}}}\mbox{\Hypertarget{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a2e14aef53aad82865280c658867bd092}\label{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a2e14aef53aad82865280c658867bd092}} 
+LM\+\_\+\+PLUGIN\+\_\+\+GAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_PLUGIN\_PRESENTATION@{LM\_PLUGIN\_PRESENTATION}!Plugin.h@{Plugin.h}}\index{Plugin.h@{Plugin.h}!LM\_PLUGIN\_PRESENTATION@{LM\_PLUGIN\_PRESENTATION}}}\mbox{\Hypertarget{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a8880ce4cf51d2291e2c86f10a5db809c}\label{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a8880ce4cf51d2291e2c86f10a5db809c}} 
+LM\+\_\+\+PLUGIN\+\_\+\+PRESENTATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_PLUGIN\_NET@{LM\_PLUGIN\_NET}!Plugin.h@{Plugin.h}}\index{Plugin.h@{Plugin.h}!LM\_PLUGIN\_NET@{LM\_PLUGIN\_NET}}}\mbox{\Hypertarget{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a6fd0611254ae5a6ee5584851b2dcd73e}\label{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a6fd0611254ae5a6ee5584851b2dcd73e}} 
+LM\+\_\+\+PLUGIN\+\_\+\+NET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LM\_PLUGIN\_COUNT@{LM\_PLUGIN\_COUNT}!Plugin.h@{Plugin.h}}\index{Plugin.h@{Plugin.h}!LM\_PLUGIN\_COUNT@{LM\_PLUGIN\_COUNT}}}\mbox{\Hypertarget{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a7ee83e9793fed1b5bd6f2d685898295d}\label{_plugin_8h_a54e0db21fd49ff6e0178b6ebe120a6d2a7ee83e9793fed1b5bd6f2d685898295d}} 
+LM\+\_\+\+PLUGIN\+\_\+\+COUNT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_plugin_8h_abc12e9c805e745fc190cbd5e3cea5851}\label{_plugin_8h_abc12e9c805e745fc190cbd5e3cea5851}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_bind@{lm\_plugin\_bind}}
+\index{lm\_plugin\_bind@{lm\_plugin\_bind}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_bind()}{lm\_plugin\_bind()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+bind (\begin{DoxyParamCaption}\item[{void $\ast$$\ast$}]{fn,  }\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Attempt to bind the given function to one in the given plugin that goes by by the given name. 
+
+If the result is {\ttfamily true}, then calling the given function will execute the bound function in the plugin library. \mbox{\Hypertarget{_plugin_8h_a05b7920377abadd4dd730a7e44000eb5}\label{_plugin_8h_a05b7920377abadd4dd730a7e44000eb5}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_ensure\_loaded@{lm\_plugin\_ensure\_loaded}}
+\index{lm\_plugin\_ensure\_loaded@{lm\_plugin\_ensure\_loaded}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_ensure\_loaded()}{lm\_plugin\_ensure\_loaded()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+ensure\+\_\+loaded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Attempt to load a plugin by the given name from the library at the given path. 
+
+If the plugin is loaded successfully then its {\ttfamily initialized} flag will be set. \mbox{\Hypertarget{_plugin_8h_aaab23c5cba270b4e8a29434ef56dd236}\label{_plugin_8h_aaab23c5cba270b4e8a29434ef56dd236}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_init@{lm\_plugin\_init}}
+\index{lm\_plugin\_init@{lm\_plugin\_init}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_init()}{lm\_plugin\_init()}}
+{\footnotesize\ttfamily void lm\+\_\+plugin\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin,  }\item[{struct \mbox{\hyperlink{struct_app_context}{App\+Context}} $\ast$}]{ctx,  }\item[{char const $\ast$}]{name,  }\item[{char const $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Zero-\/initialize the given plugin. 
+
+\mbox{\Hypertarget{_plugin_8h_aa3890010b9e1e64328c4f095d4d5d14f}\label{_plugin_8h_aa3890010b9e1e64328c4f095d4d5d14f}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_lib\_bind@{lm\_plugin\_lib\_bind}}
+\index{lm\_plugin\_lib\_bind@{lm\_plugin\_lib\_bind}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_bind()}{lm\_plugin\_lib\_bind()}}
+{\footnotesize\ttfamily void $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+bind (\begin{DoxyParamCaption}\item[{void $\ast$}]{lib,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+bind} 
+
+\mbox{\Hypertarget{_plugin_8h_a36b19d6afeb027970f119160aa0eb9ae}\label{_plugin_8h_a36b19d6afeb027970f119160aa0eb9ae}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_lib\_get\_cache@{lm\_plugin\_lib\_get\_cache}}
+\index{lm\_plugin\_lib\_get\_cache@{lm\_plugin\_lib\_get\_cache}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_get\_cache()}{lm\_plugin\_lib\_get\_cache()}}
+{\footnotesize\ttfamily FILE $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+get\+\_\+cache (\begin{DoxyParamCaption}\item[{char $\ast$}]{cache\+Path }\end{DoxyParamCaption})}
+
+
+
+Get a path suitable for temporarily caching the plugin library file, open the file for writing, and return an open file descriptor. 
+
+\mbox{\Hypertarget{_plugin_8h_a6216ed29f28e0a867448c0c574ebe669}\label{_plugin_8h_a6216ed29f28e0a867448c0c574ebe669}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_lib\_load@{lm\_plugin\_lib\_load}}
+\index{lm\_plugin\_lib\_load@{lm\_plugin\_lib\_load}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_load()}{lm\_plugin\_lib\_load()}}
+{\footnotesize\ttfamily void $\ast$ lm\+\_\+plugin\+\_\+lib\+\_\+load (\begin{DoxyParamCaption}\item[{char const $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+ensure\+\_\+loaded} 
+
+\mbox{\Hypertarget{_plugin_8h_a616a650e8ac80103fe3be5b32f50285b}\label{_plugin_8h_a616a650e8ac80103fe3be5b32f50285b}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_lib\_unload@{lm\_plugin\_lib\_unload}}
+\index{lm\_plugin\_lib\_unload@{lm\_plugin\_lib\_unload}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_lib\_unload()}{lm\_plugin\_lib\_unload()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+lib\+\_\+unload (\begin{DoxyParamCaption}\item[{void $\ast$}]{lib }\end{DoxyParamCaption})}
+
+
+
+Platform interface used by {\ttfamily lm\+\_\+plugin\+\_\+unload} 
+
+\mbox{\Hypertarget{_plugin_8h_a39556278a9c2132708d6f36911b58623}\label{_plugin_8h_a39556278a9c2132708d6f36911b58623}} 
+\index{Plugin.h@{Plugin.h}!lm\_plugin\_unload@{lm\_plugin\_unload}}
+\index{lm\_plugin\_unload@{lm\_plugin\_unload}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lm\_plugin\_unload()}{lm\_plugin\_unload()}}
+{\footnotesize\ttfamily bool lm\+\_\+plugin\+\_\+unload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Attempt to unload the given plugin\textquotesingle{}s code libary. 
+
+The plugin is considered unloaded regardless of whether its memory is successfully freed. The plugin state is not affected. \mbox{\Hypertarget{_plugin_8h_ac8254d1d0c3fbbc50b6bfa9233df7711}\label{_plugin_8h_ac8254d1d0c3fbbc50b6bfa9233df7711}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_common\_init@{lmda\_plugin\_common\_init}}
+\index{lmda\_plugin\_common\_init@{lmda\_plugin\_common\_init}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_common\_init()}{lmda\_plugin\_common\_init()}}
+{\footnotesize\ttfamily void lmda\+\_\+plugin\+\_\+common\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Plugins must call this before anything else in their init function. 
+
+\mbox{\Hypertarget{_plugin_8h_af5e2fe269c1cf718179ddf9b94cef0d7}\label{_plugin_8h_af5e2fe269c1cf718179ddf9b94cef0d7}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_common\_resume@{lmda\_plugin\_common\_resume}}
+\index{lmda\_plugin\_common\_resume@{lmda\_plugin\_common\_resume}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_common\_resume()}{lmda\_plugin\_common\_resume()}}
+{\footnotesize\ttfamily void lmda\+\_\+plugin\+\_\+common\+\_\+resume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+
+
+Plugins must call this before anything else in their resume function. 
+
+\mbox{\Hypertarget{_plugin_8h_a0db071d42c10d5da02e56e1c09275452}\label{_plugin_8h_a0db071d42c10d5da02e56e1c09275452}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}}
+\index{lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_destroy\_impl()}{lmda\_plugin\_destroy\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+destroy\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8h_a1644a97331ea4b1b20ef8dde10835e79}\label{_plugin_8h_a1644a97331ea4b1b20ef8dde10835e79}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}}
+\index{lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_init\_impl()}{lmda\_plugin\_init\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+init\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8h_af46e05ccb761cc8617b73c19c6c347a3}\label{_plugin_8h_af46e05ccb761cc8617b73c19c6c347a3}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}}
+\index{lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_resume\_impl()}{lmda\_plugin\_resume\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+resume\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8h_a1c11a70fc2f27d2b327eddc4579f0442}\label{_plugin_8h_a1c11a70fc2f27d2b327eddc4579f0442}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}}
+\index{lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_suspend\_impl()}{lmda\_plugin\_suspend\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+suspend\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin_8h_ad6050c7ca7c7d80e935dc71c268e614c}\label{_plugin_8h_ad6050c7ca7c7d80e935dc71c268e614c}} 
+\index{Plugin.h@{Plugin.h}!lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}}
+\index{lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}!Plugin.h@{Plugin.h}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_update\_impl()}{lmda\_plugin\_update\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+update\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

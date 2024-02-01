@@ -1,0 +1,8 @@
+<map id="src/can.c" name="src/can.c">
+<area shape="rect" id="node1" title=" " alt="" coords="93,5,188,32"/>
+<area shape="rect" id="node2" href="$can_8h.html" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" href="$fifo_8h.html" title=" " alt="" coords="71,155,141,181"/>
+<area shape="rect" id="node5" href="$spi_8h.html" title=" " alt="" coords="144,80,207,107"/>
+<area shape="rect" id="node6" href="$dsc_8h.html" title=" " alt="" coords="189,155,252,181"/>
+<area shape="rect" id="node4" href="$types_8h.html" title=" " alt="" coords="112,229,191,256"/>
+</map>

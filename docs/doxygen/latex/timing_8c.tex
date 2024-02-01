@@ -1,0 +1,111 @@
+\hypertarget{timing_8c}{}\doxysection{src/platform/common/timing.c File Reference}
+\label{timing_8c}\index{src/platform/common/timing.c@{src/platform/common/timing.c}}
+
+
+Platform-\/independent timing operations.  
+
+
+{\ttfamily \#include $<$lmda/timing.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/log.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for timing.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{timing_8c_a7372c54d055d9f85627906a0006911b3}{lm\+\_\+time\+\_\+start}} (\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$clock)
+\begin{DoxyCompactList}\small\item\em Establish the current time as t=0 for {\ttfamily lm\+\_\+time\+\_\+sim\+\_\+now}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} \mbox{\hyperlink{timing_8c_a773e7213d2f723cf7dff7b00e131613d}{lm\+\_\+time\+\_\+suspend}} (\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$clock)
+\item 
+\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} \mbox{\hyperlink{timing_8c_a9667a148b7895db06f35646746cb37ef}{lm\+\_\+time\+\_\+resume}} (\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$clock)
+\item 
+void \mbox{\hyperlink{timing_8c_acdb530e6b02a2c37dc59c12b3ea70b58}{lm\+\_\+time\+\_\+tick}} (\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$clock)
+\item 
+void \mbox{\hyperlink{timing_8c_a66515b38a597f90310cd0f41cdf0c2ae}{lm\+\_\+time\+\_\+sleep\+\_\+until}} (\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$clock, \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} time)
+\begin{DoxyCompactList}\small\item\em Put the current thread to sleep until the given time, with a minimum duration determined by operating system scheduling. \end{DoxyCompactList}\item 
+char const $\ast$ \mbox{\hyperlink{timing_8c_a14c3698a5a0393530916afcd8a69d2c4}{lm\+\_\+time\+\_\+hhmmsss}} (\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} t)
+\begin{DoxyCompactList}\small\item\em Write the given time into the buffer, up to {\ttfamily size} bytes, in the form of {\ttfamily hh\+:mm\+:ss.\+ms} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} \mbox{\hyperlink{timing_8c_a950e4d3df8f5f8e6b8f1ffb244748de9}{lm\+\_\+time\+\_\+from\+\_\+millis}} (\mbox{\hyperlink{timing_8h_a42d25c067084e571eba2e86575d045f0}{millis\+\_\+t}} ms)
+\item 
+\mbox{\hyperlink{timing_8h_afceaa65d4c6ef08e43b3325368d7642b}{seconds\+\_\+t}} \mbox{\hyperlink{timing_8c_a1dc664744cf4ce54ecde9920acac3945}{lm\+\_\+time\+\_\+to\+\_\+seconds}} (\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} ns)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Platform-\/independent timing operations. 
+
+\begin{DoxyAuthor}{Author}
+Matt Murphy (\href{mailto:matt@murphysys.com}{\texttt{ matt@murphysys.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/06
+\end{DoxyDate}
+Copyright (c) 2022 Murphy Engineering LLC 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{timing_8c_a950e4d3df8f5f8e6b8f1ffb244748de9}\label{timing_8c_a950e4d3df8f5f8e6b8f1ffb244748de9}} 
+\index{timing.c@{timing.c}!lm\_time\_from\_millis@{lm\_time\_from\_millis}}
+\index{lm\_time\_from\_millis@{lm\_time\_from\_millis}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_from\_millis()}{lm\_time\_from\_millis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} lm\+\_\+time\+\_\+from\+\_\+millis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timing_8h_a42d25c067084e571eba2e86575d045f0}{millis\+\_\+t}}}]{ms }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timing_8c_a14c3698a5a0393530916afcd8a69d2c4}\label{timing_8c_a14c3698a5a0393530916afcd8a69d2c4}} 
+\index{timing.c@{timing.c}!lm\_time\_hhmmsss@{lm\_time\_hhmmsss}}
+\index{lm\_time\_hhmmsss@{lm\_time\_hhmmsss}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_hhmmsss()}{lm\_time\_hhmmsss()}}
+{\footnotesize\ttfamily char const  $\ast$ lm\+\_\+time\+\_\+hhmmsss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}}}]{t }\end{DoxyParamCaption})}
+
+
+
+Write the given time into the buffer, up to {\ttfamily size} bytes, in the form of {\ttfamily hh\+:mm\+:ss.\+ms} 
+
+\mbox{\Hypertarget{timing_8c_a9667a148b7895db06f35646746cb37ef}\label{timing_8c_a9667a148b7895db06f35646746cb37ef}} 
+\index{timing.c@{timing.c}!lm\_time\_resume@{lm\_time\_resume}}
+\index{lm\_time\_resume@{lm\_time\_resume}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_resume()}{lm\_time\_resume()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} lm\+\_\+time\+\_\+resume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$}]{clock }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timing_8c_a66515b38a597f90310cd0f41cdf0c2ae}\label{timing_8c_a66515b38a597f90310cd0f41cdf0c2ae}} 
+\index{timing.c@{timing.c}!lm\_time\_sleep\_until@{lm\_time\_sleep\_until}}
+\index{lm\_time\_sleep\_until@{lm\_time\_sleep\_until}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_sleep\_until()}{lm\_time\_sleep\_until()}}
+{\footnotesize\ttfamily void lm\+\_\+time\+\_\+sleep\+\_\+until (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$}]{clock,  }\item[{\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}}}]{time }\end{DoxyParamCaption})}
+
+
+
+Put the current thread to sleep until the given time, with a minimum duration determined by operating system scheduling. 
+
+\mbox{\Hypertarget{timing_8c_a7372c54d055d9f85627906a0006911b3}\label{timing_8c_a7372c54d055d9f85627906a0006911b3}} 
+\index{timing.c@{timing.c}!lm\_time\_start@{lm\_time\_start}}
+\index{lm\_time\_start@{lm\_time\_start}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_start()}{lm\_time\_start()}}
+{\footnotesize\ttfamily void lm\+\_\+time\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$}]{clock }\end{DoxyParamCaption})}
+
+
+
+Establish the current time as t=0 for {\ttfamily lm\+\_\+time\+\_\+sim\+\_\+now}. 
+
+\mbox{\Hypertarget{timing_8c_a773e7213d2f723cf7dff7b00e131613d}\label{timing_8c_a773e7213d2f723cf7dff7b00e131613d}} 
+\index{timing.c@{timing.c}!lm\_time\_suspend@{lm\_time\_suspend}}
+\index{lm\_time\_suspend@{lm\_time\_suspend}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_suspend()}{lm\_time\_suspend()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}} lm\+\_\+time\+\_\+suspend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$}]{clock }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timing_8c_acdb530e6b02a2c37dc59c12b3ea70b58}\label{timing_8c_acdb530e6b02a2c37dc59c12b3ea70b58}} 
+\index{timing.c@{timing.c}!lm\_time\_tick@{lm\_time\_tick}}
+\index{lm\_time\_tick@{lm\_time\_tick}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_tick()}{lm\_time\_tick()}}
+{\footnotesize\ttfamily void lm\+\_\+time\+\_\+tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sim_clock}{Sim\+Clock}} $\ast$}]{clock }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timing_8c_a1dc664744cf4ce54ecde9920acac3945}\label{timing_8c_a1dc664744cf4ce54ecde9920acac3945}} 
+\index{timing.c@{timing.c}!lm\_time\_to\_seconds@{lm\_time\_to\_seconds}}
+\index{lm\_time\_to\_seconds@{lm\_time\_to\_seconds}!timing.c@{timing.c}}
+\doxysubsubsection{\texorpdfstring{lm\_time\_to\_seconds()}{lm\_time\_to\_seconds()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timing_8h_afceaa65d4c6ef08e43b3325368d7642b}{seconds\+\_\+t}} lm\+\_\+time\+\_\+to\+\_\+seconds (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\+\_\+t}}}]{ns }\end{DoxyParamCaption})}
+

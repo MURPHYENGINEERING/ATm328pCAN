@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['g_5fcan_5frx_5fq_0',['g_can_rx_q',['../can_8c.html#a99829ddb4626fff82dfc5fa4bac42490',1,'can.c']]],
+  ['g_5fcan_5frx_5fq_5fbuf_1',['g_can_rx_q_buf',['../can_8c.html#a65c98c5ddbcbbeaadcc4dfac29b42946',1,'can.c']]],
+  ['g_5fcan_5ftx_5fq_2',['g_can_tx_q',['../can_8c.html#a63f9e24663de7434d0e013101e438462',1,'can.c']]],
+  ['g_5fcan_5ftx_5fq_5fbuf_3',['g_can_tx_q_buf',['../can_8c.html#ade29651c5a9d79a22195ba7fc039300f',1,'can.c']]],
+  ['g_5ffai_5ffault_5fempty_4',['g_fai_fault_empty',['../fai_8c.html#a38ecae091ee7df79d3639290682e233e',1,'fai.c']]],
+  ['g_5ffault_5fcounters_5',['g_fault_counters',['../fai_8c.html#a43b3d3b2e0051d80471e3494a50a9847',1,'fai.c']]],
+  ['g_5fpending_5ffaults_6',['g_pending_faults',['../fai_8c.html#a9d32cca06b42eb5aec985e099f993c47',1,'fai.c']]],
+  ['g_5fscheduler_5fstate_7',['g_scheduler_state',['../scheduler_8c.html#af20e8ee359feb94fbe3d81205afb8da3',1,'scheduler.c']]],
+  ['g_5fspi_5fready_8',['g_spi_ready',['../spi_8c.html#aa292c98e73df5398cb2c96df0ad71e38',1,'g_spi_ready():&#160;spi.c'],['../spi_8h.html#aa292c98e73df5398cb2c96df0ad71e38',1,'g_spi_ready():&#160;spi.c']]],
+  ['g_5ftask_5fidx_9',['g_task_idx',['../scheduler_8c.html#ab045a1b591876cb80aa3c46c35546dee',1,'scheduler.c']]],
+  ['g_5fusart_5frx_5fbuf_10',['g_usart_rx_buf',['../usart_8c.html#aebdbfa6e7e48a0be97345107ac763ec3',1,'usart.c']]],
+  ['g_5fusart_5frx_5fbuf_5fn_11',['g_usart_rx_buf_n',['../usart_8c.html#aa834fd0f29d60feebc5e36c9cd1a42e7',1,'usart.c']]],
+  ['g_5fusart_5frx_5fbuf_5fread_5fidx_12',['g_usart_rx_buf_read_idx',['../usart_8c.html#a195ea5329102d71a9646aac911d6b0e5',1,'usart.c']]],
+  ['g_5fusart_5frx_5fbuf_5fwrite_5fidx_13',['g_usart_rx_buf_write_idx',['../usart_8c.html#a19b6092809e0326b09879309ef565100',1,'usart.c']]],
+  ['g_5fusart_5ftx_5fbuf_14',['g_usart_tx_buf',['../usart_8c.html#a3a61a0e96e0e998ce02c9a4f06eb3106',1,'usart.c']]],
+  ['g_5fusart_5ftx_5fbuf_5fn_15',['g_usart_tx_buf_n',['../usart_8c.html#add53d94fd59cfe494c11d3df34efea18',1,'usart.c']]],
+  ['g_5fusart_5ftx_5fbuf_5fread_5fidx_16',['g_usart_tx_buf_read_idx',['../usart_8c.html#af954c6c0e5e94f365b31efa9f557bdbc',1,'usart.c']]],
+  ['g_5fusart_5ftx_5fbuf_5fwrite_5fidx_17',['g_usart_tx_buf_write_idx',['../usart_8c.html#a1971bcf3421d18e4e3eb6fe5401cd51b',1,'usart.c']]],
+  ['g_5fusart_5ftx_5ftransmitting_18',['g_usart_tx_transmitting',['../usart_8c.html#aa9233f19cd695a17357db1587330c18a',1,'usart.c']]]
+];

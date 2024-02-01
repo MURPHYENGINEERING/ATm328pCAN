@@ -1,0 +1,8 @@
+<map id="src/include/lmda/version.h" name="src/include/lmda/version.h">
+<area shape="rect" id="node1" title="Defines the build version; the build system labels output based on this." alt="" coords="148,5,379,32"/>
+<area shape="rect" id="node2" href="$main_8c.html" title="Entrypoint to game application (i.e. game plugin host)." alt="" coords="5,162,140,189"/>
+<area shape="rect" id="node3" href="$platform_8h.html" title="Declares generic platform initialization to allow platforms to do specialized setup (e...." alt="" coords="144,80,383,107"/>
+<area shape="rect" id="node6" href="$fs_8c.html" title="Platform&#45;independent filesystem operations." alt="" coords="407,80,621,107"/>
+<area shape="rect" id="node4" href="$platform__mac_8c.html" title="Generic platform initialization on MacOS." alt="" coords="164,155,387,196"/>
+<area shape="rect" id="node5" href="$platform__win_8c.html" title="Generic platform initialization on Windows." alt="" coords="411,155,633,196"/>
+</map>

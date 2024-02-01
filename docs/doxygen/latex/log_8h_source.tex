@@ -1,0 +1,62 @@
+\hypertarget{log_8h_source}{}\doxysection{log.\+h}
+\label{log_8h_source}\index{src/include/lmda/log.h@{src/include/lmda/log.h}}
+\mbox{\hyperlink{log_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef LMDA\_LOG\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define LMDA\_LOG\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{19 \textcolor{keyword}{struct }tm;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_log_state}{LogState}} \mbox{\hyperlink{struct_log_state}{LogState}};}
+\DoxyCodeLine{26 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_log_state}{LogState}} \{}
+\DoxyCodeLine{27   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_log_state_a4bbd97c564cb1ebc111623a7e6027251}{level}};}
+\DoxyCodeLine{28   \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_log_state_a986d78b9c8db01dcb2901d392cb587e3}{quiet}};}
+\DoxyCodeLine{29   FILE* \mbox{\hyperlink{struct_log_state_aaf6927e7eb617bde593214d4de7779f9}{file}};}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_log_event}{LogEvent}} \mbox{\hyperlink{struct_log_event}{LogEvent}};}
+\DoxyCodeLine{36 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_log_event}{LogEvent}} \{}
+\DoxyCodeLine{37   va\_list \mbox{\hyperlink{struct_log_event_ac6d365edb4ad08564eaa9697319e27aa}{ap}};}
+\DoxyCodeLine{38   \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \mbox{\hyperlink{struct_log_event_aec77eef354196b107bc8136954520784}{fmt}};}
+\DoxyCodeLine{39   \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \mbox{\hyperlink{struct_log_event_a8d94216869167848b18673807991eb13}{file}};}
+\DoxyCodeLine{40   \textcolor{keyword}{struct }tm* \mbox{\hyperlink{struct_log_event_af5487e4449bb8d6e4010826aec5b6241}{time}};}
+\DoxyCodeLine{41   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_log_event_aeb509bd00295373ed74561e9e3df9b4d}{line}};}
+\DoxyCodeLine{42   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_log_event_a4a38a30db009ecc71508fb8b934c592b}{level}};}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{enum} \{ \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5a5b76dd51db62558b1952158ba38b723f}{LOG\_TRACE}}, \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}}, \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}}, \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5ac8041ffa22bc823d4726701cdb13fc13}{LOG\_WARN}}, \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}, \mbox{\hyperlink{log_8h_a99fb83031ce9923c84392b4e92f956b5ac630750884d91cb9767ef2200bbb048b}{LOG\_FATAL}} \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define log\_trace(...) log\_log(LOG\_TRACE, \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define log\_debug(...) log\_log(LOG\_DEBUG,  \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define log\_info(...) log\_log(LOG\_INFO, \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define log\_warn(...) log\_log(LOG\_WARN, \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define log\_error(...) log\_log(LOG\_ERROR, \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define log\_fatal(...) log\_log(LOG\_FATAL, \_\_FILE\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \mbox{\hyperlink{log_8h_abbc9c03c87a423057656353fc0ff2253}{log\_level\_string}}(\textcolor{keywordtype}{int} level);}
+\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{log_8h_af2493e94f152a28b2ba4e3a2e2bba65d}{log\_set\_level}}(\textcolor{keywordtype}{int} level);}
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} \mbox{\hyperlink{log_8h_a6de5d12252f1b48279d28769b7c130eb}{log\_set\_quiet}}(\textcolor{keywordtype}{bool} enable);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keywordtype}{void} \mbox{\hyperlink{log_8h_ab7066b4c1396e08e51e0b989afda098f}{log\_log}}(}
+\DoxyCodeLine{61     \textcolor{keywordtype}{int} level,}
+\DoxyCodeLine{62     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* file,}
+\DoxyCodeLine{63     \textcolor{keywordtype}{int} line,}
+\DoxyCodeLine{64     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* fmt,}
+\DoxyCodeLine{65     ...);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keywordtype}{void} \mbox{\hyperlink{log_8h_a16309b47eea60fb8f69ef568e22ab89f}{lm\_log\_init}}(\mbox{\hyperlink{struct_log_state}{LogState}}* log);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 FILE* \mbox{\hyperlink{log_8h_a1b639b03a15ed21adbcd111fe9d85db3}{lm\_log\_create\_file}}();}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LMDA\_LOG\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,73 @@
+\hypertarget{memory_8h}{}\doxysection{src/memory.h File Reference}
+\label{memory_8h}\index{src/memory.h@{src/memory.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for memory.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{memory_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{memory_8h_a63fecdcb991cb81f69778425ea39cec8}{memcpy\+\_\+by\+\_\+\+U8}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$dst, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$src, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{memory_8h_a9fb36233ae05e7fd6c0d74f3380b52ea}{memset\+\_\+by\+\_\+\+U8}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$dst, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} value, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{types_8h_a41db4533702316cf502bc1d0b574c177}{S32\+\_\+T}} \mbox{\hyperlink{memory_8h_afce39d2c7a9d7beb3e312d22ad0cf62a}{memcmp\+\_\+by\+\_\+\+U8}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$lhs, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$rhs, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{memory_8h_aff316162ff6b79fcf46ff6f76aa7ae09}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((\+\_\+\+\_\+noinline\+\_\+\+\_\+)) \mbox{\hyperlink{types_8h_ae4a0a1df8c5867a28f59c13145bd7db5}{U32\+\_\+T}} \mbox{\hyperlink{memory_8c_a00313933dc370c739b1f6eb8b644bbfd}{get\+\_\+pc}}(\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memory_8h_aff316162ff6b79fcf46ff6f76aa7ae09}\label{memory_8h_aff316162ff6b79fcf46ff6f76aa7ae09}} 
+\index{memory.h@{memory.h}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(\+\_\+\+\_\+noinline\+\_\+\+\_\+)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{memory_8h_afce39d2c7a9d7beb3e312d22ad0cf62a}\label{memory_8h_afce39d2c7a9d7beb3e312d22ad0cf62a}} 
+\index{memory.h@{memory.h}!memcmp\_by\_U8@{memcmp\_by\_U8}}
+\index{memcmp\_by\_U8@{memcmp\_by\_U8}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{memcmp\_by\_U8()}{memcmp\_by\_U8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a41db4533702316cf502bc1d0b574c177}{S32\+\_\+T}} memcmp\+\_\+by\+\_\+\+U8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{lhs,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{rhs,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{memory_8h_a63fecdcb991cb81f69778425ea39cec8}\label{memory_8h_a63fecdcb991cb81f69778425ea39cec8}} 
+\index{memory.h@{memory.h}!memcpy\_by\_U8@{memcpy\_by\_U8}}
+\index{memcpy\_by\_U8@{memcpy\_by\_U8}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{memcpy\_by\_U8()}{memcpy\_by\_U8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} memcpy\+\_\+by\+\_\+\+U8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{dst,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{src,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h_a63fecdcb991cb81f69778425ea39cec8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{memory_8h_a9fb36233ae05e7fd6c0d74f3380b52ea}\label{memory_8h_a9fb36233ae05e7fd6c0d74f3380b52ea}} 
+\index{memory.h@{memory.h}!memset\_by\_U8@{memset\_by\_U8}}
+\index{memset\_by\_U8@{memset\_by\_U8}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{memset\_by\_U8()}{memset\_by\_U8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} memset\+\_\+by\+\_\+\+U8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{dst,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{value,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h_a9fb36233ae05e7fd6c0d74f3380b52ea_icgraph}
+\end{center}
+\end{figure}

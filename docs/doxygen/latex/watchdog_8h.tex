@@ -1,0 +1,62 @@
+\hypertarget{watchdog_8h}{}\doxysection{src/watchdog.h File Reference}
+\label{watchdog_8h}\index{src/watchdog.h@{src/watchdog.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{watchdog_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{watchdog_8h_a308341080893a9270d61026ca5bacabf}{watchdog\+\_\+reset}}()~\+\_\+\+\_\+asm\+\_\+\+\_\+ \+\_\+\+\_\+volatile\+\_\+\+\_\+ (\char`\"{}wdr\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{watchdog_8h_a8d3ca6946ce82cc3dfe1f1446ded007c}{watchdog\+\_\+enable}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{watchdog_8h_ad627aed933db1187ad21853494dbe18d}{watchdog\+\_\+disable}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{watchdog_8h_a845ac12d727bbe6f82db3bddcad8733a}{task\+\_\+watchdog\+\_\+strobe}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{watchdog_8h_a308341080893a9270d61026ca5bacabf}\label{watchdog_8h_a308341080893a9270d61026ca5bacabf}} 
+\index{watchdog.h@{watchdog.h}!watchdog\_reset@{watchdog\_reset}}
+\index{watchdog\_reset@{watchdog\_reset}!watchdog.h@{watchdog.h}}
+\doxysubsubsection{\texorpdfstring{watchdog\_reset}{watchdog\_reset}}
+{\footnotesize\ttfamily \#define watchdog\+\_\+reset(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\+\_\+\+\_\+asm\+\_\+\+\_\+ \+\_\+\+\_\+volatile\+\_\+\+\_\+ (\char`\"{}wdr\char`\"{})}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{watchdog_8h_a845ac12d727bbe6f82db3bddcad8733a}\label{watchdog_8h_a845ac12d727bbe6f82db3bddcad8733a}} 
+\index{watchdog.h@{watchdog.h}!task\_watchdog\_strobe@{task\_watchdog\_strobe}}
+\index{task\_watchdog\_strobe@{task\_watchdog\_strobe}!watchdog.h@{watchdog.h}}
+\doxysubsubsection{\texorpdfstring{task\_watchdog\_strobe()}{task\_watchdog\_strobe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} task\+\_\+watchdog\+\_\+strobe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{watchdog_8h_ad627aed933db1187ad21853494dbe18d}\label{watchdog_8h_ad627aed933db1187ad21853494dbe18d}} 
+\index{watchdog.h@{watchdog.h}!watchdog\_disable@{watchdog\_disable}}
+\index{watchdog\_disable@{watchdog\_disable}!watchdog.h@{watchdog.h}}
+\doxysubsubsection{\texorpdfstring{watchdog\_disable()}{watchdog\_disable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} watchdog\+\_\+disable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{watchdog_8h_a8d3ca6946ce82cc3dfe1f1446ded007c}\label{watchdog_8h_a8d3ca6946ce82cc3dfe1f1446ded007c}} 
+\index{watchdog.h@{watchdog.h}!watchdog\_enable@{watchdog\_enable}}
+\index{watchdog\_enable@{watchdog\_enable}!watchdog.h@{watchdog.h}}
+\doxysubsubsection{\texorpdfstring{watchdog\_enable()}{watchdog\_enable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} watchdog\+\_\+enable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{watchdog_8h_a8d3ca6946ce82cc3dfe1f1446ded007c_icgraph}
+\end{center}
+\end{figure}

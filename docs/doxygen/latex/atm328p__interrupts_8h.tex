@@ -1,0 +1,126 @@
+\hypertarget{atm328p__interrupts_8h}{}\doxysection{src/atm328p/atm328p\+\_\+interrupts.h File Reference}
+\label{atm328p__interrupts_8h}\index{src/atm328p/atm328p\_interrupts.h@{src/atm328p/atm328p\_interrupts.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__interrupts_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_ab42859ae5ba32b3bb207a64e8ac6adf2}{ISR}}(vect)
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a9c9a5e5c568fb56425fab153ef983fd8}{TIMER1\+\_\+\+COMPA\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+11
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a5e930e7614a97424eb0c334b63a900da}{TIMER1\+\_\+\+COMPB\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+12
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a74cf44adb9f3c7e7966a92c9c6db14cb}{TIMER1\+\_\+\+OVF\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+13
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_ab0c4a35f92199367e029d8b2bb7cca58}{TIMER0\+\_\+\+COMPA\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+14
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a69eebf641364fb173c7f9274346cd39a}{TIMER0\+\_\+\+COMPB\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+15
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_ab9c6bb22cb0dbf7ddffa9bf6210d31b6}{TIMER0\+\_\+\+OVF\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+16
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a3fd9f5eaf16b453b7401a7cbc5d5a65a}{SPI\+\_\+\+STC\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+17
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_aa42b31a4f9d897c9db50662d15abe50f}{USART0\+\_\+\+RX\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+18
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_ad9bde31ae3a411a233e95dee8f16e85a}{USART0\+\_\+\+UDRE\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+19
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a0c0f3fb0c2f322723e4ac6586a6313cf}{USART0\+\_\+\+TX\+\_\+vect}}~\+\_\+\+\_\+vector\+\_\+20
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_aad5ebd34cb344c26ac87594f79b06b73}{sei}}()~\+\_\+\+\_\+asm volatile( \char`\"{}sei\char`\"{} \+::: \char`\"{}memory\char`\"{} )
+\item 
+\#define \mbox{\hyperlink{atm328p__interrupts_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}()~\+\_\+\+\_\+asm volatile( \char`\"{}cli\char`\"{} \+::: \char`\"{}memory\char`\"{} )
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{atm328p__interrupts_8h_a68c330e94fe121eba993e5a5973c3162}\label{atm328p__interrupts_8h_a68c330e94fe121eba993e5a5973c3162}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!cli@{cli}}
+\index{cli@{cli}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{cli}{cli}}
+{\footnotesize\ttfamily \#define cli(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\+\_\+\+\_\+asm volatile( \char`\"{}cli\char`\"{} \+::: \char`\"{}memory\char`\"{} )}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_ab42859ae5ba32b3bb207a64e8ac6adf2}\label{atm328p__interrupts_8h_ab42859ae5ba32b3bb207a64e8ac6adf2}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!ISR@{ISR}}
+\index{ISR@{ISR}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{ISR}{ISR}}
+{\footnotesize\ttfamily \#define ISR(\begin{DoxyParamCaption}\item[{}]{vect }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \mbox{\hyperlink{memory_8h_aff316162ff6b79fcf46ff6f76aa7ae09}{\_\_attribute\_\_}}((interrupt, used, externally\_visible)) \(\backslash\)}
+\DoxyCodeLine{    void vect(\textcolor{keywordtype}{void})}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{atm328p__interrupts_8h_aad5ebd34cb344c26ac87594f79b06b73}\label{atm328p__interrupts_8h_aad5ebd34cb344c26ac87594f79b06b73}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!sei@{sei}}
+\index{sei@{sei}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{sei}{sei}}
+{\footnotesize\ttfamily \#define sei(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\+\_\+\+\_\+asm volatile( \char`\"{}sei\char`\"{} \+::: \char`\"{}memory\char`\"{} )}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a3fd9f5eaf16b453b7401a7cbc5d5a65a}\label{atm328p__interrupts_8h_a3fd9f5eaf16b453b7401a7cbc5d5a65a}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!SPI\_STC\_vect@{SPI\_STC\_vect}}
+\index{SPI\_STC\_vect@{SPI\_STC\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_STC\_vect}{SPI\_STC\_vect}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+STC\+\_\+vect~\+\_\+\+\_\+vector\+\_\+17}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_ab0c4a35f92199367e029d8b2bb7cca58}\label{atm328p__interrupts_8h_ab0c4a35f92199367e029d8b2bb7cca58}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER0\_COMPA\_vect@{TIMER0\_COMPA\_vect}}
+\index{TIMER0\_COMPA\_vect@{TIMER0\_COMPA\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER0\_COMPA\_vect}{TIMER0\_COMPA\_vect}}
+{\footnotesize\ttfamily \#define TIMER0\+\_\+\+COMPA\+\_\+vect~\+\_\+\+\_\+vector\+\_\+14}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a69eebf641364fb173c7f9274346cd39a}\label{atm328p__interrupts_8h_a69eebf641364fb173c7f9274346cd39a}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER0\_COMPB\_vect@{TIMER0\_COMPB\_vect}}
+\index{TIMER0\_COMPB\_vect@{TIMER0\_COMPB\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER0\_COMPB\_vect}{TIMER0\_COMPB\_vect}}
+{\footnotesize\ttfamily \#define TIMER0\+\_\+\+COMPB\+\_\+vect~\+\_\+\+\_\+vector\+\_\+15}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_ab9c6bb22cb0dbf7ddffa9bf6210d31b6}\label{atm328p__interrupts_8h_ab9c6bb22cb0dbf7ddffa9bf6210d31b6}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER0\_OVF\_vect@{TIMER0\_OVF\_vect}}
+\index{TIMER0\_OVF\_vect@{TIMER0\_OVF\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER0\_OVF\_vect}{TIMER0\_OVF\_vect}}
+{\footnotesize\ttfamily \#define TIMER0\+\_\+\+OVF\+\_\+vect~\+\_\+\+\_\+vector\+\_\+16}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a9c9a5e5c568fb56425fab153ef983fd8}\label{atm328p__interrupts_8h_a9c9a5e5c568fb56425fab153ef983fd8}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER1\_COMPA\_vect@{TIMER1\_COMPA\_vect}}
+\index{TIMER1\_COMPA\_vect@{TIMER1\_COMPA\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER1\_COMPA\_vect}{TIMER1\_COMPA\_vect}}
+{\footnotesize\ttfamily \#define TIMER1\+\_\+\+COMPA\+\_\+vect~\+\_\+\+\_\+vector\+\_\+11}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a5e930e7614a97424eb0c334b63a900da}\label{atm328p__interrupts_8h_a5e930e7614a97424eb0c334b63a900da}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER1\_COMPB\_vect@{TIMER1\_COMPB\_vect}}
+\index{TIMER1\_COMPB\_vect@{TIMER1\_COMPB\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER1\_COMPB\_vect}{TIMER1\_COMPB\_vect}}
+{\footnotesize\ttfamily \#define TIMER1\+\_\+\+COMPB\+\_\+vect~\+\_\+\+\_\+vector\+\_\+12}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a74cf44adb9f3c7e7966a92c9c6db14cb}\label{atm328p__interrupts_8h_a74cf44adb9f3c7e7966a92c9c6db14cb}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!TIMER1\_OVF\_vect@{TIMER1\_OVF\_vect}}
+\index{TIMER1\_OVF\_vect@{TIMER1\_OVF\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{TIMER1\_OVF\_vect}{TIMER1\_OVF\_vect}}
+{\footnotesize\ttfamily \#define TIMER1\+\_\+\+OVF\+\_\+vect~\+\_\+\+\_\+vector\+\_\+13}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_aa42b31a4f9d897c9db50662d15abe50f}\label{atm328p__interrupts_8h_aa42b31a4f9d897c9db50662d15abe50f}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!USART0\_RX\_vect@{USART0\_RX\_vect}}
+\index{USART0\_RX\_vect@{USART0\_RX\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{USART0\_RX\_vect}{USART0\_RX\_vect}}
+{\footnotesize\ttfamily \#define USART0\+\_\+\+RX\+\_\+vect~\+\_\+\+\_\+vector\+\_\+18}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_a0c0f3fb0c2f322723e4ac6586a6313cf}\label{atm328p__interrupts_8h_a0c0f3fb0c2f322723e4ac6586a6313cf}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!USART0\_TX\_vect@{USART0\_TX\_vect}}
+\index{USART0\_TX\_vect@{USART0\_TX\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{USART0\_TX\_vect}{USART0\_TX\_vect}}
+{\footnotesize\ttfamily \#define USART0\+\_\+\+TX\+\_\+vect~\+\_\+\+\_\+vector\+\_\+20}
+
+\mbox{\Hypertarget{atm328p__interrupts_8h_ad9bde31ae3a411a233e95dee8f16e85a}\label{atm328p__interrupts_8h_ad9bde31ae3a411a233e95dee8f16e85a}} 
+\index{atm328p\_interrupts.h@{atm328p\_interrupts.h}!USART0\_UDRE\_vect@{USART0\_UDRE\_vect}}
+\index{USART0\_UDRE\_vect@{USART0\_UDRE\_vect}!atm328p\_interrupts.h@{atm328p\_interrupts.h}}
+\doxysubsubsection{\texorpdfstring{USART0\_UDRE\_vect}{USART0\_UDRE\_vect}}
+{\footnotesize\ttfamily \#define USART0\+\_\+\+UDRE\+\_\+vect~\+\_\+\+\_\+vector\+\_\+19}
+

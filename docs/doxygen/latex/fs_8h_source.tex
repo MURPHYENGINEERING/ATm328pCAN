@@ -1,0 +1,72 @@
+\hypertarget{fs_8h_source}{}\doxysection{fs.\+h}
+\label{fs_8h_source}\index{src/include/lmda/fs.h@{src/include/lmda/fs.h}}
+\mbox{\hyperlink{fs_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_FS\_H\_}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_FS\_H\_}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <limits.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <time.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifdef WIN32}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   \textcolor{comment}{// https://docs.microsoft.com/en-\/us/cpp/c-\/runtime-\/library/path-\/field-\/limits?view=msvc-\/170}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{  \#include <stddef.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{  \#ifdef \_MAX\_PATH}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    \#define LM\_FS\_PATH\_MAX \_MAX\_PATH}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{    \#define LM\_FS\_PATH\_MAX 260}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{  \#ifdef \_MAX\_FNAME}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    \#define LM\_FS\_NAME\_MAX \_MAX\_FNAME}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    \#define LM\_FS\_NAME\_MAX 256}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39   \textcolor{comment}{// https://man7.org/linux/man-\/pages/man0/limits.h.0p.html}}
+\DoxyCodeLine{40   \textcolor{comment}{// see https://stackoverflow.com/a/833308/9945076}}
+\DoxyCodeLine{41   \textcolor{comment}{// The POSIX.1-\/2001 standard version of this function is broken by design,}}
+\DoxyCodeLine{42   \textcolor{comment}{// since it is impossible to determine a suitable size for the output}}
+\DoxyCodeLine{43   \textcolor{comment}{// buffer, resolved\_path. According to POSIX.1-\/2001 a buffer of size}}
+\DoxyCodeLine{44   \textcolor{comment}{// PATH\_MAX suffices, but PATH\_MAX need not be a defined constant, and may}}
+\DoxyCodeLine{45   \textcolor{comment}{// have to be obtained using pathconf(3). And asking pathconf(3) does not}}
+\DoxyCodeLine{46   \textcolor{comment}{// really help, since, on the one hand POSIX warns that the result of}}
+\DoxyCodeLine{47   \textcolor{comment}{// pathconf(3) may be huge and unsuitable for mallocing memory, and on the}}
+\DoxyCodeLine{48   \textcolor{comment}{// other hand pathconf(3) may return -\/1 to signify that PATH\_MAX is not}}
+\DoxyCodeLine{49   \textcolor{comment}{// bounded.}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{  \#ifdef PATH\_MAX}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{    \#define LM\_FS\_PATH\_MAX PATH\_MAX}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{    \#define LM\_FS\_PATH\_MAX 1024}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{  \#endif }\textcolor{comment}{// PATH\_MAX}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{  \#ifdef NAME\_MAX}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    \#define LM\_FS\_NAME\_MAX NAME\_MAX}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{    \#define LM\_FS\_NAME\_MAX 255}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// WIN32}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 time\_t \mbox{\hyperlink{fs_8h_a6b4f19a981f9ff913feefde085bd093a}{lm\_fs\_modified\_time}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* path);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keywordtype}{bool} \mbox{\hyperlink{fs_8h_a7346aed2fa84c4118762940a59b31f44}{lm\_fs\_path\_exists}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* path);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keywordtype}{char}* \mbox{\hyperlink{fs_8h_a4f0431aebd13fab6d85d10c1e6233ab9}{lm\_fs\_get\_data\_path}}();}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{char}* \mbox{\hyperlink{fs_8h_a1deb9e7f79bd96f58ec2bf16fd909382}{lm\_fs\_get\_data\_file\_path}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* filename);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 FILE* \mbox{\hyperlink{fs_8h_a1bba23df9541b8d77b3a7439e612be24}{lm\_fs\_write\_data\_file}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* filename);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 FILE* \mbox{\hyperlink{fs_8h_aabcd733ab5c60ba8becfe184fb44e0ed}{lm\_fs\_read\_data\_file}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* filename);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_FS\_H\_}}
+
+\end{DoxyCode}

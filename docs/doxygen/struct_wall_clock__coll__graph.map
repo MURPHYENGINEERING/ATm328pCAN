@@ -1,0 +1,4 @@
+<map id="WallClock" name="WallClock">
+<area shape="rect" id="node1" title="Represents real outside&#45;world time." alt="" coords="5,109,100,136"/>
+<area shape="rect" id="node2" title=" " alt="" coords="9,5,96,32"/>
+</map>

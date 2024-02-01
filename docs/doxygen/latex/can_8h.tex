@@ -1,0 +1,153 @@
+\hypertarget{can_8h}{}\doxysection{src/can.h File Reference}
+\label{can_8h}\index{src/can.h@{src/can.h}}
+{\ttfamily \#include \char`\"{}fifo.\+h\char`\"{}}\newline
+Include dependency graph for can.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{can_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{can_8h_ac7781a37ca14c5bf42c4fe9de1f4daa8}{can\+\_\+init}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{fifo_8h_a40cb4156688503a8c363f93ecb90d4a5}{FIFO\+\_\+\+STATUS\+\_\+T}} \mbox{\hyperlink{can_8h_a8684cbb2f82c53705820ad7785972ded}{can\+\_\+tx\+\_\+q\+\_\+add}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{fifo_8h_a40cb4156688503a8c363f93ecb90d4a5}{FIFO\+\_\+\+STATUS\+\_\+T}} \mbox{\hyperlink{can_8h_aa64b834bf8ac23eb4ee242af8b1edb3c}{can\+\_\+rx\+\_\+q\+\_\+remove}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} $\ast$len)
+\item 
+\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} \mbox{\hyperlink{can_8h_a011a68b7760013d6a77402c7f745e729}{can\+\_\+rx\+\_\+q\+\_\+len}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{can_8h_a3f67e8b772017b4dd4a9a1c9eaa6c03e}{task\+\_\+can\+\_\+tx}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{can_8h_a4abd3846055a5cb107ae5ced176447fe}{task\+\_\+can\+\_\+rx}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{can_8h_ac7781a37ca14c5bf42c4fe9de1f4daa8}\label{can_8h_ac7781a37ca14c5bf42c4fe9de1f4daa8}} 
+\index{can.h@{can.h}!can\_init@{can\_init}}
+\index{can\_init@{can\_init}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{can\_init()}{can\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} can\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8h_ac7781a37ca14c5bf42c4fe9de1f4daa8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{can_8h_ac7781a37ca14c5bf42c4fe9de1f4daa8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{can_8h_a011a68b7760013d6a77402c7f745e729}\label{can_8h_a011a68b7760013d6a77402c7f745e729}} 
+\index{can.h@{can.h}!can\_rx\_q\_len@{can\_rx\_q\_len}}
+\index{can\_rx\_q\_len@{can\_rx\_q\_len}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{can\_rx\_q\_len()}{can\_rx\_q\_len()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} can\+\_\+rx\+\_\+q\+\_\+len (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{can_8h_a011a68b7760013d6a77402c7f745e729_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{can_8h_a011a68b7760013d6a77402c7f745e729_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{can_8h_aa64b834bf8ac23eb4ee242af8b1edb3c}\label{can_8h_aa64b834bf8ac23eb4ee242af8b1edb3c}} 
+\index{can.h@{can.h}!can\_rx\_q\_remove@{can\_rx\_q\_remove}}
+\index{can\_rx\_q\_remove@{can\_rx\_q\_remove}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{can\_rx\_q\_remove()}{can\_rx\_q\_remove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fifo_8h_a40cb4156688503a8c363f93ecb90d4a5}{FIFO\+\_\+\+STATUS\+\_\+T}} can\+\_\+rx\+\_\+q\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} $\ast$}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8h_aa64b834bf8ac23eb4ee242af8b1edb3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{can_8h_aa64b834bf8ac23eb4ee242af8b1edb3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{can_8h_a8684cbb2f82c53705820ad7785972ded}\label{can_8h_a8684cbb2f82c53705820ad7785972ded}} 
+\index{can.h@{can.h}!can\_tx\_q\_add@{can\_tx\_q\_add}}
+\index{can\_tx\_q\_add@{can\_tx\_q\_add}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{can\_tx\_q\_add()}{can\_tx\_q\_add()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fifo_8h_a40cb4156688503a8c363f93ecb90d4a5}{FIFO\+\_\+\+STATUS\+\_\+T}} can\+\_\+tx\+\_\+q\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8h_a8684cbb2f82c53705820ad7785972ded_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{can_8h_a8684cbb2f82c53705820ad7785972ded_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{can_8h_a4abd3846055a5cb107ae5ced176447fe}\label{can_8h_a4abd3846055a5cb107ae5ced176447fe}} 
+\index{can.h@{can.h}!task\_can\_rx@{task\_can\_rx}}
+\index{task\_can\_rx@{task\_can\_rx}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{task\_can\_rx()}{task\_can\_rx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} task\+\_\+can\+\_\+rx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{can_8h_a4abd3846055a5cb107ae5ced176447fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{can_8h_a3f67e8b772017b4dd4a9a1c9eaa6c03e}\label{can_8h_a3f67e8b772017b4dd4a9a1c9eaa6c03e}} 
+\index{can.h@{can.h}!task\_can\_tx@{task\_can\_tx}}
+\index{task\_can\_tx@{task\_can\_tx}!can.h@{can.h}}
+\doxysubsubsection{\texorpdfstring{task\_can\_tx()}{task\_can\_tx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} task\+\_\+can\+\_\+tx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8h_a3f67e8b772017b4dd4a9a1c9eaa6c03e_cgraph}
+\end{center}
+\end{figure}

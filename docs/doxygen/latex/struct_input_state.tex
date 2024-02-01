@@ -1,0 +1,106 @@
+\hypertarget{struct_input_state}{}\doxysection{Input\+State Struct Reference}
+\label{struct_input_state}\index{InputState@{InputState}}
+
+
+Represents the complete state of all input devices and all buffered inputs.  
+
+
+
+
+{\ttfamily \#include $<$input.\+h$>$}
+
+
+
+Collaboration diagram for Input\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_input_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_action_binding}{Action\+Binding}} \mbox{\hyperlink{struct_input_state_ab0c15b26988c470d62d5fcc478633c26}{keybinds}} \mbox{[}\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\+\_\+\+INPUTSTATE\+\_\+\+BINDINGS\+\_\+\+MAX}}\mbox{]}
+\item 
+size\+\_\+t \mbox{\hyperlink{struct_input_state_ab5795c14a7424be23d139f51f02737ad}{n\+Keybinds}}
+\item 
+char \mbox{\hyperlink{struct_input_state_ae6e60b425894a44dc94e4524af7f4a19}{text}} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffered input text (printable characters only; control characters are interpreted to manipulate the buffer). \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_input_state_a2d0767ca322650949221fb8c7153968c}{text\+Length}}
+\item 
+size\+\_\+t \mbox{\hyperlink{struct_input_state_a168a7259459289ab7f3357ebbe044cec}{cursor}}
+\begin{DoxyCompactList}\small\item\em Current write pointer into the buffered input text. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_mouse_axes}{Mouse\+Axes}} \mbox{\hyperlink{struct_input_state_a091ffb50caac49079b109fa7235e2136}{mouse}}
+\item 
+\mbox{\hyperlink{struct_action_binding}{Action\+Binding}} \mbox{\hyperlink{struct_input_state_ad17166d487e550042eedaa11d1d6d1f5}{mousebinds}} \mbox{[}\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\+\_\+\+INPUTSTATE\+\_\+\+BINDINGS\+\_\+\+MAX}}\mbox{]}
+\item 
+size\+\_\+t \mbox{\hyperlink{struct_input_state_a6356c7497399d4996556ceeae24500ea}{n\+Mousebinds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the complete state of all input devices and all buffered inputs. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_input_state_a168a7259459289ab7f3357ebbe044cec}\label{struct_input_state_a168a7259459289ab7f3357ebbe044cec}} 
+\index{InputState@{InputState}!cursor@{cursor}}
+\index{cursor@{cursor}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{cursor}{cursor}}
+{\footnotesize\ttfamily size\+\_\+t Input\+State\+::cursor}
+
+
+
+Current write pointer into the buffered input text. 
+
+\mbox{\Hypertarget{struct_input_state_ab0c15b26988c470d62d5fcc478633c26}\label{struct_input_state_ab0c15b26988c470d62d5fcc478633c26}} 
+\index{InputState@{InputState}!keybinds@{keybinds}}
+\index{keybinds@{keybinds}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{keybinds}{keybinds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_action_binding}{Action\+Binding}} Input\+State\+::keybinds\mbox{[}\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\+\_\+\+INPUTSTATE\+\_\+\+BINDINGS\+\_\+\+MAX}}\mbox{]}}
+
+\mbox{\Hypertarget{struct_input_state_a091ffb50caac49079b109fa7235e2136}\label{struct_input_state_a091ffb50caac49079b109fa7235e2136}} 
+\index{InputState@{InputState}!mouse@{mouse}}
+\index{mouse@{mouse}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{mouse}{mouse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_mouse_axes}{Mouse\+Axes}} Input\+State\+::mouse}
+
+\mbox{\Hypertarget{struct_input_state_ad17166d487e550042eedaa11d1d6d1f5}\label{struct_input_state_ad17166d487e550042eedaa11d1d6d1f5}} 
+\index{InputState@{InputState}!mousebinds@{mousebinds}}
+\index{mousebinds@{mousebinds}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{mousebinds}{mousebinds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_action_binding}{Action\+Binding}} Input\+State\+::mousebinds\mbox{[}\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\+\_\+\+INPUTSTATE\+\_\+\+BINDINGS\+\_\+\+MAX}}\mbox{]}}
+
+\mbox{\Hypertarget{struct_input_state_ab5795c14a7424be23d139f51f02737ad}\label{struct_input_state_ab5795c14a7424be23d139f51f02737ad}} 
+\index{InputState@{InputState}!nKeybinds@{nKeybinds}}
+\index{nKeybinds@{nKeybinds}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{nKeybinds}{nKeybinds}}
+{\footnotesize\ttfamily size\+\_\+t Input\+State\+::n\+Keybinds}
+
+\mbox{\Hypertarget{struct_input_state_a6356c7497399d4996556ceeae24500ea}\label{struct_input_state_a6356c7497399d4996556ceeae24500ea}} 
+\index{InputState@{InputState}!nMousebinds@{nMousebinds}}
+\index{nMousebinds@{nMousebinds}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{nMousebinds}{nMousebinds}}
+{\footnotesize\ttfamily size\+\_\+t Input\+State\+::n\+Mousebinds}
+
+\mbox{\Hypertarget{struct_input_state_ae6e60b425894a44dc94e4524af7f4a19}\label{struct_input_state_ae6e60b425894a44dc94e4524af7f4a19}} 
+\index{InputState@{InputState}!text@{text}}
+\index{text@{text}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily char Input\+State\+::text\mbox{[}1024\mbox{]}}
+
+
+
+Buffered input text (printable characters only; control characters are interpreted to manipulate the buffer). 
+
+\mbox{\Hypertarget{struct_input_state_a2d0767ca322650949221fb8c7153968c}\label{struct_input_state_a2d0767ca322650949221fb8c7153968c}} 
+\index{InputState@{InputState}!textLength@{textLength}}
+\index{textLength@{textLength}!InputState@{InputState}}
+\doxysubsubsection{\texorpdfstring{textLength}{textLength}}
+{\footnotesize\ttfamily size\+\_\+t Input\+State\+::text\+Length}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/common/include/lmda/\mbox{\hyperlink{input_8h}{input.\+h}}\end{DoxyCompactItemize}

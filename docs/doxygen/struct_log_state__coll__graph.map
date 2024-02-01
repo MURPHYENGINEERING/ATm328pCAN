@@ -1,0 +1,6 @@
+<map id="LogState" name="LogState">
+<area shape="rect" id="node1" title="Used to persist the log output streams between hot&#45;reloads." alt="" coords="65,95,152,121"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,52,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="81,5,136,32"/>
+<area shape="rect" id="node4" title=" " alt="" coords="160,5,231,32"/>
+</map>

@@ -1,0 +1,198 @@
+\hypertarget{fai_8h}{}\doxysection{src/fai.h File Reference}
+\label{fai_8h}\index{src/fai.h@{src/fai.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for fai.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{fai_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fai_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_f_a_i___f_a_u_l_t___c_o_u_n_t_e_r___t}{FAI\+\_\+\+FAULT\+\_\+\+COUNTER\+\_\+T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fai_8h_af5377c81b391e999d2c184e10b34ee5a}{FAI\+\_\+\+TS\+\_\+\+DATA\+\_\+N}}~(\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}) 16u
+\item 
+\#define \mbox{\hyperlink{fai_8h_a61c0f65234f238736a2869fbecd79c93}{FAI\+\_\+\+NVM\+\_\+\+BASE\+\_\+\+ADDRESS}}~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 2
+\item 
+\#define \mbox{\hyperlink{fai_8h_a8a4d394518eed4ddd402413854d8156f}{FAI\+\_\+\+NVM\+\_\+\+FLAG\+\_\+\+ADDRESS}}~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}} \{ \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba599d0b1a5ff57c375b570f5a08047c0d}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+SW\+\_\+\+ERROR}}
+, \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba3e2987567dd2a7c144a565c9c4305249}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+BAD\+\_\+\+FAULT}}
+, \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba92ded00141035c3e7defb6f91073c11c}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+BUFFER\+\_\+\+OVERFLOW}}
+, \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053bac8828a26cfe281d09edfb1ac15ae1bc3}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+N}}
+ \}
+\item 
+enum \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+T}} \{ \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959aa69b1fa2cc8db43eabaecfb035f45579}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+CAN\+\_\+\+TX}}
+, \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959a66ee0caec695f693c62b97f5c016f3ef}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+CAN\+\_\+\+RX}}
+, \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959a88dd22c8b674191ea0003f338b0333e4}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+SPI\+\_\+\+TX}}
+, \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959a704deb5403e5bd9de83e668aac52f261}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+SPI\+\_\+\+RX}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{fai_8h_a4232698e23378880d35b3f2801f6a26f}{fai\+\_\+init}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{fai_8h_a5775f4722e53f8e7ac05a0ef6530dee2}{fai\+\_\+pass\+\_\+fail\+\_\+logger}} (\mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}} fault\+\_\+id, \mbox{\hyperlink{types_8h_a43efc54cb5218509ebd6ad42ef5acfad}{PASS\+\_\+T}} indicator, \mbox{\hyperlink{types_8h_ae4a0a1df8c5867a28f59c13145bd7db5}{U32\+\_\+T}} ts\+\_\+data)
+\item 
+\mbox{\hyperlink{struct_f_a_i___f_a_u_l_t___c_o_u_n_t_e_r___t}{FAI\+\_\+\+FAULT\+\_\+\+COUNTER\+\_\+T}} \mbox{\hyperlink{fai_8h_a79389e80bc144b2708c2ad8f97495daf}{fai\+\_\+fault\+\_\+reporter}} (\mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}} fault\+\_\+id)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{fai_8h_a353234b73e1bfd8aceb7af8c7a544ae5}{task\+\_\+fai}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fai_8h_a61c0f65234f238736a2869fbecd79c93}\label{fai_8h_a61c0f65234f238736a2869fbecd79c93}} 
+\index{fai.h@{fai.h}!FAI\_NVM\_BASE\_ADDRESS@{FAI\_NVM\_BASE\_ADDRESS}}
+\index{FAI\_NVM\_BASE\_ADDRESS@{FAI\_NVM\_BASE\_ADDRESS}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{FAI\_NVM\_BASE\_ADDRESS}{FAI\_NVM\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define FAI\+\_\+\+NVM\+\_\+\+BASE\+\_\+\+ADDRESS~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 2}
+
+\mbox{\Hypertarget{fai_8h_a8a4d394518eed4ddd402413854d8156f}\label{fai_8h_a8a4d394518eed4ddd402413854d8156f}} 
+\index{fai.h@{fai.h}!FAI\_NVM\_FLAG\_ADDRESS@{FAI\_NVM\_FLAG\_ADDRESS}}
+\index{FAI\_NVM\_FLAG\_ADDRESS@{FAI\_NVM\_FLAG\_ADDRESS}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{FAI\_NVM\_FLAG\_ADDRESS}{FAI\_NVM\_FLAG\_ADDRESS}}
+{\footnotesize\ttfamily \#define FAI\+\_\+\+NVM\+\_\+\+FLAG\+\_\+\+ADDRESS~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 0}
+
+\mbox{\Hypertarget{fai_8h_af5377c81b391e999d2c184e10b34ee5a}\label{fai_8h_af5377c81b391e999d2c184e10b34ee5a}} 
+\index{fai.h@{fai.h}!FAI\_TS\_DATA\_N@{FAI\_TS\_DATA\_N}}
+\index{FAI\_TS\_DATA\_N@{FAI\_TS\_DATA\_N}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{FAI\_TS\_DATA\_N}{FAI\_TS\_DATA\_N}}
+{\footnotesize\ttfamily \#define FAI\+\_\+\+TS\+\_\+\+DATA\+\_\+N~(\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}) 16u}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}\label{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}} 
+\index{fai.h@{fai.h}!FAI\_FAULT\_ID\_T@{FAI\_FAULT\_ID\_T}}
+\index{FAI\_FAULT\_ID\_T@{FAI\_FAULT\_ID\_T}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{FAI\_FAULT\_ID\_T}{FAI\_FAULT\_ID\_T}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_ID\_SW\_ERROR@{FAI\_FAULT\_ID\_SW\_ERROR}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_ID\_SW\_ERROR@{FAI\_FAULT\_ID\_SW\_ERROR}}}\mbox{\Hypertarget{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba599d0b1a5ff57c375b570f5a08047c0d}\label{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba599d0b1a5ff57c375b570f5a08047c0d}} 
+FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+SW\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_ID\_BAD\_FAULT@{FAI\_FAULT\_ID\_BAD\_FAULT}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_ID\_BAD\_FAULT@{FAI\_FAULT\_ID\_BAD\_FAULT}}}\mbox{\Hypertarget{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba3e2987567dd2a7c144a565c9c4305249}\label{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba3e2987567dd2a7c144a565c9c4305249}} 
+FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+BAD\+\_\+\+FAULT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_ID\_BUFFER\_OVERFLOW@{FAI\_FAULT\_ID\_BUFFER\_OVERFLOW}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_ID\_BUFFER\_OVERFLOW@{FAI\_FAULT\_ID\_BUFFER\_OVERFLOW}}}\mbox{\Hypertarget{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba92ded00141035c3e7defb6f91073c11c}\label{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053ba92ded00141035c3e7defb6f91073c11c}} 
+FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+\+BUFFER\+\_\+\+OVERFLOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_ID\_N@{FAI\_FAULT\_ID\_N}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_ID\_N@{FAI\_FAULT\_ID\_N}}}\mbox{\Hypertarget{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053bac8828a26cfe281d09edfb1ac15ae1bc3}\label{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053bac8828a26cfe281d09edfb1ac15ae1bc3}} 
+FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+N&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{fai_8h_a0a67f3126eba62822b92d0613a9e6959}\label{fai_8h_a0a67f3126eba62822b92d0613a9e6959}} 
+\index{fai.h@{fai.h}!FAI\_FAULT\_SOURCE\_T@{FAI\_FAULT\_SOURCE\_T}}
+\index{FAI\_FAULT\_SOURCE\_T@{FAI\_FAULT\_SOURCE\_T}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{FAI\_FAULT\_SOURCE\_T}{FAI\_FAULT\_SOURCE\_T}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fai_8h_a0a67f3126eba62822b92d0613a9e6959}{FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+T}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_SOURCE\_CAN\_TX@{FAI\_FAULT\_SOURCE\_CAN\_TX}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_SOURCE\_CAN\_TX@{FAI\_FAULT\_SOURCE\_CAN\_TX}}}\mbox{\Hypertarget{fai_8h_a0a67f3126eba62822b92d0613a9e6959aa69b1fa2cc8db43eabaecfb035f45579}\label{fai_8h_a0a67f3126eba62822b92d0613a9e6959aa69b1fa2cc8db43eabaecfb035f45579}} 
+FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+CAN\+\_\+\+TX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_SOURCE\_CAN\_RX@{FAI\_FAULT\_SOURCE\_CAN\_RX}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_SOURCE\_CAN\_RX@{FAI\_FAULT\_SOURCE\_CAN\_RX}}}\mbox{\Hypertarget{fai_8h_a0a67f3126eba62822b92d0613a9e6959a66ee0caec695f693c62b97f5c016f3ef}\label{fai_8h_a0a67f3126eba62822b92d0613a9e6959a66ee0caec695f693c62b97f5c016f3ef}} 
+FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+CAN\+\_\+\+RX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_SOURCE\_SPI\_TX@{FAI\_FAULT\_SOURCE\_SPI\_TX}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_SOURCE\_SPI\_TX@{FAI\_FAULT\_SOURCE\_SPI\_TX}}}\mbox{\Hypertarget{fai_8h_a0a67f3126eba62822b92d0613a9e6959a88dd22c8b674191ea0003f338b0333e4}\label{fai_8h_a0a67f3126eba62822b92d0613a9e6959a88dd22c8b674191ea0003f338b0333e4}} 
+FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+SPI\+\_\+\+TX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAI\_FAULT\_SOURCE\_SPI\_RX@{FAI\_FAULT\_SOURCE\_SPI\_RX}!fai.h@{fai.h}}\index{fai.h@{fai.h}!FAI\_FAULT\_SOURCE\_SPI\_RX@{FAI\_FAULT\_SOURCE\_SPI\_RX}}}\mbox{\Hypertarget{fai_8h_a0a67f3126eba62822b92d0613a9e6959a704deb5403e5bd9de83e668aac52f261}\label{fai_8h_a0a67f3126eba62822b92d0613a9e6959a704deb5403e5bd9de83e668aac52f261}} 
+FAI\+\_\+\+FAULT\+\_\+\+SOURCE\+\_\+\+SPI\+\_\+\+RX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fai_8h_a79389e80bc144b2708c2ad8f97495daf}\label{fai_8h_a79389e80bc144b2708c2ad8f97495daf}} 
+\index{fai.h@{fai.h}!fai\_fault\_reporter@{fai\_fault\_reporter}}
+\index{fai\_fault\_reporter@{fai\_fault\_reporter}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{fai\_fault\_reporter()}{fai\_fault\_reporter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_f_a_i___f_a_u_l_t___c_o_u_n_t_e_r___t}{FAI\+\_\+\+FAULT\+\_\+\+COUNTER\+\_\+T}} fai\+\_\+fault\+\_\+reporter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}}}]{fault\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fai_8h_a79389e80bc144b2708c2ad8f97495daf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fai_8h_a4232698e23378880d35b3f2801f6a26f}\label{fai_8h_a4232698e23378880d35b3f2801f6a26f}} 
+\index{fai.h@{fai.h}!fai\_init@{fai\_init}}
+\index{fai\_init@{fai\_init}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{fai\_init()}{fai\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} fai\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{fai_8h_a4232698e23378880d35b3f2801f6a26f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{fai_8h_a4232698e23378880d35b3f2801f6a26f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fai_8h_a5775f4722e53f8e7ac05a0ef6530dee2}\label{fai_8h_a5775f4722e53f8e7ac05a0ef6530dee2}} 
+\index{fai.h@{fai.h}!fai\_pass\_fail\_logger@{fai\_pass\_fail\_logger}}
+\index{fai\_pass\_fail\_logger@{fai\_pass\_fail\_logger}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{fai\_pass\_fail\_logger()}{fai\_pass\_fail\_logger()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} fai\+\_\+pass\+\_\+fail\+\_\+logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fai_8h_a7e0a4dfa0fc79904907e9d2e1a84053b}{FAI\+\_\+\+FAULT\+\_\+\+ID\+\_\+T}}}]{fault\+\_\+id,  }\item[{\mbox{\hyperlink{types_8h_a43efc54cb5218509ebd6ad42ef5acfad}{PASS\+\_\+T}}}]{indicator,  }\item[{\mbox{\hyperlink{types_8h_ae4a0a1df8c5867a28f59c13145bd7db5}{U32\+\_\+T}}}]{ts\+\_\+data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{fai_8h_a5775f4722e53f8e7ac05a0ef6530dee2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fai_8h_a5775f4722e53f8e7ac05a0ef6530dee2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fai_8h_a353234b73e1bfd8aceb7af8c7a544ae5}\label{fai_8h_a353234b73e1bfd8aceb7af8c7a544ae5}} 
+\index{fai.h@{fai.h}!task\_fai@{task\_fai}}
+\index{task\_fai@{task\_fai}!fai.h@{fai.h}}
+\doxysubsubsection{\texorpdfstring{task\_fai()}{task\_fai()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} task\+\_\+fai (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+

@@ -1,0 +1,16 @@
+<map id="src/platform/common/plugin.c" name="src/platform/common/plugin.c">
+<area shape="rect" id="node1" title="Platform&#45;independent plugin loading operations." alt="" coords="95,5,269,47"/>
+<area shape="rect" id="node2" href="$log_8h.html" title=" " alt="" coords="5,169,108,196"/>
+<area shape="rect" id="node3" href="$plugin_8h.html" title="Declares the interface to the game library; implementing that interface defines a game plugin." alt="" coords="243,95,369,121"/>
+<area shape="rect" id="node4" href="$fs_8h.html" title="Declares the game&#39;s interface to the platform filesystem." alt="" coords="132,169,227,196"/>
+<area shape="rect" id="node5" href="$game_8h.html" title="Declares the highest&#45;level game state and evolution operations." alt="" coords="251,169,361,196"/>
+<area shape="rect" id="node6" href="$input_8h.html" title="The game&#39;s interface to the user input devices." alt="" coords="271,244,389,271"/>
+<area shape="rect" id="node9" href="$sdl_8h.html" title="Interface to the SDL subsystems (rendering, image loading, sound, etc)." alt="" coords="437,169,540,196"/>
+<area shape="rect" id="node14" href="$timing_8h.html" title="Platform&#45;independent high&#45;resolution timing interface, for measurement and delays." alt="" coords="588,169,715,196"/>
+<area shape="rect" id="node7" href="$keyboard_8h.html" title="Defines symbols for SDL keyboard key identifiers." alt="" coords="144,319,335,345"/>
+<area shape="rect" id="node8" href="$signal_8h.html" title="Declares the types of signal transitions that may represent a state change." alt="" coords="359,319,485,345"/>
+<area shape="rect" id="node10" href="$color_8h.html" title="Defines symbols for common SDL color values." alt="" coords="413,244,564,271"/>
+<area shape="rect" id="node11" href="$ttf_8h.html" title=" " alt="" coords="588,244,723,271"/>
+<area shape="rect" id="node13" title=" " alt="" coords="747,244,857,271"/>
+<area shape="rect" id="node12" title=" " alt="" coords="608,319,703,345"/>
+</map>

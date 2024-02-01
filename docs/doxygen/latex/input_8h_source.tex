@@ -1,0 +1,133 @@
+\hypertarget{input_8h_source}{}\doxysection{input.\+h}
+\label{input_8h_source}\index{src/include/lmda/input.h@{src/include/lmda/input.h}}
+\mbox{\hyperlink{input_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_H\_}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_H\_}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{keyboard_8h}{lmda/input/keyboard.h}}>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{signal_8h}{lmda/signal.h}}>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{23 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_context}{InputContext}};}
+\DoxyCodeLine{24 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action}{InputAction}};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action_args}{InputActionArgs}} \mbox{\hyperlink{struct_input_action_args}{InputActionArgs}};}
+\DoxyCodeLine{30 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action_args}{InputActionArgs}} \{}
+\DoxyCodeLine{31   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_context}{Context}}* \mbox{\hyperlink{struct_input_action_args_a7c3209b8887c319a074372e76408e42d}{ctx}};}
+\DoxyCodeLine{32   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action}{InputAction}}* \mbox{\hyperlink{struct_input_action_args_a1e81f1ef973d4418fe48e44f84011f0d}{action}};}
+\DoxyCodeLine{33   \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{SignalTransition}} \mbox{\hyperlink{struct_input_action_args_aeff867b34c5f4bf39daa544c86c50284}{transition}};}
+\DoxyCodeLine{34 \};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39 \textcolor{keyword}{typedef} void (*\mbox{\hyperlink{input_8h_a27102467f31022c4656dd8d262a3b1ee}{InputActionCallback}})(\mbox{\hyperlink{input_8h_addd111b309ca080dc2b13eca833abbbe}{InputActionArgs}});}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define LM\_INPUTACTION\_NAME\_MAX 32}}
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action}{InputAction}} \mbox{\hyperlink{struct_input_action}{InputAction}};}
+\DoxyCodeLine{54 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action}{InputAction}} \{}
+\DoxyCodeLine{58   \textcolor{keywordtype}{char}* \mbox{\hyperlink{struct_input_action_ad76d39b6fd57d9e53fc0e99fceea6438}{name}};}
+\DoxyCodeLine{62   \mbox{\hyperlink{input_8h_a27102467f31022c4656dd8d262a3b1ee}{InputActionCallback}} \mbox{\hyperlink{struct_input_action_a08a90ad5a1d832078a32407dcb4f06b4}{on\_action}};}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_keybind}{Keybind}} \mbox{\hyperlink{struct_keybind}{Keybind}};}
+\DoxyCodeLine{73 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_keybind}{Keybind}} \{}
+\DoxyCodeLine{74   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{struct_keybind_ae3ea9e11ddb5493efb72858107c9a33b}{keyIndex}};}
+\DoxyCodeLine{75   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}} \mbox{\hyperlink{struct_keybind_ada26acbb9464d669e087a005cf6f01e8}{mod}};}
+\DoxyCodeLine{76   \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_keybind_ae9c9145301d783997697d8e18a4af530}{state}};}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}} \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}};}
+\DoxyCodeLine{85 \textcolor{keyword}{enum} \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}} \{}
+\DoxyCodeLine{86   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0a22b1e1cb93507d187dca6005eaa96c12}{LMMB\_NONE}}   = 0,}
+\DoxyCodeLine{87   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0af7255cb968cfa016998bf7017998cc91}{LMMB\_LEFT}}   = 1 << 0,}
+\DoxyCodeLine{88   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0a4ca758d617f1b5fdf4e3f83f89f887fc}{LMMB\_MIDDLE}} = 1 << 1,}
+\DoxyCodeLine{89   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0a36d58dc756772d56723b4f15d1fd6d0c}{LMMB\_RIGHT}}  = 1 << 2}
+\DoxyCodeLine{90 \};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_mouse_axes}{MouseAxes}} \mbox{\hyperlink{struct_mouse_axes}{MouseAxes}};}
+\DoxyCodeLine{98 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_mouse_axes}{MouseAxes}} \{}
+\DoxyCodeLine{99   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_mouse_axes_a4e72f532d474d6991bce01d10a6c0986}{x}};}
+\DoxyCodeLine{100   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_mouse_axes_aa9724a2ede5fab44ec01a0ed2d6b6949}{y}};}
+\DoxyCodeLine{101   \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_mouse_axes_a40821ab2e3aa704d538a71d66b15d1dc}{scroll}};}
+\DoxyCodeLine{102   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}} \mbox{\hyperlink{struct_mouse_axes_a70f490897520ff6f5dd4b41d4326d66d}{buttons}};}
+\DoxyCodeLine{103 \};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_mousebind}{Mousebind}} \mbox{\hyperlink{struct_mousebind}{Mousebind}};}
+\DoxyCodeLine{112 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_mousebind}{Mousebind}} \{}
+\DoxyCodeLine{113   \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}} \mbox{\hyperlink{struct_mousebind_a0bf1c5418a8d62c07a5abd1498ac669c}{button}};}
+\DoxyCodeLine{114   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}} \mbox{\hyperlink{struct_mousebind_a966d7ca3a7ca37b6126982554d64db02}{mod}};}
+\DoxyCodeLine{115   \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_mousebind_aca5e7d8cd3b993899d3f254835c36aab}{state}};}
+\DoxyCodeLine{116 \};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{InputDeviceType}} \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{InputDeviceType}};}
+\DoxyCodeLine{125 \textcolor{keyword}{enum} \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{InputDeviceType}} \{ \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0a5b4f525291442d2491875192a1834d43}{LM\_INPUT\_MOUSE}}, \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0a7642fa1dc2c2eaed01341e87e6d3f7b4}{LM\_INPUT\_KEYBOARD}} \};}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_action_binding}{ActionBinding}} \mbox{\hyperlink{struct_action_binding}{ActionBinding}};}
+\DoxyCodeLine{134 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_action_binding}{ActionBinding}} \{}
+\DoxyCodeLine{138   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_action}{InputAction}}* \mbox{\hyperlink{struct_action_binding_afa9f18392168c37b155a04d32a482bb0}{action}};}
+\DoxyCodeLine{143   \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{SignalTransition}} \mbox{\hyperlink{struct_action_binding_a42f1b53fabfc9034fc68357d70aef81e}{transition}};}
+\DoxyCodeLine{147   \mbox{\hyperlink{input_8h_ac9348deae9297ebe302759b9171a75d0}{InputDeviceType}} \mbox{\hyperlink{struct_action_binding_afe300b03299ab2d2ba598c1f8194f04a}{type}};}
+\DoxyCodeLine{148   \textcolor{keyword}{union }\{}
+\DoxyCodeLine{149     \mbox{\hyperlink{struct_keybind}{Keybind}} \mbox{\hyperlink{struct_action_binding_ab884f94970185313d5e43e5d00bacffe}{keybind}};}
+\DoxyCodeLine{150     \mbox{\hyperlink{struct_mousebind}{Mousebind}} \mbox{\hyperlink{struct_action_binding_ae05284e9e85948ca06d0c3eb2abc8090}{mousebind}};}
+\DoxyCodeLine{151   \};}
+\DoxyCodeLine{152 \};}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#ifndef LM\_INPUTSTATE\_BINDINGS\_MAX}}
+\DoxyCodeLine{160 \textcolor{preprocessor}{  \#define LM\_INPUTSTATE\_BINDINGS\_MAX 256}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_context}{InputContext}} \mbox{\hyperlink{struct_input_context}{InputContext}};}
+\DoxyCodeLine{168 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_input_context}{InputContext}} \{}
+\DoxyCodeLine{169   \mbox{\hyperlink{struct_action_binding}{ActionBinding}} \mbox{\hyperlink{struct_input_context_a435f2371c972d30855e938c2d41d14bc}{keybinds}}[\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\_INPUTSTATE\_BINDINGS\_MAX}}];}
+\DoxyCodeLine{170   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_input_context_a1cfe358b188bf6c678b66afa2a3a83ed}{nKeybinds}};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172   \mbox{\hyperlink{struct_mouse_axes}{MouseAxes}} \mbox{\hyperlink{struct_input_context_aa833866e8ae82d6d919b6cf8fbc9c0be}{mouse}};}
+\DoxyCodeLine{173   \mbox{\hyperlink{struct_action_binding}{ActionBinding}} \mbox{\hyperlink{struct_input_context_aa99a3c876aafed258977acfdc318fdda}{mousebinds}}[\mbox{\hyperlink{input_8h_a471a722662826a8c590039bbc8652126}{LM\_INPUTSTATE\_BINDINGS\_MAX}}];}
+\DoxyCodeLine{174   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_input_context_a2da2fa3f9a13b6716348b3198ee4ebb9}{nMousebinds}};}
+\DoxyCodeLine{175 \};}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 }
+\DoxyCodeLine{182 \textcolor{keywordtype}{void} \mbox{\hyperlink{input_8h_a109d91274d4eb8db075f89944154f0c0}{lm\_input\_state\_init}}(\mbox{\hyperlink{struct_input_context}{InputContext}}*);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 }
+\DoxyCodeLine{188 \textcolor{keywordtype}{void} \mbox{\hyperlink{input_8h_a1d6280d86b690272ac7b2a455b64a293}{lm\_input\_bind\_key}}(}
+\DoxyCodeLine{189     \mbox{\hyperlink{struct_input_context}{InputContext}}*,}
+\DoxyCodeLine{190     \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{VirtualKey}},}
+\DoxyCodeLine{191     \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}},}
+\DoxyCodeLine{192     \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{SignalTransition}},}
+\DoxyCodeLine{193     \mbox{\hyperlink{struct_input_action}{InputAction}}*);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 \textcolor{keywordtype}{void} \mbox{\hyperlink{input_8h_a6f37d35537063fd264cbb34bba6fbbbf}{lm\_input\_unbind}}(\mbox{\hyperlink{struct_input_context}{InputContext}}*, \textcolor{keywordtype}{char} \textcolor{keyword}{const}* actionName);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 }
+\DoxyCodeLine{201 \textcolor{keywordtype}{void} \mbox{\hyperlink{input_8h_a9914834dd3e5ff3565f17599e80d57db}{lm\_input\_bind\_mouse\_button}}(}
+\DoxyCodeLine{202     \mbox{\hyperlink{struct_input_context}{InputContext}}*,}
+\DoxyCodeLine{203     \mbox{\hyperlink{input_8h_ade7253f2c8330e54217bfab0f26c09e0}{MouseButtons}},}
+\DoxyCodeLine{204     \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}},}
+\DoxyCodeLine{205     \mbox{\hyperlink{signal_8h_aafd1adbd2d4f12c31286e6a25ae961de}{SignalTransition}},}
+\DoxyCodeLine{206     \mbox{\hyperlink{struct_input_action}{InputAction}}*);}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_H\_}}
+
+\end{DoxyCode}

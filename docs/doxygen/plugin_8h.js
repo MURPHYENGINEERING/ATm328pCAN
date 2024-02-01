@@ -1,0 +1,25 @@
+var plugin_8h =
+[
+    [ "HostContext", "struct_host_context.html", "struct_host_context" ],
+    [ "GameContext", "struct_game_context.html", "struct_game_context" ],
+    [ "Context", "struct_context.html", "struct_context" ],
+    [ "Plugin", "struct_plugin.html", "struct_plugin" ],
+    [ "Context", "plugin_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85", null ],
+    [ "GameContext", "plugin_8h.html#af1d739a5886b399946180d0fcd08e95f", null ],
+    [ "HostContext", "plugin_8h.html#a84b9d84fdbefe993ea44948bbbb251d6", null ],
+    [ "Plugin", "plugin_8h.html#a2fbb5c3326275cd375be335ab6caff18", null ],
+    [ "PluginFn", "plugin_8h.html#a796851cef3b291c8dffab192b415f4a3", null ],
+    [ "lm_plugin_bind", "plugin_8h.html#abc12e9c805e745fc190cbd5e3cea5851", null ],
+    [ "lm_plugin_destroy", "plugin_8h.html#af2bf8fa570687fa4d2118e53cd273dd3", null ],
+    [ "lm_plugin_ensure_ready", "plugin_8h.html#acb6820341c1145587b922e19e4b96b20", null ],
+    [ "lm_plugin_init", "plugin_8h.html#a23b0c39d42bce02835a3869fa71b0e3b", null ],
+    [ "lm_plugin_lib_bind", "plugin_8h.html#aa3890010b9e1e64328c4f095d4d5d14f", null ],
+    [ "lm_plugin_lib_load", "plugin_8h.html#a6216ed29f28e0a867448c0c574ebe669", null ],
+    [ "lm_plugin_lib_unload", "plugin_8h.html#a616a650e8ac80103fe3be5b32f50285b", null ],
+    [ "lm_plugin_unload", "plugin_8h.html#a39556278a9c2132708d6f36911b58623", null ],
+    [ "lmda_plugin_destroy_impl", "plugin_8h.html#a64bafab751639f2cdb24c69ffacd74d9", null ],
+    [ "lmda_plugin_init_impl", "plugin_8h.html#a6c27e5abd5b35b81490f9d04b03284a4", null ],
+    [ "lmda_plugin_resume_impl", "plugin_8h.html#ab9ba0a7cd6b5b735894563689b34d40d", null ],
+    [ "lmda_plugin_suspend_impl", "plugin_8h.html#ab1b369bb6bf5d070d2aa9b61339839a0", null ],
+    [ "lmda_plugin_tick_impl", "plugin_8h.html#ae7def7dde2acb3bdd4763a6f4a251488", null ]
+];

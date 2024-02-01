@@ -1,0 +1,234 @@
+\hypertarget{atm328p__timer_8h}{}\doxysection{src/atm328p/atm328p\+\_\+timer.h File Reference}
+\label{atm328p__timer_8h}\index{src/atm328p/atm328p\_timer.h@{src/atm328p/atm328p\_timer.h}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for atm328p\+\_\+timer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{atm328p__timer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__timer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_t_c_c_r0_a___t}{TCCR0\+A\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_c_c_r0_b___t}{TCCR0\+B\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_i_m_s_k0___t}{TIMSK0\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_i_f_r0___t}{TIFR0\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_c_c_r1_a___t}{TCCR1\+A\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_c_c_r1_b___t}{TCCR1\+B\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_i_m_s_k1___t}{TIMSK1\+\_\+T}}
+\item 
+union \mbox{\hyperlink{union_t_i_f_r1___t}{TIFR1\+\_\+T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_a8161fdec9f6aafe5a4a99aff0a83c1ba}{TCCR0\+B\+\_\+\+CS00}}~0
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_ab7a2579eb10fa7a35d96db7298b78427}{TCCR0\+B\+\_\+\+CS01}}~1
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_ad5e06cbdb63af7b8745437a50c02c18d}{TCCR0\+B\+\_\+\+CS02}}~2
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_a168aaefb23f90ca32173395b0de7e594}{TCCR1\+A\+\_\+\+NORMAL\+\_\+\+MODE}}~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 0
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_aa8febe0bca47bbce5fe5a1596bbcdb2e}{TCCR1\+B\+\_\+\+CS12}}~2
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_ab0dcf08ec660ece26ed04040b7a68bea}{TCCR1\+B\+\_\+\+PRESCALE\+\_\+\+OVER\+\_\+256}}~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) ( (1 $<$$<$ \mbox{\hyperlink{atm328p__timer_8h_aa8febe0bca47bbce5fe5a1596bbcdb2e}{TCCR1\+B\+\_\+\+CS12}}) )
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_af91edd322f6a8168f1f359c863e1c35c}{TOIE1\+\_\+\+ENABLE\+\_\+\+INTERRUPT}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_ae6c3ee1dfb5dd17761a7e60898d20206}{TOIE1\+\_\+\+DISABLE\+\_\+\+INTERRUPT}}~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}
+\item 
+\#define \mbox{\hyperlink{atm328p__timer_8h_adb18a3257fd489f80790832df1233d2c}{OCIE1\+A\+\_\+\+ENABLE\+\_\+\+INTERRUPT}}~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \mbox{\hyperlink{union_t_c_c_r0_a___t}{TCCR0\+A\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a65c7a46371de98eef1da5d99edeea247}{TCCR0A}}
+\item 
+volatile \mbox{\hyperlink{union_t_c_c_r0_b___t}{TCCR0\+B\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_aaf68febb45eb5a222386e6d21a53bdc0}{TCCR0B}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a50c4ba1fb3c472c05c1dc6a856ea94f5}{TCNT0}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a5bbd5f913eb66a2853ff76e7778c7d01}{OCR0A}}
+\item 
+volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a6c42d3829df647d6d4091b899e0f9100}{OCR0B}}
+\item 
+volatile \mbox{\hyperlink{union_t_i_m_s_k0___t}{TIMSK0\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a50ed71da72689e3459f0dee51517e129}{TIMSK0}}
+\item 
+volatile \mbox{\hyperlink{union_t_i_f_r0___t}{TIFR0\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_adc0c3076254de0c5161a87ce2040b4f2}{TIFR0}}
+\item 
+volatile \mbox{\hyperlink{union_t_c_c_r1_a___t}{TCCR1\+A\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a49782c6fd4a06d10e93ab8fb7f547fc0}{TCCR1A}}
+\item 
+volatile \mbox{\hyperlink{union_t_c_c_r1_b___t}{TCCR1\+B\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a0f53c3b7ee888c09188f2cd09ca3ee14}{TCCR1B}}
+\item 
+volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a53c60736c57e063449b7f04454775a2a}{TCNT1}}
+\item 
+volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a4a24afc9367a7d58dafacdf1f72eda97}{OCR1A}}
+\item 
+volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a144cc7baf3f24009d860e5c2274ec388}{OCR1B}}
+\item 
+volatile \mbox{\hyperlink{union_t_i_m_s_k1___t}{TIMSK1\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a6e770bc4ad3177a5ec090516eaa90be1}{TIMSK1}}
+\item 
+volatile \mbox{\hyperlink{union_t_i_f_r1___t}{TIFR1\+\_\+T}} \mbox{\hyperlink{atm328p__timer_8h_a8654d6e67595b662f61dcc5b1b49a23a}{TIFR1}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{atm328p__timer_8h_adb18a3257fd489f80790832df1233d2c}\label{atm328p__timer_8h_adb18a3257fd489f80790832df1233d2c}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!OCIE1A\_ENABLE\_INTERRUPT@{OCIE1A\_ENABLE\_INTERRUPT}}
+\index{OCIE1A\_ENABLE\_INTERRUPT@{OCIE1A\_ENABLE\_INTERRUPT}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{OCIE1A\_ENABLE\_INTERRUPT}{OCIE1A\_ENABLE\_INTERRUPT}}
+{\footnotesize\ttfamily \#define OCIE1\+A\+\_\+\+ENABLE\+\_\+\+INTERRUPT~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a8161fdec9f6aafe5a4a99aff0a83c1ba}\label{atm328p__timer_8h_a8161fdec9f6aafe5a4a99aff0a83c1ba}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR0B\_CS00@{TCCR0B\_CS00}}
+\index{TCCR0B\_CS00@{TCCR0B\_CS00}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR0B\_CS00}{TCCR0B\_CS00}}
+{\footnotesize\ttfamily \#define TCCR0\+B\+\_\+\+CS00~0}
+
+\mbox{\Hypertarget{atm328p__timer_8h_ab7a2579eb10fa7a35d96db7298b78427}\label{atm328p__timer_8h_ab7a2579eb10fa7a35d96db7298b78427}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR0B\_CS01@{TCCR0B\_CS01}}
+\index{TCCR0B\_CS01@{TCCR0B\_CS01}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR0B\_CS01}{TCCR0B\_CS01}}
+{\footnotesize\ttfamily \#define TCCR0\+B\+\_\+\+CS01~1}
+
+\mbox{\Hypertarget{atm328p__timer_8h_ad5e06cbdb63af7b8745437a50c02c18d}\label{atm328p__timer_8h_ad5e06cbdb63af7b8745437a50c02c18d}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR0B\_CS02@{TCCR0B\_CS02}}
+\index{TCCR0B\_CS02@{TCCR0B\_CS02}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR0B\_CS02}{TCCR0B\_CS02}}
+{\footnotesize\ttfamily \#define TCCR0\+B\+\_\+\+CS02~2}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a168aaefb23f90ca32173395b0de7e594}\label{atm328p__timer_8h_a168aaefb23f90ca32173395b0de7e594}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR1A\_NORMAL\_MODE@{TCCR1A\_NORMAL\_MODE}}
+\index{TCCR1A\_NORMAL\_MODE@{TCCR1A\_NORMAL\_MODE}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR1A\_NORMAL\_MODE}{TCCR1A\_NORMAL\_MODE}}
+{\footnotesize\ttfamily \#define TCCR1\+A\+\_\+\+NORMAL\+\_\+\+MODE~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) 0}
+
+\mbox{\Hypertarget{atm328p__timer_8h_aa8febe0bca47bbce5fe5a1596bbcdb2e}\label{atm328p__timer_8h_aa8febe0bca47bbce5fe5a1596bbcdb2e}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR1B\_CS12@{TCCR1B\_CS12}}
+\index{TCCR1B\_CS12@{TCCR1B\_CS12}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR1B\_CS12}{TCCR1B\_CS12}}
+{\footnotesize\ttfamily \#define TCCR1\+B\+\_\+\+CS12~2}
+
+\mbox{\Hypertarget{atm328p__timer_8h_ab0dcf08ec660ece26ed04040b7a68bea}\label{atm328p__timer_8h_ab0dcf08ec660ece26ed04040b7a68bea}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR1B\_PRESCALE\_OVER\_256@{TCCR1B\_PRESCALE\_OVER\_256}}
+\index{TCCR1B\_PRESCALE\_OVER\_256@{TCCR1B\_PRESCALE\_OVER\_256}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR1B\_PRESCALE\_OVER\_256}{TCCR1B\_PRESCALE\_OVER\_256}}
+{\footnotesize\ttfamily \#define TCCR1\+B\+\_\+\+PRESCALE\+\_\+\+OVER\+\_\+256~(\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}) ( (1 $<$$<$ \mbox{\hyperlink{atm328p__timer_8h_aa8febe0bca47bbce5fe5a1596bbcdb2e}{TCCR1\+B\+\_\+\+CS12}}) )}
+
+\mbox{\Hypertarget{atm328p__timer_8h_ae6c3ee1dfb5dd17761a7e60898d20206}\label{atm328p__timer_8h_ae6c3ee1dfb5dd17761a7e60898d20206}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TOIE1\_DISABLE\_INTERRUPT@{TOIE1\_DISABLE\_INTERRUPT}}
+\index{TOIE1\_DISABLE\_INTERRUPT@{TOIE1\_DISABLE\_INTERRUPT}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TOIE1\_DISABLE\_INTERRUPT}{TOIE1\_DISABLE\_INTERRUPT}}
+{\footnotesize\ttfamily \#define TOIE1\+\_\+\+DISABLE\+\_\+\+INTERRUPT~\mbox{\hyperlink{types_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_af91edd322f6a8168f1f359c863e1c35c}\label{atm328p__timer_8h_af91edd322f6a8168f1f359c863e1c35c}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TOIE1\_ENABLE\_INTERRUPT@{TOIE1\_ENABLE\_INTERRUPT}}
+\index{TOIE1\_ENABLE\_INTERRUPT@{TOIE1\_ENABLE\_INTERRUPT}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TOIE1\_ENABLE\_INTERRUPT}{TOIE1\_ENABLE\_INTERRUPT}}
+{\footnotesize\ttfamily \#define TOIE1\+\_\+\+ENABLE\+\_\+\+INTERRUPT~\mbox{\hyperlink{types_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{atm328p__timer_8h_a5bbd5f913eb66a2853ff76e7778c7d01}\label{atm328p__timer_8h_a5bbd5f913eb66a2853ff76e7778c7d01}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!OCR0A@{OCR0A}}
+\index{OCR0A@{OCR0A}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{OCR0A}{OCR0A}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} OCR0A\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a6c42d3829df647d6d4091b899e0f9100}\label{atm328p__timer_8h_a6c42d3829df647d6d4091b899e0f9100}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!OCR0B@{OCR0B}}
+\index{OCR0B@{OCR0B}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{OCR0B}{OCR0B}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} OCR0B\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a4a24afc9367a7d58dafacdf1f72eda97}\label{atm328p__timer_8h_a4a24afc9367a7d58dafacdf1f72eda97}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!OCR1A@{OCR1A}}
+\index{OCR1A@{OCR1A}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{OCR1A}{OCR1A}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} OCR1A\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a144cc7baf3f24009d860e5c2274ec388}\label{atm328p__timer_8h_a144cc7baf3f24009d860e5c2274ec388}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!OCR1B@{OCR1B}}
+\index{OCR1B@{OCR1B}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{OCR1B}{OCR1B}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} OCR1B\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a65c7a46371de98eef1da5d99edeea247}\label{atm328p__timer_8h_a65c7a46371de98eef1da5d99edeea247}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR0A@{TCCR0A}}
+\index{TCCR0A@{TCCR0A}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR0A}{TCCR0A}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_c_c_r0_a___t}{TCCR0\+A\+\_\+T}} TCCR0A\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_aaf68febb45eb5a222386e6d21a53bdc0}\label{atm328p__timer_8h_aaf68febb45eb5a222386e6d21a53bdc0}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR0B@{TCCR0B}}
+\index{TCCR0B@{TCCR0B}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR0B}{TCCR0B}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_c_c_r0_b___t}{TCCR0\+B\+\_\+T}} TCCR0B\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a49782c6fd4a06d10e93ab8fb7f547fc0}\label{atm328p__timer_8h_a49782c6fd4a06d10e93ab8fb7f547fc0}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR1A@{TCCR1A}}
+\index{TCCR1A@{TCCR1A}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR1A}{TCCR1A}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_c_c_r1_a___t}{TCCR1\+A\+\_\+T}} TCCR1A\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a0f53c3b7ee888c09188f2cd09ca3ee14}\label{atm328p__timer_8h_a0f53c3b7ee888c09188f2cd09ca3ee14}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCCR1B@{TCCR1B}}
+\index{TCCR1B@{TCCR1B}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCCR1B}{TCCR1B}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_c_c_r1_b___t}{TCCR1\+B\+\_\+T}} TCCR1B\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a50c4ba1fb3c472c05c1dc6a856ea94f5}\label{atm328p__timer_8h_a50c4ba1fb3c472c05c1dc6a856ea94f5}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCNT0@{TCNT0}}
+\index{TCNT0@{TCNT0}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCNT0}{TCNT0}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_r_e_g_i_s_t_e_r___t}{REGISTER\+\_\+T}} TCNT0\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a53c60736c57e063449b7f04454775a2a}\label{atm328p__timer_8h_a53c60736c57e063449b7f04454775a2a}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TCNT1@{TCNT1}}
+\index{TCNT1@{TCNT1}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TCNT1}{TCNT1}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_h_a_l_f_w_o_r_d___t}{HALFWORD\+\_\+T}} TCNT1\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_adc0c3076254de0c5161a87ce2040b4f2}\label{atm328p__timer_8h_adc0c3076254de0c5161a87ce2040b4f2}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TIFR0@{TIFR0}}
+\index{TIFR0@{TIFR0}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIFR0}{TIFR0}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_i_f_r0___t}{TIFR0\+\_\+T}} TIFR0\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a8654d6e67595b662f61dcc5b1b49a23a}\label{atm328p__timer_8h_a8654d6e67595b662f61dcc5b1b49a23a}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TIFR1@{TIFR1}}
+\index{TIFR1@{TIFR1}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIFR1}{TIFR1}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_i_f_r1___t}{TIFR1\+\_\+T}} TIFR1\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a50ed71da72689e3459f0dee51517e129}\label{atm328p__timer_8h_a50ed71da72689e3459f0dee51517e129}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TIMSK0@{TIMSK0}}
+\index{TIMSK0@{TIMSK0}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMSK0}{TIMSK0}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_i_m_s_k0___t}{TIMSK0\+\_\+T}} TIMSK0\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{atm328p__timer_8h_a6e770bc4ad3177a5ec090516eaa90be1}\label{atm328p__timer_8h_a6e770bc4ad3177a5ec090516eaa90be1}} 
+\index{atm328p\_timer.h@{atm328p\_timer.h}!TIMSK1@{TIMSK1}}
+\index{TIMSK1@{TIMSK1}!atm328p\_timer.h@{atm328p\_timer.h}}
+\doxysubsubsection{\texorpdfstring{TIMSK1}{TIMSK1}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{union_t_i_m_s_k1___t}{TIMSK1\+\_\+T}} TIMSK1\hspace{0.3cm}{\ttfamily [extern]}}
+

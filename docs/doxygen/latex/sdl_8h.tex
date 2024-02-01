@@ -1,0 +1,136 @@
+\hypertarget{sdl_8h}{}\doxysection{src/include/lmda/sdl.h File Reference}
+\label{sdl_8h}\index{src/include/lmda/sdl.h@{src/include/lmda/sdl.h}}
+
+
+Interface to the SDL subsystems (rendering, image loading, sound, etc).  
+
+
+{\ttfamily \#include $<$lmda/sdl/color.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/sdl/ttf.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/input.\+h$>$}\newline
+{\ttfamily \#include $<$SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL\+\_\+image.\+h$>$}\newline
+Include dependency graph for sdl.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sdl_mouse_cursor}{Sdl\+Mouse\+Cursor}}
+\begin{DoxyCompactList}\small\item\em Represents the mouse cursor state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sdl_context}{Sdl\+Context}}
+\begin{DoxyCompactList}\small\item\em Parent node of the entire SDL state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_sdl_mouse_cursor}{Sdl\+Mouse\+Cursor}} \mbox{\hyperlink{sdl_8h_a887397f5fbe83ead63f72c072ed5c2e4}{Sdl\+Mouse\+Cursor}}
+\item 
+typedef struct \mbox{\hyperlink{struct_sdl_context}{Sdl\+Context}} \mbox{\hyperlink{sdl_8h_aa2af10d19afa9df5a8d408cffd1a1065}{Sdl\+Context}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{sdl_8h_a7fec0f0d471412edc1fde1f690864b21}{lm\+\_\+sdl\+\_\+init}} (struct \mbox{\hyperlink{struct_context}{Context}} $\ast$)
+\item 
+bool \mbox{\hyperlink{sdl_8h_abb33f16e65ed2a90aa718b73039da708}{lm\+\_\+sdl\+\_\+tick}} (struct \mbox{\hyperlink{struct_context}{Context}} $\ast$)
+\item 
+bool \mbox{\hyperlink{sdl_8h_aee8f887a31003458c5cb18417f27b71e}{lm\+\_\+sdl\+\_\+suspend}} (struct \mbox{\hyperlink{struct_context}{Context}} $\ast$)
+\item 
+bool \mbox{\hyperlink{sdl_8h_ab8a9feccf461fcfcd49ac70888a904c2}{lm\+\_\+sdl\+\_\+resume}} (struct \mbox{\hyperlink{struct_context}{Context}} $\ast$)
+\item 
+bool \mbox{\hyperlink{sdl_8h_a9dfaf374ea3e5af4baa38b7db28e30bc}{lm\+\_\+sdl\+\_\+destroy}} (struct \mbox{\hyperlink{struct_context}{Context}} $\ast$)
+\item 
+bool \mbox{\hyperlink{sdl_8h_a8b9f1515a6c1bf93ce2cede88349e3b7}{lm\+\_\+sdl\+\_\+ttf\+\_\+load}} (TTF\+\_\+\+Font $\ast$$\ast$font, char const $\ast$path)
+\item 
+bool \mbox{\hyperlink{sdl_8h_ada3f1fa9161bf1ad091c791b29ba427d}{lm\+\_\+sdl\+\_\+ttf\+\_\+generate}} (\mbox{\hyperlink{struct_text}{Text}} $\ast$ft, SDL\+\_\+\+Renderer $\ast$renderer, char const $\ast$text, SDL\+\_\+\+Color color)
+\item 
+void \mbox{\hyperlink{sdl_8h_afe24f7d8bcee8011f24314baf3abf5f1}{lm\+\_\+sdl\+\_\+ttf\+\_\+destroy}} (\mbox{\hyperlink{struct_text}{Text}} $\ast$ft)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface to the SDL subsystems (rendering, image loading, sound, etc). 
+
+\begin{DoxyAuthor}{Author}
+Matt Murphy (\href{mailto:matt@murphysys.com}{\texttt{ matt@murphysys.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/06
+\end{DoxyDate}
+Copyright (c) 2022 Murphy Engineering LLC 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{sdl_8h_aa2af10d19afa9df5a8d408cffd1a1065}\label{sdl_8h_aa2af10d19afa9df5a8d408cffd1a1065}} 
+\index{sdl.h@{sdl.h}!SdlContext@{SdlContext}}
+\index{SdlContext@{SdlContext}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{SdlContext}{SdlContext}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_sdl_context}{Sdl\+Context}} \mbox{\hyperlink{struct_sdl_context}{Sdl\+Context}}}
+
+\mbox{\Hypertarget{sdl_8h_a887397f5fbe83ead63f72c072ed5c2e4}\label{sdl_8h_a887397f5fbe83ead63f72c072ed5c2e4}} 
+\index{sdl.h@{sdl.h}!SdlMouseCursor@{SdlMouseCursor}}
+\index{SdlMouseCursor@{SdlMouseCursor}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{SdlMouseCursor}{SdlMouseCursor}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_sdl_mouse_cursor}{Sdl\+Mouse\+Cursor}} \mbox{\hyperlink{struct_sdl_mouse_cursor}{Sdl\+Mouse\+Cursor}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sdl_8h_a9dfaf374ea3e5af4baa38b7db28e30bc}\label{sdl_8h_a9dfaf374ea3e5af4baa38b7db28e30bc}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_destroy@{lm\_sdl\_destroy}}
+\index{lm\_sdl\_destroy@{lm\_sdl\_destroy}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_destroy()}{lm\_sdl\_destroy()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+destroy (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_context}{Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_a7fec0f0d471412edc1fde1f690864b21}\label{sdl_8h_a7fec0f0d471412edc1fde1f690864b21}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_init@{lm\_sdl\_init}}
+\index{lm\_sdl\_init@{lm\_sdl\_init}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_init()}{lm\_sdl\_init()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_context}{Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_ab8a9feccf461fcfcd49ac70888a904c2}\label{sdl_8h_ab8a9feccf461fcfcd49ac70888a904c2}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_resume@{lm\_sdl\_resume}}
+\index{lm\_sdl\_resume@{lm\_sdl\_resume}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_resume()}{lm\_sdl\_resume()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+resume (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_context}{Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_aee8f887a31003458c5cb18417f27b71e}\label{sdl_8h_aee8f887a31003458c5cb18417f27b71e}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_suspend@{lm\_sdl\_suspend}}
+\index{lm\_sdl\_suspend@{lm\_sdl\_suspend}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_suspend()}{lm\_sdl\_suspend()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+suspend (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_context}{Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_abb33f16e65ed2a90aa718b73039da708}\label{sdl_8h_abb33f16e65ed2a90aa718b73039da708}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_tick@{lm\_sdl\_tick}}
+\index{lm\_sdl\_tick@{lm\_sdl\_tick}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_tick()}{lm\_sdl\_tick()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+tick (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_context}{Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_afe24f7d8bcee8011f24314baf3abf5f1}\label{sdl_8h_afe24f7d8bcee8011f24314baf3abf5f1}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_ttf\_destroy@{lm\_sdl\_ttf\_destroy}}
+\index{lm\_sdl\_ttf\_destroy@{lm\_sdl\_ttf\_destroy}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_ttf\_destroy()}{lm\_sdl\_ttf\_destroy()}}
+{\footnotesize\ttfamily void lm\+\_\+sdl\+\_\+ttf\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{ft }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_ada3f1fa9161bf1ad091c791b29ba427d}\label{sdl_8h_ada3f1fa9161bf1ad091c791b29ba427d}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_ttf\_generate@{lm\_sdl\_ttf\_generate}}
+\index{lm\_sdl\_ttf\_generate@{lm\_sdl\_ttf\_generate}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_ttf\_generate()}{lm\_sdl\_ttf\_generate()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+ttf\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}} $\ast$}]{ft,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{char const $\ast$}]{text,  }\item[{SDL\+\_\+\+Color}]{color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl_8h_a8b9f1515a6c1bf93ce2cede88349e3b7}\label{sdl_8h_a8b9f1515a6c1bf93ce2cede88349e3b7}} 
+\index{sdl.h@{sdl.h}!lm\_sdl\_ttf\_load@{lm\_sdl\_ttf\_load}}
+\index{lm\_sdl\_ttf\_load@{lm\_sdl\_ttf\_load}!sdl.h@{sdl.h}}
+\doxysubsubsection{\texorpdfstring{lm\_sdl\_ttf\_load()}{lm\_sdl\_ttf\_load()}}
+{\footnotesize\ttfamily bool lm\+\_\+sdl\+\_\+ttf\+\_\+load (\begin{DoxyParamCaption}\item[{TTF\+\_\+\+Font $\ast$$\ast$}]{font,  }\item[{char const $\ast$}]{path }\end{DoxyParamCaption})}
+

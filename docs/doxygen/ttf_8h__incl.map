@@ -1,0 +1,10 @@
+<map id="src/include/lmda/sdl/ttf.h" name="src/include/lmda/sdl/ttf.h">
+<area shape="rect" id="node1" title=" " alt="" coords="68,5,251,47"/>
+<area shape="rect" id="node2" href="$sdl_8h.html" title="Interface to the SDL subsystems (rendering, image loading, sound, etc)." alt="" coords="128,95,191,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="239,95,333,121"/>
+<area shape="rect" id="node3" href="$color_8h.html" title="Defines symbols for common SDL color values." alt="" coords="5,169,156,196"/>
+<area shape="rect" id="node4" href="$input_8h.html" title="The game&#39;s interface to the user input devices." alt="" coords="180,169,299,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="323,169,433,196"/>
+<area shape="rect" id="node5" href="$keyboard_8h.html" title="Defines symbols for SDL keyboard key identifiers." alt="" coords="52,244,243,271"/>
+<area shape="rect" id="node6" href="$signal_8h.html" title="Declares the types of signal transitions that may represent a state change." alt="" coords="267,244,393,271"/>
+</map>

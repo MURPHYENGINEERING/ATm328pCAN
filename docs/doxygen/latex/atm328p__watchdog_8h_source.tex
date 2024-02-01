@@ -1,0 +1,48 @@
+\hypertarget{atm328p__watchdog_8h_source}{}\doxysection{atm328p\+\_\+watchdog.\+h}
+\label{atm328p__watchdog_8h_source}\index{src/atm328p/atm328p\_watchdog.h@{src/atm328p/atm328p\_watchdog.h}}
+\mbox{\hyperlink{atm328p__watchdog_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_ATM328P\_WATCHDOG\_H\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_ATM328P\_WATCHDOG\_H\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{8     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{9         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_a1cc4b77df022f423f41e7d932a14fbbb}{WDP0}} : 1;}
+\DoxyCodeLine{10         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_aeca2de6b20397e6204d598a205d2d200}{WDP1}} : 1;}
+\DoxyCodeLine{11         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_aea45612def70b3a2746804518de20fe4}{WDP2}} : 1;}
+\DoxyCodeLine{12         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_ad225aa80b93cd122580006819508366e}{WDE}}  : 1;}
+\DoxyCodeLine{13         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_a2de1b14c47e0f8387979f2cdaf1b9a7a}{WDCE}} : 1;}
+\DoxyCodeLine{14         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_a5bf377e480564a089a525bc27b674cae}{WDP3}} : 1;}
+\DoxyCodeLine{15         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_a87df1f592ee0aad345ed508c85da1410}{WDIE}} : 1;}
+\DoxyCodeLine{16         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_aab454c976a944439519715fd653b7995}{WDIF}} : 1;}
+\DoxyCodeLine{17     \} bits;}
+\DoxyCodeLine{18     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_w_d_t_c_s_r___t_aefe2a60b3abab843cc10ad53868bf4fa}{byte}};}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{union_w_d_t_c_s_r___t}{WDTCSR\_T}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_w_d_t_c_s_r___t}{WDTCSR\_T}} \mbox{\hyperlink{atm328p__watchdog_8h_ada41529ada7c65575303d8f79293630d}{WDTCSR}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define WDE\_WATCHDOG\_DISABLED FALSE}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define WDE\_WATCHDOG\_ENABLED TRUE}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define WDCE\_CHANGE\_WATCHDOG TRUE}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{/* Watchdog Timer Prescaler 3, 2, 1, 0 */}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define WDTCSR\_WDP3 5}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define WDTCSR\_WDE 3}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define WDTCSR\_WDCE 4}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define WDTCSR\_WDP2 2}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define WDTCSR\_WDP1 1}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define WDTCSR\_WDP0 0}}
+\DoxyCodeLine{35 \textcolor{comment}{/* 256K WDT Oscillator Cycles before Timeout (2.0s at 5V) */}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define WDTCSR\_PRESCALE\_TIMEOUT\_IN\_2S \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    (U8\_T) ( (1u << WDTCSR\_WDP2) | (1u << WDTCSR\_WDP1) | (1u << WDTCSR\_WDP0) )}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define WDTCSR\_ENABLE\_WATCHDOG (U8\_T) (1u << WDTCSR\_WDE)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define WDTCSR\_CHANGE\_WATCHDOG (U8\_T) (1u << WDTCSR\_WDCE)}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

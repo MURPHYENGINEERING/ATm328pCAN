@@ -1,0 +1,67 @@
+\hypertarget{atm328p__eeprom_8c}{}\doxysection{src/atm328p/atm328p\+\_\+eeprom.c File Reference}
+\label{atm328p__eeprom_8c}\index{src/atm328p/atm328p\_eeprom.c@{src/atm328p/atm328p\_eeprom.c}}
+{\ttfamily \#include \char`\"{}atm328p\+\_\+eeprom.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}atm328p\+\_\+interrupts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}eeprom.\+h\char`\"{}}\newline
+Include dependency graph for atm328p\+\_\+eeprom.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__eeprom_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__eeprom_8c_a2014a68c0d0c120098d270eb4c65473c}{eeprom\+\_\+write\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address, \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} data)
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{atm328p__eeprom_8c_a50c100c2b8e37f091697ab4a9419fab0}{eeprom\+\_\+read\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address)
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{atm328p__eeprom_8c_a7e027b0b673727aeeefe77b1a474e2bc}{eeprom\+\_\+erase\+\_\+byte}} (\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} address)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{atm328p__eeprom_8c_a7e027b0b673727aeeefe77b1a474e2bc}\label{atm328p__eeprom_8c_a7e027b0b673727aeeefe77b1a474e2bc}} 
+\index{atm328p\_eeprom.c@{atm328p\_eeprom.c}!eeprom\_erase\_byte@{eeprom\_erase\_byte}}
+\index{eeprom\_erase\_byte@{eeprom\_erase\_byte}!atm328p\_eeprom.c@{atm328p\_eeprom.c}}
+\doxysubsubsection{\texorpdfstring{eeprom\_erase\_byte()}{eeprom\_erase\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+erase\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atm328p__eeprom_8c_a7e027b0b673727aeeefe77b1a474e2bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{atm328p__eeprom_8c_a50c100c2b8e37f091697ab4a9419fab0}\label{atm328p__eeprom_8c_a50c100c2b8e37f091697ab4a9419fab0}} 
+\index{atm328p\_eeprom.c@{atm328p\_eeprom.c}!eeprom\_read\_byte@{eeprom\_read\_byte}}
+\index{eeprom\_read\_byte@{eeprom\_read\_byte}!atm328p\_eeprom.c@{atm328p\_eeprom.c}}
+\doxysubsubsection{\texorpdfstring{eeprom\_read\_byte()}{eeprom\_read\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} eeprom\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{atm328p__eeprom_8c_a50c100c2b8e37f091697ab4a9419fab0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{atm328p__eeprom_8c_a2014a68c0d0c120098d270eb4c65473c}\label{atm328p__eeprom_8c_a2014a68c0d0c120098d270eb4c65473c}} 
+\index{atm328p\_eeprom.c@{atm328p\_eeprom.c}!eeprom\_write\_byte@{eeprom\_write\_byte}}
+\index{eeprom\_write\_byte@{eeprom\_write\_byte}!atm328p\_eeprom.c@{atm328p\_eeprom.c}}
+\doxysubsubsection{\texorpdfstring{eeprom\_write\_byte()}{eeprom\_write\_byte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} eeprom\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{address,  }\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}}}]{data }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{atm328p__eeprom_8c_a2014a68c0d0c120098d270eb4c65473c_icgraph}
+\end{center}
+\end{figure}

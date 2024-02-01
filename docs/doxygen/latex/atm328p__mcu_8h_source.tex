@@ -1,0 +1,55 @@
+\hypertarget{atm328p__mcu_8h_source}{}\doxysection{atm328p\+\_\+mcu.\+h}
+\label{atm328p__mcu_8h_source}\index{src/atm328p/atm328p\_mcu.h@{src/atm328p/atm328p\_mcu.h}}
+\mbox{\hyperlink{atm328p__mcu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_ATM328P\_MCU\_H\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_ATM328P\_MCU\_H\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{8     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{9         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a6765cea57e07a62f29905ac130f60b16}{PORF}} : 1;}
+\DoxyCodeLine{10         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_ad2db94da8ea0f4724ffd8fc014201f8b}{EXTRF}} : 1;}
+\DoxyCodeLine{11         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a505041fef51f476ad6b596d28bc59af4}{BORF}} : 1;}
+\DoxyCodeLine{12         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_ab9df9a6868e8a5dff128844ba6f6f97a}{WDRF}} : 1;}
+\DoxyCodeLine{13         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a974f5b69c668a2cda55f6d9d324df4f0}{Reserved4}} : 1;}
+\DoxyCodeLine{14         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a8c1476da9cf0d35d9def583dafb42bd4}{Reserved5}} : 1;}
+\DoxyCodeLine{15         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a082768995f93567e4eef7017d405b9e1}{Reserved6}} : 1;}
+\DoxyCodeLine{16         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_a0606625fe04ae03356dfb2528852b141}{Reserved7}} : 1;}
+\DoxyCodeLine{17     \} bits;}
+\DoxyCodeLine{18     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_m_c_u_s_r___t_af078117b3d5a1d886e14a94fda50989b}{byte}};}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{union_m_c_u_s_r___t}{MCUSR\_T}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_m_c_u_s_r___t}{MCUSR\_T}} \mbox{\hyperlink{atm328p__mcu_8h_acc3a9873889731d9d50ab2677b94ea6b}{MCUSR}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define WDRF\_WATCHDOG\_RESET\_DISABLED FALSE}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{/* Power Reduction Register */}}
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{28     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{29         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_af2fe910e1df2c93f7ac74ac936770c31}{PRADC}} : 1;}
+\DoxyCodeLine{30         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_a1b70d5bab41560a3ba4754975eeeff77}{PRUSART0}} : 1;}
+\DoxyCodeLine{31         \textcolor{comment}{/* Power Reduction Serial Peripheral Interface */}}
+\DoxyCodeLine{32         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_ace08aa9b2c56d2a150895be130ea0351}{PRSPI}} : 1;}
+\DoxyCodeLine{33         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_a4c9ff0d0040152f94bdb80643af35728}{PRTIM1}} : 1;}
+\DoxyCodeLine{34         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_a97f70d4fbfa7b66b757fb479faecffc7}{Reserved4}} : 1;}
+\DoxyCodeLine{35         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_ab9c74d9fee3321e8cc0b8499a30dfeee}{PRTIM0}} : 1;}
+\DoxyCodeLine{36         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_aa3d4cea179166c8d47aa51d21b2d5348}{PRTIM2}} : 1;}
+\DoxyCodeLine{37         \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\_T}} \mbox{\hyperlink{union_p_r_r___t_a9317fa086cbbb58aa5158f1c706c64f5}{PRTWI}} : 1;}
+\DoxyCodeLine{38     \} bits;}
+\DoxyCodeLine{39     \mbox{\hyperlink{types_8h_ab19bea15932075d9523c7070e1ee7272}{VU8\_T}} \mbox{\hyperlink{union_p_r_r___t_a40603e77967b74be2b9f6f19605f2ceb}{byte}};}
+\DoxyCodeLine{40 \} \mbox{\hyperlink{union_p_r_r___t}{PRR\_T}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \mbox{\hyperlink{union_p_r_r___t}{PRR\_T}} \mbox{\hyperlink{atm328p__mcu_8h_a568bf7172b22d85903de79bf99e459b9}{PRR}};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define PRSPI\_DISABLE\_POWER\_REDUCTION FALSE}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define PRSPI\_ENABLE\_POWER\_REDUCTION TRUE}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define PRUSART0\_DISABLE\_POWER\_REDUCTION FALSE}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

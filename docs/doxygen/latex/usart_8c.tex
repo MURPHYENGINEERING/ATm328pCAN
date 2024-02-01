@@ -1,0 +1,175 @@
+\hypertarget{usart_8c}{}\doxysection{src/usart.c File Reference}
+\label{usart_8c}\index{src/usart.c@{src/usart.c}}
+{\ttfamily \#include \char`\"{}usart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}interrupts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dsc.\+h\char`\"{}}\newline
+Include dependency graph for usart.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{usart_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}{USART\+\_\+\+BUF\+\_\+\+LEN}}~256
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{usart_8c_a7cde100ac531d01c1dd3b434480a3601}{ISR}} (\mbox{\hyperlink{atm328p__interrupts_8h_a0c0f3fb0c2f322723e4ac6586a6313cf}{USART0\+\_\+\+TX\+\_\+vect}})
+\item 
+\mbox{\hyperlink{usart_8c_a084f0a9cf05b1877bd8a71a90dae7ff8}{ISR}} (\mbox{\hyperlink{atm328p__interrupts_8h_aa42b31a4f9d897c9db50662d15abe50f}{USART0\+\_\+\+RX\+\_\+vect}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{usart_8c_af935e6d71db1708ae82f63f128ea03b6}{usart\+\_\+init}} (\mbox{\hyperlink{struct_u_s_a_r_t___c_o_n_f_i_g___t}{USART\+\_\+\+CONFIG\+\_\+T}} config)
+\item 
+\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_a46fd22e754f54818200bd2c7035bf2d9}{usart\+\_\+tx}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\item 
+\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_af5a4f3a92d097bdff84b7640f5098674}{usart\+\_\+rx}} (\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$buf, \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} len)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{usart_8c_a3a61a0e96e0e998ce02c9a4f06eb3106}{g\+\_\+usart\+\_\+tx\+\_\+buf}} \mbox{[}\mbox{\hyperlink{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}{USART\+\_\+\+BUF\+\_\+\+LEN}}\mbox{]}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_add53d94fd59cfe494c11d3df34efea18}{g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+n}}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_a1971bcf3421d18e4e3eb6fe5401cd51b}{g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+write\+\_\+idx}}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_af954c6c0e5e94f365b31efa9f557bdbc}{g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+read\+\_\+idx}}
+\item 
+\mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\+\_\+T}} \mbox{\hyperlink{usart_8c_aa9233f19cd695a17357db1587330c18a}{g\+\_\+usart\+\_\+tx\+\_\+transmitting}}
+\item 
+\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} \mbox{\hyperlink{usart_8c_aebdbfa6e7e48a0be97345107ac763ec3}{g\+\_\+usart\+\_\+rx\+\_\+buf}} \mbox{[}\mbox{\hyperlink{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}{USART\+\_\+\+BUF\+\_\+\+LEN}}\mbox{]}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_a19b6092809e0326b09879309ef565100}{g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+write\+\_\+idx}}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_a195ea5329102d71a9646aac911d6b0e5}{g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+read\+\_\+idx}}
+\item 
+\mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} \mbox{\hyperlink{usart_8c_aa834fd0f29d60feebc5e36c9cd1a42e7}{g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+n}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}\label{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}} 
+\index{usart.c@{usart.c}!USART\_BUF\_LEN@{USART\_BUF\_LEN}}
+\index{USART\_BUF\_LEN@{USART\_BUF\_LEN}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{USART\_BUF\_LEN}{USART\_BUF\_LEN}}
+{\footnotesize\ttfamily \#define USART\+\_\+\+BUF\+\_\+\+LEN~256}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{usart_8c_a084f0a9cf05b1877bd8a71a90dae7ff8}\label{usart_8c_a084f0a9cf05b1877bd8a71a90dae7ff8}} 
+\index{usart.c@{usart.c}!ISR@{ISR}}
+\index{ISR@{ISR}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{atm328p__interrupts_8h_aa42b31a4f9d897c9db50662d15abe50f}{USART0\+\_\+\+RX\+\_\+vect}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{usart_8c_a084f0a9cf05b1877bd8a71a90dae7ff8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{usart_8c_a7cde100ac531d01c1dd3b434480a3601}\label{usart_8c_a7cde100ac531d01c1dd3b434480a3601}} 
+\index{usart.c@{usart.c}!ISR@{ISR}}
+\index{ISR@{ISR}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{atm328p__interrupts_8h_a0c0f3fb0c2f322723e4ac6586a6313cf}{USART0\+\_\+\+TX\+\_\+vect}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{usart_8c_af935e6d71db1708ae82f63f128ea03b6}\label{usart_8c_af935e6d71db1708ae82f63f128ea03b6}} 
+\index{usart.c@{usart.c}!usart\_init@{usart\_init}}
+\index{usart\_init@{usart\_init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{usart\_init()}{usart\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} usart\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_s_a_r_t___c_o_n_f_i_g___t}{USART\+\_\+\+CONFIG\+\_\+T}}}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{usart_8c_af935e6d71db1708ae82f63f128ea03b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{usart_8c_af935e6d71db1708ae82f63f128ea03b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{usart_8c_af5a4f3a92d097bdff84b7640f5098674}\label{usart_8c_af5a4f3a92d097bdff84b7640f5098674}} 
+\index{usart.c@{usart.c}!usart\_rx@{usart\_rx}}
+\index{usart\_rx@{usart\_rx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{usart\_rx()}{usart\_rx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} usart\+\_\+rx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{usart_8c_a46fd22e754f54818200bd2c7035bf2d9}\label{usart_8c_a46fd22e754f54818200bd2c7035bf2d9}} 
+\index{usart.c@{usart.c}!usart\_tx@{usart\_tx}}
+\index{usart\_tx@{usart\_tx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{usart\_tx()}{usart\_tx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}} usart\+\_\+tx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{types_8h_ab6f861b8f9955e6aab3a5827e72114bd}{SIZE\+\_\+T}}}]{len }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{usart_8c_aebdbfa6e7e48a0be97345107ac763ec3}\label{usart_8c_aebdbfa6e7e48a0be97345107ac763ec3}} 
+\index{usart.c@{usart.c}!g\_usart\_rx\_buf@{g\_usart\_rx\_buf}}
+\index{g\_usart\_rx\_buf@{g\_usart\_rx\_buf}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_rx\_buf}{g\_usart\_rx\_buf}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} g\+\_\+usart\+\_\+rx\+\_\+buf\mbox{[}\mbox{\hyperlink{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}{USART\+\_\+\+BUF\+\_\+\+LEN}}\mbox{]}}
+
+\mbox{\Hypertarget{usart_8c_aa834fd0f29d60feebc5e36c9cd1a42e7}\label{usart_8c_aa834fd0f29d60feebc5e36c9cd1a42e7}} 
+\index{usart.c@{usart.c}!g\_usart\_rx\_buf\_n@{g\_usart\_rx\_buf\_n}}
+\index{g\_usart\_rx\_buf\_n@{g\_usart\_rx\_buf\_n}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_rx\_buf\_n}{g\_usart\_rx\_buf\_n}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+n}
+
+\mbox{\Hypertarget{usart_8c_a195ea5329102d71a9646aac911d6b0e5}\label{usart_8c_a195ea5329102d71a9646aac911d6b0e5}} 
+\index{usart.c@{usart.c}!g\_usart\_rx\_buf\_read\_idx@{g\_usart\_rx\_buf\_read\_idx}}
+\index{g\_usart\_rx\_buf\_read\_idx@{g\_usart\_rx\_buf\_read\_idx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_rx\_buf\_read\_idx}{g\_usart\_rx\_buf\_read\_idx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+read\+\_\+idx}
+
+\mbox{\Hypertarget{usart_8c_a19b6092809e0326b09879309ef565100}\label{usart_8c_a19b6092809e0326b09879309ef565100}} 
+\index{usart.c@{usart.c}!g\_usart\_rx\_buf\_write\_idx@{g\_usart\_rx\_buf\_write\_idx}}
+\index{g\_usart\_rx\_buf\_write\_idx@{g\_usart\_rx\_buf\_write\_idx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_rx\_buf\_write\_idx}{g\_usart\_rx\_buf\_write\_idx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+rx\+\_\+buf\+\_\+write\+\_\+idx}
+
+\mbox{\Hypertarget{usart_8c_a3a61a0e96e0e998ce02c9a4f06eb3106}\label{usart_8c_a3a61a0e96e0e998ce02c9a4f06eb3106}} 
+\index{usart.c@{usart.c}!g\_usart\_tx\_buf@{g\_usart\_tx\_buf}}
+\index{g\_usart\_tx\_buf@{g\_usart\_tx\_buf}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_tx\_buf}{g\_usart\_tx\_buf}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6c8a59b7f73af82ecbff2fea894668f7}{U8\+\_\+T}} g\+\_\+usart\+\_\+tx\+\_\+buf\mbox{[}\mbox{\hyperlink{usart_8c_a7c84f274b6b5d81b6d419ec513e8af04}{USART\+\_\+\+BUF\+\_\+\+LEN}}\mbox{]}}
+
+\mbox{\Hypertarget{usart_8c_add53d94fd59cfe494c11d3df34efea18}\label{usart_8c_add53d94fd59cfe494c11d3df34efea18}} 
+\index{usart.c@{usart.c}!g\_usart\_tx\_buf\_n@{g\_usart\_tx\_buf\_n}}
+\index{g\_usart\_tx\_buf\_n@{g\_usart\_tx\_buf\_n}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_tx\_buf\_n}{g\_usart\_tx\_buf\_n}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+n}
+
+\mbox{\Hypertarget{usart_8c_af954c6c0e5e94f365b31efa9f557bdbc}\label{usart_8c_af954c6c0e5e94f365b31efa9f557bdbc}} 
+\index{usart.c@{usart.c}!g\_usart\_tx\_buf\_read\_idx@{g\_usart\_tx\_buf\_read\_idx}}
+\index{g\_usart\_tx\_buf\_read\_idx@{g\_usart\_tx\_buf\_read\_idx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_tx\_buf\_read\_idx}{g\_usart\_tx\_buf\_read\_idx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+read\+\_\+idx}
+
+\mbox{\Hypertarget{usart_8c_a1971bcf3421d18e4e3eb6fe5401cd51b}\label{usart_8c_a1971bcf3421d18e4e3eb6fe5401cd51b}} 
+\index{usart.c@{usart.c}!g\_usart\_tx\_buf\_write\_idx@{g\_usart\_tx\_buf\_write\_idx}}
+\index{g\_usart\_tx\_buf\_write\_idx@{g\_usart\_tx\_buf\_write\_idx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_tx\_buf\_write\_idx}{g\_usart\_tx\_buf\_write\_idx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_ad5f5c4260e5718e1446299ab5d1721f3}{VSIZE\+\_\+T}} g\+\_\+usart\+\_\+tx\+\_\+buf\+\_\+write\+\_\+idx}
+
+\mbox{\Hypertarget{usart_8c_aa9233f19cd695a17357db1587330c18a}\label{usart_8c_aa9233f19cd695a17357db1587330c18a}} 
+\index{usart.c@{usart.c}!g\_usart\_tx\_transmitting@{g\_usart\_tx\_transmitting}}
+\index{g\_usart\_tx\_transmitting@{g\_usart\_tx\_transmitting}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{g\_usart\_tx\_transmitting}{g\_usart\_tx\_transmitting}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a6e23ff752ba726926a468b57c8f6ab20}{VBOOL\+\_\+T}} g\+\_\+usart\+\_\+tx\+\_\+transmitting}
+

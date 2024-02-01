@@ -1,0 +1,81 @@
+\hypertarget{_plugin__game_8c}{}\doxysection{src/game/\+Plugin\+\_\+game.c File Reference}
+\label{_plugin__game_8c}\index{src/game/Plugin\_game.c@{src/game/Plugin\_game.c}}
+{\ttfamily \#include $<$lmda/app/\+Plugin.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/app/\+App\+Context.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Game.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for Plugin\+\_\+game.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_plugin__game_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_plugin__game_8c_af104b40b2ddbbc2e0b9aa459b716954e}{lmda\+\_\+plugin\+\_\+init\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plg)
+\item 
+bool \mbox{\hyperlink{_plugin__game_8c_ad6050c7ca7c7d80e935dc71c268e614c}{lmda\+\_\+plugin\+\_\+update\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin__game_8c_a1c11a70fc2f27d2b327eddc4579f0442}{lmda\+\_\+plugin\+\_\+suspend\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin__game_8c_adc40bf5f91cc1ad3af468bcd85005f1e}{lmda\+\_\+plugin\+\_\+resume\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plg)
+\item 
+bool \mbox{\hyperlink{_plugin__game_8c_a0db071d42c10d5da02e56e1c09275452}{lmda\+\_\+plugin\+\_\+destroy\+\_\+impl}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$ \mbox{\hyperlink{_plugin__game_8c_a864a1455ce03cfe142f29332c0ee8263}{\+\_\+plugin}}
+\item 
+\mbox{\hyperlink{struct_game}{Game}} $\ast$ \mbox{\hyperlink{_plugin__game_8c_a358b8d7a9b9c5fceca9dd2cf0ce1d317}{\+\_\+g}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_plugin__game_8c_a0db071d42c10d5da02e56e1c09275452}\label{_plugin__game_8c_a0db071d42c10d5da02e56e1c09275452}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}}
+\index{lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_destroy\_impl()}{lmda\_plugin\_destroy\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+destroy\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__game_8c_af104b40b2ddbbc2e0b9aa459b716954e}\label{_plugin__game_8c_af104b40b2ddbbc2e0b9aa459b716954e}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}}
+\index{lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_init\_impl()}{lmda\_plugin\_init\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+init\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__game_8c_adc40bf5f91cc1ad3af468bcd85005f1e}\label{_plugin__game_8c_adc40bf5f91cc1ad3af468bcd85005f1e}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}}
+\index{lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_resume\_impl()}{lmda\_plugin\_resume\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+resume\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__game_8c_a1c11a70fc2f27d2b327eddc4579f0442}\label{_plugin__game_8c_a1c11a70fc2f27d2b327eddc4579f0442}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}}
+\index{lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_suspend\_impl()}{lmda\_plugin\_suspend\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+suspend\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__game_8c_ad6050c7ca7c7d80e935dc71c268e614c}\label{_plugin__game_8c_ad6050c7ca7c7d80e935dc71c268e614c}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}}
+\index{lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_update\_impl()}{lmda\_plugin\_update\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+update\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_plugin__game_8c_a358b8d7a9b9c5fceca9dd2cf0ce1d317}\label{_plugin__game_8c_a358b8d7a9b9c5fceca9dd2cf0ce1d317}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!\_g@{\_g}}
+\index{\_g@{\_g}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{\_g}{\_g}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_game}{Game}}$\ast$ \+\_\+g}
+
+\mbox{\Hypertarget{_plugin__game_8c_a864a1455ce03cfe142f29332c0ee8263}\label{_plugin__game_8c_a864a1455ce03cfe142f29332c0ee8263}} 
+\index{Plugin\_game.c@{Plugin\_game.c}!\_plugin@{\_plugin}}
+\index{\_plugin@{\_plugin}!Plugin\_game.c@{Plugin\_game.c}}
+\doxysubsubsection{\texorpdfstring{\_plugin}{\_plugin}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_plugin}{Plugin}}$\ast$ \+\_\+plugin}
+

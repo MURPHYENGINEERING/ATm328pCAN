@@ -1,0 +1,66 @@
+\hypertarget{sdl_8h_source}{}\doxysection{sdl.\+h}
+\label{sdl_8h_source}\index{src/include/lmda/sdl.h@{src/include/lmda/sdl.h}}
+\mbox{\hyperlink{sdl_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_H\_}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_H\_}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{color_8h}{lmda/sdl/color.h}}>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{ttf_8h}{lmda/sdl/ttf.h}}>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{input_8h}{lmda/input.h}}>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{sdl_8h}{SDL.h}}>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <SDL\_image.h>}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sdl_mouse_cursor}{SdlMouseCursor}} \mbox{\hyperlink{struct_sdl_mouse_cursor}{SdlMouseCursor}};}
+\DoxyCodeLine{28 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sdl_mouse_cursor}{SdlMouseCursor}} \{}
+\DoxyCodeLine{29   SDL\_Color \mbox{\hyperlink{struct_sdl_mouse_cursor_a1851c1050b6cbe6a17424bb10ecdbba9}{color}};}
+\DoxyCodeLine{30   \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_sdl_mouse_cursor_ae079023e88200d21761c4d998b782e7c}{visible}};}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sdl_context}{SdlContext}} \mbox{\hyperlink{struct_sdl_context}{SdlContext}};}
+\DoxyCodeLine{39 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sdl_context}{SdlContext}} \{}
+\DoxyCodeLine{40   SDL\_Window* \mbox{\hyperlink{struct_sdl_context_a16e9113515b22cb293ab9f82344dab6d}{window}};}
+\DoxyCodeLine{41   SDL\_Renderer* \mbox{\hyperlink{struct_sdl_context_ae56e4f9bda7204145d8caf7b9897c882}{renderer}};}
+\DoxyCodeLine{42   \mbox{\hyperlink{struct_font_book}{FontBook}} \mbox{\hyperlink{struct_sdl_context_a1b89e7a9ea24313f39cfb8c428c3bf54}{fonts}};}
+\DoxyCodeLine{43   \textcolor{comment}{// Give a visual response to clicks for debugging}}
+\DoxyCodeLine{44   \mbox{\hyperlink{struct_input_action}{InputAction}} \mbox{\hyperlink{struct_sdl_context_acf27ff206f4edbb6d271b5096408c748}{clickAction}};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \mbox{\hyperlink{struct_sdl_mouse_cursor}{SdlMouseCursor}} \mbox{\hyperlink{struct_sdl_context_af54e5f5472004f99c652100d378453df}{mouseCursor}};}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_context}{Context}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_a7fec0f0d471412edc1fde1f690864b21}{lm\_sdl\_init}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_context}{Context}}*);}
+\DoxyCodeLine{54 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_abb33f16e65ed2a90aa718b73039da708}{lm\_sdl\_tick}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_context}{Context}}*);}
+\DoxyCodeLine{55 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_aee8f887a31003458c5cb18417f27b71e}{lm\_sdl\_suspend}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_context}{Context}}*);}
+\DoxyCodeLine{56 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_ab8a9feccf461fcfcd49ac70888a904c2}{lm\_sdl\_resume}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_context}{Context}}*);}
+\DoxyCodeLine{57 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_a9dfaf374ea3e5af4baa38b7db28e30bc}{lm\_sdl\_destroy}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_context}{Context}}*);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{60 \textcolor{comment}{ * TTF Fonts}}
+\DoxyCodeLine{61 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_a8b9f1515a6c1bf93ce2cede88349e3b7}{lm\_sdl\_ttf\_load}}(TTF\_Font** font, \textcolor{keywordtype}{char} \textcolor{keyword}{const}* path);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keywordtype}{bool} \mbox{\hyperlink{sdl_8h_ada3f1fa9161bf1ad091c791b29ba427d}{lm\_sdl\_ttf\_generate}}(}
+\DoxyCodeLine{66     \mbox{\hyperlink{struct_text}{Text}}* ft,}
+\DoxyCodeLine{67     SDL\_Renderer* renderer,}
+\DoxyCodeLine{68     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* text,}
+\DoxyCodeLine{69     SDL\_Color color);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{sdl_8h_afe24f7d8bcee8011f24314baf3abf5f1}{lm\_sdl\_ttf\_destroy}}(\mbox{\hyperlink{struct_text}{Text}}* ft);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_SDL\_SDL\_H\_}}
+
+\end{DoxyCode}

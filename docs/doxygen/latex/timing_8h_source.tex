@@ -1,0 +1,74 @@
+\hypertarget{timing_8h_source}{}\doxysection{timing.\+h}
+\label{timing_8h_source}\index{src/include/lmda/timing.h@{src/include/lmda/timing.h}}
+\mbox{\hyperlink{timing_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_TIMING\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_TIMING\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{21 \textcolor{keyword}{typedef} uint64\_t \mbox{\hyperlink{timing_8h_a52183d06eb13da2c0f515d0cd90f9004}{tick\_t}};}
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} uint64\_t \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}};}
+\DoxyCodeLine{23 \textcolor{keyword}{typedef} uint64\_t \mbox{\hyperlink{timing_8h_a42d25c067084e571eba2e86575d045f0}{millis\_t}};}
+\DoxyCodeLine{24 \textcolor{keyword}{typedef} uint64\_t \mbox{\hyperlink{timing_8h_a51db0a58da51c92fdef7dde0d62c9035}{micros\_t}};}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} uint64\_t \mbox{\hyperlink{timing_8h_afceaa65d4c6ef08e43b3325368d7642b}{seconds\_t}};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_wall_clock}{WallClock}} \mbox{\hyperlink{struct_wall_clock}{WallClock}};}
+\DoxyCodeLine{32 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_wall_clock}{WallClock}} \{}
+\DoxyCodeLine{36   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_wall_clock_a0d18e6dd9009edb8f2f58d98dabb9a11}{t0}};}
+\DoxyCodeLine{40   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_wall_clock_aaf782dc028824900bd36537e10f7e181}{t}};}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sim_clock}{SimClock}} \mbox{\hyperlink{struct_sim_clock}{SimClock}};}
+\DoxyCodeLine{48 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sim_clock}{SimClock}} \{}
+\DoxyCodeLine{52   \mbox{\hyperlink{struct_wall_clock}{WallClock}} \mbox{\hyperlink{struct_sim_clock_a912142b26c84e06e499ee6a78bbaab59}{real}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_sim_clock_a669027027798bbb63c9dc3a8448bb70c}{period}};}
+\DoxyCodeLine{61   \mbox{\hyperlink{timing_8h_a52183d06eb13da2c0f515d0cd90f9004}{tick\_t}} \mbox{\hyperlink{struct_sim_clock_a77badbf66cf6a239cbfeb36d8d1118d7}{tick}};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{71   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_sim_clock_a7efccffa3b7ef0a59d0d211e6e8e7a44}{t}};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{78   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_sim_clock_acde7e3564b930c90f8fa2721e82064f1}{Dt}};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{84   \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_sim_clock_ad57a220a8df05d5f5890020533253e89}{dt}};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89   \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_sim_clock_a9e73fc6eaab21b2296ab9fbdb0db6c6d}{tps}};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{97   \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{struct_sim_clock_a6e7a282a46fd71b268cf5023ac2c76a2}{tpsAccumNs}};}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{103   \mbox{\hyperlink{timing_8h_a52183d06eb13da2c0f515d0cd90f9004}{tick\_t}} \mbox{\hyperlink{struct_sim_clock_adb698f2cc55197b4a0cf98cb10b8ac8c}{tpsAccumTicks}};}
+\DoxyCodeLine{104 \};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 }
+\DoxyCodeLine{110 \textcolor{keywordtype}{void} \mbox{\hyperlink{timing_8h_a459d2ddc396e2c83b8d2a40921f539b1}{lm\_time\_start}}(\mbox{\hyperlink{struct_sim_clock}{SimClock}}*);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{timing_8h_a43dfd78a8b6643a05d45bbcfa9970c2e}{lm\_time\_suspend}}(\mbox{\hyperlink{struct_sim_clock}{SimClock}}*);}
+\DoxyCodeLine{113 \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{timing_8h_af68c4cf6a45da43d6c51ad4c3b8aa0ae}{lm\_time\_resume}}(\mbox{\hyperlink{struct_sim_clock}{SimClock}}*);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{keywordtype}{void} \mbox{\hyperlink{timing_8h_ad741dbcc0d77a7a4f1b5158217b179f4}{lm\_time\_tick}}(\mbox{\hyperlink{struct_sim_clock}{SimClock}}*);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{timing_8h_af8b712cfa0890842d4e40048c97749ac}{lm\_time\_nanos}}();}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} \mbox{\hyperlink{timing_8h_a6c021bc5dce3bb50975fa5f5514d14bc}{lm\_time\_from\_millis}}(\mbox{\hyperlink{timing_8h_a42d25c067084e571eba2e86575d045f0}{millis\_t}});}
+\DoxyCodeLine{120 \mbox{\hyperlink{timing_8h_afceaa65d4c6ef08e43b3325368d7642b}{seconds\_t}} \mbox{\hyperlink{timing_8h_ac2d6e1ffb69457e51c7c23cd6f26eed3}{lm\_time\_to\_seconds}}(\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}});}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{125 \mbox{\hyperlink{timing_8h_afceaa65d4c6ef08e43b3325368d7642b}{seconds\_t}} \mbox{\hyperlink{timing_8h_afa26e448c9f0f62cbec1dfcc58243026}{lm\_time\_epoch}}();}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{131 \textcolor{keywordtype}{void} \mbox{\hyperlink{timing_8h_a27ce336babb2f2363674ec15455ab8a0}{lm\_time\_sleep\_until}}(\mbox{\hyperlink{struct_sim_clock}{SimClock}}*, \mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}});}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \textcolor{keywordtype}{void} \mbox{\hyperlink{timing_8h_a705fadcc58d981ebec576248e50b70e8}{lm\_time\_sleep\_for}}(\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}});}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 }
+\DoxyCodeLine{141 \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \mbox{\hyperlink{timing_8h_a14c3698a5a0393530916afcd8a69d2c4}{lm\_time\_hhmmsss}}(\mbox{\hyperlink{timing_8h_a818797d5ea8b3f90df635716268693c5}{nanos\_t}} t);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#ifndef LM\_TIME\_HHMMSSS\_LEN}}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#define LM\_TIME\_HHMMSSS\_LEN 16}}
+\DoxyCodeLine{149 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_PLATFORM\_TIMING\_H\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,13 @@
+<map id="src/include/lmda/fs.h" name="src/include/lmda/fs.h">
+<area shape="rect" id="node1" title="Declares the game&#39;s interface to the platform filesystem." alt="" coords="824,5,1015,32"/>
+<area shape="rect" id="node2" href="$plugin_8h.html" title="Declares the interface to the game library; implementing that interface defines a game plugin." alt="" coords="456,87,679,114"/>
+<area shape="rect" id="node9" href="$fs_8c.html" title="Platform&#45;independent filesystem operations." alt="" coords="703,87,917,114"/>
+<area shape="rect" id="node10" href="$fs__mac_8c.html" title="Filesystem operations on MacOS." alt="" coords="941,80,1116,121"/>
+<area shape="rect" id="node11" href="$fs__win_8c.html" title="Filesystem operations on Windows." alt="" coords="1140,80,1315,121"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Entrypoint to game application (i.e. game plugin host)." alt="" coords="5,177,140,203"/>
+<area shape="rect" id="node4" href="$game__plugin_8c.html" title="The game plugin itself; implements the plugin interface to run the game." alt="" coords="164,177,363,203"/>
+<area shape="rect" id="node5" href="$sdl_8c.html" title="High&#45;level SDL operations, e.g. opening a window." alt="" coords="387,177,553,203"/>
+<area shape="rect" id="node6" href="$plugin_8c.html" title="Platform&#45;independent plugin loading operations." alt="" coords="577,169,752,211"/>
+<area shape="rect" id="node7" href="$plugin__mac_8c.html" title="Plugin loading on MacOS." alt="" coords="776,169,983,211"/>
+<area shape="rect" id="node8" href="$timing__mac_8c.html" title="High&#45;resolution timing on MacOS." alt="" coords="1007,169,1213,211"/>
+</map>

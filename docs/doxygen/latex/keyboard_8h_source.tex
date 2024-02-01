@@ -1,0 +1,275 @@
+\hypertarget{keyboard_8h_source}{}\doxysection{keyboard.\+h}
+\label{keyboard_8h_source}\index{src/include/lmda/input/keyboard.h@{src/include/lmda/input/keyboard.h}}
+\mbox{\hyperlink{keyboard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_KEYBOARD\_H\_}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_KEYBOARD\_H\_}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}} \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}};}
+\DoxyCodeLine{20 \textcolor{keyword}{enum} \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4ba}{ModifierKeys}} \{}
+\DoxyCodeLine{21   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa2c0f2a0ea1c82c6cca92880ebd4be39f}{LMVK\_MOD\_NONE}}   = 0,}
+\DoxyCodeLine{22   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa70eeec5d289ec565cf86c81db739485b}{LMVK\_MOD\_LSHIFT}} = 1 << 0,}
+\DoxyCodeLine{23   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa3075206fa5012b1419b94a73536cb1a1}{LMVK\_MOD\_RSHIFT}} = 1 << 1,}
+\DoxyCodeLine{24   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa270497a08d22c76b322ef4b326c2405e}{LMVK\_MOD\_LCTRL}}  = 1 << 6,}
+\DoxyCodeLine{25   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad868836cba7ac6b5fac5ebe74c775342}{LMVK\_MOD\_RCTRL}}  = 1 << 7,}
+\DoxyCodeLine{26   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa108b3f1ba871d1d9ab089279d5be1c1d}{LMVK\_MOD\_LALT}}   = 1 << 8,}
+\DoxyCodeLine{27   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b53b291ce75ddfc742a055a800bae22}{LMVK\_MOD\_RALT}}   = 1 << 9,}
+\DoxyCodeLine{28   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baad95e61141a6a98b3b0925d4e1227c75c}{LMVK\_MOD\_LGUI}}   = 1 << 10,}
+\DoxyCodeLine{29   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa9f5948b9ee9d3b4666bca555526528fd}{LMVK\_MOD\_RGUI}}   = 1 << 11,}
+\DoxyCodeLine{30   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa1c3d121bd134c02e0d92c4cb033b9bff}{LMVK\_MOD\_NUM}}    = 1 << 12,}
+\DoxyCodeLine{31   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa6b049561d27dd40042631ebc13d1bc80}{LMVK\_MOD\_CAPS}}   = 1 << 13,}
+\DoxyCodeLine{32   \mbox{\hyperlink{keyboard_8h_aa18e120fcfcae2b91aed8f59f339d4baa26c9f3bbc86ab227a46ac4a33197841a}{LMVK\_MOD\_MODE}}   = 1 << 14}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{VirtualKey}} \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{VirtualKey}};}
+\DoxyCodeLine{37 \textcolor{keyword}{enum} \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{VirtualKey}} \{}
+\DoxyCodeLine{38   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37264f2fe47d4f99e51fbd37c6cc5f76}{LMVK\_UNKNOWN}}            = 0x00,}
+\DoxyCodeLine{39   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a206c104912374f556dfdb79a2a41b6b0}{LMVK\_BACKSPACE}}          = 0x08,}
+\DoxyCodeLine{40   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a52feb5058911b9169a4867d9b0cfd3b3}{LMVK\_TAB}}                = 0x09,}
+\DoxyCodeLine{41   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a513919bfcf3f57d30f5a2ee78ff14a71}{LMVK\_RETURN}}             = 0x0D,}
+\DoxyCodeLine{42   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa06dcccaa3b9af07287d7de746dfaeb2}{LMVK\_ESCAPE}}             = 0x1B,}
+\DoxyCodeLine{43   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a422bdd29ef6f5607df8c706e23b9035d}{LMVK\_SPACE}}              = 0x20,}
+\DoxyCodeLine{44   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedc1ec727dcc10aa0ed6398f15544a2a}{LMVK\_EXCLAIM}}            = 0x21,}
+\DoxyCodeLine{45   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad112b4878bec9eba7dfc2581df7b20cf}{LMVK\_QUOTEDBL}}           = 0x22,}
+\DoxyCodeLine{46   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adffbc6b4801de5205eb2e599262eda74}{LMVK\_HASH}}               = 0x23,}
+\DoxyCodeLine{47   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acdcebcf7528736ebfd6e4e4522547a0e}{LMVK\_DOLLAR}}             = 0x24,}
+\DoxyCodeLine{48   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8dd206daee13fc6068d40d9dad3168e}{LMVK\_PERCENT}}            = 0x25,}
+\DoxyCodeLine{49   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8b8d1b1e56b0d32df648b587c87eec1}{LMVK\_AMPERSAND}}          = 0x26,}
+\DoxyCodeLine{50   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a62fa7fa52e5a5cbead9c04684721f42d}{LMVK\_QUOTE}}              = 0x27,}
+\DoxyCodeLine{51   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac5bc2775d211dbf3c04eb76b73d8ce17}{LMVK\_LEFTPAREN}}          = 0x28,}
+\DoxyCodeLine{52   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7b6aabe1d3f0d529d8cfa9a246e288c2}{LMVK\_RIGHTPAREN}}         = 0x29,}
+\DoxyCodeLine{53   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa72f55eb7fc4e93eefdb5a5d9104cd1e}{LMVK\_ASTERISK}}           = 0x2A,}
+\DoxyCodeLine{54   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a095c12ddd1fbfb2a88b4365f5d67ca07}{LMVK\_PLUS}}               = 0x2B,}
+\DoxyCodeLine{55   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af42187d421acb13e882662598cc0f969}{LMVK\_COMMA}}              = 0x2C,}
+\DoxyCodeLine{56   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6b269aa57539da5f6056b2daa60a4899}{LMVK\_MINUS}}              = 0x2D,}
+\DoxyCodeLine{57   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd23044f6c1a132504d414d172fb02db}{LMVK\_PERIOD}}             = 0x2E,}
+\DoxyCodeLine{58   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8150d32b94c1ed7dd07b52ed5b32f823}{LMVK\_SLASH}}              = 0x2F,}
+\DoxyCodeLine{59   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9b8840148e7e090b5b57c629bffac846}{LMVK\_0}}                  = 0x30,}
+\DoxyCodeLine{60   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0ef6e4b634a7042c97ed65f01447c03}{LMVK\_1}}                  = 0x31,}
+\DoxyCodeLine{61   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1840c56ae3b066ee94da7da16fae2490}{LMVK\_2}}                  = 0x32,}
+\DoxyCodeLine{62   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1f6423e04a2550951085bb4f27782d08}{LMVK\_3}}                  = 0x33,}
+\DoxyCodeLine{63   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a27ef467d9cfeba40bf0b4f0afa6ebd6c}{LMVK\_4}}                  = 0x34,}
+\DoxyCodeLine{64   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc1b6c655795077e430a32a3d6586d45}{LMVK\_5}}                  = 0x35,}
+\DoxyCodeLine{65   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a440b1476619bbd78f57e1e3544678d1e}{LMVK\_6}}                  = 0x36,}
+\DoxyCodeLine{66   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2987bda7a158de87f1f2b19ef593459a}{LMVK\_7}}                  = 0x37,}
+\DoxyCodeLine{67   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4aacbd1ed72c72232a1492acf43295d1}{LMVK\_8}}                  = 0x38,}
+\DoxyCodeLine{68   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c1943849b92d0995d8eb390627ef7e9}{LMVK\_9}}                  = 0x39,}
+\DoxyCodeLine{69   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8bbf2090593c09ed3eb7890de60cc24}{LMVK\_COLON}}              = 0x3A,}
+\DoxyCodeLine{70   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a592bef423a3ee60b13f6952f1a02f0ba}{LMVK\_SEMICOLON}}          = 0x3B,}
+\DoxyCodeLine{71   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a281ef81f8c65fd1a2278f5b8a64200}{LMVK\_LESS}}               = 0x3C,}
+\DoxyCodeLine{72   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d8c96736aa42fe6bc637e026b88dbd4}{LMVK\_EQUALS}}             = 0x3D,}
+\DoxyCodeLine{73   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92e4f20f6f239a2c40deccad4dd8000b}{LMVK\_GREATER}}            = 0x3E,}
+\DoxyCodeLine{74   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e979f6018954e6a1ba6dfedcc81a944}{LMVK\_QUESTION}}           = 0x3F,}
+\DoxyCodeLine{75   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8f6079c1cc21fad6d826e9d6fc699b0e}{LMVK\_AT}}                 = 0x40,}
+\DoxyCodeLine{76   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6661824ef58043501b542d934580eea8}{LMVK\_LEFTBRACKET}}        = 0x5B,}
+\DoxyCodeLine{77   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a194240e4ce33f4da846b5255b9176e82}{LMVK\_BACKSLASH}}          = 0x5C,}
+\DoxyCodeLine{78   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a60ff5ef857ace9221977a1780eb24426}{LMVK\_RIGHTBRACKET}}       = 0x5D,}
+\DoxyCodeLine{79   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab8ccdd03e6a2f452ca57194cc721316d}{LMVK\_CARET}}              = 0x5E,}
+\DoxyCodeLine{80   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5fdb84880b2013da94923386d8f634ce}{LMVK\_UNDERSCORE}}         = 0x5F,}
+\DoxyCodeLine{81   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acc9b2ee3d5b5fe75de195b97d053168e}{LMVK\_BACKQUOTE}}          = 0x60,}
+\DoxyCodeLine{82   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad742f618417c7302345d7a4d63ce4878}{LMVK\_A}}                  = 0x61,}
+\DoxyCodeLine{83   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a105d1a38ecc41875a6c9712cd02276c7}{LMVK\_B}}                  = 0x62,}
+\DoxyCodeLine{84   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a36fb82d6b7148e6585833f1210161876}{LMVK\_C}}                  = 0x63,}
+\DoxyCodeLine{85   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf55c8571bcd83a7f86fb4611bd6415b}{LMVK\_D}}                  = 0x64,}
+\DoxyCodeLine{86   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df663dbc57208055dfd675b219f3124}{LMVK\_E}}                  = 0x65,}
+\DoxyCodeLine{87   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e0938462b0ecc778ed861379ba6f17d}{LMVK\_F}}                  = 0x66,}
+\DoxyCodeLine{88   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0cfcd858417de03d94f54b72b3b91b24}{LMVK\_G}}                  = 0x67,}
+\DoxyCodeLine{89   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a41308e70d2faa0a619caf05737944460}{LMVK\_H}}                  = 0x68,}
+\DoxyCodeLine{90   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a87f799501f64ad45585cceab1b424a83}{LMVK\_I}}                  = 0x69,}
+\DoxyCodeLine{91   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adfa0af7f739bf6989e072a3b4cd2c816}{LMVK\_J}}                  = 0x6A,}
+\DoxyCodeLine{92   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a802c2bdd5e3851e4ff7e30324b27e63a}{LMVK\_K}}                  = 0x6B,}
+\DoxyCodeLine{93   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e76a44f6b6c89f70ab6f9e0249043dc}{LMVK\_L}}                  = 0x6C,}
+\DoxyCodeLine{94   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a366fdaa72df1f834fc7abc77e1f13f2f}{LMVK\_M}}                  = 0x6D,}
+\DoxyCodeLine{95   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8ae8bf56f4b763d9b73287a4aca85e85}{LMVK\_N}}                  = 0x6E,}
+\DoxyCodeLine{96   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4747bddf62dc72ed877c0a9f20ded89}{LMVK\_O}}                  = 0x6F,}
+\DoxyCodeLine{97   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a94e7bcfa91c0fc089024cb7d7f3d0d4e}{LMVK\_P}}                  = 0x70,}
+\DoxyCodeLine{98   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53cc615b81985c2f6190a380689a76ed}{LMVK\_Q}}                  = 0x71,}
+\DoxyCodeLine{99   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a266208a3955811a3172ccc1eb6b01585}{LMVK\_R}}                  = 0x72,}
+\DoxyCodeLine{100   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a357ec3174115c9a67f5994016b5c57af}{LMVK\_S}}                  = 0x73,}
+\DoxyCodeLine{101   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a02e61fa4b888b8bff77ac1692391910f}{LMVK\_T}}                  = 0x74,}
+\DoxyCodeLine{102   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab175ee1716a2eeb7292de2ce4b4290b1}{LMVK\_U}}                  = 0x75,}
+\DoxyCodeLine{103   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9cc7f425ac64ec8d854e1fb34122e961}{LMVK\_V}}                  = 0x76,}
+\DoxyCodeLine{104   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa4653c5b3ff1c79154b564a4357b2567}{LMVK\_W}}                  = 0x77,}
+\DoxyCodeLine{105   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8be12403e9d2e8af1a5d074101ae1e3e}{LMVK\_X}}                  = 0x78,}
+\DoxyCodeLine{106   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af7194303e0b673a707f0a62494aaf942}{LMVK\_Y}}                  = 0x79,}
+\DoxyCodeLine{107   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6e6586c60de3c77950bb7f9188fffb74}{LMVK\_Z}}                  = 0x7A,}
+\DoxyCodeLine{108   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3673c4119e021462fc2cf20422705139}{LMVK\_DELETE}}             = 0x7F,}
+\DoxyCodeLine{109   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae1a24d7573d3388159f9e269e16dc18c}{LMVK\_CAPSLOCK}}           = 0x40000039,}
+\DoxyCodeLine{110   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a928fb924c7f8b4fd5be48cf6f0f95753}{LMVK\_F1}}                 = 0x4000003A,}
+\DoxyCodeLine{111   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aad9499ff90488c85fb636f37edc9418f}{LMVK\_F2}}                 = 0x4000003B,}
+\DoxyCodeLine{112   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5097ad54fa3634a98e34b9963b5602bc}{LMVK\_F3}}                 = 0x4000003C,}
+\DoxyCodeLine{113   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3cf2f7130d9ccbe8cface22042e6c910}{LMVK\_F4}}                 = 0x4000003D,}
+\DoxyCodeLine{114   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aed9ddd2a8e8897a511d37376e0d4af5f}{LMVK\_F5}}                 = 0x4000003E,}
+\DoxyCodeLine{115   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc79f9d60b4e31e463a8fb080aec400f}{LMVK\_F6}}                 = 0x4000003F,}
+\DoxyCodeLine{116   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1015f1cb94b4a14311375409a7f0caaf}{LMVK\_F7}}                 = 0x40000040,}
+\DoxyCodeLine{117   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e7db113da41a1fb13445fb98fa7a28}{LMVK\_F8}}                 = 0x40000041,}
+\DoxyCodeLine{118   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab7a58815749ef68fd322893a7927ab99}{LMVK\_F9}}                 = 0x40000042,}
+\DoxyCodeLine{119   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad4badf7bdf24b18199a4c0bb361358b8}{LMVK\_F10}}                = 0x40000043,}
+\DoxyCodeLine{120   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a380a058d6d206dc6a8a4b347b0917428}{LMVK\_F11}}                = 0x40000044,}
+\DoxyCodeLine{121   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac741e76bbf662ffef5c12039b0e79aaa}{LMVK\_F12}}                = 0x40000045,}
+\DoxyCodeLine{122   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af22a1d993dfa6f4e3a06fef7b7ba1c46}{LMVK\_PRINTSCREEN}}        = 0x40000046,}
+\DoxyCodeLine{123   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab1487e2ddd54f1a31a6a40c838c58008}{LMVK\_SCROLLLOCK}}         = 0x40000047,}
+\DoxyCodeLine{124   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a35cd5c47517119c471d74d580008cd9f}{LMVK\_PAUSE}}              = 0x40000048,}
+\DoxyCodeLine{125   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a25f0e4cd84fd0549ccd913365c2b67af}{LMVK\_INSERT}}             = 0x40000049,}
+\DoxyCodeLine{126   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3a2e303bdbaf52d0d115cdce15979eff}{LMVK\_HOME}}               = 0x4000004A,}
+\DoxyCodeLine{127   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a148c83580fa3e97f428bab8abe24ff20}{LMVK\_PAGEUP}}             = 0x4000004B,}
+\DoxyCodeLine{128   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d555abd557bb0a0c1ead519ac57013}{LMVK\_END}}                = 0x4000004D,}
+\DoxyCodeLine{129   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3aaf4085cc474dcfe98a79d4e9f3e2c6}{LMVK\_PAGEDOWN}}           = 0x4000004E,}
+\DoxyCodeLine{130   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad40a7c9ce0fe3402d24ba0b827c65c50}{LMVK\_RIGHT}}              = 0x4000004F,}
+\DoxyCodeLine{131   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab4cbca5854a6c31d5fabad03d7d1f3c8}{LMVK\_LEFT}}               = 0x40000050,}
+\DoxyCodeLine{132   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4899b44567f64386a6740226db256439}{LMVK\_DOWN}}               = 0x40000051,}
+\DoxyCodeLine{133   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0e7293eb28c60f737e323d9c92a26acb}{LMVK\_UP}}                 = 0x40000052,}
+\DoxyCodeLine{134   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a2fe222976b2519398d0e918a5461e1e5}{LMVK\_NUMLOCKCLEAR}}       = 0x40000053,}
+\DoxyCodeLine{135   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1268b5c6b0a66ddcfc8a0d73c25057b}{LMVK\_KP\_DIVIDE}}          = 0x40000054,}
+\DoxyCodeLine{136   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a44229c4932cfe9c773d24a693db53aa2}{LMVK\_KP\_MULTIPLY}}        = 0x40000055,}
+\DoxyCodeLine{137   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02adaabd63c5267fc21d008f3ad475f0083}{LMVK\_KP\_MINUS}}           = 0x40000056,}
+\DoxyCodeLine{138   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac31c460855d3effdf9abc4c8edbda719}{LMVK\_KP\_PLUS}}            = 0x40000057,}
+\DoxyCodeLine{139   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5b13295da5cf9abe78be1076dd7b571c}{LMVK\_KP\_ENTER}}           = 0x40000058,}
+\DoxyCodeLine{140   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a86d34c841f684f7b94f2144a30a9f370}{LMVK\_KP\_1}}               = 0x40000059,}
+\DoxyCodeLine{141   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a657b966227e3f580fd550cf5bd22dd06}{LMVK\_KP\_2}}               = 0x4000005A,}
+\DoxyCodeLine{142   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9ff3e03c2f496a871d69a4443da7bb4b}{LMVK\_KP\_3}}               = 0x4000005B,}
+\DoxyCodeLine{143   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa68f63a9a39639c3938754f8b387be9f}{LMVK\_KP\_4}}               = 0x4000005C,}
+\DoxyCodeLine{144   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad1d152e19815f18c7f3913663759441f}{LMVK\_KP\_5}}               = 0x4000005D,}
+\DoxyCodeLine{145   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a03230082cc63e17c522541574689151c}{LMVK\_KP\_6}}               = 0x4000005E,}
+\DoxyCodeLine{146   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4d428bb5296231170c99af2212eaca14}{LMVK\_KP\_7}}               = 0x4000005F,}
+\DoxyCodeLine{147   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02acf6db5daa8878c41966d29c0c4bcb6a3}{LMVK\_KP\_8}}               = 0x40000060,}
+\DoxyCodeLine{148   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8963fd0a15b1be57fe6851f1a13051b3}{LMVK\_KP\_9}}               = 0x40000061,}
+\DoxyCodeLine{149   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a92b3bf36d2752c5114dea33eb4c96cb0}{LMVK\_KP\_0}}               = 0x40000062,}
+\DoxyCodeLine{150   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9c2239fc9e9227c6a8f0f224874e13a6}{LMVK\_KP\_PERIOD}}          = 0x40000063,}
+\DoxyCodeLine{151   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aec21dfe018f2a8118727ca730dbc35e9}{LMVK\_APPLICATION}}        = 0x40000065,}
+\DoxyCodeLine{152   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa59c6a57d98436ba6aea9cb7f0be7517}{LMVK\_POWER}}              = 0x40000066,}
+\DoxyCodeLine{153   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a53354ceaeb9aa41d4cc3d06e13c2b75b}{LMVK\_KP\_EQUALS}}          = 0x40000067,}
+\DoxyCodeLine{154   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a56778a7e5011ae5a93d2b03d938c452f}{LMVK\_F13}}                = 0x40000068,}
+\DoxyCodeLine{155   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0435edb7b91c9853bab5df4b99e4a8db}{LMVK\_F14}}                = 0x40000069,}
+\DoxyCodeLine{156   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae22a3a95d25250e3f204d40706d8d6b2}{LMVK\_F15}}                = 0x4000006A,}
+\DoxyCodeLine{157   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6de105cae926cdf4c75acb9fb3f1081d}{LMVK\_F16}}                = 0x4000006B,}
+\DoxyCodeLine{158   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae64097b2f4b7f64b3001069c8e59e5f9}{LMVK\_F17}}                = 0x4000006C,}
+\DoxyCodeLine{159   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d14fac897f8de0a4d0b46c53488449f}{LMVK\_F18}}                = 0x4000006D,}
+\DoxyCodeLine{160   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aae333f452f52993d8182ec6a5ae8aa3a}{LMVK\_F19}}                = 0x4000006E,}
+\DoxyCodeLine{161   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0711525cd7a292822a3de743e2c8a37f}{LMVK\_F20}}                = 0x4000006F,}
+\DoxyCodeLine{162   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab6ce03d2182a9808e788ef7c06064637}{LMVK\_F21}}                = 0x40000070,}
+\DoxyCodeLine{163   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af305a7e9d12fa01bf98fea45af303ba4}{LMVK\_F22}}                = 0x40000071,}
+\DoxyCodeLine{164   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9fd54f9d9b45e68de9152db4de279faf}{LMVK\_F23}}                = 0x40000072,}
+\DoxyCodeLine{165   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac0e42ae9297201eba15750afe3ce4453}{LMVK\_F24}}                = 0x40000073,}
+\DoxyCodeLine{166   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3933f58f8e352aff199a66b3987f4451}{LMVK\_EXECUTE}}            = 0x40000074,}
+\DoxyCodeLine{167   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac85ba925210667e96b10b9eab035c894}{LMVK\_HELP}}               = 0x40000075,}
+\DoxyCodeLine{168   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a55f855d99a5a957436527a08d6912533}{LMVK\_MENU}}               = 0x40000076,}
+\DoxyCodeLine{169   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a91876b373abeb701fc4b4bbc0f83b379}{LMVK\_SELECT}}             = 0x40000077,}
+\DoxyCodeLine{170   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afd29ca3187dd19e47268326234cff4c6}{LMVK\_STOP}}               = 0x40000078,}
+\DoxyCodeLine{171   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67bfc13ae1da038aca51bc82bf408de4}{LMVK\_AGAIN}}              = 0x40000079,}
+\DoxyCodeLine{172   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aedbfdf1cf445380b9eed928ec096e586}{LMVK\_UNDO}}               = 0x4000007A,}
+\DoxyCodeLine{173   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a48c3327d5c18a539241e9b4ea2fdc72b}{LMVK\_CUT}}                = 0x4000007B,}
+\DoxyCodeLine{174   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a68f6c33edba132168cbca15ec3260088}{LMVK\_COPY}}               = 0x4000007C,}
+\DoxyCodeLine{175   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cb9b640bf43e82ca85ed984dd5d726c}{LMVK\_PASTE}}              = 0x4000007D,}
+\DoxyCodeLine{176   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aeaa258e6de4bd0acd822b4dac601d1a3}{LMVK\_FIND}}               = 0x4000007E,}
+\DoxyCodeLine{177   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1b1c531fa26355b947c1fd067ab1f61f}{LMVK\_MUTE}}               = 0x4000007F,}
+\DoxyCodeLine{178   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96c21f512075d073f77284c97b5f1cb8}{LMVK\_VOLUMEUP}}           = 0x40000080,}
+\DoxyCodeLine{179   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afb119e33875221bef004b22dac047ce4}{LMVK\_VOLUMEDOWN}}         = 0x40000081,}
+\DoxyCodeLine{180   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab36b8561adf3483a295ee94bb44595ad}{LMVK\_KP\_COMMA}}           = 0x40000085,}
+\DoxyCodeLine{181   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1df0382d56653275d54b1155da4b1455}{LMVK\_KP\_EQUALSAS400}}     = 0x40000086,}
+\DoxyCodeLine{182   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1d8d97c1ffdc5736034c3c0e9deda324}{LMVK\_ALTERASE}}           = 0x40000099,}
+\DoxyCodeLine{183   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a11f1a206c629b05a14bf6fd182d71ef3}{LMVK\_SYSREQ}}             = 0x4000009A,}
+\DoxyCodeLine{184   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1169fcd14a47de0683e10e3cf16aef44}{LMVK\_CANCEL}}             = 0x4000009B,}
+\DoxyCodeLine{185   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad2a852bfea07b9713524dc87fb019eca}{LMVK\_CLEAR}}              = 0x4000009C,}
+\DoxyCodeLine{186   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a01994ed5a4194a9ca910ee646ae4d082}{LMVK\_PRIOR}}              = 0x4000009D,}
+\DoxyCodeLine{187   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a047c4e6b358f0168b71df688b17efb7b}{LMVK\_RETURN2}}            = 0x4000009E,}
+\DoxyCodeLine{188   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a06a97d82e5dbd5f1c32e8d18c0d9a148}{LMVK\_SEPARATOR}}          = 0x4000009F,}
+\DoxyCodeLine{189   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a049ea5e5e1886ca6dd8fe56839fe1de7}{LMVK\_OUT}}                = 0x400000A0,}
+\DoxyCodeLine{190   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a807286bd407a09d4ee9d24ea33929509}{LMVK\_OPER}}               = 0x400000A1,}
+\DoxyCodeLine{191   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae4a779bbe7c15bf2bc3a1f9b76596d41}{LMVK\_CLEARAGAIN}}         = 0x400000A2,}
+\DoxyCodeLine{192   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5d3e5e35d0eafcd341a3cf7cae91be4a}{LMVK\_CRSEL}}              = 0x400000A3,}
+\DoxyCodeLine{193   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a482e044b3ab5eb65a19bc7914225dc05}{LMVK\_EXSEL}}              = 0x400000A4,}
+\DoxyCodeLine{194   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8d99bd18a9c2cb524ae14fad5b2b24af}{LMVK\_KP\_00}}              = 0x400000B0,}
+\DoxyCodeLine{195   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3220061fda855176afed54bdcd6698aa}{LMVK\_KP\_000}}             = 0x400000B1,}
+\DoxyCodeLine{196   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c868947c2bc43f7233f6dd99741d3af}{LMVK\_THOUSANDSSEPARATOR}} = 0x400000B2,}
+\DoxyCodeLine{197   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9330c91f8530e8ada2174ffe411bb2e0}{LMVK\_DECIMALSEPARATOR}}   = 0x400000B3,}
+\DoxyCodeLine{198   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9857a564b6669f303e3b8fa34e018bf9}{LMVK\_CURRENCYUNIT}}       = 0x400000B4,}
+\DoxyCodeLine{199   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0fe0557b9698fd6291b4868e80184812}{LMVK\_CURRENCYSUBUNIT}}    = 0x400000B5,}
+\DoxyCodeLine{200   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1162fc28f3fc366224cb101c4e3a4c9}{LMVK\_KP\_LEFTPAREN}}       = 0x400000B6,}
+\DoxyCodeLine{201   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e94f083d0aa4bc014c63c48941b3a40}{LMVK\_KP\_RIGHTPAREN}}      = 0x400000B7,}
+\DoxyCodeLine{202   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a922c0c07d3c8735f00dba703be3a5d52}{LMVK\_KP\_LEFTBRACE}}       = 0x400000B8,}
+\DoxyCodeLine{203   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0d4f984c9b47b391af492a5bf6e57d03}{LMVK\_KP\_RIGHTBRACE}}      = 0x400000B9,}
+\DoxyCodeLine{204   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a9630f02dc4fc46db9e02f4ed0b599ead}{LMVK\_KP\_TAB}}             = 0x400000BA,}
+\DoxyCodeLine{205   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e5213028a5ba5ebc80475018ac2db3f}{LMVK\_KP\_BACKSPACE}}       = 0x400000BB,}
+\DoxyCodeLine{206   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad37e15f14d68058c6d002be9935f02ce}{LMVK\_KP\_A}}               = 0x400000BC,}
+\DoxyCodeLine{207   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a851761d1e4a5765bd7c4408326be95eb}{LMVK\_KP\_B}}               = 0x400000BD,}
+\DoxyCodeLine{208   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3f2a3a73c9552997eff5cd70c8b404e5}{LMVK\_KP\_C}}               = 0x400000BE,}
+\DoxyCodeLine{209   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a305750bcea8acac008546cb481bec587}{LMVK\_KP\_D}}               = 0x400000BF,}
+\DoxyCodeLine{210   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a31c00ba1103a6c49dddd273a8d3ea3d7}{LMVK\_KP\_E}}               = 0x400000C0,}
+\DoxyCodeLine{211   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af0800953bad78765db4a078aa00cc311}{LMVK\_KP\_F}}               = 0x400000C1,}
+\DoxyCodeLine{212   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ef2b02bb582eff3a8c22b96a68b8f48}{LMVK\_KP\_XOR}}             = 0x400000C2,}
+\DoxyCodeLine{213   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a74ef009798640a790d56acb0519f4417}{LMVK\_KP\_POWER}}           = 0x400000C3,}
+\DoxyCodeLine{214   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae8846535d5e35cc8f526cfb9ce4a3b65}{LMVK\_KP\_PERCENT}}         = 0x400000C4,}
+\DoxyCodeLine{215   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac8b30cd2c5d634cc53ae6a00cfa3da40}{LMVK\_KP\_LESS}}            = 0x400000C5,}
+\DoxyCodeLine{216   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8cc4b05315795a1f9b87cd03f015a731}{LMVK\_KP\_GREATER}}         = 0x400000C6,}
+\DoxyCodeLine{217   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a806c01fecd2fdf7898d06c8a6418d713}{LMVK\_KP\_AMPERSAND}}       = 0x400000C7,}
+\DoxyCodeLine{218   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02afc26e43861bfbfc41552bff897b079fd}{LMVK\_KP\_DBLAMPERSAND}}    = 0x400000C8,}
+\DoxyCodeLine{219   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac1b621238351e87826734890a8daad06}{LMVK\_KP\_VERTICALBAR}}     = 0x400000C9,}
+\DoxyCodeLine{220   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0df682247a1cfd03ecaa944c3afebb58}{LMVK\_KP\_DBLVERTICALBAR}}  = 0x400000CA,}
+\DoxyCodeLine{221   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7ccebcdca7a186765c5686a17960fd0d}{LMVK\_KP\_COLON}}           = 0x400000CB,}
+\DoxyCodeLine{222   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a67d8c8281b3e5d7a9e127762a989fec2}{LMVK\_KP\_HASH}}            = 0x400000CC,}
+\DoxyCodeLine{223   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a57ae177a07505d229f7c0d17a9a19630}{LMVK\_KP\_SPACE}}           = 0x400000CD,}
+\DoxyCodeLine{224   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac2866a07e5c8d3c2d942ad988f8f30a2}{LMVK\_KP\_AT}}              = 0x400000CE,}
+\DoxyCodeLine{225   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a881e3538b0b1d08f952632441af8dc72}{LMVK\_KP\_EXCLAM}}          = 0x400000CF,}
+\DoxyCodeLine{226   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a16d1219b39e239fd1d78ac8bd38ab5db}{LMVK\_KP\_MEMSTORE}}        = 0x400000D0,}
+\DoxyCodeLine{227   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a40152de401a61e2cdcce8eacd55172b6}{LMVK\_KP\_MEMRECALL}}       = 0x400000D1,}
+\DoxyCodeLine{228   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a623f4e39f99b8506bd026a78672bfdfe}{LMVK\_KP\_MEMCLEAR}}        = 0x400000D2,}
+\DoxyCodeLine{229   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a84ae12d3e50200ba19e5bc7205120ab8}{LMVK\_KP\_MEMADD}}          = 0x400000D3,}
+\DoxyCodeLine{230   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ac211cc829dc930883d66c66589799d8a}{LMVK\_KP\_MEMSUBTRACT}}     = 0x400000D4,}
+\DoxyCodeLine{231   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a42995cd24c830993c042646f4ff85043}{LMVK\_KP\_MEMMULTIPLY}}     = 0x400000D5,}
+\DoxyCodeLine{232   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a174e35e9c0c663bc1912650743632317}{LMVK\_KP\_MEMDIVIDE}}       = 0x400000D6,}
+\DoxyCodeLine{233   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a69875f72ad9cd40be149993d58c96c98}{LMVK\_KP\_PLUSMINUS}}       = 0x400000D7,}
+\DoxyCodeLine{234   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a71fc4e63a96db0a22fcc8f2ae0377a17}{LMVK\_KP\_CLEAR}}           = 0x400000D8,}
+\DoxyCodeLine{235   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa3d47b29b298aaac308534f39db8da2a}{LMVK\_KP\_CLEARENTRY}}      = 0x400000D9,}
+\DoxyCodeLine{236   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5e224de934b758c27e7f6b268d86952f}{LMVK\_KP\_BINARY}}          = 0x400000DA,}
+\DoxyCodeLine{237   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496a47126544bde31aceee08c91d53d5}{LMVK\_KP\_OCTAL}}           = 0x400000DB,}
+\DoxyCodeLine{238   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a255c2563b9c654280d11d9c7be413e1c}{LMVK\_KP\_DECIMAL}}         = 0x400000DC,}
+\DoxyCodeLine{239   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a22b26dff5e2519f50b56ebb79aa595e7}{LMVK\_KP\_HEXADECIMAL}}     = 0x400000DD,}
+\DoxyCodeLine{240   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02abac6eaabfbcf3524ed930c8e31b84f47}{LMVK\_LCTRL}}              = 0x400000E0,}
+\DoxyCodeLine{241   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8e8c90c1a48759c41884e2b3c01fb06a}{LMVK\_LSHIFT}}             = 0x400000E1,}
+\DoxyCodeLine{242   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a37ccc749eefa2bbfecc773b09082778e}{LMVK\_LALT}}               = 0x400000E2,}
+\DoxyCodeLine{243   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a61e45b378bc56646441c76c98b57a02c}{LMVK\_LGUI}}               = 0x400000E3,}
+\DoxyCodeLine{244   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa97a67a3bf136a5357946ef2142979de}{LMVK\_RCTRL}}              = 0x400000E4,}
+\DoxyCodeLine{245   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af1f529788dd92066c599e37278a9361e}{LMVK\_RSHIFT}}             = 0x400000E5,}
+\DoxyCodeLine{246   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ab33fbf6253cf2dc41bb2ccc50c087ce6}{LMVK\_RALT}}               = 0x400000E6,}
+\DoxyCodeLine{247   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae3740b90da4710da5c039098bdfff209}{LMVK\_RGUI}}               = 0x400000E7,}
+\DoxyCodeLine{248   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7191e7d83d86aa96edbbe0f688ab4362}{LMVK\_MODE}}               = 0x40000101,}
+\DoxyCodeLine{249   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6aa8d9b498b276c139a0a96498a68f16}{LMVK\_AUDIONEXT}}          = 0x40000102,}
+\DoxyCodeLine{250   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ad49b2f07d2f9908606c4d745f12cc2be}{LMVK\_AUDIOPREV}}          = 0x40000103,}
+\DoxyCodeLine{251   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7c5c6e449bba0c2603631bd4917c2a7b}{LMVK\_AUDIOSTOP}}          = 0x40000104,}
+\DoxyCodeLine{252   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02af09558936e326beb209fa7aab73c7eb2}{LMVK\_AUDIOPLAY}}          = 0x40000105,}
+\DoxyCodeLine{253   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a96fc07050379ca4b33f334322c47ff9d}{LMVK\_AUDIOMUTE}}          = 0x40000106,}
+\DoxyCodeLine{254   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a0c34d09f755b62830c87d77f9083b948}{LMVK\_MEDIASELECT}}        = 0x40000107,}
+\DoxyCodeLine{255   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a8898d77627b613eb218ff56e74611fa2}{LMVK\_WWW}}                = 0x40000108,}
+\DoxyCodeLine{256   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a980f549a53b990218b44b0309518f5cb}{LMVK\_MAIL}}               = 0x40000109,}
+\DoxyCodeLine{257   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae7d39fdab25cd19f4a485dbdc6516cbb}{LMVK\_CALCULATOR}}         = 0x4000010A,}
+\DoxyCodeLine{258   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1a8c937e1004c69bb7c227e9ab7e2c82}{LMVK\_COMPUTER}}           = 0x4000010B,}
+\DoxyCodeLine{259   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a731c84c865b1f363eff5f87951fabbe0}{LMVK\_AC\_SEARCH}}          = 0x4000010C,}
+\DoxyCodeLine{260   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a7addf2783076eac38e84e7dac020c42d}{LMVK\_AC\_HOME}}            = 0x4000010D,}
+\DoxyCodeLine{261   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a3b8f1b9a3013e54232e05ebf27cd4109}{LMVK\_AC\_BACK}}            = 0x4000010E,}
+\DoxyCodeLine{262   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aa1390b05e9a9c97b91266b32f609d7cd}{LMVK\_AC\_FORWARD}}         = 0x4000010F,}
+\DoxyCodeLine{263   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a1253046da239cd04138df167f0095f61}{LMVK\_AC\_STOP}}            = 0x40000110,}
+\DoxyCodeLine{264   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a6c3c8abea7fd50b0a027ddcdfb954ad2}{LMVK\_AC\_REFRESH}}         = 0x40000111,}
+\DoxyCodeLine{265   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a496c62b70dcc340ba924f6988870d185}{LMVK\_AC\_BOOKMARKS}}       = 0x40000112,}
+\DoxyCodeLine{266   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a471232650ab322caf1685e73219f1b78}{LMVK\_BRIGHTNESSDOWN}}     = 0x40000113,}
+\DoxyCodeLine{267   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a4c5082c19e51c944fd4069589824b77f}{LMVK\_BRIGHTNESSUP}}       = 0x40000114,}
+\DoxyCodeLine{268   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02ae11ea9831b953062d72eded227810f74}{LMVK\_DISPLAYSWITCH}}      = 0x40000115,}
+\DoxyCodeLine{269   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aadf27fcdc341456e3dbce3a17ba2a958}{LMVK\_KBDILLUMTOGGLE}}     = 0x40000116,}
+\DoxyCodeLine{270   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a549c51d6f7e3dc5788b67c5a31564b62}{LMVK\_KBDILLUMDOWN}}       = 0x40000117,}
+\DoxyCodeLine{271   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a5cccc385789a357c4fe9d635c953bcee}{LMVK\_KBDILLUMUP}}         = 0x40000118,}
+\DoxyCodeLine{272   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02a891bfc34bceefcf3d7a5ca0b89a3006c}{LMVK\_EJECT}}              = 0x40000119,}
+\DoxyCodeLine{273   \mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02aefd1eca034b46eae0bb7bb8af606027e}{LMVK\_SLEEP}}              = 0x4000011A}
+\DoxyCodeLine{274 \};}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277 \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{keyboard_8h_aa5912c0bd99aaa30a5cc67ae262c7b40}{lm\_input\_vk\_index}}(\mbox{\hyperlink{keyboard_8h_ad0e6e31d5953384be4ea987eb3923e02}{VirtualKey}} key);}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_CODE\_LMDA\_SRC\_COMMON\_INCLUDE\_LMDA\_INPUT\_KEYBOARD\_H\_}}
+
+\end{DoxyCode}

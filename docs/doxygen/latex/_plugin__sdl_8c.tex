@@ -1,0 +1,201 @@
+\hypertarget{_plugin__sdl_8c}{}\doxysection{src/sdl/\+Plugin\+\_\+sdl.c File Reference}
+\label{_plugin__sdl_8c}\index{src/sdl/Plugin\_sdl.c@{src/sdl/Plugin\_sdl.c}}
+{\ttfamily \#include $<$lmda/app/\+Plugin.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/stddef.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}sdl\+\_\+event\+\_\+type\+\_\+name.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$lmda/app/\+App\+Context.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/input.\+h$>$}\newline
+{\ttfamily \#include $<$lmda/input/\+Input\+Action.\+h$>$}\newline
+{\ttfamily \#include $<$SDL.\+h$>$}\newline
+{\ttfamily \#include $<$flecs.\+h$>$}\newline
+Include dependency graph for Plugin\+\_\+sdl.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_plugin__sdl_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sdl_state}{Sdl\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_sdl_state}{Sdl\+State}} \mbox{\hyperlink{_plugin__sdl_8c_a5a800b203a1ef6d798e0a463b3088f37}{Sdl\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_plugin__sdl_8c_a5b21c7ba225afa0523371a984de0d450}{restore\+\_\+state}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\item 
+void \mbox{\hyperlink{_plugin__sdl_8c_a03e0674ded0bfb98b42d1bd124afcc25}{sdl\+\_\+state\+\_\+init}} (\mbox{\hyperlink{struct_sdl_state}{Sdl\+State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Initialize the SDL state and set up input bindings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin__sdl_8c_a38020be2be5effafdba1e0646f5864a4}{sdl\+\_\+on\+\_\+key\+\_\+event}} (SDL\+\_\+\+Keyboard\+Event event)
+\begin{DoxyCompactList}\small\item\em Update action bindings when a key is pressed or released. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin__sdl_8c_a099864afe5202dcfbf6e6d310b97bb78}{sdl\+\_\+on\+\_\+mouse\+\_\+button}} (uint8\+\_\+t sdl\+Button, uint32\+\_\+t type)
+\begin{DoxyCompactList}\small\item\em Update action bindings when a mouse button is pressed or released. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_plugin__sdl_8c_af69de6b382a44a68ff96c18d03e078be}{draw\+\_\+text}} ()
+\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_aa30b213d7475ec89086852791aba892b}{sdl\+\_\+input\+\_\+update}} ()
+\begin{DoxyCompactList}\small\item\em Process SDL window events, applying input events to modify the input state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_a1644a97331ea4b1b20ef8dde10835e79}{lmda\+\_\+plugin\+\_\+init\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_ad6050c7ca7c7d80e935dc71c268e614c}{lmda\+\_\+plugin\+\_\+update\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_a1c11a70fc2f27d2b327eddc4579f0442}{lmda\+\_\+plugin\+\_\+suspend\+\_\+impl}} ()
+\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_af46e05ccb761cc8617b73c19c6c347a3}{lmda\+\_\+plugin\+\_\+resume\+\_\+impl}} (\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$plugin)
+\item 
+bool \mbox{\hyperlink{_plugin__sdl_8c_a0db071d42c10d5da02e56e1c09275452}{lmda\+\_\+plugin\+\_\+destroy\+\_\+impl}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$ \mbox{\hyperlink{_plugin__sdl_8c_a864a1455ce03cfe142f29332c0ee8263}{\+\_\+plugin}}
+\item 
+\mbox{\hyperlink{struct_app_context}{App\+Context}} $\ast$ \mbox{\hyperlink{_plugin__sdl_8c_a91422a0029b038a099afdd63878446a4}{\+\_\+ctx}}
+\item 
+\mbox{\hyperlink{struct_sdl_state}{Sdl\+State}} $\ast$ \mbox{\hyperlink{_plugin__sdl_8c_abbcd5f07b0f8c6a18865fd8c989851e6}{\+\_\+state}}
+\item 
+\mbox{\hyperlink{struct_input_state}{Input\+State}} $\ast$ \mbox{\hyperlink{_plugin__sdl_8c_ae5cc8868722750105c8643df2637b801}{\+\_\+input}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_plugin__sdl_8c_a4f253877a729c106c3c7208a11645abd}{colors}} \mbox{[}$\,$\mbox{]}\mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_plugin__sdl_8c_a5a800b203a1ef6d798e0a463b3088f37}\label{_plugin__sdl_8c_a5a800b203a1ef6d798e0a463b3088f37}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!SdlState@{SdlState}}
+\index{SdlState@{SdlState}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{SdlState}{SdlState}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_sdl_state}{Sdl\+State}} \mbox{\hyperlink{struct_sdl_state}{Sdl\+State}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_plugin__sdl_8c_af69de6b382a44a68ff96c18d03e078be}\label{_plugin__sdl_8c_af69de6b382a44a68ff96c18d03e078be}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!draw\_text@{draw\_text}}
+\index{draw\_text@{draw\_text}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{draw\_text()}{draw\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a0db071d42c10d5da02e56e1c09275452}\label{_plugin__sdl_8c_a0db071d42c10d5da02e56e1c09275452}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}}
+\index{lmda\_plugin\_destroy\_impl@{lmda\_plugin\_destroy\_impl}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_destroy\_impl()}{lmda\_plugin\_destroy\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+destroy\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a1644a97331ea4b1b20ef8dde10835e79}\label{_plugin__sdl_8c_a1644a97331ea4b1b20ef8dde10835e79}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}}
+\index{lmda\_plugin\_init\_impl@{lmda\_plugin\_init\_impl}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_init\_impl()}{lmda\_plugin\_init\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+init\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_af46e05ccb761cc8617b73c19c6c347a3}\label{_plugin__sdl_8c_af46e05ccb761cc8617b73c19c6c347a3}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}}
+\index{lmda\_plugin\_resume\_impl@{lmda\_plugin\_resume\_impl}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_resume\_impl()}{lmda\_plugin\_resume\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+resume\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a1c11a70fc2f27d2b327eddc4579f0442}\label{_plugin__sdl_8c_a1c11a70fc2f27d2b327eddc4579f0442}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}}
+\index{lmda\_plugin\_suspend\_impl@{lmda\_plugin\_suspend\_impl}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_suspend\_impl()}{lmda\_plugin\_suspend\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+suspend\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_ad6050c7ca7c7d80e935dc71c268e614c}\label{_plugin__sdl_8c_ad6050c7ca7c7d80e935dc71c268e614c}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}}
+\index{lmda\_plugin\_update\_impl@{lmda\_plugin\_update\_impl}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{lmda\_plugin\_update\_impl()}{lmda\_plugin\_update\_impl()}}
+{\footnotesize\ttfamily bool lmda\+\_\+plugin\+\_\+update\+\_\+impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a5b21c7ba225afa0523371a984de0d450}\label{_plugin__sdl_8c_a5b21c7ba225afa0523371a984de0d450}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!restore\_state@{restore\_state}}
+\index{restore\_state@{restore\_state}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{restore\_state()}{restore\_state()}}
+{\footnotesize\ttfamily void restore\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plugin}{Plugin}} $\ast$}]{plugin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_aa30b213d7475ec89086852791aba892b}\label{_plugin__sdl_8c_aa30b213d7475ec89086852791aba892b}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!sdl\_input\_update@{sdl\_input\_update}}
+\index{sdl\_input\_update@{sdl\_input\_update}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_input\_update()}{sdl\_input\_update()}}
+{\footnotesize\ttfamily bool sdl\+\_\+input\+\_\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Process SDL window events, applying input events to modify the input state. 
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a38020be2be5effafdba1e0646f5864a4}\label{_plugin__sdl_8c_a38020be2be5effafdba1e0646f5864a4}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!sdl\_on\_key\_event@{sdl\_on\_key\_event}}
+\index{sdl\_on\_key\_event@{sdl\_on\_key\_event}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_on\_key\_event()}{sdl\_on\_key\_event()}}
+{\footnotesize\ttfamily void sdl\+\_\+on\+\_\+key\+\_\+event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keyboard\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Update action bindings when a key is pressed or released. 
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a099864afe5202dcfbf6e6d310b97bb78}\label{_plugin__sdl_8c_a099864afe5202dcfbf6e6d310b97bb78}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!sdl\_on\_mouse\_button@{sdl\_on\_mouse\_button}}
+\index{sdl\_on\_mouse\_button@{sdl\_on\_mouse\_button}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_on\_mouse\_button()}{sdl\_on\_mouse\_button()}}
+{\footnotesize\ttfamily void sdl\+\_\+on\+\_\+mouse\+\_\+button (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sdl\+Button,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})}
+
+
+
+Update action bindings when a mouse button is pressed or released. 
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a03e0674ded0bfb98b42d1bd124afcc25}\label{_plugin__sdl_8c_a03e0674ded0bfb98b42d1bd124afcc25}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!sdl\_state\_init@{sdl\_state\_init}}
+\index{sdl\_state\_init@{sdl\_state\_init}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_state\_init()}{sdl\_state\_init()}}
+{\footnotesize\ttfamily void sdl\+\_\+state\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sdl_state}{Sdl\+State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Initialize the SDL state and set up input bindings. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_plugin__sdl_8c_a91422a0029b038a099afdd63878446a4}\label{_plugin__sdl_8c_a91422a0029b038a099afdd63878446a4}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!\_ctx@{\_ctx}}
+\index{\_ctx@{\_ctx}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{\_ctx}{\_ctx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_app_context}{App\+Context}}$\ast$ \+\_\+ctx}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_ae5cc8868722750105c8643df2637b801}\label{_plugin__sdl_8c_ae5cc8868722750105c8643df2637b801}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!\_input@{\_input}}
+\index{\_input@{\_input}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{\_input}{\_input}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_input_state}{Input\+State}}$\ast$ \+\_\+input}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a864a1455ce03cfe142f29332c0ee8263}\label{_plugin__sdl_8c_a864a1455ce03cfe142f29332c0ee8263}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!\_plugin@{\_plugin}}
+\index{\_plugin@{\_plugin}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{\_plugin}{\_plugin}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_plugin}{Plugin}}$\ast$ \+\_\+plugin}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_abbcd5f07b0f8c6a18865fd8c989851e6}\label{_plugin__sdl_8c_abbcd5f07b0f8c6a18865fd8c989851e6}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!\_state@{\_state}}
+\index{\_state@{\_state}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_sdl_state}{Sdl\+State}}$\ast$ \+\_\+state}
+
+\mbox{\Hypertarget{_plugin__sdl_8c_a4f253877a729c106c3c7208a11645abd}\label{_plugin__sdl_8c_a4f253877a729c106c3c7208a11645abd}} 
+\index{Plugin\_sdl.c@{Plugin\_sdl.c}!colors@{colors}}
+\index{colors@{colors}!Plugin\_sdl.c@{Plugin\_sdl.c}}
+\doxysubsubsection{\texorpdfstring{colors}{colors}}
+{\footnotesize\ttfamily uint8\+\_\+t colors\mbox{[}$\,$\mbox{]}\mbox{[}3\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ \{ 4, 41, 64 \},}
+\DoxyCodeLine{                        \{ 0, 92, 83 \},}
+\DoxyCodeLine{                        \{ 159, 193, 49 \},}
+\DoxyCodeLine{                        \{ 219, 242, 39 \},}
+\DoxyCodeLine{                        \{ 214, 213, 142 \} \}}
+
+\end{DoxyCode}

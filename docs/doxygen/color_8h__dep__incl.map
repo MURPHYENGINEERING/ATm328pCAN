@@ -1,0 +1,15 @@
+<map id="src/include/lmda/sdl/color.h" name="src/include/lmda/sdl/color.h">
+<area shape="rect" id="node1" title="Defines symbols for common SDL color values." alt="" coords="511,5,693,47"/>
+<area shape="rect" id="node2" href="$sdl_8h.html" title="Interface to the SDL subsystems (rendering, image loading, sound, etc)." alt="" coords="503,95,701,121"/>
+<area shape="rect" id="node3" href="$sdl_8c.html" title="High&#45;level SDL operations, e.g. opening a window." alt="" coords="5,266,172,293"/>
+<area shape="rect" id="node4" href="$plugin_8h.html" title="Declares the interface to the game library; implementing that interface defines a game plugin." alt="" coords="377,177,600,203"/>
+<area shape="rect" id="node10" href="$event__type__name_8h.html" title=" " alt="" coords="67,169,249,211"/>
+<area shape="rect" id="node11" href="$ttf_8h.html" title=" " alt="" coords="624,169,807,211"/>
+<area shape="rect" id="node13" href="$fs_8c.html" title="Platform&#45;independent filesystem operations." alt="" coords="831,177,1045,203"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Entrypoint to game application (i.e. game plugin host)." alt="" coords="1079,266,1213,293"/>
+<area shape="rect" id="node6" href="$game__plugin_8c.html" title="The game plugin itself; implements the plugin interface to run the game." alt="" coords="196,266,395,293"/>
+<area shape="rect" id="node7" href="$plugin_8c.html" title="Platform&#45;independent plugin loading operations." alt="" coords="419,259,593,300"/>
+<area shape="rect" id="node8" href="$plugin__mac_8c.html" title="Plugin loading on MacOS." alt="" coords="617,259,824,300"/>
+<area shape="rect" id="node9" href="$timing__mac_8c.html" title="High&#45;resolution timing on MacOS." alt="" coords="848,259,1055,300"/>
+<area shape="rect" id="node12" href="$ttf_8c.html" title="Rendering text in truetype fonts." alt="" coords="1237,266,1404,293"/>
+</map>

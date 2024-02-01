@@ -1,0 +1,174 @@
+\hypertarget{scheduler_8h}{}\doxysection{src/scheduler.h File Reference}
+\label{scheduler_8h}\index{src/scheduler.h@{src/scheduler.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{scheduler_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_a2368e20d446b5abc7e62f36b9b66e07c}{F\+\_\+\+CLK}}~16000000
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_a6aadd1cf0a32a809de69217c38815aa5}{SCHEDULER\+\_\+\+TIMER\+\_\+\+PRESCALE\+\_\+\+DIVISOR}}~256
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_ad3fe636cfbeb4a38bd59d81c22f58918}{SCHEDULER\+\_\+\+TIMER\+\_\+\+SECONDS\+\_\+\+PER\+\_\+\+OVERFLOW}}~    ( (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{types_8h_a441217501138fd0d0d56411659788b90}{U16\+\_\+\+T\+\_\+\+MAX}} / ( (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{scheduler_8h_a2368e20d446b5abc7e62f36b9b66e07c}{F\+\_\+\+CLK}} / (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{scheduler_8h_a6aadd1cf0a32a809de69217c38815aa5}{SCHEDULER\+\_\+\+TIMER\+\_\+\+PRESCALE\+\_\+\+DIVISOR}} ) )
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_af8f51f5d1607c51f53055f15a66bbc20}{SCHEDULER\+\_\+\+TIMER\+\_\+\+INTERVAL\+\_\+\+SECONDS}}~0.\+050f
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_ad5af562133e96b7f234b86d0038255c3}{SCHEDULER\+\_\+\+TIMER\+\_\+\+BASE\+\_\+\+VALUE}}
+\item 
+\#define \mbox{\hyperlink{scheduler_8h_ab1a5b1011baa69070c3fc1b46b8b21d1}{N\+\_\+\+TASKS}}~20
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20}{SCHEDULER\+\_\+\+STATE\+\_\+T}} \{ \mbox{\hyperlink{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a14c1d9963f58bd2224beef2a0db34dcf}{SCHEDULER\+\_\+\+RUNNING}}
+, \mbox{\hyperlink{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a9941652e6bcd2708754de22649e6a655}{SCHEDULER\+\_\+\+FINISHED}}
+, \mbox{\hyperlink{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a28bd7b16b335e73b948a9add83d0633d}{SCHEDULER\+\_\+\+IDLE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} (($\ast$TASK\+\_\+\+FN\+\_\+T)(void))
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{scheduler_8h_ab258cc2856e5f6bb125907cc23358fbd}{scheduler\+\_\+init}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{scheduler_8h_a4284c9a781a0121ce95b90f5250023dc}{scheduler\+\_\+step}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\item 
+\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} \mbox{\hyperlink{scheduler_8h_a5c445ee9f8893e998697daa6bca1a8b8}{task\+\_\+empty}} (\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{scheduler_8h_a2368e20d446b5abc7e62f36b9b66e07c}\label{scheduler_8h_a2368e20d446b5abc7e62f36b9b66e07c}} 
+\index{scheduler.h@{scheduler.h}!F\_CLK@{F\_CLK}}
+\index{F\_CLK@{F\_CLK}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{F\_CLK}{F\_CLK}}
+{\footnotesize\ttfamily \#define F\+\_\+\+CLK~16000000}
+
+\mbox{\Hypertarget{scheduler_8h_ab1a5b1011baa69070c3fc1b46b8b21d1}\label{scheduler_8h_ab1a5b1011baa69070c3fc1b46b8b21d1}} 
+\index{scheduler.h@{scheduler.h}!N\_TASKS@{N\_TASKS}}
+\index{N\_TASKS@{N\_TASKS}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{N\_TASKS}{N\_TASKS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+TASKS~20}
+
+\mbox{\Hypertarget{scheduler_8h_ad5af562133e96b7f234b86d0038255c3}\label{scheduler_8h_ad5af562133e96b7f234b86d0038255c3}} 
+\index{scheduler.h@{scheduler.h}!SCHEDULER\_TIMER\_BASE\_VALUE@{SCHEDULER\_TIMER\_BASE\_VALUE}}
+\index{SCHEDULER\_TIMER\_BASE\_VALUE@{SCHEDULER\_TIMER\_BASE\_VALUE}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{SCHEDULER\_TIMER\_BASE\_VALUE}{SCHEDULER\_TIMER\_BASE\_VALUE}}
+{\footnotesize\ttfamily \#define SCHEDULER\+\_\+\+TIMER\+\_\+\+BASE\+\_\+\+VALUE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    ( \(\backslash\)}
+\DoxyCodeLine{        (\mbox{\hyperlink{types_8h_a37392c052055d8ce8e3eaadbe7c55378}{U16\_T}}) ((\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\_T}}) \mbox{\hyperlink{types_8h_a441217501138fd0d0d56411659788b90}{U16\_T\_MAX}} \(\backslash\)}
+\DoxyCodeLine{        -\/ ((\mbox{\hyperlink{scheduler_8h_af8f51f5d1607c51f53055f15a66bbc20}{SCHEDULER\_TIMER\_INTERVAL\_SECONDS}} / \mbox{\hyperlink{scheduler_8h_ad3fe636cfbeb4a38bd59d81c22f58918}{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW}}) \(\backslash\)}
+\DoxyCodeLine{        * (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\_T}}) \mbox{\hyperlink{types_8h_a441217501138fd0d0d56411659788b90}{U16\_T\_MAX}})) \(\backslash\)}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{scheduler_8h_af8f51f5d1607c51f53055f15a66bbc20}\label{scheduler_8h_af8f51f5d1607c51f53055f15a66bbc20}} 
+\index{scheduler.h@{scheduler.h}!SCHEDULER\_TIMER\_INTERVAL\_SECONDS@{SCHEDULER\_TIMER\_INTERVAL\_SECONDS}}
+\index{SCHEDULER\_TIMER\_INTERVAL\_SECONDS@{SCHEDULER\_TIMER\_INTERVAL\_SECONDS}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{SCHEDULER\_TIMER\_INTERVAL\_SECONDS}{SCHEDULER\_TIMER\_INTERVAL\_SECONDS}}
+{\footnotesize\ttfamily \#define SCHEDULER\+\_\+\+TIMER\+\_\+\+INTERVAL\+\_\+\+SECONDS~0.\+050f}
+
+\mbox{\Hypertarget{scheduler_8h_a6aadd1cf0a32a809de69217c38815aa5}\label{scheduler_8h_a6aadd1cf0a32a809de69217c38815aa5}} 
+\index{scheduler.h@{scheduler.h}!SCHEDULER\_TIMER\_PRESCALE\_DIVISOR@{SCHEDULER\_TIMER\_PRESCALE\_DIVISOR}}
+\index{SCHEDULER\_TIMER\_PRESCALE\_DIVISOR@{SCHEDULER\_TIMER\_PRESCALE\_DIVISOR}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{SCHEDULER\_TIMER\_PRESCALE\_DIVISOR}{SCHEDULER\_TIMER\_PRESCALE\_DIVISOR}}
+{\footnotesize\ttfamily \#define SCHEDULER\+\_\+\+TIMER\+\_\+\+PRESCALE\+\_\+\+DIVISOR~256}
+
+\mbox{\Hypertarget{scheduler_8h_ad3fe636cfbeb4a38bd59d81c22f58918}\label{scheduler_8h_ad3fe636cfbeb4a38bd59d81c22f58918}} 
+\index{scheduler.h@{scheduler.h}!SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW@{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW}}
+\index{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW@{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW}{SCHEDULER\_TIMER\_SECONDS\_PER\_OVERFLOW}}
+{\footnotesize\ttfamily \#define SCHEDULER\+\_\+\+TIMER\+\_\+\+SECONDS\+\_\+\+PER\+\_\+\+OVERFLOW~    ( (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{types_8h_a441217501138fd0d0d56411659788b90}{U16\+\_\+\+T\+\_\+\+MAX}} / ( (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{scheduler_8h_a2368e20d446b5abc7e62f36b9b66e07c}{F\+\_\+\+CLK}} / (\mbox{\hyperlink{types_8h_a94ca616bfd88d7fa8106cfb9d16b6a43}{FLOAT\+\_\+T}}) \mbox{\hyperlink{scheduler_8h_a6aadd1cf0a32a809de69217c38815aa5}{SCHEDULER\+\_\+\+TIMER\+\_\+\+PRESCALE\+\_\+\+DIVISOR}} ) )}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20}\label{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20}} 
+\index{scheduler.h@{scheduler.h}!SCHEDULER\_STATE\_T@{SCHEDULER\_STATE\_T}}
+\index{SCHEDULER\_STATE\_T@{SCHEDULER\_STATE\_T}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{SCHEDULER\_STATE\_T}{SCHEDULER\_STATE\_T}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20}{SCHEDULER\+\_\+\+STATE\+\_\+T}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCHEDULER\_RUNNING@{SCHEDULER\_RUNNING}!scheduler.h@{scheduler.h}}\index{scheduler.h@{scheduler.h}!SCHEDULER\_RUNNING@{SCHEDULER\_RUNNING}}}\mbox{\Hypertarget{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a14c1d9963f58bd2224beef2a0db34dcf}\label{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a14c1d9963f58bd2224beef2a0db34dcf}} 
+SCHEDULER\+\_\+\+RUNNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCHEDULER\_FINISHED@{SCHEDULER\_FINISHED}!scheduler.h@{scheduler.h}}\index{scheduler.h@{scheduler.h}!SCHEDULER\_FINISHED@{SCHEDULER\_FINISHED}}}\mbox{\Hypertarget{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a9941652e6bcd2708754de22649e6a655}\label{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a9941652e6bcd2708754de22649e6a655}} 
+SCHEDULER\+\_\+\+FINISHED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCHEDULER\_IDLE@{SCHEDULER\_IDLE}!scheduler.h@{scheduler.h}}\index{scheduler.h@{scheduler.h}!SCHEDULER\_IDLE@{SCHEDULER\_IDLE}}}\mbox{\Hypertarget{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a28bd7b16b335e73b948a9add83d0633d}\label{scheduler_8h_a5dcd18a081f38a22a9d769ed4951af20a28bd7b16b335e73b948a9add83d0633d}} 
+SCHEDULER\+\_\+\+IDLE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{scheduler_8h_ab258cc2856e5f6bb125907cc23358fbd}\label{scheduler_8h_ab258cc2856e5f6bb125907cc23358fbd}} 
+\index{scheduler.h@{scheduler.h}!scheduler\_init@{scheduler\_init}}
+\index{scheduler\_init@{scheduler\_init}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{scheduler\_init()}{scheduler\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} scheduler\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{scheduler_8h_ab258cc2856e5f6bb125907cc23358fbd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{scheduler_8h_ab258cc2856e5f6bb125907cc23358fbd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scheduler_8h_a4284c9a781a0121ce95b90f5250023dc}\label{scheduler_8h_a4284c9a781a0121ce95b90f5250023dc}} 
+\index{scheduler.h@{scheduler.h}!scheduler\_step@{scheduler\_step}}
+\index{scheduler\_step@{scheduler\_step}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{scheduler\_step()}{scheduler\_step()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} scheduler\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{scheduler_8h_a4284c9a781a0121ce95b90f5250023dc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{scheduler_8h_a4284c9a781a0121ce95b90f5250023dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scheduler_8h_a5c445ee9f8893e998697daa6bca1a8b8}\label{scheduler_8h_a5c445ee9f8893e998697daa6bca1a8b8}} 
+\index{scheduler.h@{scheduler.h}!task\_empty@{task\_empty}}
+\index{task\_empty@{task\_empty}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{task\_empty()}{task\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}} task\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}{void}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}\label{scheduler_8h_add87b52b0fcb619a081dfa31d50faf1e}} 
+\index{scheduler.h@{scheduler.h}!void@{void}}
+\index{void@{void}!scheduler.h@{scheduler.h}}
+\doxysubsubsection{\texorpdfstring{void()}{void()}}
+{\footnotesize\ttfamily typedef void (\begin{DoxyParamCaption}\item[{($\ast$)(void)}]{TASK\+\_\+\+FN\+\_\+T }\end{DoxyParamCaption})}
+
