@@ -36,6 +36,7 @@ typedef enum {
     SCHEDULER_IDLE
 } SCHEDULER_STATE_T;
 
+
 /** Prototype of a scheduler task function. */
 typedef void ((*TASK_FN_T)(void));
 
@@ -43,7 +44,6 @@ typedef void ((*TASK_FN_T)(void));
 void scheduler_init(void);
 void scheduler_step(void);
 
-/* Runs when there is no other task to run this major cycle */
 void task_empty(void);
 
 
