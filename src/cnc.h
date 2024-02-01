@@ -10,6 +10,7 @@ typedef enum {
     /** Command the CAN driver to send a message whose identifier and data will
       * follow this command. */
     CNC_CMD_SEND_CAN_MSG,
+    /** Number of Command and Control commands. */
     CNC_CMD_N
 } CNC_CMD_T;
 

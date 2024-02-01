@@ -8,17 +8,18 @@
 #include "fai.h"
 #include "watchdog.h"
 #include "demo.h"
+#include "cnc.h"
 
 
 TASK_FN_T tasks[N_TASKS] = {
     &task_watchdog_strobe,
+    &task_cnc_rx,
     &task_demo_tx,
     &task_can_tx,
     &task_can_rx,
     &task_demo_rx,
     &task_bit_rom,
     &task_fai,
-    &task_empty,
     &task_empty,
     &task_empty
 };
