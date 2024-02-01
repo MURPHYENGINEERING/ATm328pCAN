@@ -12,19 +12,34 @@ typedef enum {
 
 /** Overflow interrupt mode for the Timer/Counter 1 */
 typedef enum {
-    /** Timer/Counter 1 will not initiate interrupts on overflow. */
-    TIMER1_OVF_INTERRUPT_DISABLED,
     /** Timer/Counter 1 will initiate interrupts on overflow. */
-    TIMER1_OVF_INTERRUPT_ENABLED
-} TIMER1_OVF_INTERRUPT_MODE_T;
+    TIMER1_OVF_INTERRUPT_ENABLED = 1,
+    /** Timer/Counter 1 will initiate interrupts on Comparison A match. */
+    TIMER1_COMPA_INTERRUPT_ENABLED = 2,
+    /** Timer/Counter 1 will initiate interrupts on Comparison B match. */
+    TIMER1_COMPB_INTERRUPT_ENABLED = 4
+} TIMER1_INTERRUPT_FLAGS_T;
+
+
+/** Represents the comparator choices for Timer/Counter 1. */
+typedef enum {
+    /** Timer/Counter 1 Comparator A */
+    TIMER1_COMP_A,
+    /** Timer/Counter 1 Comparator B */
+    TIMER1_COMP_B
+} TIMER1_COMPARATOR_T;
+
+
+/** Represents the value of Timer/Counter 1 */
+typedef U16_T TIMER1_VALUE_T;
 
 
 void timer1_enable(
     TIMER1_PRESCALE_T prescale, 
-    TIMER1_OVF_INTERRUPT_MODE_T ovf_interrupt_mode
+    TIMER1_INTERRUPT_FLAGS_T interrupt_flags
 );
 
-void timer1_set(U16_T value);
+void timer1_set(TIMER1_VALUE_T value);
 
 
 #endif
