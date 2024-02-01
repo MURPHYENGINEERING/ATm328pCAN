@@ -82,6 +82,17 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
         spi_tx_rx((U8_T)( len & DLC_MASK ));
     spi_deactivate();
 
+    /* Enable Message Transmit Request */
+    TXB0CTRL.byte = (U8_T) 0;
+    TXB0CTRL.bits.TXP0 = TXP_PRIORITY_HIGH;
+    TXB0CTRL.bits.TXP1 = TXP_PRIORITY_HIGH;
+    TXB0CTRL.bits.TXREQ = TXREQ_TX_START;
+    spi_activate();
+        spi_tx_rx(CAN_CMD_WRITE);
+        spi_tx_rx(TXB0CTRL_ADDR);
+        spi_tx_rx(TXB0CTRL.byte);
+    spi_deactivate();
+
     /* Trigger the transmission */
     spi_activate();
         /* Request To Send the 0th buffer */
