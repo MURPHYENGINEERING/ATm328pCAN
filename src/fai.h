@@ -10,7 +10,7 @@
 #define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0
 
 /** Base address in the NVM where fault data is stored. */
-#define FAI_NVM_BASE_ADDRESS (SIZE_T) 1
+#define FAI_NVM_BASE_ADDRESS (SIZE_T) 1u
 
 /** Represents a particular fault for logging and reporting. */
 typedef enum {
@@ -30,6 +30,8 @@ typedef enum {
     FAI_FAULT_ID_TASK_OVERRUN,
     /** The Command and Control RX queue was full and a command message was lost. */
     FAI_FAULT_ID_CNC_RX_Q_OVERFLOW,
+    /** The Command and Control "send CAN message" command was malformed. */
+    FAI_FAULT_ID_CNC_SENDCAN_MALFORMED,
     /** Number of fault IDs. */
     FAI_FAULT_ID_N
 } FAI_FAULT_ID_T;

@@ -35,3 +35,30 @@ U8_T* serialize_fault(U8_T* buf, FAI_FAULT_ID_T fault_id, FAI_FAULT_T* fault)
     
     return p_buf;
 }
+
+/*******************************************************************************
+ * Deserialized a 16-bit integer from the given buffer in big-endian order.
+ * \param[in] buf   The buffer from which the deserialized value will be read.
+ * \return The deserialized 16-bit integer value.
+ ******************************************************************************/
+U16_T deserialize_U16(U8_T* buf)
+{
+    U16_T val;
+
+    val = (U16_T) 0;
+    val |= (U16_T) buf[0] << 8;
+    val |= (U16_T) buf[1];
+
+    return val;
+}
+
+/*******************************************************************************
+ * Deserialized a CAN message identifier integer from the given buffer in 
+ * big-endian order.
+ * \param[in] buf   The buffer from which the deserialized value will be read.
+ * \return The deserialized CAN identifier.
+ ******************************************************************************/
+CAN_IDENT_T deserialize_can_identifier(U8_T* buf)
+{
+    return (CAN_IDENT_T) deserialize_U16(buf);
+}

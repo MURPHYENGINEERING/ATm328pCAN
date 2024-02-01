@@ -14,6 +14,13 @@ FIFO_ENTRY_T g_cnc_rx_q_buf[CNC_RX_FIFO_LEN];
 /** Command and Control RX FIFO queue. */
 FIFO_T g_cnc_rx_q;
 
+/** Maximum number of data words for any command. */
+#define CNC_RX_DATA_FIFO_LEN 3
+/** Command data RX FIFO queue underlying buffer. */
+FIFO_ENTRY_T g_cnc_data_q_buf[CNC_RX_DATA_FIFO_LEN];
+/** Command data RX FIFO queue. */
+FIFO_T g_cnc_data_q;
+
 /** Maximum length in bytes of the Command and Control RX buffer. */
 #define CNC_RX_BUF_LEN 20
 /** Command and Control RX buffer. */
@@ -24,8 +31,8 @@ SIZE_T g_cnc_rx_buf_write_idx;
 /** Strings representing the commands in `CNC_CMT_T`. These are matched against
   * commands coming in on the USART. */
 U8_T* g_cnc_cmd_strings[(SIZE_T) CNC_CMD_N] = {
-    (U8_T*) "clearf",
-    (U8_T*) "reportf",
+    (U8_T*) "fclear",
+    (U8_T*) "freport",
     (U8_T*) "cansend"
 };
 
@@ -102,7 +109,7 @@ static void cnc_process_q(void)
         if (FIFO_OK == status) {
             cnc_process_cmd(buf, len);
         }
-        
+
     } while (FIFO_OK == status);
 }
 
@@ -120,6 +127,10 @@ static void cnc_process_cmd(U8_T* buf, SIZE_T len)
         cnc_cmd_report_faults();
     } else if (0 == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
         cnc_cmd_send_can_msg();
+    } else {
+        /** Command data, put it on the data queue for processing when the command
+          * comes through. */
+        fifo_q_add(&g_cnc_data_q, buf, len);
     }
 }
 
@@ -168,4 +179,27 @@ static void cnc_cmd_report_faults(void)
  ******************************************************************************/
 static void cnc_cmd_send_can_msg(void)
 {
+    FIFO_STATUS_T status;
+    U8_T buf[FIFO_DATA_LEN];
+    SIZE_T len;
+
+    CAN_IDENT_T identifier;
+
+    status = fifo_q_remove(&g_cnc_data_q, buf, &len);
+    if (status == FIFO_OK) {
+        if (2 <= len) {
+            identifier = deserialize_can_identifier(buf);
+
+            status = fifo_q_remove(&g_cnc_data_q, buf, &len);
+            if (status == FIFO_OK) {
+                can_tx_q_add(identifier, buf, len);
+            } else {
+                fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 2u);
+            }
+        } else {
+            fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 1u);
+        }
+    } else {
+        fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 0);
+    }
 }
