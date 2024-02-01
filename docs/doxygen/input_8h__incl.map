@@ -1,5 +1,0 @@
-<map id="src/include/lmda/input.h" name="src/include/lmda/input.h">
-<area shape="rect" id="node1" title="The game&#39;s interface to the user input devices." alt="" coords="84,5,299,32"/>
-<area shape="rect" id="node2" href="$keyboard_8h.html" title="Defines symbols for SDL keyboard key identifiers." alt="" coords="5,80,196,107"/>
-<area shape="rect" id="node3" href="$signal_8h.html" title="Declares the types of signal transitions that may represent a state change." alt="" coords="220,80,347,107"/>
-</map>

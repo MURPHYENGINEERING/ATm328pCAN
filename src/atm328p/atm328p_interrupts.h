@@ -1,7 +1,8 @@
 #ifndef __ATM328P_INTERRUPTS_H__
 #define __ATM328P_INTERRUPTS_H__
 
-#define ISR(vect) __attribute__((interrupt, used, externally_visible)) \
+#define ISR(vect) \
+    void vect(void) __attribute__((signal, used, externally_visible)); \
     void vect(void)
 
 /* Timer/Counter 1 Compare Match A */

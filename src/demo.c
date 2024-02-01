@@ -10,7 +10,8 @@
 
 
 /*******************************************************************************
- *
+ * Perform the demo transmit task, writing messages to the CAN software FIFO and
+ * to the USART TX buffer.
  ******************************************************************************/ 
 void task_demo_tx(void)
 {
@@ -36,17 +37,16 @@ void task_demo_tx(void)
         );
     }
 
-    /*
-    len = usart_rx(buf, 14);
+    len = usart_rx(buf, CAN_FIFO_DATA_LEN);
     if (0 < len) {
         usart_tx(buf, len);
     }
-    */
 }
 
 
 /*******************************************************************************
- *
+ * Perform the demo receive task, accepting messages from the CAN software FIFO
+ * and reading from the USART RX buffer.
  ******************************************************************************/ 
 void task_demo_rx(void)
 {

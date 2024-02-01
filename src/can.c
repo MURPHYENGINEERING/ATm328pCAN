@@ -2,18 +2,20 @@
 #include "can.h"
 #include "memory.h"
 #include "fai.h"
+#include "fifo.h"
 
 
-/******************************************************************************/
 /* CAN Queues */
 CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
 CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
 
 CAN_FIFO_T g_can_tx_q;
 CAN_FIFO_T g_can_rx_q;
-/******************************************************************************/
 
 
+/*******************************************************************************
+ * Initialize the CAN software FIFOs and hardware.
+ ******************************************************************************/
 void can_init(void)
 {
     can_fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
@@ -23,12 +25,20 @@ void can_init(void)
 }
 
 
+/*******************************************************************************
+ * Perform the periodic CAN receive task, receiving messages from the CAN 
+ * hardware and adding them to the software FIFO.
+ ******************************************************************************/
 void task_can_rx(void)
 {
     /* TODO: read a message */
 }
 
 
+/*******************************************************************************
+ * Perform the periodic CAN transmit task, removing messages from the TX software
+ * FIFO and transmitting them to the CAN hardware driver.
+ ******************************************************************************/
 void task_can_tx(void)
 {
     FIFO_STATUS_T status;
@@ -53,7 +63,12 @@ void task_can_tx(void)
 
 
 /*******************************************************************************
- *
+ * Add an element to the CAN TX FIFO queue, if it's not full.
+ * \param[in] identifier    The CAN message identifier.
+ * \param[in] buf           Pointer to the CAN message data buffer.
+ * \param[in] len           Length in bytes of the CAN message data.
+ * \retval FIFO_OK      The CAN message was added to the TX FIFO queue.
+ * \retval FIFO_FULL    The TX FIFO queue is full and no message was added.
  ******************************************************************************/ 
 FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 {
@@ -66,7 +81,15 @@ FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 
 
 /*******************************************************************************
- *
+ * Remove an element from the CAN RX FIFO queue and return it, if it's not empty.
+ * \param[out] identifier   The CAN message identifier will be returned in this
+ *                          pointer.
+ * \param[out] buf          The CAN message data will be returned into this buffer.
+ * \param[out] len          The length in bytes of the CAN message data will be
+ *                          returned in this pointer.
+ * \retval FIFO_OK      A CAN message was dequeued and returned.
+ * \retval FIFO_EMPTY   The queue is empty and no message was returned. The state
+ *                      of the argument pointers is unchanged.
  ******************************************************************************/ 
 FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
 {
@@ -79,7 +102,8 @@ FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
 
 
 /*******************************************************************************
- *
+ * Get the number of elements in the CAN RX FIFO queue.
+ * \return The number of elements in the CAN RX FIFO queue.
  ******************************************************************************/ 
 SIZE_T can_rx_q_len(void)
 {
@@ -93,7 +117,7 @@ SIZE_T can_rx_q_len(void)
  * \param[in] buf   Pointer to the underlying buffer for this queue. The queue
  *                  data will be stored in this buffer. The buffer is treated as
  *                  a ring, with reads and writes constantly advancing, wrapping
- *                  at 
+ *                  at `size` bytes.
  ******************************************************************************/ 
 void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 {

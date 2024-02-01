@@ -1,5 +1,0 @@
-<map id="src/platform/win/platform_win.c" name="src/platform/win/platform_win.c">
-<area shape="rect" id="node1" title="Generic platform initialization on Windows." alt="" coords="5,5,228,47"/>
-<area shape="rect" id="node2" href="$platform_8h.html" title="Declares generic platform initialization to allow platforms to do specialized setup (e...." alt="" coords="45,95,188,121"/>
-<area shape="rect" id="node3" href="$version_8h.html" title="Defines the build version; the build system labels output based on this." alt="" coords="49,169,184,196"/>
-</map>

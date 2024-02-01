@@ -2,6 +2,7 @@
 #define __CAN_H__
 
 #include "types.h"
+#include "fifo.h"
 
 
 #define CAN_FIFO_TX_SIZE (SIZE_T) 4u

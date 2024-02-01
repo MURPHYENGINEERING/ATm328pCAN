@@ -1,6 +1,0 @@
-<map id="src/include/lmda/platform.h" name="src/include/lmda/platform.h">
-<area shape="rect" id="node1" title="Declares generic platform initialization to allow platforms to do specialized setup (e...." alt="" coords="156,5,395,32"/>
-<area shape="rect" id="node2" href="$main_8c.html" title="Entrypoint to game application (i.e. game plugin host)." alt="" coords="5,87,140,114"/>
-<area shape="rect" id="node3" href="$platform__mac_8c.html" title="Generic platform initialization on MacOS." alt="" coords="164,80,387,121"/>
-<area shape="rect" id="node4" href="$platform__win_8c.html" title="Generic platform initialization on Windows." alt="" coords="411,80,633,121"/>
-</map>

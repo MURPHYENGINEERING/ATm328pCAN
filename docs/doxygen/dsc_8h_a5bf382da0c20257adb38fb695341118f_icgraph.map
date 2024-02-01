@@ -1,6 +1,0 @@
-<map id="dsc_led_set" name="dsc_led_set">
-<area shape="rect" id="node1" title=" " alt="" coords="243,31,353,57"/>
-<area shape="rect" id="node2" href="$dsc_8c.html#a65d27117ba3dbe4a624bbbdcf62a4f70" title=" " alt="" coords="108,5,195,32"/>
-<area shape="rect" id="node4" href="$usart_8c.html#a084f0a9cf05b1877bd8a71a90dae7ff8" title=" " alt="" coords="128,56,175,83"/>
-<area shape="rect" id="node3" href="$main_8c.html#a06213d4df6a69a484bbec6698135cb14" title=" " alt="" coords="5,5,60,32"/>
-</map>

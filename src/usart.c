@@ -1,10 +1,11 @@
 #include "usart.h"
 #include "interrupts.h"
 #include "dsc.h"
+#include "fai.h"
 
 #define USART_BUF_LEN 256
 
-U8_T g_usart_tx_buf[USART_BUF_LEN];
+VU8_T g_usart_tx_buf[USART_BUF_LEN];
 VSIZE_T g_usart_tx_buf_n;
 VSIZE_T g_usart_tx_buf_write_idx;
 VSIZE_T g_usart_tx_buf_read_idx;
@@ -15,12 +16,15 @@ VSIZE_T g_usart_tx_buf_read_idx;
  * byte out of the buffer after writing to it. */
 VBOOL_T g_usart_tx_transmitting;
 
-U8_T g_usart_rx_buf[USART_BUF_LEN];
+VU8_T g_usart_rx_buf[USART_BUF_LEN];
 VSIZE_T g_usart_rx_buf_write_idx;
 VSIZE_T g_usart_rx_buf_read_idx;
 VSIZE_T g_usart_rx_buf_n;
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_tx_byte_from_buffer(void)
 {
     U8_T c;
@@ -48,12 +52,18 @@ static void usart_tx_byte_from_buffer(void)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 ISR(USART0_TX_vect)
 {
     usart_tx_byte_from_buffer();
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 ISR(USART0_RX_vect)
 {
     U8_T c;
@@ -92,6 +102,9 @@ ISR(USART0_RX_vect)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void usart_init(USART_CONFIG_T config)
 {
     g_usart_rx_buf_write_idx    = (SIZE_T) 0;
@@ -108,6 +121,9 @@ void usart_init(USART_CONFIG_T config)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
@@ -144,6 +160,9 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 SIZE_T usart_rx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;

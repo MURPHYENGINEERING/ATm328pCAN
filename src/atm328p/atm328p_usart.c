@@ -10,6 +10,9 @@ static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size);
 static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity);
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void usart_init_hardware(USART_CONFIG_T cfg)
 {
     usart_set_mode(cfg.mode);
@@ -35,48 +38,72 @@ void usart_init_hardware(USART_CONFIG_T cfg)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void usart_tx_byte(U8_T data)
 {
     UDR0.byte = data;
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 VU8_T usart_rx_byte(void)
 {
     return UDR0.byte;
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 BOOL_T usart_parity_error(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.UPEn );
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 BOOL_T usart_data_overrun(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.DORn );
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 BOOL_T usart_frame_error(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.FEn );
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 BOOL_T usart_tx_ready(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.UDREn );
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 BOOL_T usart_rx_pending(void)
 {
     return (BOOL_T)( TRUE == UCSR0A.bits.RXCn );
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_mode(USART_MODE_T mode)
 {
     switch (mode)
@@ -107,6 +134,9 @@ static void usart_set_mode(USART_MODE_T mode)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_baud(USART_BAUD_RATE_T baud)
 {
     switch (baud) {
@@ -132,6 +162,9 @@ static void usart_set_baud(USART_BAUD_RATE_T baud)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_parity(USART_PARITY_MODE_T parity)
 {
     switch (parity)
@@ -158,6 +191,9 @@ static void usart_set_parity(USART_PARITY_MODE_T parity)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_stop_bits(USART_STOP_BITS_T stop_bits)
 {
     switch (stop_bits)
@@ -172,6 +208,9 @@ static void usart_set_stop_bits(USART_STOP_BITS_T stop_bits)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size)
 {
     switch (character_size)
@@ -215,6 +254,9 @@ static void usart_set_character_size(USART_CHARACTER_SIZE_T character_size)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity)
 {
     switch (clock_polarity)

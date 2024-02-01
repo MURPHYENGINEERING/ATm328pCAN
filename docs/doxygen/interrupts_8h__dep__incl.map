@@ -1,8 +1,0 @@
-<map id="src/interrupts.h" name="src/interrupts.h">
-<area shape="rect" id="node1" title=" " alt="" coords="303,5,453,32"/>
-<area shape="rect" id="node2" href="$interrupts_8c.html" title=" " alt="" coords="5,80,156,107"/>
-<area shape="rect" id="node3" href="$main_8c.html" title=" " alt="" coords="180,80,283,107"/>
-<area shape="rect" id="node4" href="$scheduler_8c.html" title=" " alt="" coords="307,80,449,107"/>
-<area shape="rect" id="node5" href="$spi_8c.html" title=" " alt="" coords="473,80,568,107"/>
-<area shape="rect" id="node6" href="$usart_8c.html" title=" " alt="" coords="592,80,703,107"/>
-</map>

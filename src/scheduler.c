@@ -11,6 +11,7 @@
 
 
 TASK_FN_T tasks[N_TASKS] = {
+    &task_watchdog_strobe,
     &task_demo_tx,
     &task_can_tx,
     &task_can_rx,
@@ -19,24 +20,16 @@ TASK_FN_T tasks[N_TASKS] = {
     &task_fai,
     &task_empty,
     &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_empty,
-    &task_watchdog_strobe
+    &task_empty
 };
 
 volatile SIZE_T g_task_idx;
 volatile SCHEDULER_STATE_T g_scheduler_state;
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 ISR(TIMER1_OVF_vect)
 {
     if (SCHEDULER_RUNNING == g_scheduler_state) {
@@ -58,6 +51,9 @@ ISR(TIMER1_OVF_vect)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void scheduler_init(void)
 {
     g_task_idx = 0;
@@ -68,6 +64,9 @@ void scheduler_init(void)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void scheduler_step(void)
 {
     if (SCHEDULER_IDLE == g_scheduler_state) {
@@ -80,6 +79,9 @@ void scheduler_step(void)
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/
 void task_empty(void)
 {
 }

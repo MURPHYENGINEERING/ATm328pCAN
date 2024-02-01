@@ -1,8 +1,0 @@
-<map id="src/spi.h" name="src/spi.h">
-<area shape="rect" id="node1" title=" " alt="" coords="327,5,421,32"/>
-<area shape="rect" id="node2" href="$atm328p__spi_8c.html" title=" " alt="" coords="5,80,180,121"/>
-<area shape="rect" id="node3" href="$can_8c.html" title=" " alt="" coords="204,87,299,114"/>
-<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="323,87,425,114"/>
-<area shape="rect" id="node5" href="$scheduler_8c.html" title=" " alt="" coords="449,87,592,114"/>
-<area shape="rect" id="node6" href="$spi_8c.html" title=" " alt="" coords="616,87,711,114"/>
-</map>

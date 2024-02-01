@@ -6,3 +6,4 @@
 .vscode/extensions.json
 build/
 .DS_Store
+docs/doxygen/

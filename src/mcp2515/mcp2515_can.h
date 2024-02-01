@@ -13,7 +13,7 @@ typedef union
         /* Transmit Buffer Priority Bits (R/W) */
         VBOOL_T TXP0        : 1;
         VBOOL_T TXP1        : 1;
-        VBOOL_T Reserved2   : 1
+        VBOOL_T Reserved2   : 1;
         /* Message Transmit Request Bit (R/W) */
         VBOOL_T TXREQ       : 1;
         /* Transmission Error Detected Bit (R) */

@@ -1,8 +1,0 @@
-<map id="task_demo_tx" name="task_demo_tx">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,124,120"/>
-<area shape="rect" id="node2" href="$can_8c.html#a8684cbb2f82c53705820ad7785972ded" title=" " alt="" coords="204,5,323,32"/>
-<area shape="rect" id="node4" href="$memory_8c.html#a63fecdcb991cb81f69778425ea39cec8" title=" " alt="" coords="553,31,672,57"/>
-<area shape="rect" id="node5" href="$fai_8c.html#a5775f4722e53f8e7ac05a0ef6530dee2" title=" " alt="" coords="172,131,355,157"/>
-<area shape="rect" id="node6" href="$string_8c.html#a4b19ca715d9f1e7346079c308d4b595b" title=" " alt="" coords="200,181,327,208"/>
-<area shape="rect" id="node3" href="$fifo_8c.html#a234edb8a8e6cbf7499b0548fce3ef685" title=" " alt="" coords="403,5,505,32"/>
-</map>

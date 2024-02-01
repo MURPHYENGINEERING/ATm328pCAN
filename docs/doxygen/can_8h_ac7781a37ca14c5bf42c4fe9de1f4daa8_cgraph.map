@@ -1,8 +1,0 @@
-<map id="can_init" name="can_init">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,92,108"/>
-<area shape="rect" id="node2" href="$fifo_8c.html#ac619a366b22cc27db4e0469dd3912972" title=" " alt="" coords="152,5,263,32"/>
-<area shape="rect" id="node4" href="$atm328p__spi_8c.html#a52e29b9a0596a38390b0a245c4c2d593" title=" " alt="" coords="148,56,267,83"/>
-<area shape="rect" id="node5" href="$atm328p__spi_8c.html#a73c3d9ea4295599b7f59d2b26343a170" title=" " alt="" coords="140,107,275,133"/>
-<area shape="rect" id="node6" href="$atm328p__spi_8c.html#a695a4a16d5ea8390a3c3dc6815fca21b" title=" " alt="" coords="160,157,255,184"/>
-<area shape="rect" id="node3" href="$memory_8c.html#a9fb36233ae05e7fd6c0d74f3380b52ea" title=" " alt="" coords="323,5,441,32"/>
-</map>
