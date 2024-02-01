@@ -46,16 +46,24 @@ typedef union {
 /** Power Reduction Register */
 extern volatile PRR_T PRR;
 
+/** Disable power reduction for the ADC. */
 #define PRADC_ENABLE_ADC FALSE
+/** Enable power reduction for the ADC. */
 #define PRADC_DISABLE_ADC TRUE
 
+/** Disable power reduction for the SPI device. */
 #define PRSPI_ENABLE_SPI FALSE
+/** Enable power reduction for the SPI device. */
 #define PRSPI_DISABLE_SPI TRUE
 
+/** Disable power reduction for the USART0 device. */
 #define PRUSART0_ENABLE_USART FALSE
+/** Enable power reduction for the USART0 device. */
 #define PRUSART0_DISABLE_USART TRUE
 
+/** Disable power reduction for the Timer/Counter 1 device. */
 #define PRTIM1_ENABLE_TIMER FALSE
+/** Enable power reduction for the Timer/Counter 1 device. */
 #define PRTIM1_DISABLE_TIMER TRUE
 
 #endif

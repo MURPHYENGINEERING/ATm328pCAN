@@ -4,35 +4,28 @@
 #include "types.h"
 
 
-/* SPI Control Register */
+/** SPI Control Register */
 typedef union {
     struct {
-        /* SPI Clock Rate Select */
-        /* 0, 0 = fosc/4 
-         * 0, 1 = fosc/16
-         * 1, 0 = fosc/64
-         * 1, 1 = fosc/128 */
+        /** SPI Clock Rate Select */
         VBOOL_T SPR0 : 1;
         VBOOL_T SPR1 : 1;
-        /* Clock Phase */
-        /* When written to 1, SETUP is on the leading edge. 
-         * When 0, SAMPLE is on the leading edge. */
+        /** Clock Phase */
         VBOOL_T CPHA : 1;
-        /* Clock Polarity */
-        /* When written to 1, SCK is HIGH when idle. When 0, SCK is LOW when idle. */
+        /** Clock Polarity */
         VBOOL_T CPOL : 1;
-        /* Master/Slave Select */
+        /** Master/Slave Select */
         VBOOL_T MSTR : 1;
-        /* Data Order */
+        /** Data Order */
         VBOOL_T DORD : 1;
-        /* SPI Enable */
+        /** SPI Enable */
         VBOOL_T SPE : 1;
-        /* SPI Interrupt Enable */
+        /** SPI Interrupt Enable */
         VBOOL_T SPIE : 1;
     } bits;
     VU8_T byte;
 } SPCR_T;
-
+/** SPI Control Register */
 extern volatile SPCR_T SPCR;
 
 #define SPE_DISABLE_SPI FALSE
@@ -52,45 +45,43 @@ extern volatile SPCR_T SPCR;
 #define SPCR_PRESCALE_OVER_128 (U8_T) ( (1u << SPCR_SPR1) | (1u << SPCR_SPR0) )
 
 
-/* SPI Status Register */
+/** SPI Status Register */
 typedef union {
     struct {
-        /* Double SPI Speed Bit */
-        /* When set, the clock speed selected by SPR1, SPR0 will be doubled. 
-         * I.e., fosc/2, 8, 32, or 64 */
+        /** Double SPI Speed Bit */
         VBOOL_T SPI2X : 1;
         VBOOL_T Unused1 : 1;
         VBOOL_T Unused2 : 1;
         VBOOL_T Unused3 : 1;
         VBOOL_T Unused4 : 1;
         VBOOL_T Unused5 : 1;
-        /* Write Collision Flag */
+        /** Write Collision Flag */
         VBOOL_T WCOL : 1;
-        /* SPI Interrupt Flag */
+        /** SPI Interrupt Flag */
         VBOOL_T SPIF : 1;
     } bits;
     VU8_T byte;
 } SPSR_T;
-
+/** SPI Status Register */
 extern volatile SPSR_T SPSR;
 
 
-/* SPI Data Register */
+/** SPI Data Register */
 extern volatile REGISTER_T SPDR;
 
 
-/* PORTB */
+/** SPI GPIO register */
 typedef union {
     struct {
         VBOOL_T Unused0 : 1;
         VBOOL_T Unused1 : 1;
-        /* SPI bus master slave select */
+        /** SPI bus master slave select */
         VBOOL_T SS : 1;
-        /* SPI bus Master Out Slave In */
+        /** SPI bus Master Out Slave In */
         VBOOL_T MOSI : 1;
-        /* SPI bus Master In Slave Out */
+        /** SPI bus Master In Slave Out */
         VBOOL_T MISO : 1;
-        /* SPI bus master clock */
+        /** SPI bus master clock */
         VBOOL_T SCK : 1;
         VBOOL_T Unused6 : 1;
         VBOOL_T Unused7 : 1;
@@ -98,11 +89,11 @@ typedef union {
     VU8_T byte;
 } REGISTER_SPI_T;
 
-/* DDRB */
+/** Data Direction Register for SPI (DDRB) */
 extern volatile REGISTER_SPI_T DDR_SPI;
-/* PORTB */
+/** Port Register for SPI (PORTB) */
 extern volatile REGISTER_SPI_T PORT_SPI;
-/* PINB */
+/** Pin Register for SPI (PINB) */
 extern volatile REGISTER_SPI_T PIN_SPI;
 
 
