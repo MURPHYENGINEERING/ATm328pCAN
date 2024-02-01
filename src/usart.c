@@ -9,6 +9,10 @@ VSIZE_T g_usart_tx_buf_n;
 VSIZE_T g_usart_tx_buf_write_idx;
 VSIZE_T g_usart_tx_buf_read_idx;
 
+/* True if we're currently driving bytes out of the buffer by interrupts.
+ * False when we run out of bytes and the interrupt cycle stops.
+ * This dictates whether we should initiate interrupts by manually driving a
+ * byte out of the buffer after writing to it. */
 VBOOL_T g_usart_tx_transmitting;
 
 U8_T g_usart_rx_buf[USART_BUF_LEN];
@@ -21,23 +25,26 @@ static void usart_tx_byte_from_buffer(void)
 {
     U8_T c;
 
+    /* Disable interrupts so we don't get a TX interrupt while manipulating the
+     * buffer. */
+    cli();
+
     if ((SIZE_T) 0 < g_usart_tx_buf_n) {
         c = g_usart_tx_buf[g_usart_tx_buf_read_idx];
 
-        ++g_usart_tx_buf_read_idx;
-        if (USART_BUF_LEN == g_usart_tx_buf_read_idx) {
-            g_usart_tx_buf_read_idx = (SIZE_T) 0;
-        }
+        g_usart_tx_buf_read_idx = 
+            (SIZE_T)( (g_usart_tx_buf_read_idx + 1u) % USART_BUF_LEN );
 
         --g_usart_tx_buf_n;
 
         g_usart_tx_transmitting = TRUE;
 
-        /* Set this last so we don't re-enter this interrupt while doing the above */
         usart_tx_byte(c);
     } else {
         g_usart_tx_transmitting = FALSE;
     }
+
+    sei();
 }
 
 
@@ -49,11 +56,39 @@ ISR(USART0_TX_vect)
 
 ISR(USART0_RX_vect)
 {
-    VU8_T c;
+    U8_T c;
 
-    c = usart_rx_byte();
+    /* Disable interupts so we don't get an RX interrupt while manipulating the
+     * buffer. */
+    cli();
 
-    dsc_led_set(DSC_LED_CANBOARD_2, ON);
+    if (FALSE == usart_parity_error()) {
+        /* Read the byte to disable the interrupt */
+        c = usart_rx_byte();
+
+        if (USART_BUF_LEN > g_usart_rx_buf_n) {
+            g_usart_rx_buf[g_usart_rx_buf_write_idx] = c;
+
+            g_usart_rx_buf_write_idx = 
+                (SIZE_T)( (g_usart_rx_buf_write_idx + 1u) % USART_BUF_LEN );
+
+            ++g_usart_rx_buf_n;
+        } else {
+            /* Buffer overflow, byte is lost. */
+            fai_pass_fail_logger(
+                FAI_FAULT_ID_USART_RX_BUFFER_OVERFLOW, 
+                FAIL, 
+                (U32_T) c
+            );
+        }
+    } else {
+        /* Read the byte to disable the interrupt */
+        c = usart_rx_byte();
+        /* Report a Parity fault */
+        fai_pass_fail_logger(FAI_FAULT_ID_USART_PARITY_ERROR, FAIL, (U32_T) c);
+    }
+
+    sei();
 }
 
 
@@ -77,15 +112,17 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
 
+    /* Disable interrupts so we don't get a TX interrupt while manipulating the
+     * buffer. */
+    cli();
+
     i = (SIZE_T) 0;
 
     while ( (USART_BUF_LEN > i) && (i < len) ) {
         g_usart_tx_buf[g_usart_tx_buf_write_idx] = buf[i];
 
-        ++g_usart_tx_buf_write_idx;
-        if (USART_BUF_LEN == g_usart_tx_buf_write_idx) {
-            g_usart_tx_buf_write_idx = (SIZE_T) 0;
-        }
+        g_usart_tx_buf_write_idx = 
+            (SIZE_T)( (g_usart_tx_buf_write_idx + 1u) % USART_BUF_LEN );
 
         ++i;
     }
@@ -93,9 +130,15 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
     g_usart_tx_buf_n += i;
 
     if (FALSE == g_usart_tx_transmitting) {
+        /* Put the busy-wait here because none of the underlying functions do
+         * it (because they run in the ISR) */
+        while (!usart_tx_ready()) {
+        }
         /* Kick off the transmission; it will be interrupt-driven after that. */
         usart_tx_byte_from_buffer();
     }
+
+    sei();
 
     return i;
 }
@@ -105,20 +148,24 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
 {
     SIZE_T i;
 
+    /* Disable interrupts so we don't get an RX interrupt while manipulating the
+     * buffer. */
+    cli();
+
     i = (SIZE_T) 0;
 
     while ( (i < g_usart_rx_buf_n) && (i < len) ) {
         buf[i] = g_usart_rx_buf[g_usart_rx_buf_read_idx];
         
-        ++g_usart_rx_buf_read_idx;
-        if (USART_BUF_LEN == g_usart_rx_buf_read_idx) {
-            g_usart_rx_buf_read_idx = (SIZE_T) 0;
-        }
+        g_usart_rx_buf_read_idx =
+            (SIZE_T)( (g_usart_rx_buf_read_idx + 1u) % USART_BUF_LEN );
 
         ++i;
     }
 
     g_usart_rx_buf_n -= i;
+
+    sei();
 
     return i;
 }

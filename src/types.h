@@ -16,7 +16,7 @@ typedef volatile U16_T VU16_T;
 typedef long S32_T;
 typedef unsigned long U32_T;
 typedef volatile U32_T VU32_T;
-#define U32_T_MAX ((U32_T) 4294967295)
+#define U32_T_MAX ((U32_T) 4294967295u)
 
 typedef U16_T SIZE_T;
 typedef volatile SIZE_T VSIZE_T;
@@ -65,34 +65,40 @@ typedef union {
 } WORD_T;
 
 
-#define TRUE (BOOL_T) 1u
+#define TRUE  (BOOL_T) 1u
 #define FALSE (BOOL_T) 0
 
 
 typedef enum {
     LOW = 0,
     GND = LOW,
-    HIGH = 1,
+    HIGH = 1u,
     OPEN = HIGH
 } BIT_T;
 
 
 typedef enum {
     OFF = 0,
-    ON = 1
+    ON = 1u
 } ON_T;
 
 
 typedef enum {
     DISABLED = 0,
-    ENABLED = 1
+    ENABLED = 1u
 } ENABLE_T;
 
 
 typedef enum {
-    FAIL,
-    PASS
+    FAIL = 0,
+    PASS = 1u
 } PASS_T;
+
+
+typedef enum {
+    INVALID = 0,
+    VALID = 1u
+} VALID_T;
 
 
 #define NULL 0

@@ -1,88 +1,31 @@
+#include "types.h"
 #include "can.h"
-#include "fifo.h"
-#include "spi.h"
-#include "dsc.h"
+#include "memory.h"
+#include "fai.h"
+
 
 /******************************************************************************/
 /* CAN Queues */
-#define CAN_FIFO_TX_SIZE (SIZE_T) 4u
-#define CAN_FIFO_RX_SIZE (SIZE_T) 4u
+CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
+CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
 
-FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
-FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
-
-FIFO_T g_can_tx_q;
-FIFO_T g_can_rx_q;
-/******************************************************************************/
-
-/******************************************************************************/
-/* CAN Modes */
-#define CAN_MODE_NORMAL     0b00000000
-/******************************************************************************/
-
-/******************************************************************************/
-/* CAN Registers */
-#define CAN_REG_TXB0CTRL 0x30
-#define CAN_REG_TX0RTS 0x0D
-/******************************************************************************/
-
-/******************************************************************************/
-/* CAN Messages */
-#define CAN_MSG_RESET       0b11000000
-#define CAN_MSG_READ        0b00000011
-#define CAN_MSG_WRITE       0b00000010
-#define CAN_MSG_READ_STATUS 0b10100000
-#define CAN_MSG_RX_STATUS   0b10110000
-#define CAN_MSG_BIT_MODIFY  0b00000101
-#define CAN_MSG_RTS         0b10000000
-/******************************************************************************/
-
-/******************************************************************************/
-/* Statics */
-static void can_tx(U8_T* buf, SIZE_T len);
+CAN_FIFO_T g_can_tx_q;
+CAN_FIFO_T g_can_rx_q;
 /******************************************************************************/
 
 
 void can_init(void)
 {
-    U8_T hold_reset;
+    can_fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
+    can_fifo_q_init(&g_can_rx_q, g_can_rx_q_buf, CAN_FIFO_RX_SIZE);
 
-    fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
-    fifo_q_init(&g_can_rx_q, g_can_rx_q_buf, CAN_FIFO_RX_SIZE);
-
-    spi_activate();
-    spi_tx_rx(CAN_MSG_RESET);
-    for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
-        /* Hold reset for 255 cycles per MCP2515 eval sample */
-        /* Even though it appears to hold for 48-us without this,
-         * which exceeds the 2-us requirement. */
-    }
-    spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_MSG_BIT_MODIFY);
-    spi_tx_rx(CAN_MODE_NORMAL);
-    spi_deactivate();
+    can_init_hardware();
 }
 
 
-FIFO_STATUS_T can_tx_q_add(U8_T* buf, SIZE_T len)
+void task_can_rx(void)
 {
-    FIFO_STATUS_T status;
-
-    status = fifo_q_add(&g_can_tx_q, buf, len);
-
-    return status;
-}
-
-
-FIFO_STATUS_T can_rx_q_remove(U8_T* buf, SIZE_T* len)
-{
-    FIFO_STATUS_T status;
-
-    status = fifo_q_remove(&g_can_rx_q, buf, len);
-
-    return status;
+    /* TODO: read a message */
 }
 
 
@@ -91,63 +34,166 @@ void task_can_tx(void)
     FIFO_STATUS_T status;
     U8_T buf[FIFO_DATA_LEN];
     SIZE_T n_pending_msgs;
+    CAN_IDENT_T identifier;
     SIZE_T len;
     SIZE_T i;
 
     n_pending_msgs = fifo_q_len(&g_can_tx_q);
 
     for (i = 0; i < n_pending_msgs; ++i) {
-        status = fifo_q_remove(&g_can_tx_q, buf, &len);
+        status = can_fifo_q_remove(&g_can_tx_q, &identifier, buf, &len);
 
         if (FIFO_OK == status) {
-            can_tx(buf, len);
+            can_tx(identifier, buf, len);
         } else {
-            /* Shouldn't underflow, report software fault */
+            fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
         }
     }
 }
 
 
-static void can_tx(U8_T* buf, SIZE_T len)
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
+FIFO_STATUS_T can_tx_q_add(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 {
-    SIZE_T i;
+    FIFO_STATUS_T status;
 
-    /* TODO: This doesn't work! */
+    status = can_fifo_q_add(&g_can_tx_q, identifier, buf, len);
 
-    spi_activate();
-    spi_tx_rx(CAN_MSG_WRITE);
-    spi_tx_rx((U8_T) 0);
-    for (i = 0; i < len; ++i) {
-        spi_tx_rx(buf[i]);
-    }
-    spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_REG_TXB0CTRL);
-    spi_tx_rx((U8_T) 0x0);
-    spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_MSG_RTS | 0b0000000);
-    spi_deactivate();
-
-    spi_activate();
-    spi_tx_rx(CAN_REG_TX0RTS);
-    spi_tx_rx((U8_T) 0b00000001);
+    return status;
 }
 
 
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
+FIFO_STATUS_T can_rx_q_remove(CAN_IDENT_T* identifier, U8_T* buf, SIZE_T* len)
+{
+    FIFO_STATUS_T status;
+
+    status = can_fifo_q_remove(&g_can_rx_q, identifier, buf, len);
+
+    return status;
+}
+
+
+/*******************************************************************************
+ *
+ ******************************************************************************/ 
 SIZE_T can_rx_q_len(void)
 {
-    return fifo_q_len(&g_can_rx_q);
+    return can_fifo_q_len(&g_can_rx_q);
 }
 
 
-void task_can_rx(void)
+/*******************************************************************************
+ * Initialize the given CAN FIFO queue to zero/empty.
+ * \param[in] q     The given queue to be initialized.
+ * \param[in] buf   Pointer to the underlying buffer for this queue. The queue
+ *                  data will be stored in this buffer. The buffer is treated as
+ *                  a ring, with reads and writes constantly advancing, wrapping
+ *                  at 
+ ******************************************************************************/ 
+void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 {
-    spi_activate();
-    spi_tx_rx(CAN_MSG_READ);
-    spi_deactivate();
+    q->buf = buf;
+    q->size = size;
+    q->head = 0;
+    q->tail = 0;
+    q->n = (SIZE_T) 0;
 
-    /* TODO: read a message */
+    memset_by_U8(
+        (U8_T*)(void*) buf, 
+        (U8_T) 0, 
+        (SIZE_T)( size * sizeof(CAN_FIFO_ENTRY_T) )
+    );
+}
+
+
+/*******************************************************************************
+ * Add an element to the given CAN FIFO queue.
+ * \param[in] q             The given CAN FIFO queue to add an element to.
+ * \param[in] identifier    The 11-bit CAN message identifier.
+ * \param[in] src           Pointer to the CAN message data buffer.
+ * \param[in] len           Length in bytes of data in the CAN message data buffer.
+ *
+ * \retval      FIFO_OK     The element was added to the queue.
+ * \retval      FIFO_FULL   The queue is full and no element was added to it.
+ ******************************************************************************/ 
+FIFO_STATUS_T can_fifo_q_add(
+    CAN_FIFO_T* q, 
+    CAN_IDENT_T identifier, 
+    U8_T* src, 
+    SIZE_T len
+)
+{
+    FIFO_STATUS_T status;
+    CAN_FIFO_ENTRY_T* p_fifo_entry;
+
+    if (q->n == q->size) {
+        status = FIFO_FULL;
+    } else {
+        p_fifo_entry = &q->buf[q->tail];
+        p_fifo_entry->identifier = identifier;
+        memcpy_by_U8(p_fifo_entry->data, src, len);
+        p_fifo_entry->len = len;
+
+        q->tail = (SIZE_T)( (q->tail + 1u) % q->size );
+        ++q->n;
+
+        status = FIFO_OK;
+    }
+
+    return status;
+}
+
+
+/*******************************************************************************
+ * Remove an element from the given CAN FIFO queue, returning it.
+ * \param[in] q             The given CAN FIFO queue to remove an element from.
+ * \param[out] identifier   The 11-bit CAN message identifier will be returned 
+ *                          into this pointer.
+ * \param[out] dst          The CAN message data will be returned into this buffer.
+ * \param[out] len          The length of the CAN message data in bytes will be
+ *                          returned into this pointer.
+ * \retval                  FIFO_OK     The element was removed and returned.
+ * \retval                  FIFO_EMPTY  There are no elements to remove.
+ ******************************************************************************/ 
+FIFO_STATUS_T can_fifo_q_remove(
+    CAN_FIFO_T* q, 
+    CAN_IDENT_T* identifier, 
+    U8_T* dst, 
+    SIZE_T* len
+)
+{
+    FIFO_STATUS_T status;
+    CAN_FIFO_ENTRY_T* p_fifo_entry;
+
+    if ((SIZE_T) 0 == q->n) {
+        status =  FIFO_EMPTY;
+    } else {
+        p_fifo_entry = &q->buf[q->head];
+        *identifier = p_fifo_entry->identifier;
+        memcpy_by_U8(dst, p_fifo_entry->data, p_fifo_entry->len);
+        *len = p_fifo_entry->len;
+
+        q->head = (SIZE_T)( (q->head + 1u) % q->size );
+        --q->n;
+
+        status = FIFO_OK;
+    }
+
+    return status;
+}
+
+
+/*******************************************************************************
+ * Get the number of elements in the given CAN FIFO queue.
+ * \param[in] q     The FIFO queue of CAN messages.
+ * \return          The number of elements in the given CAN FIFO queue.
+ ******************************************************************************/ 
+SIZE_T can_fifo_q_len(CAN_FIFO_T* q)
+{
+    return q->n;
 }
