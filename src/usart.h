@@ -4,13 +4,19 @@
 #include "types.h"
 
 
+/** Represents the operating mode of the USART device. */
 typedef enum {
+    /** The USART devices operates in Asynchronous mode with no clock. */
     USART_MODE_ASYNCHRONOUS,
+    /** The USART device operates in Synchronous mode with a synchronizing clock 
+      * pulse. */
     USART_MODE_SYNCHRONOUS,
+    /** The USART device operates in Master SPI mode (3-wire). */
     USART_MODE_MASTERSPI
 } USART_MODE_T;
 
 
+/** Represents the baud rate (bits per second) of the USART device. */
 typedef enum {
     USART_BAUD_2400,
     USART_BAUD_4800,
@@ -29,6 +35,7 @@ typedef enum {
 } USART_BAUD_RATE_T;
 
 
+/** Represents the Parity mode of the USART device. */
 typedef enum {
     USART_PARITY_MODE_NONE,
     USART_PARITY_MODE_EVEN,
@@ -36,6 +43,7 @@ typedef enum {
 } USART_PARITY_MODE_T;
 
 
+/** Represents the character size (data length) of a USART word. */
 typedef enum {
     USART_CHARACTER_SIZE_5,
     USART_CHARACTER_SIZE_6,
@@ -47,18 +55,21 @@ typedef enum {
 } USART_CHARACTER_SIZE_T;
 
 
+/** Represents the number of stop bits appending a USART word. */
 typedef enum {
     USART_STOP_BITS_1,
     USART_STOP_BITS_2
 } USART_STOP_BITS_T;
 
 
+/** Represents the polarity of the synchronizing clock in synchronous mode. */
 typedef enum {
     USART_CLOCK_POLARITY_RISING_TRANSMITS,
     USART_CLOCK_POLARITY_FALLING_TRANSMITS
 } USART_CLOCK_POLARITY_T;
 
 
+/** Represents all the USART device hardware parameters. */
 typedef struct {
     USART_MODE_T mode;
     USART_BAUD_RATE_T baud;
@@ -67,19 +78,6 @@ typedef struct {
     USART_PARITY_MODE_T parity;
     USART_CLOCK_POLARITY_T clock_polarity;
 } USART_CONFIG_T;
-
-
-typedef struct {
-    BOOL_T parity_error;
-    BOOL_T frame_error;
-    BOOL_T overrun;
-    SIZE_T len;
-} USART_RX_RESULT_T;
-
-
-typedef struct {
-    SIZE_T len;
-} USART_TX_RESULT_T;
 
 
 void usart_init(USART_CONFIG_T cfg);

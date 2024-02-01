@@ -43,8 +43,8 @@ void memset_by_U8(U8_T* dst, U8_T value, SIZE_T len)
  * \param[in] rhs   The right-hand side buffer to be compared.
  * \param[in] len   The number of bytes to be compared between both buffers.
  * \retval          0 if the buffers are equal up to `len` bytes.
- * \retval          -1 if `lhs` < `rhs` at the first unequal byte.
- * \retval          1 if `lhs` > `rhs` at the first unequal byte.
+ * \retval          <0 if `lhs` < `rhs` at the first unequal byte.
+ * \retval          >0 if `lhs` > `rhs` at the first unequal byte.
  ******************************************************************************/
 S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, SIZE_T len)
 {

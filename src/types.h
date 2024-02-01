@@ -24,6 +24,7 @@ typedef volatile SIZE_T VSIZE_T;
 typedef float FLOAT_T;
 
 
+/** Represents a hardware register's bits, or its total byte value. */
 typedef union {
     struct {
         VBOOL_T bit0 : 1;
@@ -39,6 +40,7 @@ typedef union {
 } REGISTER_T;
 
 
+/** Represents a 16-bit hardware register with high and low bytes. */
 typedef union {
     struct {
         volatile REGISTER_T low;
@@ -49,6 +51,7 @@ typedef union {
 } HALFWORD_T;
 
 
+/** Represents a 32-bit hardware register comprising four bytes. */
 typedef union {
     struct {
         volatile REGISTER_T byte0;

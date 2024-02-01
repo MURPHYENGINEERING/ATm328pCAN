@@ -10,7 +10,7 @@
  ******************************************************************************/
 void timer1_enable(
     TIMER1_PRESCALE_T prescale, 
-    ENABLE_T interrupt_mode
+    TIMER1_OVF_INTERRUPT_MODE_T ovf_interrupt_mode
 )
 {
     /* Normal timer mode */
@@ -18,7 +18,7 @@ void timer1_enable(
     if (TIMER1_PRESCALE_OVER_256 == prescale) {
         TCCR1B.byte |= TCCR1B_PRESCALE_OVER_256;
     }
-    if (TIMER1_INTERRUPT_ENABLED == interrupt_mode) {
+    if (TIMER1_OVF_INTERRUPT_ENABLED == ovf_interrupt_mode) {
         TIMSK1.bits.TOIE1 = TOIE1_ENABLE_INTERRUPT;
     } else {
         TIMSK1.bits.TOIE1 = TOIE1_DISABLE_INTERRUPT;

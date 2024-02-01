@@ -5,43 +5,51 @@
 #include "fifo.h"
 
 
+/** Maximum number of elements in the CAN TX FIFO queue. */
 #define CAN_FIFO_TX_SIZE (SIZE_T) 4u
+/** Maximum number of elements in the CAN RX FIFO queue. */
 #define CAN_FIFO_RX_SIZE (SIZE_T) 4u
-
+/** Maximum data size for any CAN message in a FIFO queue. */
 #define CAN_FIFO_DATA_LEN (SIZE_T) 8
 
+/** Represents an 11-bit CAN message identifier. */
 typedef U16_T CAN_IDENT_T;
 
+/** Represents a particular element in the CAN FIFO queue. */
 typedef struct {
+    /** CAN message identifier associated with this queue element */
     CAN_IDENT_T identifier;
+    /** Data associated with this queue element */
     U8_T data[CAN_FIFO_DATA_LEN];
-    /* Data length */
+    /** Length of data in the `data` array */
     SIZE_T len;
 } CAN_FIFO_ENTRY_T;
 
+/** A FIFO queue of CAN messages. */
 typedef struct
 {
-    /* Underlying buffer */
+    /** Underlying buffer */
     CAN_FIFO_ENTRY_T* buf;
-    /* Underlying buffer size */
+    /** Underlying buffer size */
     SIZE_T size;
-    /* Read pointer */
+    /** Read pointer */
     U8_T head;
-    /* Write pointer */
+    /** Write pointer */
     U8_T tail;
-    /* Number of entries */
+    /** Number of entries */
     SIZE_T n;
 } CAN_FIFO_T;
 
 
-/******************************************************************************/
-/* CAN Queues */
+/** CAN transmit queue underlying buffer */
 extern CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
+/** CAN receive queue underlying buffer */
 extern CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
 
+/** CAN transmit FIFO queue */
 extern CAN_FIFO_T g_can_tx_q;
+/** CAN receive FIFO queue */
 extern CAN_FIFO_T g_can_rx_q;
-/******************************************************************************/
 
 
 void can_init(void);
