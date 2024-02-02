@@ -4,6 +4,13 @@
 
 #define FAI_MAX_FAULTS U16_T_MAX
 
+/** Address of the "faults have been initialized" flag in NVM. */
+#define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0u
+
+/** Base address in the NVM where fault data is stored. */
+#define FAI_NVM_BASE_ADDRESS (SIZE_T) 1u
+
+
 FAI_FAULT_COUNTER_T g_fault_counters[(SIZE_T) FAI_FAULT_ID_N];
 BOOL_T g_pending_faults;
 

@@ -6,12 +6,6 @@
 /** Number of elements in the `FAI_FAULT_COUNTER` `ts_data` array. */
 #define FAI_TS_DATA_LEN (SIZE_T) 4u
 
-/** Address of the "faults have been initialized" flag in NVM. */
-#define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0u
-
-/** Base address in the NVM where fault data is stored. */
-#define FAI_NVM_BASE_ADDRESS (SIZE_T) 1u
-
 /** Represents a particular fault for logging and reporting. */
 typedef enum {
     /** Software error, i.e., a bug. */
@@ -32,6 +26,8 @@ typedef enum {
     FAI_FAULT_ID_CNC_RX_Q_OVERFLOW,
     /** The Command and Control "send CAN message" command was malformed. */
     FAI_FAULT_ID_CNC_SENDCAN_MALFORMED,
+    /** The ROM BIT failed. */
+    FAI_FAULT_ID_BIT_ROM,
     /** Number of fault IDs. */
     FAI_FAULT_ID_N
 } FAI_FAULT_ID_T;
