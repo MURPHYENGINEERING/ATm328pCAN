@@ -180,18 +180,11 @@ typedef union {
 /** Timer/Counter 1 Interrupt Mask Register */
 extern volatile TIMSK1_T TIMSK1;
 
-/** Enable Overflow interrupts for Timer/Counter 1 */
+/** Enable interrupts for Timer/Counter 1 */
 #define TIMSK_ENABLE_INTERRUPT TRUE
-/** Disable Overflow interrupts for Timer/Counter 1 */
-#define TOIE1_DISABLE_INTERRUPT FALSE
-/** Enable Compare A interrupts for Timer/Counter 1 */
-#define OCIE1A_ENABLE_INTERRUPT TRUE
-/** Disable Compare A interrupts for Timer/Counter 1 */
-#define OCIE1A_DISABLE_INTERRUPT FALSE
-/** Enable Compare B interrupts for Timer/Counter 1 */
-#define OCIE1B_ENABLE_INTERRUPT TRUE
-/** Disable Compare B interrupts for Timer/Counter 1 */
-#define OCIE1B_DISABLE_INTERRUPT FALSE
+/** Disable interrupts for Timer/Counter 1 */
+#define TIMSK_DISABLE_INTERRUPT FALSE
+
 
 /** Timer/Counter 1 Interrupt Flag Register */
 typedef union {

@@ -46,7 +46,7 @@ extern volatile ADMUX_T ADMUX;
 /** Select ADC channel 7 */
 #define ADMUX_ADC7 0b00000111
 /** Select ADC channel 8 (Temperature sensor) */
-#define ADMUX_ADC_TEMPERATURE 0b00001000
+#define ADMUX_TEMPERATURE 0b00001000
 /** Select ADC channel 1.1V */
 #define ADMUX_1V1  0b00001110
 /** Select ADC channel 0V */
@@ -85,6 +85,9 @@ typedef union {
 /** ADC Control and Status Register A */
 extern volatile ADCSRA_T ADCSRA;
 
+/** Enable the ADC */
+#define ADEN_ENABLE_ADC TRUE
+
 /** Disable interrupts on ADC conversion complete. */
 #define ADIE_DISABLE_CONVERSION_INTERRUPT FALSE
 /** Enable interrupts on ADC conversion complete. */
@@ -97,6 +100,8 @@ extern volatile ADCSRA_T ADCSRA;
 
 /** The ADC is currently converting or should start to convert. */
 #define ADSC_CONVERTING TRUE
+
+#define ADPS_PRESCALE_OVER_4 0b00000010
 
 
 /** ADC Control and Status Register B */

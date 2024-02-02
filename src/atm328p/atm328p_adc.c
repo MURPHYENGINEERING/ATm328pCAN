@@ -1,6 +1,10 @@
 #include "atm328p_adc.h"
 #include "atm328p_mcu.h"
+#include "atm328p_dsc.h"
 #include "fai.h"
+#include "adc.h"
+#include "interrupts.h"
+#include "memory.h"
 
 
 /** Current mode the ADC was initialized to (blocking or non-blocking). */
@@ -42,6 +46,8 @@ void adc_init(ADC_MODE_T mode)
     ADCSRA.byte = (U8_T) 0;
     ADCSRB.byte = (U8_T) 0;
 
+    ADCSRA.byte |= ADPS_PRESCALE_OVER_4;
+
     /* Select the appropriate reference for the Arduino UNO development board
      * (AVcc with external capacitor at AREF pin. */
     ADMUX.byte |= REFS_AVCC;
@@ -52,13 +58,17 @@ void adc_init(ADC_MODE_T mode)
     adc_select(ADC_0);
 
     if (ADC_MODE_NONBLOCKING == mode) {
-        ADCSRB.byte |= ADCTS_FREE_RUNNING;
+        ADCSRB.byte |= ADTS_FREE_RUNNING;
         ADCSRA.bits.ADIE = ADIE_ENABLE_CONVERSION_INTERRUPT;
         ADCSRA.bits.ADATE = ADATE_ENABLE_AUTO_TRIGGER;
     } else {
         ADCSRA.bits.ADATE = ADATE_DISABLE_AUTO_TRIGGER;
         ADCSRA.bits.ADIE = ADIE_DISABLE_CONVERSION_INTERRUPT;
     }
+
+    ADCSRA.bits.ADEN = ADEN_ENABLE_ADC;
+    /* Start the first conversion if in free-running mode. */
+    ADCSRA.bits.ADSC = ADSC_CONVERTING;
 }
 
 
@@ -73,7 +83,7 @@ ADC_RESULT_T adc_sample(void)
         /* Start conersion */
         ADCSRA.bits.ADSC = ADSC_CONVERTING;
         /* Wait for conversion to finish */
-        while (ADSC_CONVERTING == ADCSRA.bits.ADCS) {
+        while (ADSC_CONVERTING == ADCSRA.bits.ADSC) {
         }
         
         adc_sample_internal();
@@ -90,8 +100,8 @@ static inline void adc_sample_internal(void)
 {
     /* "... ADCL must be read first, then ADCH."
      * - ATmega328P Datasheet page 219 */
-    g_adc_result = (ADC_RESULT_T)( ADC.bytes.low & ADCL_MASK );
-    g_adc_result |= (ADC_RESULT_T)( (ADC.bytes.high << 8) & ADCH_MASK );
+    g_adc_result = (ADC_RESULT_T)( ADC.bytes.low.byte & ADCL_MASK );
+    g_adc_result |= (ADC_RESULT_T)( (ADC.bytes.high.byte & ADCH_MASK) << 8 );
 }
 
 

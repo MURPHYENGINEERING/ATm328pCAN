@@ -246,7 +246,7 @@ CANCTRL_T CANCTRL;
 
 /** Request To Send a particular buffer indicated by the lower 3 bits. */
 #define CAN_CMD_RTS         0b10000000
-/** Request To Send the B0 message buffer.
+/** Request To Send the B0 message buffer. */
 #define CAN_CMD_RTS_B0      0b00000001
 
 /** Start writing directly into a data buffer as indicated by the lower bits. */

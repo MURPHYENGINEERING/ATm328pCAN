@@ -1,5 +1,6 @@
 #include "serialize.h"
 #include "types.h"
+#include "fai.h"
 
 
 /*******************************************************************************
@@ -25,13 +26,18 @@ U8_T* serialize_U32(U8_T* buf, U32_T val)
  * \param[in] fault     The FAI fault to be serialized.
  * \return A pointer to the first position after the serialized data.
  ******************************************************************************/
-U8_T* serialize_fault(U8_T* buf, FAI_FAULT_ID_T fault_id, FAI_FAULT_T* fault)
+U8_T* serialize_fault(U8_T* buf, FAI_FAULT_ID_T fault_id, FAI_FAULT_COUNTER_T* fault)
 {
     U8_T* p_buf;
+    SIZE_T i;
 
     buf[0] = (U8_T) fault_id;
     buf[1] = (U8_T) fault->count;
-    p_buf = serialize_U32(buf[2], fault->ts_data);
+
+    p_buf = &buf[2];
+    for (i = 0; (i < fault->count) && (FAI_TS_DATA_LEN > i); ++i) {
+        p_buf = serialize_U32(p_buf, fault->ts_data[i]);
+    }
     
     return p_buf;
 }

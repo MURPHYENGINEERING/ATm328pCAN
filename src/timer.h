@@ -10,7 +10,21 @@ typedef enum {
 } TIMER1_PRESCALE_T;
 
 
-/** Overflow interrupt mode for the Timer/Counter 1 */
+/** Divisors for the Timer/Counter 0 prescaler. */
+typedef enum {
+    /** Timer/Counter 0 prescaler = `F_CLK` / 256. */
+    TIMER0_PRESCALE_OVER_256
+} TIMER0_PRESCALE_T;
+
+
+/** Interrupt mode for the Timer/Counter 0 */
+typedef enum {
+    /** Timer/Counter 0 will initiate interrupts on overflow. */
+    TIMER0_OVF_INTERRUPT_ENABLED = 1
+} TIMER0_INTERRUPT_FLAGS_T;
+
+
+/** Interrupt mode for the Timer/Counter 1 */
 typedef enum {
     /** Timer/Counter 1 will initiate interrupts on overflow. */
     TIMER1_OVF_INTERRUPT_ENABLED = 1,
@@ -33,6 +47,10 @@ typedef enum {
 /** Represents the value of Timer/Counter 1 */
 typedef U16_T TIMER1_VALUE_T;
 
+void timer0_enable(
+    TIMER0_PRESCALE_T prescale, 
+    TIMER0_INTERRUPT_FLAGS_T interrupt_mode
+);
 
 void timer1_enable(
     TIMER1_PRESCALE_T prescale, 

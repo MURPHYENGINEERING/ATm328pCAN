@@ -1,6 +1,9 @@
 #include "atm328p_timer.h"
 #include "atm328p_mcu.h"
 #include "timer.h"
+#include "fai.h"
+#include "memory.h"
+
 
 /*******************************************************************************
  * Enable the Timer 0 device hardware.
@@ -10,9 +13,11 @@
  *                              are to be enabled or disabled.
  ******************************************************************************/
 void timer0_enable(
-    TIMER1_PRESCALE_T prescale, 
-    TIMER0_INTERRUPT_MODE_T interrupt_mode
+    TIMER0_PRESCALE_T prescale, 
+    TIMER0_INTERRUPT_FLAGS_T interrupt_mode
 )
+{
+}
 
 /*******************************************************************************
  * Enable the Timer 1 device hardware.
@@ -36,22 +41,22 @@ void timer1_enable(
         TCCR1B.byte |= TCCR1B_PRESCALE_OVER_256;
 
     default:
-        fai_pass_fail_logger(FAI_FAULT_ID_INVALID_TIMER_PRESCALE, FAIL, (U32_T) 0);    
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
     }
 
-    if ( 0 == (interrupt_mode & TIMER1_OVF_INTERRUPT_ENABLED) ) {
+    if ( 0 == (interrupt_flags & TIMER1_OVF_INTERRUPT_ENABLED) ) {
         TIMSK1.bits.TOIE1 = TIMSK_DISABLE_INTERRUPT;
     } else {
         TIMSK1.bits.TOIE1 = TIMSK_ENABLE_INTERRUPT;
     }
 
-    if ( 0 == (interrupt_mode & TIMER1_COMPA_INTERRUPT_ENABLED) ) {
+    if ( 0 == (interrupt_flags & TIMER1_COMPA_INTERRUPT_ENABLED) ) {
         TIMSK1.bits.OCIE1A = TIMSK_DISABLE_INTERRUPT;
     } else {
         TIMSK1.bits.OCIE1A = TIMSK_ENABLE_INTERRUPT;
     }
 
-    if ( 0 == (interrupt_mode & TIMER1_COMPB_INTERRUPT_ENABLED) ) {
+    if ( 0 == (interrupt_flags & TIMER1_COMPB_INTERRUPT_ENABLED) ) {
         TIMSK1.bits.OCIE1B = TIMSK_DISABLE_INTERRUPT;
     } else {
         TIMSK1.bits.OCIE1B = TIMSK_ENABLE_INTERRUPT;
@@ -81,7 +86,7 @@ void timer1_set_comp(TIMER1_COMPARATOR_T comp, TIMER1_VALUE_T value)
     break;
 
     default:
-        fai_pass_fail_logger(FAI_FAULT_ID_INVALID_TIMER_COMPARATOR, FALSE, get_pc());
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FALSE, get_pc());
     break;
     }
 }

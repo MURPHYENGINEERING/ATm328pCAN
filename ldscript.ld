@@ -34,6 +34,7 @@ SECTIONS
   /* ADC */
   ADMUX         = 0x7C;
   ADCSRA        = 0x7A;
+  ADCSRB        = 0x7B;
   ADC           = 0x78;
   
   /* USART */
@@ -54,6 +55,14 @@ SECTIONS
   PORTD         = 0x2B;
   PORT_CANBOARD = 0x2B;
   
+  /* GPIO C */
+  DDRC          = 0x27;
+  DDR_ANALOG    = 0x27;
+  PORTC         = 0x28;
+  PORT_ANALOG   = 0x28;
+  PINC          = 0x26;
+  PIN_ANALOG    = 0x26;
+
   /* GPIO B */
   DDRB          = 0x24;
   DDR_BUILTIN   = 0x24;

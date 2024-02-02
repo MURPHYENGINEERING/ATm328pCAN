@@ -9,6 +9,7 @@
 #include "can.h"
 #include "fai.h"
 #include "usart.h"
+#include "adc.h"
 
 
 /*******************************************************************************
@@ -44,6 +45,8 @@ S16_T main(void)
     usart_config.parity = USART_PARITY_MODE_EVEN;
 
     usart_init(usart_config);
+
+    adc_init(ADC_MODE_BLOCKING);
 
     /* Start task timing */
     scheduler_init();

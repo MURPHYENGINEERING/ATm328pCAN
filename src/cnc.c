@@ -141,7 +141,7 @@ static void cnc_process_cmd(U8_T* buf, SIZE_T len)
 static void cnc_cmd_clear_faults(void)
 {
     fai_clear_faults();
-    usart_tx("Faults cleared\n", 5u);
+    usart_tx((U8_T*) "Faults cleared\n", 5u);
 }
 
 /*******************************************************************************

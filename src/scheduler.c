@@ -9,6 +9,7 @@
 #include "watchdog.h"
 #include "demo.h"
 #include "cnc.h"
+#include "memory.h"
 
 
 TASK_FN_T tasks[N_TASKS] = {
@@ -64,7 +65,7 @@ void scheduler_init(void)
     g_task_idx = 0;
     g_scheduler_state = SCHEDULER_IDLE;
     
-    timer1_enable(TIMER1_PRESCALE_OVER_256, TIMER1_INTERRUPT_ENABLED);
+    timer1_enable(TIMER1_PRESCALE_OVER_256, TIMER1_OVF_INTERRUPT_ENABLED);
     timer1_set(SCHEDULER_TIMER_BASE_VALUE);
 }
 

@@ -1,6 +1,8 @@
 #ifndef __ADC_H__
 #define __ADC_H__
 
+#include "types.h"
+
 
 /** Represents the different ADCs that may be sampled from. */
 typedef enum {
