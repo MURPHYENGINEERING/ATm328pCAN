@@ -20,7 +20,9 @@ void task_demo_tx(void)
     SIZE_T len;
     FIFO_STATUS_T status;
     CAN_IDENT_T identifier;
+    /*
     ADC_RESULT_T adc;
+    */
 
     identifier = (U16_T) 0xDEADBEEFu;
 
@@ -30,10 +32,13 @@ void task_demo_tx(void)
     status = can_tx_q_add(identifier, buf, len);
 
     if (FIFO_OK == status) {
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0);
+        /*
         adc = adc_sample();
         len = itoa(buf, (U32_T) adc);
         buf[len] = '\n';
         usart_tx(buf, len+1);
+        */
     } else {
         fai_pass_fail_logger(
             FAI_FAULT_ID_CAN_TX_BUFFER_OVERFLOW, 

@@ -15,6 +15,8 @@ typedef enum {
 } CNC_CMD_T;
 
 
+void cnc_init(void);
+
 void task_cnc_rx(void);
 
 #endif

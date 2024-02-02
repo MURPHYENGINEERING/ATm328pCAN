@@ -5,6 +5,7 @@
 #include "memory.h"
 #include "fifo.h"
 #include "serialize.h"
+#include "string.h"
 
 
 /** Maximum number of commands in the RX FIFO queue. */
@@ -49,6 +50,7 @@ static void cnc_cmd_send_can_msg(void);
 void cnc_init(void)
 {
     fifo_q_init(&g_cnc_rx_q, g_cnc_rx_q_buf, CNC_RX_FIFO_LEN);
+    fifo_q_init(&g_cnc_data_q, g_cnc_data_q_buf, CNC_RX_DATA_FIFO_LEN);
 }
 
 
@@ -141,7 +143,7 @@ static void cnc_process_cmd(U8_T* buf, SIZE_T len)
 static void cnc_cmd_clear_faults(void)
 {
     fai_clear_faults();
-    usart_tx((U8_T*) "Faults cleared\n", 5u);
+    usart_tx((U8_T*) "Faults cleared\n", 15u);
 }
 
 /*******************************************************************************

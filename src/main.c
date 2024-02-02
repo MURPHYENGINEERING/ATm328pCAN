@@ -10,6 +10,7 @@
 #include "fai.h"
 #include "usart.h"
 #include "adc.h"
+#include "cnc.h"
 
 
 /*******************************************************************************
@@ -47,6 +48,8 @@ S16_T main(void)
     usart_init(usart_config);
 
     adc_init(ADC_MODE_BLOCKING);
+
+    cnc_init();
 
     /* Start task timing */
     scheduler_init();

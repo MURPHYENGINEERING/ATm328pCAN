@@ -4,7 +4,7 @@
 #include "types.h"
 
 /** Number of elements in the `FAI_FAULT_COUNTER` `ts_data` array. */
-#define FAI_TS_DATA_LEN (SIZE_T) 16u
+#define FAI_TS_DATA_LEN (SIZE_T) 4u
 
 /** Address of the "faults have been initialized" flag in NVM. */
 #define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0

@@ -32,7 +32,8 @@
             "atm328p_eeprom.h": "c",
             "usart.h": "c",
             "atm328p_usart.h": "c",
-            "atm328p_adc.h": "c"
+            "atm328p_adc.h": "c",
+            "cnc.h": "c"
         }
     }
 }
