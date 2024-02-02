@@ -54,7 +54,7 @@ void spi_init(void)
 /*******************************************************************************
  * Pull the SPI device chip select line DOWN to activate the device.
  ******************************************************************************/
-void spi_activate(void) {
+void spi_begin(void) {
     PORT_SPI.bits.SS = LOW;
 }
 
@@ -62,7 +62,7 @@ void spi_activate(void) {
 /*******************************************************************************
  * Pull the SPI device chip select line UP to deactivate the device.
  ******************************************************************************/
-void spi_deactivate(void) {
+void spi_end(void) {
     PORT_SPI.bits.SS = HIGH;
 }
 

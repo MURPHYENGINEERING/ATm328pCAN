@@ -13,25 +13,25 @@ void can_init_hardware(void)
 {
     U8_T hold_reset;
 
-    spi_activate();
+    spi_begin();
         spi_tx_rx(CAN_CMD_RESET);
         for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
             /* Hold reset for 255 cycles per MCP2515 eval sample */
             /* Even though it appears to hold for 48-us without this,
             * which exceeds the 2-us requirement. */
         }
-    spi_deactivate();
+    spi_end();
 
     /* Disable One-Shot Mode, CLKOUT pin, and don't Abort */
     CANCTRL.byte = (U8_T) 0;
     /* Exit configuration mode */
     CANCTRL.byte |= CANCTRL_MODE_NORMAL;
 
-    spi_activate();
+    spi_begin();
         spi_tx_rx(CAN_CMD_WRITE);
         spi_tx_rx(CANCTRL_ADDR);
         spi_tx_rx(CANCTRL.byte);
-    spi_deactivate();
+    spi_end();
 }
 
 
@@ -50,15 +50,15 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
     SIZE_T i;
 
     /* Transfer the identifier into the SID registers */
-    spi_activate();
+    spi_begin();
         /* Start writing at TXB0SIDH */
         spi_tx_rx((U8_T)( CAN_CMD_LOAD_TX | CAN_CMD_LOAD_TX_START_AT_TXB0SIDH ));
         spi_tx_rx(SID_GET_HIGH_BITS(identifier));
         spi_tx_rx(SID_GET_LOW_BITS(identifier));
-    spi_deactivate();
+    spi_end();
 
     /* Transfer the buffer into the data registers */
-    spi_activate();
+    spi_begin();
         /* Start writing at TXB0D0 */
         spi_tx_rx((U8_T)( CAN_CMD_LOAD_TX | CAN_CMD_LOAD_TX_START_AT_TXB0D0 ));
         /* It is possible to write to sequential registers by continuing to 
@@ -71,32 +71,32 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
         for (; 8 > i; ++i) {
             spi_tx_rx((U8_T) 0);
         }
-    spi_deactivate();
+    spi_end();
     
     /* Write the data length */
     /* The masking has the side effect of setting RTR to Data Frame. */
-    spi_activate();
+    spi_begin();
         spi_tx_rx(CAN_CMD_WRITE);
         spi_tx_rx(TXB0DLC_ADDR);
         /* It's ok if len > 8, MCP2515 will ignore anything past 8 bytes. */
         spi_tx_rx((U8_T)( len & DLC_MASK ));
-    spi_deactivate();
+    spi_end();
 
     /* Enable Message Transmit Request */
     TXB0CTRL.byte = (U8_T) 0;
     TXB0CTRL.bits.TXP0 = TXP_PRIORITY_HIGH;
     TXB0CTRL.bits.TXP1 = TXP_PRIORITY_HIGH;
     TXB0CTRL.bits.TXREQ = TXREQ_TX_START;
-    spi_activate();
+    spi_begin();
         spi_tx_rx(CAN_CMD_WRITE);
         spi_tx_rx(TXB0CTRL_ADDR);
         spi_tx_rx(TXB0CTRL.byte);
-    spi_deactivate();
+    spi_end();
 
     /* Trigger the transmission */
-    spi_activate();
+    spi_begin();
         /* Request To Send the 0th buffer */
         spi_tx_rx((U8_T)( CAN_CMD_RTS | CAN_CMD_RTS_B0 ));
-    spi_deactivate();
+    spi_end();
 }
 

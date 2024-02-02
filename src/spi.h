@@ -4,8 +4,8 @@
 
 void spi_init(void);
 
-void spi_activate(void);
-void spi_deactivate(void);
+void spi_begin(void);
+void spi_end(void);
 
 U8_T spi_tx_rx(U8_T tx_data);
 
