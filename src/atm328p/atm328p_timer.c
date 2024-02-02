@@ -30,18 +30,18 @@ void timer0_init(
     TIMSK0.byte = (U8_T) 0;
 
     switch (mode) {
-    case TIMER_MODE_NORMAL:             
+    case TIMER_MODE_NORMAL:
         TCCR0A.byte |= TCRC0A_MODE_NORMAL;
     break;
-    case TIMER_MODE_CLEAR_ON_MATCH_A:   
-        TCCR0A.byte |= TCCR0A_MODE_CLEAR_ON_MATCH_A;    
+    case TIMER_MODE_CLEAR_ON_MATCH_A:
+        TCCR0A.byte |= TCCR0A_MODE_CLEAR_ON_MATCH_A;
     break;
-    case TIMER_MODE_FAST_PWM:           
+    case TIMER_MODE_FAST_PWM:
         TCCR0A.byte |= TCCR0A_MODE_FAST_PWM;
-        TCCR0B.bits.WGM02 = WGM02_PWM_ON_OCRA;    
+        TCCR0B.bits.WGM02 = WGM02_PWM_ON_OCRA;
     break;
-    case TIMER_MODE_PHASE_CORRECT_PWM:  
-        TCCR0A.byte |= TCCR0A_MODE_PHASE_CORRECT_PWM; 
+    case TIMER_MODE_PHASE_CORRECT_PWM:
+        TCCR0A.byte |= TCCR0A_MODE_PHASE_CORRECT_PWM;
         TCCR0B.bits.WGM02 = WGM02_PWM_ON_OCRA;
     break;
     default:
