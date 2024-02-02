@@ -23,6 +23,8 @@ typedef volatile SIZE_T VSIZE_T;
 #define SIZE_T_MAX U16_T_MAX
 
 typedef float FLOAT_T;
+/** Approximately zero equals zero. */
+#define ZERO_EPSILON 0.0001f
 
 
 /** Represents a hardware register's bits, or its total byte value. */
