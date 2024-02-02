@@ -50,9 +50,6 @@ ISR(TIMER1_OVF_vect)
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
     }
-
-    /* Reset timer to 50-ms */
-    timer1_set(SCHEDULER_TIMER_BASE_VALUE);
 }
 
 
@@ -66,8 +63,9 @@ void scheduler_init(void)
     g_scheduler_state = SCHEDULER_IDLE;
     
     timer1_enable(
-        TIMER_MODE_NORMAL, 
-        TIMER1_PRESCALE_OVER_256, 
+        TIMER_MODE_CLEAR_ON_MATCH_A, 
+        TIMER1_PRESCALE_OVER_256,
+        TIMER_OUTPUT_PINS_DISABLED,
         TIMER1_OVF_INTERRUPT_ENABLED
     );
     timer1_set(SCHEDULER_TIMER_BASE_VALUE);

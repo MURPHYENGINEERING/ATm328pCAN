@@ -14,11 +14,10 @@
 /** Value to which the Timer/Counter 1 should be set to have it overflow in 
   * 50-ms. */
 #define SCHEDULER_TIMER_BASE_VALUE \
-    ( \
-        (U16_T) ((FLOAT_T) U16_T_MAX \
-        - ((SCHEDULER_TIMER_INTERVAL_SECONDS / SCHEDULER_TIMER_SECONDS_PER_OVERFLOW) \
-        * (FLOAT_T) U16_T_MAX)) \
-    )
+        (U16_T) (\
+          (SCHEDULER_TIMER_INTERVAL_SECONDS / SCHEDULER_TIMER_SECONDS_PER_OVERFLOW) \
+          * (FLOAT_T) U16_T_MAX \
+        ) \
 
 
 /** Number of tasks run by the scheduler in round-robin fashion, yielding a 

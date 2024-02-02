@@ -108,15 +108,28 @@ typedef enum {
 } TIMER_MODE_T;
 
 
+/** Represents the modes of a timer's output pins. */
+typedef enum {
+    /** Disable all timer output pins. */
+    TIMER_OUTPUT_PINS_DISABLED = 0,
+    /** Toggle the first output pin on compare match. */
+    TIMER_OUTPUT_PIN_A_TOGGLE = 1,
+    /** Toggle the second output pin on compare match. */
+    TIMER_OUTPUT_PIN_B_TOGGLE = 2
+} TIMER_OUTPUT_PIN_FLAGS_T;
+
+
 void timer0_init(
     TIMER_MODE_T mode,
     TIMER0_PRESCALE_T prescale, 
+    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER0_INTERRUPT_FLAGS_T interrupt_mode
 );
 
 void timer1_init(
     TIMER_MODE_T mode,
     TIMER1_PRESCALE_T prescale, 
+    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER1_INTERRUPT_FLAGS_T interrupt_flags
 );
 

@@ -11,6 +11,23 @@
 
 
 /*******************************************************************************
+ * Initialize the demo application.
+ ******************************************************************************/
+void demo_init(void)
+{
+    timer0_init(
+        TIMER_MODE_FAST_PWM,
+        /* 15-KHz PWM */
+        TIMER0_PRESCALE_OVER_1024,
+        TIMER_OUTPUT_PIN_A_TOGGLE,
+        TIMER0_INTERRUPTS_OFF
+    );
+    /* 50% duty cycle */
+    timer0_pwm(0.5f);
+}
+
+
+/*******************************************************************************
  * Perform the demo transmit task, writing messages to the CAN software FIFO and
  * to the USART TX buffer.
  ******************************************************************************/ 

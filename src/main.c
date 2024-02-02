@@ -45,11 +45,17 @@ S16_T main(void)
     usart_config.stop_bits = USART_STOP_BITS_1;
     usart_config.parity = USART_PARITY_MODE_EVEN;
 
+    /* Start the USART bus */
     usart_init(usart_config);
 
+    /* Initiate conversion on sample and wait for it to finish before returning. */
     adc_init(ADC_MODE_BLOCKING);
 
+    /* Command and Control */
     cnc_init();
+
+    /* Demo application */
+    demo_init();
 
     /* Start task timing */
     scheduler_init();

@@ -15,6 +15,7 @@
 void timer0_init(
     TIMER_MODE_T mode,
     TIMER0_PRESCALE_T prescale, 
+    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER0_INTERRUPT_FLAGS_T interrupt_flags
 )
 {
@@ -62,6 +63,14 @@ void timer0_init(
     break;
     }
 
+    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_A_TOGGLE) ) {
+        TCCR0A.bits.COM0A0 = 1;
+    }
+
+    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_B_TOGGLE) ) {
+        TCCR0A.bits.COM0B0 = 1;
+    }
+
     if (0 != (interrupt_flags & TIMER0_OVF_INTERRUPT_ENABLED)) {
         TIMSK0.bits.TOIE0 = TIMSK_ENABLE_INTERRUPT;
     }
@@ -84,6 +93,7 @@ void timer0_init(
 void timer1_init(
     TIMER_MODE_T mode,
     TIMER1_PRESCALE_T prescale, 
+    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER1_INTERRUPT_FLAGS_T interrupt_flags
 )
 {
@@ -131,6 +141,14 @@ void timer1_init(
     case TIMER1_EXTERNAL_CLOCK_FALLING_EDGE:    TCCR1B.byte |= TCCR1B_CS_EXTERNAL_FALLING;  break;
     default:
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+    }
+
+    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_A_TOGGLE) ) {
+        TCCR1A.bits.COM1A0 = 1;
+    }
+
+    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_B_TOGGLE) ) {
+        TCCR1A.bits.COM1B0 = 1;
     }
 
     if ( 0 != (interrupt_flags & TIMER1_OVF_INTERRUPT_ENABLED) ) {
@@ -210,4 +228,28 @@ void timer0_set_comp(TIMER0_COMPARATOR_T comp, TIMER0_VALUE_T value)
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FALSE, get_pc());
     break;
     }
+}
+
+
+/*******************************************************************************
+ * Set the PWM duty cycle for Timer/Counter 0.
+ * PWM must be enabled by setting the timer mode in `timer0_init` to one of the
+ * PWM modes.
+ * \param[in] duty  The duty cycle at which to run PWM.
+ ******************************************************************************/
+void timer0_pwm(FLOAT_T duty)
+{
+    OCR0A.byte = (U8_T)( duty * (FLOAT_T)U8_T_MAX );
+}
+
+
+/*******************************************************************************
+ * Set the PWM duty cycle for Timer/Counter 1.
+ * PWM must be enabled by setting the timer mode in `timer1_init` to one of the
+ * PWM modes.
+ * \param[in] duty  The duty cycle at which to run PWM.
+ ******************************************************************************/
+void timer1_pwm(FLOAT_T duty)
+{
+    OCR1A.halfword = (U16_T)( duty * (FLOAT_T)U16_T_MAX );
 }
