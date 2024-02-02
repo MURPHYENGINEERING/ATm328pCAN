@@ -79,6 +79,9 @@ SECTIONS
   PORT_SPI      = 0x25;
   PIN_SPI       = 0x23;
 
+  /* TWI */
+  TWBR          = 0xB8;
+
   /* Timer 1 */
   TCCR1A        = 0x80;
   TCCR1B        = 0x81;
