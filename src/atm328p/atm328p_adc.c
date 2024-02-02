@@ -46,6 +46,7 @@ void adc_init(ADC_MODE_T mode)
     ADCSRA.byte = (U8_T) 0;
     ADCSRB.byte = (U8_T) 0;
 
+    /* The ADC doesn't work at any prescaler faster than this. */
     ADCSRA.byte |= ADPS_PRESCALE_OVER_4;
 
     /* Select the appropriate reference for the Arduino UNO development board

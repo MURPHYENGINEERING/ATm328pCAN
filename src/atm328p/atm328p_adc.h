@@ -101,6 +101,7 @@ extern volatile ADCSRA_T ADCSRA;
 /** The ADC is currently converting or should start to convert. */
 #define ADSC_CONVERTING TRUE
 
+/** Set the ADC prescaler to F_CLK/4 (4-MHz) */
 #define ADPS_PRESCALE_OVER_4 0b00000010
 
 
