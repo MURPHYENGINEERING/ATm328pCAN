@@ -65,7 +65,11 @@ void scheduler_init(void)
     g_task_idx = 0;
     g_scheduler_state = SCHEDULER_IDLE;
     
-    timer1_enable(TIMER1_PRESCALE_OVER_256, TIMER1_OVF_INTERRUPT_ENABLED);
+    timer1_enable(
+        TIMER_MODE_NORMAL, 
+        TIMER1_PRESCALE_OVER_256, 
+        TIMER1_OVF_INTERRUPT_ENABLED
+    );
     timer1_set(SCHEDULER_TIMER_BASE_VALUE);
 }
 

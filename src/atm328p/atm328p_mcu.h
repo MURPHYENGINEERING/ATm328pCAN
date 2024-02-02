@@ -66,4 +66,9 @@ extern volatile PRR_T PRR;
 /** Enable power reduction for the Timer/Counter 1 device. */
 #define PRTIM1_DISABLE_TIMER TRUE
 
+/** Disable power reduction for the Timer/Counter 0 device. */
+#define PRTIM0_ENABLE_TIMER FALSE
+/** Enable power reduction for the Timer/Counter 0 device. */
+#define PRTIM0_DISABLE_TIMER TRUE
+
 #endif
