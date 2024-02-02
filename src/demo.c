@@ -28,8 +28,7 @@ void demo_init(void)
 
 
 /*******************************************************************************
- * Perform the demo transmit task, writing messages to the CAN software FIFO and
- * to the USART TX buffer.
+ * Perform the demo transmit task, writing messages to the CAN software FIFO.
  ******************************************************************************/ 
 void task_demo_tx(void)
 {
@@ -63,17 +62,12 @@ void task_demo_tx(void)
             (U32_T) identifier
         );
     }
-
-    len = usart_rx(buf, CAN_FIFO_DATA_LEN);
-    if (0 < len) {
-        usart_tx(buf, len);
-    }
 }
 
 
 /*******************************************************************************
  * Perform the demo receive task, accepting messages from the CAN software FIFO
- * and reading from the USART RX buffer.
+ * and writing them to the USART.
  ******************************************************************************/ 
 void task_demo_rx(void)
 {
@@ -90,8 +84,8 @@ void task_demo_rx(void)
         status = can_rx_q_remove(&identifier, buf, &len);
 
         if (FIFO_OK == status) {
-            /* TODO: What do we do with received messages? */
-
+            usart_tx(buf, len);
+            
         } else {
             fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
         }

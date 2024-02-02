@@ -160,7 +160,7 @@ extern volatile TCCR1A_T TCCR1A;
 /** Enable Fast PWM mode, cycling on comparison match with OCR1A. */
 #define TCCR1A_MODE_FAST_PWM_OCR1A (U8_T)( (1u << TCCR1A_WGM10) | (1u << TCCR1A_WGM11) )
 /** Enable Phase Correct PWM mode, cycling on comparison match with OCRC1A. */
-#define TCCR1A_MODE_PHASE_CORRECT_PWM_OCR1A (U8_T)( 1u << TCCR1A_WGM10 )
+#define TCCR1A_MODE_PHASE_CORRECT_PWM_OCR1A (U8_T)( (1u << TCCR1A_WGM11) | (1u << TCCR1A_WGM10) )
 
 /** Timer/Counter 1 Control Register B */
 typedef union {

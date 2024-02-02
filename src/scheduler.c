@@ -68,7 +68,6 @@ void scheduler_init(void)
         TIMER_OUTPUT_PINS_DISABLED,
         TIMER1_OVF_INTERRUPT_ENABLED
     );
-    timer1_set(SCHEDULER_TIMER_BASE_VALUE);
 }
 
 
