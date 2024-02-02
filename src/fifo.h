@@ -4,7 +4,7 @@
 #include "types.h"
 
 /** Maximum length of data in bytes in any FIFO queue element. */
-#define FIFO_DATA_LEN (SIZE_T) 32
+#define FIFO_DATA_LEN (SIZE_T) 32u
 
 /** Represents a single element in a FIFO queue. */
 typedef struct {

@@ -27,18 +27,18 @@ extern volatile REGISTER_T EEDR;
 typedef union {
     struct {
         /** EEPROM Read Enable */
-        VBOOL_T EERE : 1;
+        VBOOL_T EERE        : 1;
         /** EEPROM Write Enable */
-        VBOOL_T EEPE : 1;
+        VBOOL_T EEPE        : 1;
         /** EEPROM Master Write Enable */
-        VBOOL_T EEMPE : 1;
+        VBOOL_T EEMPE       : 1;
         /** EEPROM Ready Interrupt Enable */
-        VBOOL_T EERIE : 1;
+        VBOOL_T EERIE       : 1;
         /** EEPROM Mode Bits */
-        VBOOL_T EEPM0 : 1;
-        VBOOL_T EEPM1 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T EEPM0       : 1;
+        VBOOL_T EEPM1       : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } EECR_T;

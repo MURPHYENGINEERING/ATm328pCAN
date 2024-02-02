@@ -8,20 +8,20 @@
 typedef union {
     struct {
         /** SPI Clock Rate Select */
-        VBOOL_T SPR0 : 1;
-        VBOOL_T SPR1 : 1;
+        VBOOL_T SPR0    : 1;
+        VBOOL_T SPR1    : 1;
         /** Clock Phase */
-        VBOOL_T CPHA : 1;
+        VBOOL_T CPHA    : 1;
         /** Clock Polarity */
-        VBOOL_T CPOL : 1;
+        VBOOL_T CPOL    : 1;
         /** Master/Slave Select */
-        VBOOL_T MSTR : 1;
+        VBOOL_T MSTR    : 1;
         /** Data Order */
-        VBOOL_T DORD : 1;
+        VBOOL_T DORD    : 1;
         /** SPI Enable */
-        VBOOL_T SPE : 1;
+        VBOOL_T SPE     : 1;
         /** SPI Interrupt Enable */
-        VBOOL_T SPIE : 1;
+        VBOOL_T SPIE    : 1;
     } bits;
     VU8_T byte;
 } SPCR_T;
@@ -49,16 +49,16 @@ extern volatile SPCR_T SPCR;
 typedef union {
     struct {
         /** Double SPI Speed Bit */
-        VBOOL_T SPI2X : 1;
+        VBOOL_T SPI2X   : 1;
         VBOOL_T Unused1 : 1;
         VBOOL_T Unused2 : 1;
         VBOOL_T Unused3 : 1;
         VBOOL_T Unused4 : 1;
         VBOOL_T Unused5 : 1;
         /** Write Collision Flag */
-        VBOOL_T WCOL : 1;
+        VBOOL_T WCOL    : 1;
         /** SPI Interrupt Flag */
-        VBOOL_T SPIF : 1;
+        VBOOL_T SPIF    : 1;
     } bits;
     VU8_T byte;
 } SPSR_T;
@@ -76,13 +76,13 @@ typedef union {
         VBOOL_T Unused0 : 1;
         VBOOL_T Unused1 : 1;
         /** SPI bus master slave select */
-        VBOOL_T SS : 1;
+        VBOOL_T SS      : 1;
         /** SPI bus Master Out Slave In */
-        VBOOL_T MOSI : 1;
+        VBOOL_T MOSI    : 1;
         /** SPI bus Master In Slave Out */
-        VBOOL_T MISO : 1;
+        VBOOL_T MISO    : 1;
         /** SPI bus master clock */
-        VBOOL_T SCK : 1;
+        VBOOL_T SCK     : 1;
         VBOOL_T Unused6 : 1;
         VBOOL_T Unused7 : 1;
     } bits;

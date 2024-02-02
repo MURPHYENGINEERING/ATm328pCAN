@@ -3,7 +3,7 @@
 #include "dsc.h"
 #include "fai.h"
 
-#define USART_BUF_LEN 256
+#define USART_BUF_LEN 256u
 
 VU8_T g_usart_tx_buf[USART_BUF_LEN];
 VSIZE_T g_usart_tx_buf_n;
@@ -111,13 +111,13 @@ ISR(USART0_RX_vect)
  ******************************************************************************/
 void usart_init(USART_CONFIG_T config)
 {
-    g_usart_rx_buf_write_idx    = (SIZE_T) 0;
-    g_usart_rx_buf_read_idx     = (SIZE_T) 0;
-    g_usart_rx_buf_n            = (SIZE_T) 0;
+    g_usart_rx_buf_write_idx    = (SIZE_T) 0u;
+    g_usart_rx_buf_read_idx     = (SIZE_T) 0u;
+    g_usart_rx_buf_n            = (SIZE_T) 0u;
 
-    g_usart_tx_buf_write_idx    = (SIZE_T) 0;
-    g_usart_tx_buf_read_idx     = (SIZE_T) 0;
-    g_usart_tx_buf_n            = (SIZE_T) 0;
+    g_usart_tx_buf_write_idx    = (SIZE_T) 0u;
+    g_usart_tx_buf_read_idx     = (SIZE_T) 0u;
+    g_usart_tx_buf_n            = (SIZE_T) 0u;
 
     g_usart_tx_transmitting = FALSE;
 
@@ -142,7 +142,7 @@ SIZE_T usart_tx(U8_T* buf, SIZE_T len)
      * buffer. */
     cli();
 
-    i = (SIZE_T) 0;
+    i = (SIZE_T) 0u;
 
     while ( (USART_BUF_LEN > i) && (i < len) ) {
         g_usart_tx_buf[g_usart_tx_buf_write_idx] = buf[i];
@@ -186,7 +186,7 @@ SIZE_T usart_rx(U8_T* buf, SIZE_T len)
      * buffer. */
     cli();
 
-    i = (SIZE_T) 0;
+    i = (SIZE_T) 0u;
 
     while ( (i < g_usart_rx_buf_n) && (i < len) ) {
         buf[i] = g_usart_rx_buf[g_usart_rx_buf_read_idx];

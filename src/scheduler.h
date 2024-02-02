@@ -2,9 +2,9 @@
 #define __SCHEDULER_H__
 
 /** The base clock of the ATm328P is 16-MHz. */
-#define F_CLK 16000000
+#define F_CLK 16000000u
 /** Timer Prescale = `F_CLK` / 256 */
-#define SCHEDULER_TIMER_PRESCALE_DIVISOR 256
+#define SCHEDULER_TIMER_PRESCALE_DIVISOR 256u
 /** Seconds per overflow of the 16-bit Timer/Counter 1. */
 #define SCHEDULER_TIMER_SECONDS_PER_OVERFLOW \
     ( (FLOAT_T) U16_T_MAX / ( (FLOAT_T) F_CLK / (FLOAT_T) SCHEDULER_TIMER_PRESCALE_DIVISOR ) )
@@ -22,7 +22,7 @@
 
 /** Number of tasks run by the scheduler in round-robin fashion, yielding a 
   * 500-ms major cycle. */
-#define N_TASKS 10
+#define N_TASKS 10u
 
 /** Represents the current state of the scheduler. */
 typedef enum {

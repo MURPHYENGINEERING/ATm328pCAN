@@ -85,7 +85,7 @@ extern volatile REGISTER_T UDR0;
 
 /** USART Baud Rate Registers */
 extern volatile HALFWORD_T UBRR0;
-#define UBRRn_MASK 0b0000111111111111
+#define UBRRn_MASK 0b0000111111111111u
 
 /** USART Baud Rate Register values for fosc = 16-MHz */
 #define UBRRn_2400bps    (U16_T) 416u
@@ -101,6 +101,6 @@ extern volatile HALFWORD_T UBRR0;
 #define UBRRn_230400bps  (U16_T) 3u
 #define UBRRn_250000bps  (U16_T) 3u
 #define UBRRn_500000bps  (U16_T) 1u
-#define UBRRn_1000000bps (U16_T) 0
+#define UBRRn_1000000bps (U16_T) 0u
 
 #endif

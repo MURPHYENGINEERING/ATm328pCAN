@@ -9,21 +9,21 @@
 
 
 /** Maximum number of commands in the RX FIFO queue. */
-#define CNC_RX_FIFO_LEN 10
+#define CNC_RX_FIFO_LEN 10u
 /** Command and Control RX FIFO queue underlying buffer. */
 FIFO_ENTRY_T g_cnc_rx_q_buf[CNC_RX_FIFO_LEN];
 /** Command and Control RX FIFO queue. */
 FIFO_T g_cnc_rx_q;
 
 /** Maximum number of data words for any command. */
-#define CNC_RX_DATA_FIFO_LEN 3
+#define CNC_RX_DATA_FIFO_LEN 3u
 /** Command data RX FIFO queue underlying buffer. */
 FIFO_ENTRY_T g_cnc_data_q_buf[CNC_RX_DATA_FIFO_LEN];
 /** Command data RX FIFO queue. */
 FIFO_T g_cnc_data_q;
 
 /** Maximum length in bytes of the Command and Control RX buffer. */
-#define CNC_RX_BUF_LEN 20
+#define CNC_RX_BUF_LEN 20u
 /** Command and Control RX buffer. */
 U8_T g_cnc_rx_buf[CNC_RX_BUF_LEN];
 /** Write index into the Command and Control RX buffer. */
@@ -76,19 +76,19 @@ void task_cnc_rx(void)
     for (i = 0; i < g_cnc_rx_buf_write_idx; ++i) {
         if ((U8_T) '\n' == g_cnc_rx_buf[i]) {
             /* Don't process a command if the buffer is actually empty. */
-            if (0 < i) {
+            if (0u < i) {
                 /* Omit the newline */
                 status = fifo_q_add(&g_cnc_rx_q, g_cnc_rx_buf, i-1);
                 if (FIFO_FULL == status) {
                     fai_pass_fail_logger(
                         FAI_FAULT_ID_CNC_RX_Q_OVERFLOW, 
                         FAIL, 
-                        (U32_T) 0
+                        (U32_T) 0u
                     );
                 }
             }
             /* Clear the buffer */
-            g_cnc_rx_buf_write_idx = (SIZE_T) 0;
+            g_cnc_rx_buf_write_idx = (SIZE_T) 0u;
         }
     }
 
@@ -123,11 +123,11 @@ static void cnc_process_q(void)
  ******************************************************************************/
 static void cnc_process_cmd(U8_T* buf, SIZE_T len)
 {
-    if (0 == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_CLEAR_FAULTS], len)) {
+    if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_CLEAR_FAULTS], len)) {
         cnc_cmd_clear_faults();
-    } else if (0 == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_REPORT_FAULTS], len)) {
+    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_REPORT_FAULTS], len)) {
         cnc_cmd_report_faults();
-    } else if (0 == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
+    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
         cnc_cmd_send_can_msg();
     } else {
         /** Command data, put it on the data queue for processing when the command
@@ -202,6 +202,6 @@ static void cnc_cmd_send_can_msg(void)
             fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 1u);
         }
     } else {
-        fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 0);
+        fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 0u);
     }
 }

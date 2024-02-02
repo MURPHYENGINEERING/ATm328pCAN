@@ -25,7 +25,7 @@ void fai_clear_faults(void)
 
     memset_by_U8(
         (U8_T*)(void*)g_fault_counters, 
-        (U8_T) 0, 
+        (U8_T) 0u, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 
@@ -74,10 +74,10 @@ void fai_pass_fail_logger(
         /* Update the pending faults table */
         p_fault = &g_fault_counters[fault_id];
         if (PASS == indicator) {
-            p_fault->count = (U8_T) 0;
-            p_fault->head = (U8_T) 0;
+            p_fault->count = (U8_T) 0u;
+            p_fault->head = (U8_T) 0u;
             for (i = 0; FAI_TS_DATA_LEN > i; ++i) {
-                p_fault->ts_data[i] = (U32_T) 0;
+                p_fault->ts_data[i] = (U32_T) 0u;
             }
         } else {
             /* Add a fault to the counter for the given ID */
@@ -88,7 +88,7 @@ void fai_pass_fail_logger(
             /* Don't wrap the fault counter so we can count them even if they
              * aren't stored. */
             if (FAI_TS_DATA_LEN == p_fault->head) {
-                p_fault->head = (U8_T) 0;
+                p_fault->head = (U8_T) 0u;
             }
         }
         g_pending_faults = TRUE;

@@ -14,7 +14,7 @@ SIZE_T strnlen_by_U8(U8_T* s, SIZE_T max)
 {
     SIZE_T i;
 
-    for (i = 0; (0 != s[i]) && (i < max); ++i) {
+    for (i = 0u; ('\0' != s[i]) && (i < max); ++i) {
     }
 
     return i;
@@ -33,7 +33,7 @@ void str_reverse(U8_T* s)
 
     j = strnlen_by_U8(s, SIZE_T_MAX) - 1;
 
-    for (i = 0; i < j; ++i) {
+    for (i = 0u; i < j; ++i) {
         c = s[i];
         s[i] = s[j];
         s[j] = c;
@@ -52,12 +52,12 @@ SIZE_T itoa(U8_T* s, U32_T n)
 {
     SIZE_T i;
  
-    i = 0;
+    i = 0u;
 
     do { 
-        s[i] = n % 10 + '0';
+        s[i] = n % 10u + '0';
         ++i;
-    } while ((n /= 10) > 0);
+    } while ((n /= 10u) > 0u);
 
     s[i] = '\0';
 

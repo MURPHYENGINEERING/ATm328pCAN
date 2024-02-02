@@ -6,14 +6,14 @@
 
 typedef union {
     struct {
-        VBOOL_T PORF : 1;
-        VBOOL_T EXTRF : 1;
-        VBOOL_T BORF : 1;
-        VBOOL_T WDRF : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T PORF        : 1;
+        VBOOL_T EXTRF       : 1;
+        VBOOL_T BORF        : 1;
+        VBOOL_T WDRF        : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } MCUSR_T;

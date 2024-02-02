@@ -10,7 +10,7 @@
 /** Maximum number of elements in the CAN RX FIFO queue. */
 #define CAN_FIFO_RX_SIZE (SIZE_T) 4u
 /** Maximum data size for any CAN message in a FIFO queue. */
-#define CAN_FIFO_DATA_LEN (SIZE_T) 8
+#define CAN_FIFO_DATA_LEN (SIZE_T) 8u
 
 /** Represents an 11-bit CAN message identifier. */
 typedef U16_T CAN_IDENT_T;

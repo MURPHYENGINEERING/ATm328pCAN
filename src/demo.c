@@ -42,13 +42,13 @@ void task_demo_tx(void)
 
     identifier = (U16_T) 0xDEADBEEFu;
 
-    memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6);
+    memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6u);
     len = strnlen_by_U8((U8_T*) "Hello!", CAN_FIFO_DATA_LEN);
 
     status = can_tx_q_add(identifier, buf, len);
 
     if (FIFO_OK == status) {
-        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0);
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
         /*
         adc = adc_sample();
         len = itoa(buf, (U32_T) adc);

@@ -11,10 +11,10 @@
  ******************************************************************************/
 U8_T* serialize_U32(U8_T* buf, U32_T val)
 {
-    buf[0] = (U8_T)( (val >> 24) & 0xFF );
-    buf[1] = (U8_T)( (val >> 16) & 0xFF );
-    buf[2] = (U8_T)( (val >> 8) & 0xFF );
-    buf[3] = (U8_T)( val & 0xFF );
+    buf[0] = (U8_T)( (val >> 24) & 0xFFu );
+    buf[1] = (U8_T)( (val >> 16) & 0xFFu );
+    buf[2] = (U8_T)( (val >> 8) & 0xFFu );
+    buf[3] = (U8_T)( val & 0xFFu );
 
     return (U8_T*)( buf + 4u );
 }
@@ -35,7 +35,7 @@ U8_T* serialize_fault(U8_T* buf, FAI_FAULT_ID_T fault_id, FAI_FAULT_COUNTER_T* f
     buf[1] = (U8_T) fault->count;
 
     p_buf = &buf[2];
-    for (i = 0; (i < fault->count) && (FAI_TS_DATA_LEN > i); ++i) {
+    for (i = 0u; (i < fault->count) && (FAI_TS_DATA_LEN > i); ++i) {
         p_buf = serialize_U32(p_buf, fault->ts_data[i]);
     }
     
@@ -51,7 +51,7 @@ U16_T deserialize_U16(U8_T* buf)
 {
     U16_T val;
 
-    val = (U16_T) 0;
+    val = (U16_T) 0u;
     val |= (U16_T) buf[0] << 8;
     val |= (U16_T) buf[1];
 

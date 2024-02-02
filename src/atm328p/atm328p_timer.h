@@ -7,42 +7,42 @@
 typedef union {
     struct {
         /** Waveform Generation Mode */
-        VBOOL_T WGM00 : 1;
-        VBOOL_T WGM01 : 1;
-        VBOOL_T Reserved2 : 1;
-        VBOOL_T Reserved3 : 1;
+        VBOOL_T WGM00       : 1;
+        VBOOL_T WGM01       : 1;
+        VBOOL_T Reserved2   : 1;
+        VBOOL_T Reserved3   : 1;
         /** Compare Match Output B Mode */ 
-        VBOOL_T COM0B0 : 1;
-        VBOOL_T COM0B1 : 1;
+        VBOOL_T COM0B0      : 1;
+        VBOOL_T COM0B1      : 1;
         /** Compare Match Output A Mode */ 
-        VBOOL_T COM0A0 : 1;
-        VBOOL_T COM0A1 : 1;
+        VBOOL_T COM0A0      : 1;
+        VBOOL_T COM0A1      : 1;
     } bits;
     VU8_T byte;
 } TCCR0A_T;
 /** Timer/Counter 0 Control Register A */
 extern volatile TCCR0A_T TCCR0A;
 
-#define TCCR0A_MODE_NORMAL (U8_T) 0
-#define TCCR0A_MODE_PHASE_CORRECT_PWM   0b00000001
-#define TCCR0A_MODE_CLEAR_ON_MATCH_A    0b00000010
-#define TCCR0A_MODE_FAST_PWM            0b00000011
+#define TCCR0A_MODE_NORMAL (U8_T) 0u
+#define TCCR0A_MODE_PHASE_CORRECT_PWM   0b00000001u
+#define TCCR0A_MODE_CLEAR_ON_MATCH_A    0b00000010u
+#define TCCR0A_MODE_FAST_PWM            0b00000011u
 
 /** Timer/Counter 0 Control Register B */
 typedef union {
     struct {
         /** Clock Select */
-        VBOOL_T CS00 : 1;
-        VBOOL_T CS01 : 1;
-        VBOOL_T CS02 : 1;
+        VBOOL_T CS00        : 1;
+        VBOOL_T CS01        : 1;
+        VBOOL_T CS02        : 1;
         /** Waveform Generation Mode */
-        VBOOL_T WGM02 : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
+        VBOOL_T WGM02       : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
         /** Force Output Compare B */
-        VBOOL_T FOC0B : 1;
+        VBOOL_T FOC0B       : 1;
         /** Force Output Compare A */
-        VBOOL_T FOC0A : 1;
+        VBOOL_T FOC0A       : 1;
     } bits;
     VU8_T byte;
 } TCCR0B_T;
@@ -62,7 +62,7 @@ extern volatile TCCR0B_T TCCR0B;
 #define TCCR0B_CS_MASK \
     (U8_T)( (1u << TCCR0B_CS02) | (1u << TCCR0B_CS01) | (1u << TCCR0B_CS00) )
 /** Select a prescale value of 0 (no counting) */
-#define TCCR0B_CS_OFF (U8_T) 0
+#define TCCR0B_CS_OFF (U8_T) 0u
 /** Select a prescale value of FCLK/1 */
 #define TCCR0B_CS_OVER_1 (U8_T)( 1u << TCCR0B_CS00 )
 /** Select a prescale value of FCLK/8 */
@@ -93,16 +93,16 @@ extern volatile REGISTER_T OCR0B;
 typedef union {
     struct {
         /** Timer/Counter 0 Overflow Interrupt Enable */
-        VBOOL_T TOIE0 : 1;
+        VBOOL_T TOIE0       : 1;
         /** Timer/Counter 0 Output Compare Match A Interrupt Enable */
-        VBOOL_T OCIE0A : 1;
+        VBOOL_T OCIE0A      : 1;
         /** Timer/Counter 0 Output Compare Match B Interrupt Enable */
-        VBOOL_T OCIE0B : 1;
-        VBOOL_T Reserved3 : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T OCIE0B      : 1;
+        VBOOL_T Reserved3   : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } TIMSK0_T;
@@ -114,16 +114,16 @@ extern volatile TIMSK0_T TIMSK0;
 typedef union {
     struct {
         /** Timer/Counter 0 Overflow Flag */
-        VBOOL_T TOV0 : 1;
+        VBOOL_T TOV0        : 1;
         /** Timer/Counter 0 Output Compare A Match Flag */
-        VBOOL_T OCF0A : 1;
+        VBOOL_T OCF0A       : 1;
         /** Timer/Counter 0 Output Compare B Match Flag */
-        VBOOL_T OCF0B : 1;
-        VBOOL_T Reserved3 : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T OCF0B       : 1;
+        VBOOL_T Reserved3   : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } TIFR0_T;
@@ -134,23 +134,23 @@ extern volatile TIFR0_T TIFR0;
 /** Timer/Counter 1 Control Register A */
 typedef union {
     struct {
-        VBOOL_T WGM10 : 1;
-        VBOOL_T WGM11 : 1;
-        VBOOL_T Reserved2 : 1;
-        VBOOL_T Reserved3 : 1;
+        VBOOL_T WGM10       : 1;
+        VBOOL_T WGM11       : 1;
+        VBOOL_T Reserved2   : 1;
+        VBOOL_T Reserved3   : 1;
         /** Compare Output Mode for Channel B */
-        VBOOL_T COM1B0 : 1;
-        VBOOL_T COM1B1 : 1;
+        VBOOL_T COM1B0      : 1;
+        VBOOL_T COM1B1      : 1;
         /** Compare Output Mode for Channel A */
-        VBOOL_T COM1A0 : 1;
-        VBOOL_T COM1A1 : 1;
+        VBOOL_T COM1A0      : 1;
+        VBOOL_T COM1A1      : 1;
     } bits;
     VU8_T byte;
 } TCCR1A_T;
 /** Timer/Counter 1 Control Register A */
 extern volatile TCCR1A_T TCCR1A;
 /** Configure the Timer/Counter 1 in Normal mode (no output pins). */
-#define TCCR1A_NORMAL_MODE (U8_T) 0
+#define TCCR1A_NORMAL_MODE (U8_T) 0u
 
 /** Position of the WGM10 bit in TCCR1A. */
 #define TCCR1A_WGM10 0
@@ -166,17 +166,17 @@ extern volatile TCCR1A_T TCCR1A;
 typedef union {
     struct {
         /** Clock Select */
-        VBOOL_T CS10 : 1;
-        VBOOL_T CS11 : 1;
-        VBOOL_T CS12 : 1;
+        VBOOL_T CS10        : 1;
+        VBOOL_T CS11        : 1;
+        VBOOL_T CS12        : 1;
         /** Waveform Generation Mode */
-        VBOOL_T WGM12 : 1;
-        VBOOL_T WGM13 : 1;
-        VBOOL_T Reserved5 : 1;
+        VBOOL_T WGM12       : 1;
+        VBOOL_T WGM13       : 1;
+        VBOOL_T Reserved5   : 1;
         /** Input Capture Edge Select */
-        VBOOL_T ICES1 : 1;
+        VBOOL_T ICES1       : 1;
         /** Input Capture Noise Canceler */
-        VBOOL_T ICNC1 : 1;
+        VBOOL_T ICNC1       : 1;
     } bits;
     VU8_T byte;
 } TCCR1B_T;
@@ -237,16 +237,16 @@ extern volatile HALFWORD_T OCR1B;
 typedef union {
     struct {
         /** Timer/Counter 1, Overflow Interrupt Enable */
-        VBOOL_T TOIE1  : 1;
+        VBOOL_T TOIE1       : 1;
         /** Timer/Counter 1, Output Compare A Match Interrupt Enable */
-        VBOOL_T OCIE1A : 1;
+        VBOOL_T OCIE1A      : 1;
         /** Timer/Counter 1, Output Compare B Match Interrupt Enable */
-        VBOOL_T OCIE1B : 1;
-        VBOOL_T Reserved3 : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T OCIE1B      : 1;
+        VBOOL_T Reserved3   : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } TIMSK1_T;
@@ -263,16 +263,16 @@ extern volatile TIMSK1_T TIMSK1;
 typedef union {
     struct {
         /** Timer/Counter 1, Overflow Flag */
-        VBOOL_T TOV1 : 1;
+        VBOOL_T TOV1        : 1;
         /** Timer/Counter 1, Output Compare A Match Flag */
-        VBOOL_T OCF1A : 1;
+        VBOOL_T OCF1A       : 1;
         /** Timer/Counter 1, Output Compare B Match Flag */
-        VBOOL_T OCF1B : 1;
-        VBOOL_T Reserved3 : 1;
-        VBOOL_T Reserved4 : 1;
-        VBOOL_T Reserved5 : 1;
-        VBOOL_T Reserved6 : 1;
-        VBOOL_T Reserved7 : 1;
+        VBOOL_T OCF1B       : 1;
+        VBOOL_T Reserved3   : 1;
+        VBOOL_T Reserved4   : 1;
+        VBOOL_T Reserved5   : 1;
+        VBOOL_T Reserved6   : 1;
+        VBOOL_T Reserved7   : 1;
     } bits;
     VU8_T byte;
 } TIFR1_T;

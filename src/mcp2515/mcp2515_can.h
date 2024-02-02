@@ -26,22 +26,22 @@ typedef union
     VU8_T byte;
 } TXBnCTRL_T;
 
-#define ABTF_MESSAGE_ABORTED 1u
-#define ABTF_MESSAGE_TRANSMISSION_SUCCESSFUL 0
-#define MLOA_MESSAGE_LOST_ARBITRATION 1u
-#define TXERR_BUS_ERROR_DETECTED 1u
-#define TXREQ_TX_START 1u
-#define TXREQ_TX_STOP 0
-#define TXP_PRIORITY_HIGH 1u
-#define TXP_PRIORITY_LOW 0
+#define ABTF_MESSAGE_ABORTED TRUE
+#define ABTF_MESSAGE_TRANSMISSION_SUCCESSFUL FALSE
+#define MLOA_MESSAGE_LOST_ARBITRATION TRUE
+#define TXERR_BUS_ERROR_DETECTED TRUE
+#define TXREQ_TX_START TRUE
+#define TXREQ_TX_STOP FALSE
+#define TXP_PRIORITY_HIGH TRUE
+#define TXP_PRIORITY_LOW FALSE
 
-#define TXB0CTRL_ADDR 0x30
+#define TXB0CTRL_ADDR 0x30u
 TXBnCTRL_T TXB0CTRL;
 
-#define TXB1CTRL_ADDR 0x40
+#define TXB1CTRL_ADDR 0x40u
 TXBnCTRL_T TXB1CTRL;
 
-#define TXB2CTRL_ADDR 0x50
+#define TXB2CTRL_ADDR 0x50u
 TXBnCTRL_T TXB2CTRL;
 
 
@@ -67,10 +67,10 @@ typedef union
     VU8_T byte;
 } TXRTSCTRL_T;
 
-#define BnRTSM_PIN_REQUESTS_TRANSMISSION 1u
-#define BnRTS_REQUEST_TO_SEND 0
+#define BnRTSM_PIN_REQUESTS_TRANSMISSION TRUE
+#define BnRTS_REQUEST_TO_SEND FALSE
 
-#define TXRTSCTRL_ADDR 0x0D
+#define TXRTSCTRL_ADDR 0x0Du
 TXRTSCTRL_T TXRTSCTRL;
 
 /** Transmit Buffer n Standard Identifier Register, High Byte */
@@ -110,31 +110,31 @@ typedef union
 } TXBnSIDL_T;
 
 /** Configure the message identifier as a Standard 11-bit identifier. */
-#define EXIDE_STANDARD_IDENTIFIER 0
+#define EXIDE_STANDARD_IDENTIFIER FALSE
 
 /** Number of bits to left-shift an identifier to get the low bits into SIDL */
 #define SIDL_SHIFT 5
 /** Masks off only the Standard Identifier bits */
-#define SIDL_MASK (U8_T) 0b11100000
+#define SIDL_MASK (U8_T) 0b11100000u
 /** Number of bits to right-shift an identifier to get the high bits */
 #define SIDH_SHIFT 3
 /** Masks off only the high bits, after shifting */
-#define SIDH_MASK (U8_T) 0xFF
+#define SIDH_MASK (U8_T) 0xFFu
 #define SID_GET_HIGH_BITS(i) (U8_T)((i >> SIDH_SHIFT) & SIDH_MASK)
 #define SID_GET_LOW_BITS(i)  (U8_T)((i << SIDL_SHIFT) & SIDL_MASK)
 
-#define TXB0SIDH_ADDR 0x31
-#define TXB0SIDL_ADDR 0x32
+#define TXB0SIDH_ADDR 0x31u
+#define TXB0SIDL_ADDR 0x32u
 TXBnSIDH_T TXB0SIDH;
 TXBnSIDL_T TXB0SIDL;
 
-#define TXB1SIDH_ADDR 0x41
-#define TXB1SIDL_ADDR 0x42
+#define TXB1SIDH_ADDR 0x41u
+#define TXB1SIDL_ADDR 0x42u
 TXBnSIDH_T TXB1SIDH;
 TXBnSIDL_T TXB1SIDL;
 
-#define TXB2SIDH_ADDR 0x51
-#define TXB2SIDL_ADDR 0x52
+#define TXB2SIDH_ADDR 0x51u
+#define TXB2SIDL_ADDR 0x52u
 TXBnSIDH_T TXB2SIDH;
 TXBnSIDL_T TXB2SIDL;
 
@@ -159,28 +159,28 @@ typedef union
 
 /** Configure the next transmission as a Remote transmission (a request for
  * response). */
-#define RTR_REMOTE_TRANSMISSION 1u
+#define RTR_REMOTE_TRANSMISSION TRUE
 /** Configure the next transmission as a Data Frame. */
-#define RTR_DATA_FRAME 0
+#define RTR_DATA_FRAME FALSE
 
 /** Selects the bits that are relevant to the Data Length Control register. */
-#define DLC_MASK 0b00001111
+#define DLC_MASK 0b00001111u
 
 
 /** Address of the TXB0DLC register. */
-#define TXB0DLC_ADDR 0x35
+#define TXB0DLC_ADDR 0x35u
 /** Data Length Control register 0. Represents the length of data in the CAN TX
  * B0 buffer. */
 TXBnDLC_T TXB0DLC;
 
 /** Address of the TXB0DLC register. */
-#define TXB1DLC_ADDR 0x45
+#define TXB1DLC_ADDR 0x45u
 /** Data Length Control register 1. Represents the length of data in the CAN TX
  * B1 buffer. */
 TXBnDLC_T TXB1DLC;
 
 /** Address of the TXB2DLC register. */
-#define TXB2DLC_ADDR 0x55
+#define TXB2DLC_ADDR 0x55u
 /** Data Length Control register 2. Represents the length of data in the CAN TX
  * B2 buffer. */
 TXBnDLC_T TXB2DLC;
@@ -207,54 +207,54 @@ typedef union {
 } CANCTRL_T;
 
 /** Address of the CANCTRL register. */
-#define CANCTRL_ADDR 0x0F
+#define CANCTRL_ADDR 0x0Fu
 /** Mode Control register value. */
 CANCTRL_T CANCTRL;
 
 /** Configure the MCP2515 in Normal operation mode, where messages can be sent 
  * and received. */
-#define CANCTRL_MODE_NORMAL     0b00000000
+#define CANCTRL_MODE_NORMAL     0b00000000u
 /** Configure the MCP2515 as a loopback device. */
-#define CANCTRL_MODE_LOOPBACK   0b00000010
+#define CANCTRL_MODE_LOOPBACK   0b00000010u
 /** Configure the MCP2515 in Configuration mode, where certain configuration bits
  * can be changed. */
-#define CANCTRL_MODE_CONFIG     0b00000100
+#define CANCTRL_MODE_CONFIG     0b00000100u
 
 /** Base address of the TX B0 buffer data bytes. There are 8 data bytes following
  * this address. */
-#define TXB0D_BASE_ADDR 0x36
+#define TXB0D_BASE_ADDR 0x36u
 /** Base address of the TX B1 buffer data bytes. There are 8 data bytes following
  * this address. */
-#define TXB1D_BASE_ADDR 0x46
+#define TXB1D_BASE_ADDR 0x46u
 /** Base address of the TX B2 buffer data bytes. There are 8 data bytes following
  * this address. */
-#define TXB2D_BASE_ADDR 0x56
+#define TXB2D_BASE_ADDR 0x56u
 
 
 /* CAN Messages/Commands/Instructions */
 
 /** Perform a soft reset of the the MCP2515 device, initializing its registers 
  * to 0. */
-#define CAN_CMD_RESET       0b11000000
+#define CAN_CMD_RESET       0b11000000u
 /** Read from a register in the MCP2515 device. */
-#define CAN_CMD_READ        0b00000011
+#define CAN_CMD_READ        0b00000011u
 /** Write to a register in the MCP2515 device. */
-#define CAN_CMD_WRITE       0b00000010
-#define CAN_CMD_READ_STATUS 0b10100000
-#define CAN_CMD_RX_STATUS   0b10110000
-#define CAN_CMD_BIT_MODIFY  0b00000101
+#define CAN_CMD_WRITE       0b00000010u
+#define CAN_CMD_READ_STATUS 0b10100000u
+#define CAN_CMD_RX_STATUS   0b10110000u
+#define CAN_CMD_BIT_MODIFY  0b00000101u
 
 /** Request To Send a particular buffer indicated by the lower 3 bits. */
-#define CAN_CMD_RTS         0b10000000
+#define CAN_CMD_RTS         0b10000000u
 /** Request To Send the B0 message buffer. */
-#define CAN_CMD_RTS_B0      0b00000001
+#define CAN_CMD_RTS_B0      0b00000001u
 
 /** Start writing directly into a data buffer as indicated by the lower bits. */
-#define CAN_CMD_LOAD_TX                     0b01000000
+#define CAN_CMD_LOAD_TX                     0b01000000u
 /** Start writing directly into the B0 Standard Identifier bytes. */
-#define CAN_CMD_LOAD_TX_START_AT_TXB0SIDH   0b00000000
+#define CAN_CMD_LOAD_TX_START_AT_TXB0SIDH   0b00000000u
 /** Start writing directly into the B0 message data bytes. */
-#define CAN_CMD_LOAD_TX_START_AT_TXB0D0     0b00000001
+#define CAN_CMD_LOAD_TX_START_AT_TXB0D0     0b00000001u
 
 
 #endif

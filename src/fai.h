@@ -7,7 +7,7 @@
 #define FAI_TS_DATA_LEN (SIZE_T) 4u
 
 /** Address of the "faults have been initialized" flag in NVM. */
-#define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0
+#define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0u
 
 /** Base address in the NVM where fault data is stored. */
 #define FAI_NVM_BASE_ADDRESS (SIZE_T) 1u

@@ -6,7 +6,7 @@ typedef volatile BOOL_T VBOOL_T;
 
 typedef unsigned char U8_T;
 typedef volatile U8_T VU8_T;
-#define U8_T_MAX ((U8_T) 255)
+#define U8_T_MAX ((U8_T) 255u)
 
 typedef int S16_T;
 typedef unsigned short U16_T;
@@ -72,11 +72,11 @@ typedef union {
 
 
 #define TRUE  (BOOL_T) 1u
-#define FALSE (BOOL_T) 0
+#define FALSE (BOOL_T) 0u
 
 
 typedef enum {
-    LOW = 0,
+    LOW = 0u,
     GND = LOW,
     HIGH = 1u,
     OPEN = HIGH
@@ -84,30 +84,30 @@ typedef enum {
 
 
 typedef enum {
-    OFF = 0,
+    OFF = 0u,
     ON = 1u
 } ON_T;
 
 
 typedef enum {
-    DISABLED = 0,
+    DISABLED = 0u,
     ENABLED = 1u
 } ENABLE_T;
 
 
 typedef enum {
-    FAIL = 0,
+    FAIL = 0u,
     PASS = 1u
 } PASS_T;
 
 
 typedef enum {
-    INVALID = 0,
+    INVALID = 0u,
     VALID = 1u
 } VALID_T;
 
 
-#define NULL 0
+#define NULL 0u
 
 
 #endif

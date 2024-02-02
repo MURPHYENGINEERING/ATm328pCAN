@@ -84,9 +84,9 @@ typedef union {
         VBOOL_T Unused4 : 1;
         VBOOL_T Unused5 : 1;
         /** The MCP2515 shield built-in LED 1 */
-        VBOOL_T LED1 : 1;
+        VBOOL_T LED1    : 1;
         /** The MCP2515 shield built-in LED 2 */
-        VBOOL_T LED2 : 1;
+        VBOOL_T LED2    : 1;
     } bits;
     VU8_T byte;
 } DSC_CANBOARD_T;

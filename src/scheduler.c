@@ -44,7 +44,7 @@ ISR(TIMER1_OVF_vect)
         /* Next task */
         ++g_task_idx;
         if (N_TASKS == g_task_idx) {
-            g_task_idx = 0;
+            g_task_idx = 0u;
         }
         g_scheduler_state = SCHEDULER_IDLE;
     } else {
@@ -59,7 +59,7 @@ ISR(TIMER1_OVF_vect)
  ******************************************************************************/
 void scheduler_init(void)
 {
-    g_task_idx = 0;
+    g_task_idx = 0u;
     g_scheduler_state = SCHEDULER_IDLE;
     
     timer1_enable(

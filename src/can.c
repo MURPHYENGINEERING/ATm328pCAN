@@ -123,13 +123,13 @@ void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
 {
     q->buf = buf;
     q->size = size;
-    q->head = 0;
-    q->tail = 0;
-    q->n = (SIZE_T) 0;
+    q->head = 0u;
+    q->tail = 0u;
+    q->n = (SIZE_T) 0u;
 
     memset_by_U8(
         (U8_T*)(void*) buf, 
-        (U8_T) 0, 
+        (U8_T) 0u, 
         (SIZE_T)( size * sizeof(CAN_FIFO_ENTRY_T) )
     );
 }
@@ -194,7 +194,7 @@ FIFO_STATUS_T can_fifo_q_remove(
     FIFO_STATUS_T status;
     CAN_FIFO_ENTRY_T* p_fifo_entry;
 
-    if ((SIZE_T) 0 == q->n) {
+    if ((SIZE_T) 0u == q->n) {
         status =  FIFO_EMPTY;
     } else {
         p_fifo_entry = &q->buf[q->head];

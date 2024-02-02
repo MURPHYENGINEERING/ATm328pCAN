@@ -47,25 +47,25 @@ typedef enum {
 
 /** Interrupt mode for the Timer/Counter 0 */
 typedef enum {
-    TIMER0_INTERRUPTS_OFF = 0,
+    TIMER0_INTERRUPTS_OFF = 0u,
     /** Timer/Counter 0 will initiate interrupts on overflow. */
-    TIMER0_OVF_INTERRUPT_ENABLED = 1,
+    TIMER0_OVF_INTERRUPT_ENABLED = 1u,
     /** Timer/Counter 0 will initiate interrupts on Comparison A match. */
-    TIMER0_COMPA_INTERRUPT_ENABLED = 2,
+    TIMER0_COMPA_INTERRUPT_ENABLED = 2u,
     /** Timer/Counter 0 will initiate interrupts on Comparison B match. */
-    TIMER0_COMPB_INTERRUPT_ENABLED = 4
+    TIMER0_COMPB_INTERRUPT_ENABLED = 4u
 } TIMER0_INTERRUPT_FLAGS_T;
 
 
 /** Interrupt mode for the Timer/Counter 1 */
 typedef enum {
-    TIMER1_INTERRUPTS_OFF = 0,
+    TIMER1_INTERRUPTS_OFF = 0u,
     /** Timer/Counter 1 will initiate interrupts on overflow. */
-    TIMER1_OVF_INTERRUPT_ENABLED = 1,
+    TIMER1_OVF_INTERRUPT_ENABLED = 1u,
     /** Timer/Counter 1 will initiate interrupts on Comparison A match. */
-    TIMER1_COMPA_INTERRUPT_ENABLED = 2,
+    TIMER1_COMPA_INTERRUPT_ENABLED = 2u,
     /** Timer/Counter 1 will initiate interrupts on Comparison B match. */
-    TIMER1_COMPB_INTERRUPT_ENABLED = 4
+    TIMER1_COMPB_INTERRUPT_ENABLED = 4u
 } TIMER1_INTERRUPT_FLAGS_T;
 
 
@@ -111,11 +111,11 @@ typedef enum {
 /** Represents the modes of a timer's output pins. */
 typedef enum {
     /** Disable all timer output pins. */
-    TIMER_OUTPUT_PINS_DISABLED = 0,
+    TIMER_OUTPUT_PINS_DISABLED = 0u,
     /** Toggle the first output pin on compare match. */
-    TIMER_OUTPUT_PIN_A_TOGGLE = 1,
+    TIMER_OUTPUT_PIN_A_TOGGLE = 1u,
     /** Toggle the second output pin on compare match. */
-    TIMER_OUTPUT_PIN_B_TOGGLE = 2
+    TIMER_OUTPUT_PIN_B_TOGGLE = 2u
 } TIMER_OUTPUT_PIN_FLAGS_T;
 
 
