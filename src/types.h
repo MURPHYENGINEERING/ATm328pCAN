@@ -25,7 +25,7 @@ typedef volatile SIZE_T VSIZE_T;
 typedef float FLOAT_T;
 /** Approximately zero equals zero. */
 #define ZERO_EPSILON 0.0001f
-
+#define EQUALS_ZERO(x) (BOOL_T)( (-ZERO_EPSILON < x) && (ZERO_EPSILON > x) )
 
 /** Represents a hardware register's bits, or its total byte value. */
 typedef union {
