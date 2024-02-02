@@ -144,11 +144,11 @@ void timer1_init(
     }
 
     if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_A_TOGGLE) ) {
-        TCCR1A.bits.COM1A0 = 1;
+        TCCR1A.bits.COM1A0 = TRUE;
     }
 
     if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_B_TOGGLE) ) {
-        TCCR1A.bits.COM1B0 = 1;
+        TCCR1A.bits.COM1B0 = TRUE;
     }
 
     if ( 0 != (interrupt_flags & TIMER1_OVF_INTERRUPT_ENABLED) ) {
