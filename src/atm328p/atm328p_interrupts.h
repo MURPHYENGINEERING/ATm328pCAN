@@ -1,10 +1,6 @@
 #ifndef __ATM328P_INTERRUPTS_H__
 #define __ATM328P_INTERRUPTS_H__
 
-/** Defines an Interrupt Service Routine */
-#define ISR(vect) \
-    void vect(void) __attribute__((signal, used, externally_visible)); \
-    void vect(void)
 
 /** Timer/Counter 1 Compare Match A Interrupt */
 #define TIMER1_COMPA_vect   __vector_11
@@ -38,5 +34,6 @@
 #define sei() __asm volatile( "sei" ::: "memory" )
 /** Globally disable interrupts */
 #define cli() __asm volatile( "cli" ::: "memory" )
+
 
 #endif
