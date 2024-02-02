@@ -136,17 +136,11 @@ void task_fai(void)
  ******************************************************************************/
 static void fai_write_faults_to_nvm(void)
 {
-    SIZE_T i;
-    SIZE_T len;
-    U8_T address;
-
-    address = FAI_NVM_BASE_ADDRESS;
-    len = sizeof(FAI_FAULT_COUNTER_T);
-
-    for (i = (SIZE_T) 0; (SIZE_T) FAI_FAULT_ID_N > i; ++i) {
-        eeprom_write(address, (U8_T*)(void*)&g_fault_counters[i], len);
-        address += len;
-    }
+    eeprom_write(
+        FAI_NVM_BASE_ADDRESS, 
+        (U8_T*)(void*)g_fault_counters, 
+        sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
+    );
 }
 
 
@@ -155,19 +149,9 @@ static void fai_write_faults_to_nvm(void)
  ******************************************************************************/
 void fai_read_faults_from_nvm(void)
 {
-    SIZE_T i;
-    SIZE_T len;
-    U8_T address;
-    U8_T buf[sizeof(FAI_FAULT_COUNTER_T)];
-    U8_T* p_existing_fault_bytes;
-
-    address = FAI_NVM_BASE_ADDRESS;
-    len = sizeof(FAI_FAULT_COUNTER_T);
-
-    for (i = (SIZE_T) 0; (SIZE_T) FAI_FAULT_ID_N > i; ++i) {
-        eeprom_read(address, buf, len);
-        p_existing_fault_bytes = (U8_T*)(void*)&g_fault_counters[i];
-        memcpy_by_U8(p_existing_fault_bytes, buf, len);
-        address += len;
-    }
+    eeprom_read(
+        FAI_NVM_BASE_ADDRESS, 
+        (U8_T*)(void*)g_fault_counters, 
+        sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
+    );
 }
