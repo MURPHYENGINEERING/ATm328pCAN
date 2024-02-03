@@ -6,7 +6,7 @@
 /** Divisors for the Timer/Counter 1 prescaler. */
 typedef enum {
     /** Timer/Counter 1 prescaler off (no counting). */
-    TIMER1_PRESCALE_OFF,
+    TIMER1_OFF,
     /** Timer/Counter 1 prescaler = `F_CLK` / 1 (no prescale). */
     TIMER1_PRESCALE_OVER_1,
     /** Timer/Counter 1 prescaler = `F_CLK` / 8. */
@@ -108,28 +108,37 @@ typedef enum {
 } TIMER_MODE_T;
 
 
-/** Represents the modes of a timer's output pins. */
+/** Represents the modes of Timer/Counter 0 output pins. */
 typedef enum {
     /** Disable all timer output pins. */
-    TIMER_OUTPUT_PINS_DISABLED = 0u,
+    TIMER0_OUTPUT_PINS_DISABLED = 0u,
     /** Toggle the first output pin on compare match. */
-    TIMER_OUTPUT_PIN_A_TOGGLE = 1u,
+    TIMER0_OUTPUT_PIN_A_TOGGLE = 1u,
+} TIMER0_OUTPUT_PIN_FLAGS_T;
+
+
+/** Represents the modes of Timer/Counter 1 output pins. */
+typedef enum {
+    /** Disable all timer output pins. */
+    TIMER1_OUTPUT_PINS_DISABLED = 0u,
+    /** Toggle the first output pin on compare match. */
+    TIMER1_OUTPUT_PIN_A_TOGGLE = 1u,
     /** Toggle the second output pin on compare match. */
-    TIMER_OUTPUT_PIN_B_TOGGLE = 2u
-} TIMER_OUTPUT_PIN_FLAGS_T;
+    TIMER1_OUTPUT_PIN_B_TOGGLE = 2u
+} TIMER1_OUTPUT_PIN_FLAGS_T;
 
 
 void timer0_init(
     TIMER_MODE_T mode,
     TIMER0_PRESCALE_T prescale, 
-    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
+    TIMER0_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER0_INTERRUPT_FLAGS_T interrupt_mode
 );
 
 void timer1_init(
     TIMER_MODE_T mode,
     TIMER1_PRESCALE_T prescale, 
-    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
+    TIMER1_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER1_INTERRUPT_FLAGS_T interrupt_flags
 );
 

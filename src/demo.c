@@ -8,6 +8,7 @@
 #include "fai.h"
 #include "usart.h"
 #include "adc.h"
+#include "timer.h"
 
 
 /*******************************************************************************
@@ -15,15 +16,15 @@
  ******************************************************************************/
 void demo_init(void)
 {
+    /* 15-KHz PWM on PORTD6 */
+    /*
     timer0_init(
         TIMER_MODE_FAST_PWM,
-        /* 15-KHz PWM */
         TIMER0_PRESCALE_OVER_1024,
-        TIMER_OUTPUT_PIN_A_TOGGLE,
+        TIMER0_OUTPUT_PIN_A_TOGGLE,
         TIMER0_INTERRUPTS_OFF
     );
-    /* 50% duty cycle */
-    timer0_pwm(0.5f);
+    */
 }
 
 
@@ -39,8 +40,17 @@ void task_demo_tx(void)
     /*
     ADC_RESULT_T adc;
     */
+    /*
+    static FLOAT_T duty;
 
-    identifier = (U16_T) 0xDEADBEEFu;
+    duty += 0.1f;
+    if (duty > 1.0f) {
+        duty = 0.0f;
+    }
+    timer0_pwm(duty);
+    */
+
+    identifier = (U16_T) 0b0110u;
 
     memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6u);
     len = strnlen_by_U8((U8_T*) "Hello!", CAN_FIFO_DATA_LEN);

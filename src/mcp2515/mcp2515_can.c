@@ -17,8 +17,7 @@ void can_init_hardware(void)
         spi_tx_rx(CAN_CMD_RESET);
         for (hold_reset = 0; U8_T_MAX > hold_reset; ++hold_reset) {
             /* Hold reset for 255 cycles per MCP2515 eval sample */
-            /* Even though it appears to hold for 48-us without this,
-            * which exceeds the 2-us requirement. */
+            /* Works out to 4.6-us, which beats the 2-us requirement */
         }
     spi_end();
 

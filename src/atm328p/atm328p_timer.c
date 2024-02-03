@@ -1,5 +1,6 @@
 #include "atm328p_timer.h"
 #include "atm328p_mcu.h"
+#include "atm328p_dsc.h"
 #include "timer.h"
 #include "fai.h"
 #include "memory.h"
@@ -7,15 +8,17 @@
 
 /*******************************************************************************
  * Enable the Timer 0 device hardware.
+ * \param[in] mode              Specifies the timer mode (normal, PWM, etc.).
  * \param[in] prescale          The divisor to be used to configure the timer 
  *                              prescaler.
- * \param[in] interrupt_flags    Specifies whether timer interrupts 
- *                              are to be enabled or disabled.
+ * \param[in] pin_flags         Specifies the mode of the output pins.
+ * \param[in] interrupt_flags   Specifies whether timer interrupts are to be 
+ *                              enabled or disabled.
  ******************************************************************************/
 void timer0_init(
     TIMER_MODE_T mode,
     TIMER0_PRESCALE_T prescale, 
-    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
+    TIMER0_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER0_INTERRUPT_FLAGS_T interrupt_flags
 )
 {
@@ -31,18 +34,16 @@ void timer0_init(
 
     switch (mode) {
     case TIMER_MODE_NORMAL:
-        TCCR0A.byte |= TCRC0A_MODE_NORMAL;
+        TCCR0A.byte |= TCCR0A_MODE_NORMAL;
     break;
     case TIMER_MODE_CLEAR_ON_MATCH_A:
         TCCR0A.byte |= TCCR0A_MODE_CLEAR_ON_MATCH_A;
     break;
     case TIMER_MODE_FAST_PWM:
         TCCR0A.byte |= TCCR0A_MODE_FAST_PWM;
-        TCCR0B.bits.WGM02 = WGM02_PWM_ON_OCRA;
     break;
     case TIMER_MODE_PHASE_CORRECT_PWM:
         TCCR0A.byte |= TCCR0A_MODE_PHASE_CORRECT_PWM;
-        TCCR0B.bits.WGM02 = WGM02_PWM_ON_OCRA;
     break;
     default:
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
@@ -63,12 +64,9 @@ void timer0_init(
     break;
     }
 
-    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_A_TOGGLE) ) {
-        TCCR0A.bits.COM0A0 = 1;
-    }
-
-    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_B_TOGGLE) ) {
-        TCCR0A.bits.COM0B0 = 1;
+    if ( 0 != (pin_flags & TIMER0_OUTPUT_PIN_A_TOGGLE) ) {
+        TCCR0A.bits.COM0A1 = TRUE;
+        DDRD.bits.bit6 = TRUE;
     }
 
     if (0 != (interrupt_flags & TIMER0_OVF_INTERRUPT_ENABLED)) {
@@ -86,22 +84,21 @@ void timer0_init(
 
 /*******************************************************************************
  * Enable the Timer 1 device hardware.
+ * \param[in] mode              Specifies the timer mode (normal, PWM, etc.).
  * \param[in] prescale          The divisor to be used to configure the timer 
  *                              prescaler.
+ * \param[in] pin_flags         Specifies the mode of the output pins.
  * \param[in] interrupt_flags   Specifies which timer interrupts are to be enabled.
  ******************************************************************************/
 void timer1_init(
     TIMER_MODE_T mode,
     TIMER1_PRESCALE_T prescale, 
-    TIMER_OUTPUT_PIN_FLAGS_T pin_flags,
+    TIMER1_OUTPUT_PIN_FLAGS_T pin_flags,
     TIMER1_INTERRUPT_FLAGS_T interrupt_flags
 )
 {
     /* Disable power reduction mode */
     PRR.bits.PRTIM1 = PRTIM1_ENABLE_TIMER;
-
-    /* Normal timer mode */
-    TCCR1A.byte = TCCR1A_NORMAL_MODE;
 
     /* Clear mode */
     TCCR1A.byte = (U8_T) 0;
@@ -112,7 +109,7 @@ void timer1_init(
 
     switch (mode) {
     case TIMER_MODE_NORMAL:
-        TCCR1A.byte |= TCRC1A_MODE_NORMAL;
+        TCCR1A.byte |= TCCR1A_MODE_NORMAL;
     break;
     case TIMER_MODE_CLEAR_ON_MATCH_A:
         TCCR1B.byte |= TCCR1B_MODE_CLEAR_ON_MATCH_A;    
@@ -143,12 +140,12 @@ void timer1_init(
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
     }
 
-    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_A_TOGGLE) ) {
-        TCCR1A.bits.COM1A0 = TRUE;
+    if ( 0 != (pin_flags & TIMER1_OUTPUT_PIN_A_TOGGLE) ) {
+        TCCR1A.bits.COM1A1 = TRUE;
     }
 
-    if ( 0 != (pin_flags & TIMER_OUTPUT_PIN_B_TOGGLE) ) {
-        TCCR1A.bits.COM1B0 = TRUE;
+    if ( 0 != (pin_flags & TIMER1_OUTPUT_PIN_B_TOGGLE) ) {
+        TCCR1A.bits.COM1B1 = TRUE;
     }
 
     if ( 0 != (interrupt_flags & TIMER1_OVF_INTERRUPT_ENABLED) ) {

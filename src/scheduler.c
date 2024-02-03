@@ -35,7 +35,7 @@ volatile SCHEDULER_STATE_T g_scheduler_state;
  * This function resets the Timer/Counter 1 value to ensure a regular period of
  * 50-ms.
  ******************************************************************************/
-ISR(TIMER1_OVF_vect)
+ISR(TIMER1_COMPA_vect)
 {
     if (SCHEDULER_RUNNING == g_scheduler_state) {
         fai_pass_fail_logger(FAI_FAULT_ID_TASK_OVERRUN, FAIL, g_task_idx);
@@ -62,12 +62,13 @@ void scheduler_init(void)
     g_task_idx = 0u;
     g_scheduler_state = SCHEDULER_IDLE;
     
-    timer1_enable(
+    timer1_init(
         TIMER_MODE_CLEAR_ON_MATCH_A, 
         TIMER1_PRESCALE_OVER_256,
-        TIMER_OUTPUT_PINS_DISABLED,
-        TIMER1_OVF_INTERRUPT_ENABLED
+        TIMER1_OUTPUT_PINS_DISABLED,
+        TIMER1_COMPA_INTERRUPT_ENABLED
     );
+    timer1_set_comp(TIMER1_COMP_A, SCHEDULER_TIMER_BASE_VALUE);
 }
 
 

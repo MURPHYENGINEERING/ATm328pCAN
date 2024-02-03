@@ -23,10 +23,10 @@ typedef union {
 /** Timer/Counter 0 Control Register A */
 extern volatile TCCR0A_T TCCR0A;
 
-#define TCCR0A_MODE_NORMAL (U8_T) 0u
-#define TCCR0A_MODE_PHASE_CORRECT_PWM   0b00000001u
-#define TCCR0A_MODE_CLEAR_ON_MATCH_A    0b00000010u
-#define TCCR0A_MODE_FAST_PWM            0b00000011u
+#define TCCR0A_MODE_NORMAL              (U8_T) 0u
+#define TCCR0A_MODE_PHASE_CORRECT_PWM   (U8_T) 0b00000001u
+#define TCCR0A_MODE_CLEAR_ON_MATCH_A    (U8_T) 0b00000010u
+#define TCCR0A_MODE_FAST_PWM            (U8_T) 0b00000011u
 
 /** Timer/Counter 0 Control Register B */
 typedef union {
@@ -49,8 +49,7 @@ typedef union {
 /** Timer/Counter 0 Control Register B */
 extern volatile TCCR0B_T TCCR0B;
 
-#define WGM02_PWM_ON_OCRA TRUE
-#define WGM02_PWM_ON_OVERFLOW FALSE
+#define WGM02_PWM_ON_OCRA FALSE
 
 /** Clock Select Bit 0 */
 #define TCCR0B_CS00 0
@@ -149,14 +148,14 @@ typedef union {
 } TCCR1A_T;
 /** Timer/Counter 1 Control Register A */
 extern volatile TCCR1A_T TCCR1A;
-/** Configure the Timer/Counter 1 in Normal mode (no output pins). */
-#define TCCR1A_NORMAL_MODE (U8_T) 0u
 
 /** Position of the WGM10 bit in TCCR1A. */
 #define TCCR1A_WGM10 0
 /** Position of the WGM11 bit in TCCR1A. */
-#define TCRC1A_WGM11 1
+#define TCCR1A_WGM11 1
 
+/** Configure the Timer/Counter 1 in Normal mode (no output pins). */
+#define TCCR1A_MODE_NORMAL (U8_T) 0u
 /** Enable Fast PWM mode, cycling on comparison match with OCR1A. */
 #define TCCR1A_MODE_FAST_PWM_OCR1A (U8_T)( (1u << TCCR1A_WGM10) | (1u << TCCR1A_WGM11) )
 /** Enable Phase Correct PWM mode, cycling on comparison match with OCRC1A. */
@@ -201,7 +200,7 @@ extern volatile TCCR1B_T TCCR1B;
 /** Clock select bit 2 */
 #define TCCR1B_CS12 2
 /** Select the bits for the Clock Select in TCCR1B */
-#define TCCR0B_CS_MASK \
+#define TCCR1B_CS_MASK \
     (U8_T)( (1u << TCCR1B_CS12) | (1u << TCCR1B_CS11) | (1u << TCCR1B_CS10) )
 /** Set the Timer/Counter 1 Prescaler to fclk/256 */
 #define TCCR1B_CS_OFF (U8_T) 0
@@ -214,13 +213,13 @@ extern volatile TCCR1B_T TCCR1B;
 /** Set the Timer/Counter 1 Prescaler to fclk/256 */
 #define TCCR1B_CS_OVER_256 (U8_T) ( (1u << TCCR1B_CS12) )
 /** Set the Timer/Counter 1 Prescaler to fclk/256 */
-#define TCCR1B_CS_OVER_1024 (U8_T) ( (1u << TCCR1B_CS12) | (1u << TCR1B_CS10) )
+#define TCCR1B_CS_OVER_1024 (U8_T) ( (1u << TCCR1B_CS12) | (1u << TCCR1B_CS10) )
 /** Select the external clock on T1 (rising edge) */
 #define TCCR1B_CS_EXTERNAL_RISING \
-    (U8_T)( (1u << TCCR1B_CS02) | (1u << TCCR1B_CS01) | (1u << TCCR1B_CS00) )
+    (U8_T)( (1u << TCCR1B_CS12) | (1u << TCCR1B_CS11) | (1u << TCCR1B_CS10) )
 /** Select the external clock on T1 (falling edge) */
 #define TCCR1B_CS_EXTERNAL_FALLING \
-    (U8_T)( (1u << TCCR1B_CS02) | (1u << TCCR1B_CS01) )
+    (U8_T)( (1u << TCCR1B_CS12) | (1u << TCCR1B_CS11) )
 
 
 /** Timer/Counter 1 */
