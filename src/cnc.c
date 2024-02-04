@@ -6,6 +6,7 @@
 #include "fifo.h"
 #include "serialize.h"
 #include "string.h"
+#include "bit.h"
 
 
 /** Maximum number of commands in the RX FIFO queue. */
@@ -34,7 +35,8 @@ SIZE_T g_cnc_rx_buf_write_idx;
 U8_T* g_cnc_cmd_strings[(SIZE_T) CNC_CMD_N] = {
     (U8_T*) "fclear",
     (U8_T*) "freport",
-    (U8_T*) "cansend"
+    (U8_T*) "cansend",
+    (U8_T*) "bitromcs"
 };
 
 static void cnc_process_q(void);
@@ -42,6 +44,7 @@ static void cnc_process_cmd(U8_T* buf, SIZE_T len);
 static void cnc_cmd_clear_faults(void);
 static void cnc_cmd_report_faults(void);
 static void cnc_cmd_send_can_msg(void);
+static void cnc_cmd_get_bit_rom_checksum(void);
 
 /*******************************************************************************
  * Initialize the Command and Control buffers and prepare to receive commands via
@@ -129,6 +132,8 @@ static void cnc_process_cmd(U8_T* buf, SIZE_T len)
         cnc_cmd_report_faults();
     } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
         cnc_cmd_send_can_msg();
+    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_BITROM_CHECKSUM], len)) {
+        cnc_cmd_get_bit_rom_checksum();
     } else {
         /** Command data, put it on the data queue for processing when the command
           * comes through. */
@@ -203,5 +208,29 @@ static void cnc_cmd_send_can_msg(void)
         }
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_CNC_SENDCAN_MALFORMED, FAIL, (U32_T) 0u);
+    }
+}
+
+
+/*******************************************************************************
+ * Retrieve the ROM BIT checksum and output it on USART.
+ ******************************************************************************/
+void cnc_cmd_get_bit_rom_checksum(void)
+{
+    U32_T checksum;
+    U8_T buf[11];
+    SIZE_T len;
+    SIZE_T i;
+
+    checksum = bit_rom_get_checksum();
+
+    len = itoa(buf, checksum);
+    i = (SIZE_T) 0u;
+
+    buf[len] = '\n';
+    ++len;
+
+    while (i < len) {
+        i += usart_tx(&buf[i], len - i);
     }
 }

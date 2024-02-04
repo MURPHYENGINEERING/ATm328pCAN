@@ -4,6 +4,8 @@
 #include "atm328p_dsc.h"
 
 #include "spi.h"
+#include "fai.h"
+#include "memory.h"
 
 
 /*******************************************************************************
@@ -11,7 +13,7 @@
  * Additionally, clear the SPI read and write buffers, and set the state of the
  * SPI software device to "ready."
  ******************************************************************************/
-void spi_init(void)
+void spi_init(SPI_CONFIG_T config)
 {
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
@@ -19,23 +21,56 @@ void spi_init(void)
     #pragma GCC diagnostic pop
 
     /* Turn off Power Reduction for SPI */
-    PRR.bits.PRSPI = PRSPI_ENABLE_SPI;
+    if (ENABLED == config.enable) {
+        PRR.bits.PRSPI = PRSPI_ENABLE_SPI;
+    } else {
+        PRR.bits.PRSPI = PRSPI_DISABLE_SPI;
+    }
 
-    /* MSB first */
-    SPCR.bits.DORD = DORD_MSB_FIRST;
-    /* Sampled on the Falling edge, */
-    SPCR.bits.CPOL = CPOL_LEADING_EDGE_IS_RISING;
+    switch (config.endian) {
+    case SPI_ENDIAN_MSB_FIRST:
+        SPCR.bits.DORD = DORD_MSB_FIRST;
+        break;
+    case SPI_ENDIAN_LSB_FIRST:
+        SPCR.bits.DORD = DORD_LSB_FIRST;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+        break;
+    }
+
+    switch (config.polarity) {
+    case SPI_POLARITY_LEADING_IS_RISING:
+        SPCR.bits.CPOL = CPOL_LEADING_EDGE_IS_RISING;
+        break;
+    case SPI_POLARITY_LEADING_IS_FALLING:
+        SPCR.bits.CPOL = CPOL_LEADING_EDGE_IS_FALLING;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+        break;
+    }
     SPCR.bits.CPHA = CPHA_SAMPLE_ON_LEADING_EDGE;
     /* at clk/128. */
     SPCR.byte |= SPCR_PRESCALE_OVER_128;
 
-    /* Set up pins for MASTER mode */
-    SPCR.bits.MSTR = MSTR_MODE_MASTER;
-    DDR_SPI.bits.MOSI = DDR_OUTPUT;
-    DDR_SPI.bits.SS = DDR_OUTPUT;
-    DDR_SPI.bits.SCK = DDR_OUTPUT;
-    /* Default to no slave selected */
-    PORT_SPI.bits.SS = HIGH;
+    switch (config.mode) {
+    case SPI_MODE_MASTER:
+        SPCR.bits.MSTR = MSTR_MODE_MASTER;
+        DDR_SPI.bits.MOSI = DDR_OUTPUT;
+        DDR_SPI.bits.SS = DDR_OUTPUT;
+        /* Default to no slave selected */
+        PORT_SPI.bits.SS = HIGH;
+        DDR_SPI.bits.SCK = DDR_OUTPUT;
+        break;
+    case SPI_MODE_SLAVE:
+        SPCR.bits.MSTR = MSTR_MODE_SLAVE;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+        break;
+    }
+
 
     /* Enable "write finished" interrupts */
     SPCR.bits.SPIE = SPIE_ENABLE_SPI_INTERRUPT;

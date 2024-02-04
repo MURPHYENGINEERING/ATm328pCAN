@@ -19,8 +19,8 @@ TASK_FN_T tasks[N_TASKS] = {
     &task_can_tx,
     &task_can_rx,
     &task_demo_rx,
-    &task_fai,
     &task_bit_rom,
+    &task_fai,
     &task_empty,
     &task_empty
 };

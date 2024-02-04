@@ -86,7 +86,7 @@ U8_T crc_compute_checksum8(U8_T* buf, SIZE_T len, U8_T running_val)
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        running_val += buf[len];
+        running_val += buf[i];
     }
 
     return running_val;
@@ -104,7 +104,7 @@ U16_T crc_compute_checksum16(U8_T* buf, SIZE_T len, U16_T running_val)
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        running_val += buf[len];
+        running_val += buf[i];
     }
 
     return running_val;
@@ -123,7 +123,7 @@ U32_T crc_compute_checksum32(U8_T* buf, SIZE_T len, U32_T running_val)
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        running_val += buf[len];
+        running_val += buf[i];
     }
 
     return running_val;

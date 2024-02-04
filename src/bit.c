@@ -1,3 +1,4 @@
+#include "types.h"
 #include "bit.h"
 #include "crc.h"
 #include "fai.h"
@@ -44,4 +45,14 @@ void task_bit_rom(void)
             fai_pass_fail_logger(FAI_FAULT_ID_BIT_ROM, PASS, (U32_T) 0u);
         }
     }
+}
+
+
+/*******************************************************************************
+ * Retrieve the computed checksum of the ROM.
+ * \return The 32-bit checksum of the ROM.
+ ******************************************************************************/
+U32_T bit_rom_get_checksum(void)
+{
+    return g_bit_rom_checksum;
 }
