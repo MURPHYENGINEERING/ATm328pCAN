@@ -140,12 +140,14 @@ void spi_end(void) {
 U8_T spi_tx_rx(U8_T tx_data) {
     U8_T rx_data;
 
-    g_spi_ready = FALSE;
     SPDR.byte = tx_data;
-    /* Wait for "data written" interrupt */
-    while (FALSE == g_spi_ready) {
+    /* Wait for the previous transfer to complete. */
+    /* "The SPIF bit is cleared by first reading the SPI status register with
+    /* SPIF set, then accessing the SPI data register (SPDR)."
+     * - ATmega328P Datasheet page 141 */
+    while (FALSE == SPSR.bits.SPIF) {
     }
-    /* Read the shifted-in byte */
+    /* Read the shifted-in byte, clearing SPIF */
     rx_data = SPDR.byte;
 
     return rx_data;

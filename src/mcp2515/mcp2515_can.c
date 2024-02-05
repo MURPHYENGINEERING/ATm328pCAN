@@ -110,11 +110,14 @@ SPI_CONFIG_T can_get_spi_config(void)
     SPI_CONFIG_T config;
     config.enable       = ENABLED;
     config.mode         = SPI_MODE_MASTER;
+    /* MCP2515 Datasheet page 71 */
     config.endian       = SPI_ENDIAN_MSB_FIRST;
+    /* MCP2515 Datasheet page 65: mode 0,0 */
     config.phase        = SPI_PHASE_SAMPLE_ON_LEADING;
     config.polarity     = SPI_POLARITY_LEADING_IS_RISING;
     config.prescale     = SPI_PRESCALE_OVER_256;
-    config.interrupts   = ENABLED;
+    /* The SPI driver is not interrupt driven. */
+    config.interrupts   = DISABLED;
 
     return config;
 }
