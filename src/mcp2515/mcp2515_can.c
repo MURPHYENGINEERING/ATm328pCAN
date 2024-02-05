@@ -105,19 +105,19 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
  * \return  The configuration that configures the SPI device to interact with the
  *          MCP2515.
  ******************************************************************************/     
-SPI_CONFIG_T can_get_spi_config(void)
+SPI_CFG_T can_get_spi_cfg(void)
 {
-    SPI_CONFIG_T config;
-    config.enable       = ENABLED;
-    config.mode         = SPI_MODE_MASTER;
+    SPI_CFG_T cfg;
+    cfg.enable       = ENABLED;
+    cfg.mode         = SPI_MODE_MASTER;
     /* MCP2515 Datasheet page 71 */
-    config.endian       = SPI_ENDIAN_MSB_FIRST;
+    cfg.endian       = SPI_ENDIAN_MSB_FIRST;
     /* MCP2515 Datasheet page 65: mode 0,0 */
-    config.phase        = SPI_PHASE_SAMPLE_ON_LEADING;
-    config.polarity     = SPI_POLARITY_LEADING_IS_RISING;
-    config.prescale     = SPI_PRESCALE_OVER_256;
+    cfg.phase        = SPI_PHASE_SAMPLE_ON_LEADING;
+    cfg.polarity     = SPI_POLARITY_LEADING_IS_RISING;
+    cfg.prescale     = SPI_PRESCALE_OVER_256;
     /* The SPI driver is not interrupt driven. */
-    config.interrupts   = DISABLED;
+    cfg.interrupts   = DISABLED;
 
-    return config;
+    return cfg;
 }

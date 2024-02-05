@@ -34,13 +34,13 @@ S16_T main(void)
     dsc_init();
 
     /* Start SPI bus */
-    spi_init(can_get_spi_config());
+    spi_init(can_get_spi_cfg());
 
     /* Start CAN bus */
     can_init();
 
     /* Start USART bus */
-    usart_init(cnc_get_usart_config());
+    usart_init(cnc_get_usart_cfg());
 
     /* Initiate conversion on sample and wait for it to finish before returning. */
     adc_init(ADC_MODE_BLOCKING);

@@ -22,7 +22,7 @@ typedef enum {
 
 void cnc_init(void);
 
-USART_CONFIG_T cnc_get_usart_config(void);
+USART_CFG_T cnc_get_usart_cfg(void);
 
 void task_cnc_rx(void);
 

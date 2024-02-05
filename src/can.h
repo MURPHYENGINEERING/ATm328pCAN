@@ -56,7 +56,7 @@ extern CAN_FIFO_T g_can_rx_q;
 void can_init(void);
 void can_init_hardware(void);
 
-SPI_CONFIG_T can_get_spi_config(void);
+SPI_CFG_T can_get_spi_cfg(void);
 
 void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len);
 

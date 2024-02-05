@@ -40,19 +40,14 @@ typedef struct {
     SPI_PHASE_T phase;
     SPI_PRESCALE_T prescale;
     ENABLE_T interrupts;
-} SPI_CONFIG_T;
+} SPI_CFG_T;
 
 
-void spi_init(SPI_CONFIG_T config);
+void spi_init(SPI_CFG_T cfg);
 
 void spi_begin(void);
 void spi_end(void);
 
 U8_T spi_tx_rx(U8_T tx_data);
-
-
-/** `TRUE` if the SPI device is available to write a byte, or `FALSE` if the SPI
-  * device is currently writing. */
-extern VBOOL_T g_spi_ready;
 
 #endif

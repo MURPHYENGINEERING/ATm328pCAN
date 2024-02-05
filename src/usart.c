@@ -109,7 +109,7 @@ ISR(USART0_RX_vect)
  * Initialize the USART software and hardware device by setting all buffers to
  * zero and çalling the appropriate hardware initializer.
  ******************************************************************************/
-void usart_init(USART_CONFIG_T config)
+void usart_init(USART_CFG_T cfg)
 {
     g_usart_rx_buf_write_idx    = (SIZE_T) 0u;
     g_usart_rx_buf_read_idx     = (SIZE_T) 0u;
@@ -121,7 +121,7 @@ void usart_init(USART_CONFIG_T config)
 
     g_usart_tx_transmitting = FALSE;
 
-    usart_init_hardware(config);
+    usart_init_hardware(cfg);
 }
 
 

@@ -236,15 +236,15 @@ void cnc_cmd_get_bit_rom_checksum(void)
 }
 
 
-USART_CONFIG_T cnc_get_usart_config(void)
+USART_CFG_T cnc_get_usart_cfg(void)
 {
     /* Configure USART to talk to the CNC laptop via USB. */
-    USART_CONFIG_T config;
-    config.mode             = USART_MODE_ASYNCHRONOUS;
-    config.baud             = USART_BAUD_9600;
-    config.character_size   = USART_CHARACTER_SIZE_8;
-    config.stop_bits        = USART_STOP_BITS_1;
-    config.parity           = USART_PARITY_MODE_EVEN;
+    USART_CONFIG_T cfg;
+    cfg.mode             = USART_MODE_ASYNCHRONOUS;
+    cfg.baud             = USART_BAUD_9600;
+    cfg.character_size   = USART_CHARACTER_SIZE_8;
+    cfg.stop_bits        = USART_STOP_BITS_1;
+    cfg.parity           = USART_PARITY_MODE_EVEN;
 
-    return config;
+    return cfg;
 }

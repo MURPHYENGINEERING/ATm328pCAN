@@ -16,7 +16,7 @@ static void usart_set_clock_polarity(USART_CLOCK_POLARITY_T clock_polarity);
  * \param[in] cfg   The configuration parameters with which the hardware device
  *                  will be configured.
  ******************************************************************************/
-void usart_init_hardware(USART_CONFIG_T cfg)
+void usart_init_hardware(USART_CFG_T cfg)
 {
     /* Disable power reduction mode */
     PRR.bits.PRUSART0 = PRUSART0_ENABLE_USART;

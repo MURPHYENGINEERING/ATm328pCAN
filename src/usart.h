@@ -77,11 +77,11 @@ typedef struct {
     USART_STOP_BITS_T stop_bits;
     USART_PARITY_MODE_T parity;
     USART_CLOCK_POLARITY_T clock_polarity;
-} USART_CONFIG_T;
+} USART_CFG_T;
 
 
-void usart_init(USART_CONFIG_T cfg);
-void usart_init_hardware(USART_CONFIG_T cfg);
+void usart_init(USART_CFG_T cfg);
+void usart_init_hardware(USART_CFG_T cfg);
 
 void usart_tx_byte(U8_T data);
 U8_T usart_rx_byte(void);
