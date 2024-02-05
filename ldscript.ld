@@ -81,6 +81,11 @@ SECTIONS
 
   /* TWI */
   TWBR          = 0xB8;
+  TWSR          = 0xB9;
+  TWAR          = 0xBA;
+  TWDR          = 0xBB;
+  TWCR          = 0xBC;
+  TWAMR         = 0xBD;
 
   /* Timer 1 */
   TCCR1A        = 0x80;
