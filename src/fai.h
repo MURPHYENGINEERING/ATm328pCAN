@@ -29,6 +29,18 @@ typedef enum {
     /** The ROM BIT failed. */
     FAI_FAULT_ID_BIT_ROM,
     /** Number of fault IDs. */
+    FAI_FAULT_ID_TWI_START,
+    /** The slave did not acknowledge its address when writing to the TWI 
+      * peripheral. */
+    FAI_FAULT_ID_TWI_MT_SLAVE_ACK,
+    /** The slave did not acknowledge data received on the TWI peripheral. */
+    FAI_FAULT_ID_TWI_MT_DATA_ACK,
+    /** The slave did not acknowledge its address when reading from the TWI 
+      * peripheral. */
+    FAI_FAULT_ID_TWI_MR_SLAVE_ACK,
+    /** The slave did not acknowledge writing data to the TWI peripheral. */
+    FAI_FAULT_ID_TWI_MR_DATA_ACK,
+    /** Number of fault IDs */
     FAI_FAULT_ID_N
 } FAI_FAULT_ID_T;
 

@@ -54,6 +54,9 @@ void cnc_init(void)
 {
     fifo_q_init(&g_cnc_rx_q, g_cnc_rx_q_buf, CNC_RX_FIFO_LEN);
     fifo_q_init(&g_cnc_data_q, g_cnc_data_q_buf, CNC_RX_DATA_FIFO_LEN);
+
+    /* Start USART bus */
+    usart_init(cnc_get_usart_cfg());
 }
 
 

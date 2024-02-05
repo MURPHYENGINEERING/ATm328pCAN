@@ -1,17 +1,12 @@
 #include "types.h"
-#include "memory.h"
 #include "watchdog.h"
 #include "interrupts.h"
-#include "timer.h"
-#include "dsc.h"
-#include "scheduler.h"
-#include "spi.h"
-#include "can.h"
 #include "fai.h"
-#include "usart.h"
-#include "adc.h"
+#include "dsc.h"
+#include "can.h"
 #include "cnc.h"
 #include "demo.h"
+#include "scheduler.h"
 
 
 /*******************************************************************************
@@ -32,18 +27,6 @@ S16_T main(void)
 
     /* Initialize GPIOs */
     dsc_init();
-
-    /* Start SPI bus */
-    spi_init(can_get_spi_cfg());
-
-    /* Start CAN bus */
-    can_init();
-
-    /* Start USART bus */
-    usart_init(cnc_get_usart_cfg());
-
-    /* Initiate conversion on sample and wait for it to finish before returning. */
-    adc_init(ADC_MODE_BLOCKING);
 
     /* Command and Control */
     cnc_init();

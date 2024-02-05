@@ -107,7 +107,7 @@ SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
                 data[i] = TWDR.byte;
 
                 if (TWS_MR_DATA_ACK != TWSR_STATUS) {
-                    fai_pass_fail_logger(FAI_FAULT_ID_TWI_MR_SLAVE_ACK, FAIL, (U32_T) TWSR_STATUS);
+                    fai_pass_fail_logger(FAI_FAULT_ID_TWI_MR_DATA_ACK, FAIL, (U32_T) TWSR_STATUS);
                     TWCR.byte = TWCR_ACKNOWLEDGE_DATA_END;
                     break;
                 }

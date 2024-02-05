@@ -21,6 +21,10 @@ void can_init(void)
     can_fifo_q_init(&g_can_tx_q, g_can_tx_q_buf, CAN_FIFO_TX_SIZE);
     can_fifo_q_init(&g_can_rx_q, g_can_rx_q_buf, CAN_FIFO_RX_SIZE);
 
+    /* Start SPI bus */
+    spi_init(can_get_spi_cfg());
+
+    /* Start MCP2515 */
     can_init_hardware();
 }
 

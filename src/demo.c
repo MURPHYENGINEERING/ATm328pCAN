@@ -17,14 +17,23 @@
 void demo_init(void)
 {
     /* 15-KHz PWM on PORTD6 */
-    /*
     timer0_init(
         TIMER_MODE_FAST_PWM,
         TIMER0_PRESCALE_OVER_1024,
         TIMER0_OUTPUT_PIN_A_TOGGLE,
         TIMER0_INTERRUPTS_OFF
     );
-    */
+
+    /* Enable the TWI peripheral device. */
+    TWI_CFG_T cfg;
+    cfg.prescale = TWI_PRESCALE_OVER_1;
+    twi_init(cfg);
+
+    /* Start CAN bus */
+    can_init();
+
+    /* Initiate conversion on sample and wait for it to finish before returning. */
+    adc_init(ADC_MODE_BLOCKING);
 }
 
 
@@ -37,10 +46,8 @@ void task_demo_tx(void)
     SIZE_T len;
     FIFO_STATUS_T status;
     CAN_IDENT_T identifier;
-    /*
     ADC_RESULT_T adc;
-    */
-    /*
+
     static FLOAT_T duty;
 
     duty += 0.1f;
@@ -48,7 +55,6 @@ void task_demo_tx(void)
         duty = 0.0f;
     }
     timer0_pwm(duty);
-    */
 
     identifier = (U16_T) 0b0110u;
 
@@ -59,12 +65,10 @@ void task_demo_tx(void)
 
     if (FIFO_OK == status) {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
-        /*
         adc = adc_sample();
         len = itoa(buf, (U32_T) adc);
         buf[len] = '\n';
-        usart_tx(buf, len+1);
-        */
+        twi_master_tx((U8_T) 0b10100000u, buf, len+1);
     } else {
         fai_pass_fail_logger(
             FAI_FAULT_ID_CAN_TX_BUFFER_OVERFLOW, 
