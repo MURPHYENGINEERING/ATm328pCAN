@@ -99,3 +99,22 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
     spi_end();
 }
 
+
+/*******************************************************************************
+ * Retrieve the appropriate SPI configuration to interact with the MCP2515.
+ * \return  The configuration that configures the SPI device to interact with the
+ *          MCP2515.
+ ******************************************************************************/     
+SPI_CONFIG_T can_get_spi_config(void)
+{
+    SPI_CONFIG_T config;
+    config.enable       = ENABLED;
+    config.mode         = SPI_MODE_MASTER;
+    config.endian       = SPI_ENDIAN_MSB_FIRST;
+    config.phase        = SPI_PHASE_SAMPLE_ON_LEADING;
+    config.polarity     = SPI_POLARITY_LEADING_IS_RISING;
+    config.prescale     = SPI_PRESCALE_OVER_256;
+    config.interrupts   = ENABLED;
+
+    return config;
+}

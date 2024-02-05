@@ -21,8 +21,8 @@
  ******************************************************************************/
 S16_T main(void)
 {
-    /* Enable interrupts */
-    sei();
+    /* Disable interrupts until everything is ready */
+    cli();
 
     /* Soft-reset if the watchdog doesn't get strobed in 4 major cycles */
     watchdog_enable();
@@ -33,30 +33,14 @@ S16_T main(void)
     /* Initialize GPIOs */
     dsc_init();
 
-    SPI_CONFIG_T spi_config;
-    spi_config.enable = ENABLED;
-    spi_config.mode = SPI_MODE_MASTER;
-    spi_config.endian = SPI_ENDIAN_MSB_FIRST;
-    spi_config.phase = SPI_PHASE_SAMPLE_ON_LEADING;
-    spi_config.polarity = SPI_POLARITY_LEADING_IS_RISING;
-    spi_config.prescale = SPI_PRESCALE_OVER_256;
-    spi_config.interrupts = ENABLED;
-
     /* Start SPI bus */
-    spi_init(spi_config);
+    spi_init(can_get_spi_config());
 
     /* Start CAN bus */
     can_init();
 
-    USART_CONFIG_T usart_config;
-    usart_config.mode = USART_MODE_ASYNCHRONOUS;
-    usart_config.baud = USART_BAUD_9600;
-    usart_config.character_size = USART_CHARACTER_SIZE_8;
-    usart_config.stop_bits = USART_STOP_BITS_1;
-    usart_config.parity = USART_PARITY_MODE_EVEN;
-
     /* Start USART bus */
-    usart_init(usart_config);
+    usart_init(cnc_get_usart_config());
 
     /* Initiate conversion on sample and wait for it to finish before returning. */
     adc_init(ADC_MODE_BLOCKING);
@@ -69,6 +53,9 @@ S16_T main(void)
 
     /* Start task timing */
     scheduler_init();
+
+    /* Enable interrupts to allow the scheduler timer and peripherals to run. */
+    sei();
 
     /* Run tasks forever. Tasks are switched by the scheduler on a 50-ms
      * interval. */

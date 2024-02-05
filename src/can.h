@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "fifo.h"
+#include "spi.h"
 
 
 /** Maximum number of elements in the CAN TX FIFO queue. */
@@ -54,6 +55,8 @@ extern CAN_FIFO_T g_can_rx_q;
 
 void can_init(void);
 void can_init_hardware(void);
+
+SPI_CONFIG_T can_get_spi_config(void);
 
 void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len);
 

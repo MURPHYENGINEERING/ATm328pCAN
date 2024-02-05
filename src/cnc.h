@@ -1,6 +1,9 @@
 #ifndef __CNC_H__
 #define __CNC_H__
 
+#include "usart.h"
+
+
 /** List of possible commands that can be sent to Command and Control. */
 typedef enum {
     /** Command the FAI to clear faults and erase NVM. */
@@ -18,6 +21,8 @@ typedef enum {
 
 
 void cnc_init(void);
+
+USART_CONFIG_T cnc_get_usart_config(void);
 
 void task_cnc_rx(void);
 
