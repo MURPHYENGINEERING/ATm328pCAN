@@ -108,6 +108,7 @@ void can_tx(CAN_IDENT_T identifier, U8_T* buf, SIZE_T len)
 SPI_CFG_T can_get_spi_cfg(void)
 {
     SPI_CFG_T cfg;
+    
     cfg.enable       = ENABLED;
     cfg.mode         = SPI_MODE_MASTER;
     /* MCP2515 Datasheet page 71 */

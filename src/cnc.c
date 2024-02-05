@@ -239,7 +239,8 @@ void cnc_cmd_get_bit_rom_checksum(void)
 USART_CFG_T cnc_get_usart_cfg(void)
 {
     /* Configure USART to talk to the CNC laptop via USB. */
-    USART_CONFIG_T cfg;
+    USART_CFG_T cfg;
+
     cfg.mode             = USART_MODE_ASYNCHRONOUS;
     cfg.baud             = USART_BAUD_9600;
     cfg.character_size   = USART_CHARACTER_SIZE_8;
