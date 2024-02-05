@@ -11,6 +11,11 @@
 #include "timer.h"
 
 
+static void demo_pwm(void);
+static void demo_can_tx(void);
+static void demo_adc_over_twi(void);
+
+
 /*******************************************************************************
  * Initialize the demo application.
  ******************************************************************************/
@@ -34,20 +39,27 @@ void demo_init(void)
 
     /* Initiate conversion on sample and wait for it to finish before returning. */
     adc_init(ADC_MODE_BLOCKING);
+    /* Select the appropriate ADC for sampling */
+    adc_select(ADC_0);
 }
 
 
 /*******************************************************************************
- * Perform the demo transmit task, writing messages to the CAN software FIFO.
+ * Perform the demo transmit task.
  ******************************************************************************/ 
 void task_demo_tx(void)
 {
-    U8_T buf[CAN_FIFO_DATA_LEN];
-    SIZE_T len;
-    FIFO_STATUS_T status;
-    CAN_IDENT_T identifier;
-    ADC_RESULT_T adc;
+    demo_pwm();
+    demo_can_tx();
+    demo_adc_over_twi();
+}
 
+
+/*******************************************************************************
+ * Perform the demo PWM task, incrementing and setting the duty cycle. 
+ ******************************************************************************/ 
+static void demo_pwm(void)
+{
     static FLOAT_T duty;
 
     duty += 0.1f;
@@ -55,20 +67,27 @@ void task_demo_tx(void)
         duty = 0.0f;
     }
     timer0_pwm(duty);
+}
 
-    identifier = (U16_T) 0b0110u;
+
+/*******************************************************************************
+ * Perform the demo CAN transmit task, enqueing a CAN message for transmission.
+ ******************************************************************************/ 
+static void demo_can_tx(void)
+{
+    U8_T buf[CAN_FIFO_DATA_LEN];
+    SIZE_T len;
+    FIFO_STATUS_T status;
+    CAN_IDENT_T identifier;
 
     memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6u);
     len = strnlen_by_U8((U8_T*) "Hello!", CAN_FIFO_DATA_LEN);
 
+    identifier = (U16_T) 0b0110u;
     status = can_tx_q_add(identifier, buf, len);
 
     if (FIFO_OK == status) {
-        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
-        adc = adc_sample();
-        len = itoa(buf, (U32_T) adc);
-        buf[len] = '\n';
-        twi_master_tx((U8_T) 0b10100000u, buf, len+1);
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) get_pc());
     } else {
         fai_pass_fail_logger(
             FAI_FAULT_ID_CAN_TX_BUFFER_OVERFLOW, 
@@ -76,6 +95,26 @@ void task_demo_tx(void)
             (U32_T) identifier
         );
     }
+}
+
+/*******************************************************************************
+ * Perform the demo ADC/TWI task, sampling the ADC and transmitting its value 
+ * over TWI.
+ ******************************************************************************/ 
+static void demo_adc_over_twi(void)
+{
+    U8_T buf[20];
+    SIZE_T len;
+    ADC_RESULT_T adc;
+
+    /* Sample the ADC and stringify the result */
+    adc = adc_sample();
+    len = itoa(buf, (U32_T) adc);
+    /* Add a newline */
+    buf[len] = '\n';
+    ++len;
+    /* Transmit stringified value over TWI */
+    twi_master_tx((U8_T) 0b10100000u, buf, len);
 }
 
 
