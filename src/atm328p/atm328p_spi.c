@@ -20,6 +20,8 @@ void spi_init(SPI_CONFIG_T config)
     VU8_T dummy_read;
     #pragma GCC diagnostic pop
 
+    SPCR.byte = (U8_T) 0u;
+
     /* Turn off Power Reduction for SPI */
     if (ENABLED == config.enable) {
         PRR.bits.PRSPI = PRSPI_ENABLE_SPI;
@@ -50,9 +52,27 @@ void spi_init(SPI_CONFIG_T config)
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
         break;
     }
-    SPCR.bits.CPHA = CPHA_SAMPLE_ON_LEADING_EDGE;
-    /* at clk/128. */
-    SPCR.byte |= SPCR_PRESCALE_OVER_128;
+
+    switch (config.phase) {
+    case SPI_PHASE_SAMPLE_ON_LEADING:
+        SPCR.bits.CPHA = CPHA_SAMPLE_ON_LEADING_EDGE;
+        break;
+    case SPI_PHASE_SETUP_ON_LEADING:
+        SPCR.bits.CPHA = CPHA_SETUP_ON_LEADING_EDGE;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+        break;
+    }
+
+    switch (config.prescale) {
+    case SPI_PRESCALE_OVER_256:
+        SPCR.byte |= SPCR_PRESCALE_OVER_128;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
+        break;
+    }
 
     switch (config.mode) {
     case SPI_MODE_MASTER:
@@ -72,17 +92,26 @@ void spi_init(SPI_CONFIG_T config)
     }
 
 
-    /* Enable "write finished" interrupts */
-    SPCR.bits.SPIE = SPIE_ENABLE_SPI_INTERRUPT;
+    if (ENABLED == config.interrupts) {
+        /* Enable "write finished" interrupts */
+        SPCR.bits.SPIE = SPIE_ENABLE_SPI_INTERRUPT;
+    } else {
+        SPCR.bits.SPIE = SPIE_DISABLE_SPI_INTERRUPT;
+    }
 
-    /* Enable SPI */
-    SPCR.bits.SPE = SPE_ENABLE_SPI;
+    if (ENABLED == config.enable) {
+        /* Enable SPI */
+        SPCR.bits.SPE = SPE_ENABLE_SPI;
+        /* Clear the SPI buffers */
+        dummy_read = SPSR.byte;
+        dummy_read = SPDR.byte;
 
-    /* Clear the SPI buffers */
-    dummy_read = SPSR.byte;
-    dummy_read = SPDR.byte;
+        g_spi_ready = TRUE;
+    } else {
+        SPCR.bits.SPE = SPE_DISABLE_SPI;
+        g_spi_ready = FALSE;
+    }
 
-    g_spi_ready = TRUE;
 }
 
 

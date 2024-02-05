@@ -32,13 +32,6 @@ typedef enum {
 } SPI_PRESCALE_T;
 
 
-typedef enum {
-    SPI_INTERRUPTS_OFF = 0,
-    SPI_INTERRUPT_TX_ENABLE = 1,
-    SPI_INTERRUPT_RX_ENABLE = 2
-} SPI_INTERRUPT_FLAGS_T;
-
-
 typedef struct {
     ENABLE_T enable;
     SPI_MODE_T mode;
@@ -46,10 +39,11 @@ typedef struct {
     SPI_POLARITY_T polarity;
     SPI_PHASE_T phase;
     SPI_PRESCALE_T prescale;
+    ENABLE_T interrupts;
 } SPI_CONFIG_T;
 
 
-void spi_init(void);
+void spi_init(SPI_CONFIG_T config);
 
 void spi_begin(void);
 void spi_end(void);

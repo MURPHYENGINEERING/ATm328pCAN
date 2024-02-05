@@ -11,6 +11,7 @@
 #include "usart.h"
 #include "adc.h"
 #include "cnc.h"
+#include "demo.h"
 
 
 /*******************************************************************************
@@ -23,7 +24,7 @@ S16_T main(void)
     /* Enable interrupts */
     sei();
 
-    /* Soft-reset if the watchdog doesn't get strobed in 2 major cycles */
+    /* Soft-reset if the watchdog doesn't get strobed in 4 major cycles */
     watchdog_enable();
 
     /* Initialize fault logging */
@@ -32,8 +33,17 @@ S16_T main(void)
     /* Initialize GPIOs */
     dsc_init();
 
+    SPI_CONFIG_T spi_config;
+    spi_config.enable = ENABLED;
+    spi_config.mode = SPI_MODE_MASTER;
+    spi_config.endian = SPI_ENDIAN_MSB_FIRST;
+    spi_config.phase = SPI_PHASE_SAMPLE_ON_LEADING;
+    spi_config.polarity = SPI_POLARITY_LEADING_IS_RISING;
+    spi_config.prescale = SPI_PRESCALE_OVER_256;
+    spi_config.interrupts = ENABLED;
+
     /* Start SPI bus */
-    spi_init();
+    spi_init(spi_config);
 
     /* Start CAN bus */
     can_init();
@@ -45,7 +55,7 @@ S16_T main(void)
     usart_config.stop_bits = USART_STOP_BITS_1;
     usart_config.parity = USART_PARITY_MODE_EVEN;
 
-    /* Start the USART bus */
+    /* Start USART bus */
     usart_init(usart_config);
 
     /* Initiate conversion on sample and wait for it to finish before returning. */
