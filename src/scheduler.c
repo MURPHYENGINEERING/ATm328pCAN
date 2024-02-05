@@ -12,7 +12,7 @@
 #include "memory.h"
 
 
-TASK_FN_T tasks[N_TASKS] = {
+TASK_FN_T tasks[SCHEDULER_TASKS_N] = {
     &task_watchdog_strobe,
     &task_cnc_rx,
     &task_demo_tx,
@@ -42,10 +42,8 @@ ISR(TIMER1_COMPA_vect)
 
     } else if (SCHEDULER_FINISHED == g_scheduler_state) {
         /* Next task */
-        ++g_task_idx;
-        if (N_TASKS == g_task_idx) {
-            g_task_idx = 0u;
-        }
+        g_task_idx = (SIZE_T)( (g_task_idx + 1u) % SCHEDULER_TASKS_N );
+        
         g_scheduler_state = SCHEDULER_IDLE;
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, get_pc());
