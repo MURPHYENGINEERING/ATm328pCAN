@@ -27,7 +27,7 @@ typedef struct {
 void twi_init_hardware(TWI_CFG_T cfg);
 void twi_init(TWI_CFG_T cfg);
 
-void twi_master_tx(U8_T addr, U8_T* data, SIZE_T len);
+PASS_T twi_master_tx(U8_T addr, U8_T* data, SIZE_T len);
 SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len);
 
 #endif

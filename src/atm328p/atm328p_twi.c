@@ -18,10 +18,15 @@ void twi_init_hardware(TWI_CFG_T cfg)
  * \param[in] addr  The slave address to transmit to.
  * \param[in] data  Array of bytes to be transmitted in Master Transmitter mode.
  * \param[in] len   Length in bytes of the `data` array.
+ * \return          `PASS` if the function completed successfully or `FAIL` if
+ *                  there was a TWI error during transmission.
  ******************************************************************************/
-void twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
+PASS_T twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
 {
+    PASS_T status;
     SIZE_T i;
+
+    status = PASS;
 
     TWCR.byte = TWCR_START_CONDITION;
 
@@ -31,6 +36,7 @@ void twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
 
     if (TWCR_START_CONDTIION != TWSR_STATUS) {
         fai_pass_fail_logger(FAI_FAULT_ID_TWI_START, FAIL, (U32_T) TWSR_STATUS);
+        status = FAIL;
     } else {
         /* Load the address with the Slave Write bit set and tansmit */
         TWDR.byte = TWDR_SLAVE_WRITE(addr);
@@ -41,7 +47,12 @@ void twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
         }
 
         if (TWS_MT_SLAVE_ACK != TWSR_STATUS) {
-            fai_pass_fail_logger(FAI_FAULT_ID_TWI_MT_SLAVE_ACK, FAIL, (U32_T) TWSR_STATUS);
+            fai_pass_fail_logger(
+                FAI_FAULT_ID_TWI_MT_SLAVE_ACK, 
+                FAIL, 
+                (U32_T) TWSR_STATUS
+            );
+            status = FAIL;
         } else {
             for (i = 0; i < len; ++i) {
                 TWDR.byte = data[i];
@@ -53,12 +64,19 @@ void twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
             }
 
             if (TWS_MT_DATA_ACK != TWSR_STATUS) {
-                fai_pass_fail_logger(FAI_FAULT_ID_TWI_MT_DATA_ACK, FAIL, (U32_T) TWSR_STATUS);
+                fai_pass_fail_logger(
+                    FAI_FAULT_ID_TWI_MT_DATA_ACK, 
+                    FAIL, 
+                    (U32_T) TWSR_STATUS
+                );
+                status = FAIL;
             } else {
                 TWCR.byte = TWCR_STOP_CONDITION;
             }
         }
     }
+
+    return status;
 }
 
 
@@ -94,7 +112,11 @@ SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
         }
 
         if (TWS_MR_SLAVE_ACK != TWSR_STATUS) {
-            fai_pass_fail_logger(FAI_FAULT_ID_TWI_MR_SLAVE_ACK, FAIL, (U32_T) TWSR_STATUS);
+            fai_pass_fail_logger(
+                FAI_FAULT_ID_TWI_MR_SLAVE_ACK, 
+                FAIL, 
+                (U32_T) TWSR_STATUS
+            );
         } else {
             /* Start receiving data */
             TWCR.byte = TWCR_ACKNOWLEDGE_DATA;
@@ -107,7 +129,11 @@ SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
                 data[i] = TWDR.byte;
 
                 if (TWS_MR_DATA_ACK != TWSR_STATUS) {
-                    fai_pass_fail_logger(FAI_FAULT_ID_TWI_MR_DATA_ACK, FAIL, (U32_T) TWSR_STATUS);
+                    fai_pass_fail_logger(
+                        FAI_FAULT_ID_TWI_MR_DATA_ACK, 
+                        FAIL, 
+                        (U32_T) TWSR_STATUS
+                    );
                     TWCR.byte = TWCR_ACKNOWLEDGE_DATA_END;
                     break;
                 }
