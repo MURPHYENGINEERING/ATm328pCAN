@@ -47,7 +47,7 @@ PK16_RESULT_T pk16_add(PK16_T* pkg, CSTR_T path, U8_T* data, SIZE_T len)
         < pkg->size) {
 
         /* Copy the given data buffer into the underlying buffer... */
-        //memcpy(&pkg->buf[pkg->header.data_len], data, len);
+        memcpy(&pkg->buf[pkg->header.data_len], data, len);
 
         /* Go to the last entry in the table */
         table = (PK16_TABLE_T*)( 
@@ -57,13 +57,11 @@ PK16_RESULT_T pk16_add(PK16_T* pkg, CSTR_T path, U8_T* data, SIZE_T len)
             + sizeof(PK16_TABLE_T) * pkg->header.n 
         );
 
-        /* Update the table entry */
+        /* Update the table entry re: data*/
         table->head = (U16_T)( pkg->header.data_len - len );
         table->len = len;
-
         table->path_len = strnlen(path, PK16_MAX_PATH_LEN);
         memcpy(&pkg->buf[table->head], path, table->path_len);
-
         table->crc = crc_compute_crc32(data, len, (U32_T) 0u, TRUE);
 
         /* Step forward in the underlying buffer by len bytes */

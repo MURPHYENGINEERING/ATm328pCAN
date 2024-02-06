@@ -25,12 +25,14 @@ static void demo_adc_over_twi(void);
 void demo_init(void)
 {
     /* 15-KHz PWM on PORTD6 */
+    /*
     timer0_init(
         TIMER_MODE_FAST_PWM,
         TIMER0_PRESCALE_OVER_1024,
         TIMER0_OUTPUT_PIN_A_TOGGLE,
         TIMER0_INTERRUPTS_OFF
     );
+    */
 
     /* Enable the TWI peripheral device. */
     TWI_CFG_T cfg;
@@ -71,9 +73,10 @@ static void demo_pk16(void)
     PK16_RESULT_T result;
 
     pk16_init(&pkg, buf, 256);
-    result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!\0", (U16_T) 13);
+    result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 13);
 
     if (PK16_OK == result) { 
+        dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
     }
