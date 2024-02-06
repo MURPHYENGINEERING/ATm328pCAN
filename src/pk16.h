@@ -18,10 +18,8 @@ typedef enum {
 
 /** A single entry in a PK16 package. */
 typedef struct {
-    /** String representing the path of this entry. */
-    U8_T path[64];
-    /** Length in bytes of the `path` of this entry. */
-    U16_T path_len;
+    /** Null-terminated string representing the path of this entry. */
+    S8_T path[PK16_MAX_PATH_LEN];
     /** Index into the package data buffer of the start of this entry's data. */
     U16_T head;
     /** Length in bytes of this entry's data in the data buffer. */
@@ -31,11 +29,15 @@ typedef struct {
 } PK16_TABLE_T;
 
 
-/** A header to a PK16 package. */
+/** A header for a PK16 package. */
 typedef struct {
+    /** Magic number indicating this is the correct package format. */
     U16_T magic;
+    /** Package version for compatibility over revisions. */
     U8_T version;
+    /** Number of entries in the package table. */
     U16_T n;
+    /** Length of the data in the package, used to offset to the package table. */
     U16_T data_len;
 } PK16_HEADER_T;
 

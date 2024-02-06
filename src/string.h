@@ -4,6 +4,7 @@
 #include "types.h"
 
 SIZE_T strnlen(S8_T* s, SIZE_T max);
+SIZE_T strncpy(S8_T* dst, S8_T* src, SIZE_T max);
 
 void str_reverse(S8_T* s);
 

@@ -3,18 +3,42 @@
 
 
 /*******************************************************************************
- * Count the length of the given string, up to, but not including, a null
+ * Copy the `src` string into the `dst` string buffer, up to `max` characters,
+ * ensuring the resulting string is null terminated.
+ * \param[in] dst   The given string to be measured.
+ * \param[in] src   The maximum number of bytes to be counted, acting as a range
+ *                  bounds in case a null terminator is never found.
+ * \param[in] max   The maximum number of characters to be copied, including the
+ *                  null terminator.
+ * \return          The length of the copied string in characters.
+ ******************************************************************************/
+SIZE_T strncpy(S8_T* dst, S8_T* src, SIZE_T max)
+{
+    SIZE_T i;
+
+    for (i = (SIZE_T) 0u; ('\0' != src[i]) && (i < max-1); ++i) {
+        *dst[i] = *src[i];
+    }
+
+    dst[i] = (S8_T) '\0';
+
+    return i;
+}
+
+
+/*******************************************************************************
+ * Count the length of the given string `s` up to, but not including, the null
  * terminator ('\0').
  * \param[in] s     The given string to be measured.
  * \param[in] max   The maximum number of bytes to be counted, acting as a range
  *                  bounds in case a null terminator is never found.
- * \return The length of the string in bytes.
+ * \return          The length of the string in bytes.
  ******************************************************************************/
 SIZE_T strnlen(S8_T* s, SIZE_T max)
 {
     SIZE_T i;
 
-    for (i = 0u; ('\0' != s[i]) && (i < max); ++i) {
+    for (i = (SIZE_T) 0u; ('\0' != s[i]) && (i < max); ++i) {
     }
 
     return i;
@@ -33,7 +57,7 @@ void str_reverse(S8_T* s)
 
     j = strnlen(s, SIZE_T_MAX) - 1;
 
-    for (i = 0u; i < j; ++i) {
+    for (i = (SIZE_T) 0u; i < j; ++i) {
         c = s[i];
         s[i] = s[j];
         s[j] = c;
@@ -52,14 +76,14 @@ SIZE_T itoa(S8_T* s, U32_T n)
 {
     SIZE_T i;
  
-    i = 0u;
+    i = (SIZE_T) 0u;
 
     do { 
         s[i] = n % 10u + '0';
         ++i;
     } while ((n /= 10u) > 0u);
 
-    s[i] = '\0';
+    s[i] = (S8_T) '\0';
 
     str_reverse(s);
 
