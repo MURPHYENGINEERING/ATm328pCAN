@@ -30,8 +30,8 @@ void fai_clear_faults(void)
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 
-    memset_by_U8(
-        (U8_T*)(void*)g_fault_counters, 
+    memset(
+        g_fault_counters, 
         (U8_T) 0u, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
@@ -47,7 +47,7 @@ void fai_init(void)
 {
     BOOL_T init_flag;
 
-    memset_by_U8((U8_T*)(void*)&g_fai_fault_empty, 0, sizeof(g_fai_fault_empty));
+    memset(&g_fai_fault_empty, 0, sizeof(g_fai_fault_empty));
 
     init_flag = (BOOL_T) eeprom_read_byte(FAI_NVM_INIT_FLAG_ADDRESS);
     if (FALSE == init_flag) {

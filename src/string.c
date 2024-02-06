@@ -10,7 +10,7 @@
  *                  bounds in case a null terminator is never found.
  * \return The length of the string in bytes.
  ******************************************************************************/
-SIZE_T strnlen_by_U8(U8_T* s, SIZE_T max)
+SIZE_T strnlen(S8_T* s, SIZE_T max)
 {
     SIZE_T i;
 
@@ -25,13 +25,13 @@ SIZE_T strnlen_by_U8(U8_T* s, SIZE_T max)
  * Reverse the given string in place, leaving the trailing zero in place.
  * \param[out] s The string to be reversed. 
  ******************************************************************************/
-void str_reverse(U8_T* s)
+void str_reverse(S8_T* s)
 {
     SIZE_T i;
     SIZE_T j;
-    U8_T c;
+    S8_T c;
 
-    j = strnlen_by_U8(s, SIZE_T_MAX) - 1;
+    j = strnlen(s, SIZE_T_MAX) - 1;
 
     for (i = 0u; i < j; ++i) {
         c = s[i];
@@ -48,7 +48,7 @@ void str_reverse(U8_T* s)
  * \param[in]  n    The integer value to be converted.
  * \return The length of the string created, not including the trailing zero.
  ******************************************************************************/
-SIZE_T itoa(U8_T* s, U32_T n)
+SIZE_T itoa(S8_T* s, U32_T n)
 {
     SIZE_T i;
  

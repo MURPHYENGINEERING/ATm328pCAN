@@ -10,6 +10,7 @@
 #include "adc.h"
 #include "timer.h"
 #include "twi.h"
+#include "pk16.h"
 
 
 static void demo_pk16(void);
@@ -67,9 +68,15 @@ static void demo_pk16(void)
 {
     PK16_T pkg;
     U8_T buf[256];
+    PK16_RESULT_T result;
 
     pk16_init(&pkg, buf, 256);
-    pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (U16_T) 13);
+    result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!\0", (U16_T) 13);
+
+    if (PK16_OK == result) { 
+    } else {
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
+    }
 }
 
 
@@ -98,8 +105,8 @@ static void demo_can_tx(void)
     FIFO_STATUS_T status;
     CAN_IDENT_T identifier;
 
-    memcpy_by_U8(buf, (U8_T*) "Hello!", (SIZE_T) 6u);
-    len = strnlen_by_U8((U8_T*) "Hello!", CAN_FIFO_DATA_LEN);
+    memcpy(buf, "Hello!", (SIZE_T) 6u);
+    len = strnlen("Hello!", CAN_FIFO_DATA_LEN);
 
     identifier = (U16_T) 0b0110u;
     status = can_tx_q_add(identifier, buf, len);
@@ -127,7 +134,7 @@ static void demo_adc_over_twi(void)
 
     /* Sample the ADC and stringify the result */
     adc = adc_sample();
-    len = itoa(buf, (U32_T) adc);
+    len = itoa((S8_T*) buf, (U32_T) adc);
     /* Add a newline */
     buf[len] = '\n';
     ++len;

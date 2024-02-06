@@ -8,12 +8,12 @@
  * \param[in] src   The buffer from which memory will be copied.
  * \param[in] len   The number of bytes to be copied from `src` to `dst`.
  ******************************************************************************/
-void memcpy_by_U8(U8_T* dst, U8_T* src, SIZE_T len)
+void memcpy(void* dst, void* src, SIZE_T len)
 {
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        *dst = *src;
+        *(U8_T*)dst = *(U8_T*)src;
         ++dst;
         ++src;
     }
@@ -26,12 +26,12 @@ void memcpy_by_U8(U8_T* dst, U8_T* src, SIZE_T len)
  * \param[in] value The value to be set to all memory locations in the buffer.
  * \param[in] len   The number of bytes to be set in the destination buffer.
  ******************************************************************************/
-void memset_by_U8(U8_T* dst, U8_T value, SIZE_T len)
+void memset(void* dst, U8_T value, SIZE_T len)
 {
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        *dst = value;
+        *(U8_T*)dst = value;
         ++dst;
     }
 }
@@ -46,16 +46,16 @@ void memset_by_U8(U8_T* dst, U8_T value, SIZE_T len)
  * \retval          <0 if `lhs` < `rhs` at the first unequal byte.
  * \retval          >0 if `lhs` > `rhs` at the first unequal byte.
  ******************************************************************************/
-S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, SIZE_T len)
+S8_T memcmp(void* lhs, void* rhs, SIZE_T len)
 {
     SIZE_T i;
-    S32_T result;
+    S8_T result;
 
     i = 0u;
-    result = (S32_T) *lhs - (S32_T) *rhs;
+    result = *(S8_T*)lhs - *(S8_T*)rhs;
 
     while ( ((S32_T) 0u == result) && (i < len) ) {
-        result = (S32_T) *lhs - (S32_T) *rhs;
+        result = *(S8_T*)lhs - *(S8_T*)rhs;
         ++lhs;
         ++rhs;
         ++i;

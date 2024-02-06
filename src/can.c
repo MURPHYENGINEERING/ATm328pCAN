@@ -131,8 +131,8 @@ void can_fifo_q_init(CAN_FIFO_T* q, CAN_FIFO_ENTRY_T* buf, SIZE_T size)
     q->tail = 0u;
     q->n = (SIZE_T) 0u;
 
-    memset_by_U8(
-        (U8_T*)(void*) buf, 
+    memset(
+        buf, 
         (U8_T) 0u, 
         (SIZE_T)( size * sizeof(CAN_FIFO_ENTRY_T) )
     );
@@ -164,7 +164,7 @@ FIFO_STATUS_T can_fifo_q_add(
     } else {
         p_fifo_entry = &q->buf[q->tail];
         p_fifo_entry->identifier = identifier;
-        memcpy_by_U8(p_fifo_entry->data, src, len);
+        memcpy(p_fifo_entry->data, src, len);
         p_fifo_entry->len = len;
 
         q->tail = (SIZE_T)( (q->tail + 1u) % q->size );
@@ -203,7 +203,7 @@ FIFO_STATUS_T can_fifo_q_remove(
     } else {
         p_fifo_entry = &q->buf[q->head];
         *identifier = p_fifo_entry->identifier;
-        memcpy_by_U8(dst, p_fifo_entry->data, p_fifo_entry->len);
+        memcpy(dst, p_fifo_entry->data, p_fifo_entry->len);
         *len = p_fifo_entry->len;
 
         q->head = (SIZE_T)( (q->head + 1u) % q->size );

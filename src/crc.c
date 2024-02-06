@@ -160,12 +160,12 @@ U16_T crc_compute_crc16(U8_T* buf, SIZE_T len, U16_T running_val, BOOL_T final)
  * \param[in] running_val   An existing CRC-32 to compute from.
  * \param[in] final         `TRUE` if this is the final computation on `running_val`.
  ******************************************************************************/
-U32_T crc_compute_crc32(U8_T* buf, SIZE_T len, U32_T running_val, BOOL_T final)
+U32_T crc_compute_crc32(void* buf, SIZE_T len, U32_T running_val, BOOL_T final)
 {
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        running_val = CRC_UPD_CRC32(buf[i], running_val);
+        running_val = CRC_UPD_CRC32(( (U8_T*)buf )[i], running_val);
     }
 
     if (TRUE == final) {

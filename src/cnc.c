@@ -129,13 +129,13 @@ static void cnc_process_q(void)
  ******************************************************************************/
 static void cnc_process_cmd(U8_T* buf, SIZE_T len)
 {
-    if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_CLEAR_FAULTS], len)) {
+    if (0u == memcmp(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_CLEAR_FAULTS], len)) {
         cnc_cmd_clear_faults();
-    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_REPORT_FAULTS], len)) {
+    } else if (0u == memcmp(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_REPORT_FAULTS], len)) {
         cnc_cmd_report_faults();
-    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
+    } else if (0u == memcmp(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_SEND_CAN_MSG], len)) {
         cnc_cmd_send_can_msg();
-    } else if (0u == memcmp_by_U8(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_BITROM_CHECKSUM], len)) {
+    } else if (0u == memcmp(buf, g_cnc_cmd_strings[(SIZE_T) CNC_CMD_BITROM_CHECKSUM], len)) {
         cnc_cmd_get_bit_rom_checksum();
     } else {
         /** Command data, put it on the data queue for processing when the command

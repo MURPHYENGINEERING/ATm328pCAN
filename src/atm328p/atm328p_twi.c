@@ -1,6 +1,7 @@
 #include "atm328p_twi.h"
 #include "twi.h"
 #include "fai.h"
+#include "memory.h"
 
 
 /*******************************************************************************
