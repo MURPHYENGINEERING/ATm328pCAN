@@ -34,7 +34,9 @@
             "atm328p_usart.h": "c",
             "atm328p_adc.h": "c",
             "cnc.h": "c",
-            "demo.h": "c"
+            "demo.h": "c",
+            "twi.h": "c",
+            "atm328p_twi.h": "c"
         }
     }
 }

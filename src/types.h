@@ -4,7 +4,9 @@
 typedef _Bool BOOL_T;
 typedef volatile BOOL_T VBOOL_T;
 
+
 #ifdef ATM328P
+    typedef char S8_T;
     typedef unsigned char U8_T;
     typedef volatile U8_T VU8_T;
     #define U8_T_MAX ((U8_T) 255u)
@@ -23,6 +25,8 @@ typedef volatile BOOL_T VBOOL_T;
     typedef volatile SIZE_T VSIZE_T;
     #define SIZE_T_MAX U16_T_MAX
 #endif
+
+typedef char* CSTR_T;
 
 typedef float FLOAT_T;
 /** Approximately zero equals zero. */

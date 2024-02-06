@@ -13,7 +13,7 @@
  * Additionally, clear the SPI read and write buffers, and set the state of the
  * SPI software device to "ready."
  ******************************************************************************/
-void spi_init(SPI_CONFIG_T config)
+void spi_init(SPI_CFG_T cfg)
 {
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
@@ -23,13 +23,13 @@ void spi_init(SPI_CONFIG_T config)
     SPCR.byte = (U8_T) 0u;
 
     /* Turn off Power Reduction for SPI */
-    if (ENABLED == config.enable) {
+    if (ENABLED == cfg.enable) {
         PRR.bits.PRSPI = PRSPI_ENABLE_SPI;
     } else {
         PRR.bits.PRSPI = PRSPI_DISABLE_SPI;
     }
 
-    switch (config.endian) {
+    switch (cfg.endian) {
     case SPI_ENDIAN_MSB_FIRST:
         SPCR.bits.DORD = DORD_MSB_FIRST;
         break;
@@ -41,7 +41,7 @@ void spi_init(SPI_CONFIG_T config)
         break;
     }
 
-    switch (config.polarity) {
+    switch (cfg.polarity) {
     case SPI_POLARITY_LEADING_IS_RISING:
         SPCR.bits.CPOL = CPOL_LEADING_EDGE_IS_RISING;
         break;
@@ -53,7 +53,7 @@ void spi_init(SPI_CONFIG_T config)
         break;
     }
 
-    switch (config.phase) {
+    switch (cfg.phase) {
     case SPI_PHASE_SAMPLE_ON_LEADING:
         SPCR.bits.CPHA = CPHA_SAMPLE_ON_LEADING_EDGE;
         break;
@@ -65,7 +65,7 @@ void spi_init(SPI_CONFIG_T config)
         break;
     }
 
-    switch (config.prescale) {
+    switch (cfg.prescale) {
     case SPI_PRESCALE_OVER_256:
         SPCR.byte |= SPCR_PRESCALE_OVER_128;
         break;
@@ -74,7 +74,7 @@ void spi_init(SPI_CONFIG_T config)
         break;
     }
 
-    switch (config.mode) {
+    switch (cfg.mode) {
     case SPI_MODE_MASTER:
         SPCR.bits.MSTR = MSTR_MODE_MASTER;
         DDR_SPI.bits.MOSI = DDR_OUTPUT;
@@ -92,24 +92,21 @@ void spi_init(SPI_CONFIG_T config)
     }
 
 
-    if (ENABLED == config.interrupts) {
+    if (ENABLED == cfg.interrupts) {
         /* Enable "write finished" interrupts */
         SPCR.bits.SPIE = SPIE_ENABLE_SPI_INTERRUPT;
     } else {
         SPCR.bits.SPIE = SPIE_DISABLE_SPI_INTERRUPT;
     }
 
-    if (ENABLED == config.enable) {
+    if (ENABLED == cfg.enable) {
         /* Enable SPI */
         SPCR.bits.SPE = SPE_ENABLE_SPI;
         /* Clear the SPI buffers */
         dummy_read = SPSR.byte;
         dummy_read = SPDR.byte;
-
-        g_spi_ready = TRUE;
     } else {
         SPCR.bits.SPE = SPE_DISABLE_SPI;
-        g_spi_ready = FALSE;
     }
 
 }
@@ -143,7 +140,7 @@ U8_T spi_tx_rx(U8_T tx_data) {
     SPDR.byte = tx_data;
     /* Wait for the previous transfer to complete. */
     /* "The SPIF bit is cleared by first reading the SPI status register with
-    /* SPIF set, then accessing the SPI data register (SPDR)."
+     * SPIF set, then accessing the SPI data register (SPDR)."
      * - ATmega328P Datasheet page 141 */
     while (FALSE == SPSR.bits.SPIF) {
     }

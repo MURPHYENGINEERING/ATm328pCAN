@@ -77,7 +77,7 @@ void scheduler_init(void)
 void scheduler_step(void)
 {
     if (SCHEDULER_IDLE == g_scheduler_state) {
-        dsc_led_toggle(DSC_LED_CANBOARD_1);
+        dsc_led_toggle(DSC_LED_CANBOARD_2);
 
         g_scheduler_state = SCHEDULER_RUNNING;
         tasks[g_task_idx]();

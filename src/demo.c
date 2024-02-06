@@ -9,8 +9,10 @@
 #include "usart.h"
 #include "adc.h"
 #include "timer.h"
+#include "twi.h"
 
 
+static void demo_pk16(void);
 static void demo_pwm(void);
 static void demo_can_tx(void);
 static void demo_adc_over_twi(void);
@@ -51,7 +53,23 @@ void task_demo_tx(void)
 {
     demo_pwm();
     demo_can_tx();
+    demo_pk16();
+    /*
     demo_adc_over_twi();
+    */
+}
+
+
+/*******************************************************************************
+ * Perform the Package-16 task.
+ ******************************************************************************/
+static void demo_pk16(void)
+{
+    PK16_T pkg;
+    U8_T buf[256];
+
+    pk16_init(&pkg, buf, 256);
+    pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (U16_T) 13);
 }
 
 
@@ -63,7 +81,7 @@ static void demo_pwm(void)
     static FLOAT_T duty;
 
     duty += 0.1f;
-    if (duty > 1.0f) {
+    if ( (1.0f < duty) || (0.0f > duty)) {
         duty = 0.0f;
     }
     timer0_pwm(duty);

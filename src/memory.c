@@ -69,7 +69,7 @@ S32_T memcmp_by_U8(U8_T* lhs, U8_T* rhs, SIZE_T len)
  * Get the current Program Counter address at the call site.
  * \return The Program Counter value to which this function returns.
  ******************************************************************************/
-U32_T get_pc(void) 
+U16_T get_pc(void) 
 {
-    return (U32_T)__builtin_return_address(0);
+    return (U16_T)__builtin_return_address(0);
 }

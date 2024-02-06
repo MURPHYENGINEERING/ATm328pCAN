@@ -52,7 +52,7 @@ void task_can_tx(void)
     SIZE_T len;
     SIZE_T i;
 
-    n_pending_msgs = fifo_q_len(&g_can_tx_q);
+    n_pending_msgs = can_fifo_q_len(&g_can_tx_q);
 
     for (i = 0; i < n_pending_msgs; ++i) {
         status = can_fifo_q_remove(&g_can_tx_q, &identifier, buf, &len);

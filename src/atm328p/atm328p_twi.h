@@ -116,12 +116,15 @@ extern volatile TWSR_T TWSR;
 /** Set the TWI Bit Rate Prescaler register to FCLK/64. */
 #define TWPS_PRESCALE_OVER_64 (U8_T) ( (1u << TWSR_TWPS1) | (1u << TWSR_TWPS0) )
 
+/** Select the prescaler value of FCLK/1 */
+#define TWSR_PRESCALE_OVER_1 (U8_T) 0u
+
 
 /** TWI Data Register */
 extern volatile REGISTER_T TWDR;
 
 /** Mark the given address as SLA+W. */
-#define TWDR_SLAVE_WRITE(addr)  (U8_T)( addr | TWS_MR_SLA_W )
+#define TWDR_SLAVE_WRITE(addr)  (U8_T)( addr | TWS_MT_SLA_W )
 /** Mark the given address as SLA+R. */
 #define TWDR_SLAVE_READ(addr)   (U8_T)( addr | TWS_MR_SLA_R )
 

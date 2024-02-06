@@ -1,5 +1,6 @@
 #include "atm328p_twi.h"
 #include "twi.h"
+#include "fai.h"
 
 
 /*******************************************************************************
@@ -9,6 +10,17 @@
  ******************************************************************************/
 void twi_init_hardware(TWI_CFG_T cfg)
 {
+    TWCR.byte = (U8_T) 0u;
+    TWSR.byte = (U8_T) 0u;
+
+    switch (cfg.prescale) {
+    case TWI_PRESCALE_OVER_1:
+        TWSR.byte |= TWSR_PRESCALE_OVER_1;
+        break;
+    default:
+        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) get_pc());
+        break;
+    }
 }
 
 
@@ -34,7 +46,7 @@ PASS_T twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
     while (FALSE == TWCR.bits.TWINT) {
     }
 
-    if (TWCR_START_CONDTIION != TWSR_STATUS) {
+    if (TWCR_START_CONDITION != TWSR_STATUS) {
         fai_pass_fail_logger(FAI_FAULT_ID_TWI_START, FAIL, (U32_T) TWSR_STATUS);
         status = FAIL;
     } else {
@@ -46,7 +58,7 @@ PASS_T twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
         while (FALSE == TWCR.bits.TWINT) {
         }
 
-        if (TWS_MT_SLAVE_ACK != TWSR_STATUS) {
+        if (TWS_MT_SLA_ACK != TWSR_STATUS) {
             fai_pass_fail_logger(
                 FAI_FAULT_ID_TWI_MT_SLAVE_ACK, 
                 FAIL, 
@@ -91,7 +103,6 @@ PASS_T twi_master_tx(U8_T addr, U8_T* data, SIZE_T len)
 SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
 {
     SIZE_T i;
-    SIZE_T received_len;
 
     i = 0;
 
@@ -101,7 +112,7 @@ SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
     while (FALSE == TWCR.bits.TWINT) {
     }
 
-    if (TWCR_START_CONDTIION != TWSR_STATUS) {
+    if (TWCR_START_CONDITION != TWSR_STATUS) {
         fai_pass_fail_logger(FAI_FAULT_ID_TWI_START, FAIL, (U32_T) TWSR_STATUS);
     } else {
         TWDR.byte = TWDR_SLAVE_READ(addr);
@@ -111,7 +122,7 @@ SIZE_T twi_master_rx(U8_T addr, U8_T* data, SIZE_T len)
         while (FALSE == TWCR.bits.TWINT) {
         }
 
-        if (TWS_MR_SLAVE_ACK != TWSR_STATUS) {
+        if (TWS_MR_SLA_ACK != TWSR_STATUS) {
             fai_pass_fail_logger(
                 FAI_FAULT_ID_TWI_MR_SLAVE_ACK, 
                 FAIL, 
