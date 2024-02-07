@@ -68,14 +68,22 @@ void task_demo_tx(void)
  ******************************************************************************/
 static void demo_pk16(void)
 {
-    PK16_T pkg;
-    U8_T buf[256];
+    static PK16_T pkg;
+    static U8_T buf[256];
+    static BOOL_T initialized = FALSE;
+
     PK16_RESULT_T result;
+    U8_T out_buf[20];
+    SIZE_T bytes_read;
 
-    pk16_init(&pkg, buf, 256);
+    if (FALSE == initialized) {
+        pk16_init(&pkg, buf, 256);
+        initialized = TRUE;
+    }
     result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 13);
+    bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 20);
 
-    if (PK16_OK == result) { 
+    if (13 == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);

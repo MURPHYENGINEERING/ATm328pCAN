@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-#define PK16_MAX_PATH_LEN 64
+#define PK16_MAX_PATH_LEN 32
 
 /** Represents the result of an operation on a PK16 package. */
 typedef enum {
@@ -19,13 +19,13 @@ typedef enum {
 /** A single entry in a PK16 package. */
 typedef struct {
     /** Null-terminated string representing the path of this entry. */
-    S8_T path[PK16_MAX_PATH_LEN];
+    CHAR_T path[PK16_MAX_PATH_LEN];
     /** Index into the package data buffer of the start of this entry's data. */
     U16_T head;
     /** Length in bytes of this entry's data in the data buffer. */
     U16_T len;
-    /** CRC32 of this entry's path + data. */
-    U32_T crc;
+    /** CRC16 of this entry's path + data. */
+    U16_T crc;
 } PK16_TABLE_T;
 
 
@@ -54,8 +54,12 @@ typedef struct {
 } PK16_T;
 
 
-void pk16_init(PK16_T* pkg, U8_T* buf, SIZE_T len);
-PK16_RESULT_T pk16_add(PK16_T* pkg, CSTR_T path, U8_T* data, SIZE_T len);
+void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T len);
+PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T p_path, U8_T* p_data, SIZE_T len);
+
+SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T p_path, U8_T* p_dst, SIZE_T max);
+
+PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index);
 
 
 #endif

@@ -221,7 +221,7 @@ static void cnc_cmd_send_can_msg(void)
 void cnc_cmd_get_bit_rom_checksum(void)
 {
     U32_T checksum;
-    U8_T buf[11];
+    CHAR_T buf[11];
     SIZE_T len;
     SIZE_T i;
 
@@ -234,7 +234,7 @@ void cnc_cmd_get_bit_rom_checksum(void)
     ++len;
 
     while (i < len) {
-        i += usart_tx(&buf[i], len - i);
+        i += usart_tx((U8_T*)&buf[i], len - i);
     }
 }
 

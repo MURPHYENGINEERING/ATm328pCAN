@@ -26,7 +26,8 @@ typedef volatile BOOL_T VBOOL_T;
     #define SIZE_T_MAX U16_T_MAX
 #endif
 
-typedef char* CSTR_T;
+typedef char CHAR_T;
+typedef CHAR_T* CSTR_T;
 
 typedef float FLOAT_T;
 /** Approximately zero equals zero. */

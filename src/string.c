@@ -12,12 +12,12 @@
  *                  null terminator.
  * \return          The length of the copied string in characters.
  ******************************************************************************/
-SIZE_T strncpy(S8_T* dst, S8_T* src, SIZE_T max)
+SIZE_T strncpy(CSTR_T dst, CSTR_T src, SIZE_T max)
 {
     SIZE_T i;
 
     for (i = (SIZE_T) 0u; ('\0' != src[i]) && (i < max-1); ++i) {
-        *dst[i] = *src[i];
+        dst[i] = src[i];
     }
 
     dst[i] = (S8_T) '\0';
@@ -34,7 +34,7 @@ SIZE_T strncpy(S8_T* dst, S8_T* src, SIZE_T max)
  *                  bounds in case a null terminator is never found.
  * \return          The length of the string in bytes.
  ******************************************************************************/
-SIZE_T strnlen(S8_T* s, SIZE_T max)
+SIZE_T strnlen(CSTR_T s, SIZE_T max)
 {
     SIZE_T i;
 
@@ -45,11 +45,30 @@ SIZE_T strnlen(S8_T* s, SIZE_T max)
 }
 
 
+CHAR_T strncmp(CSTR_T lhs, CSTR_T rhs, SIZE_T max)
+{
+    CHAR_T cmp;
+
+    while ( (0 < max) && (0 != *lhs) && (*lhs == *rhs) ) {
+        ++lhs;
+        ++rhs;
+        --max;
+    }
+    if (0 == max) {
+        cmp = 0;
+    } else {
+        cmp = *((U8_T*)lhs) - *((U8_T*)rhs);
+    }
+
+    return cmp;
+}
+
+
 /*******************************************************************************
  * Reverse the given string in place, leaving the trailing zero in place.
  * \param[out] s The string to be reversed. 
  ******************************************************************************/
-void str_reverse(S8_T* s)
+void strreverse(CSTR_T s)
 {
     SIZE_T i;
     SIZE_T j;
@@ -72,7 +91,7 @@ void str_reverse(S8_T* s)
  * \param[in]  n    The integer value to be converted.
  * \return The length of the string created, not including the trailing zero.
  ******************************************************************************/
-SIZE_T itoa(S8_T* s, U32_T n)
+SIZE_T itoa(CSTR_T s, U32_T n)
 {
     SIZE_T i;
  
@@ -83,9 +102,9 @@ SIZE_T itoa(S8_T* s, U32_T n)
         ++i;
     } while ((n /= 10u) > 0u);
 
-    s[i] = (S8_T) '\0';
+    s[i] = (CHAR_T) '\0';
 
-    str_reverse(s);
+    strreverse(s);
 
     return i;
 }
