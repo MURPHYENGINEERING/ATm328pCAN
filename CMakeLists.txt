@@ -1,6 +1,6 @@
-project(atm328pcan)
+project(atm328p-lib)
 
-add_executable(atm328pcan
+add_executable(atm328p-lib
     src/main.c
     src/bit.c
     src/can.c
@@ -19,6 +19,7 @@ add_executable(atm328pcan
     src/timer.c
     src/usart.c
     src/watchdog.c
+    src/pk16.c
     src/mcp2515/mcp2515_can.c
     src/atm328p/atm328p_dsc.c
     src/atm328p/atm328p_eeprom.c

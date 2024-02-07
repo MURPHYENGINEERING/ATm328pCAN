@@ -102,7 +102,6 @@ PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
     PK16_RESULT_T result;
     PK16_TABLE_T* p_table; 
     SIZE_T removed_len;
-    SIZE_T old_table_head;
     SIZE_T new_table_head;
     SIZE_T old_data_head;
     SIZE_T trailing_data_len;
@@ -128,19 +127,19 @@ PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
 
         /* Rewrite every table entry that isn't the removed one onto the end of
          * the data. */
-         new_table_head = sizeof(PK16_HEADER_T) + p_pkg->header.data_len;
+        new_table_head = sizeof(PK16_HEADER_T) + p_pkg->header.data_len;
 
-         for (i = 0; i < p_pkg->header.n; ++i) {
-            if (i != index) {
-                p_table = pk16_find_table_by_index(p_pkg, i);
-                if (i > index) {
-                    /* Update the trailing table entries with the new data heads */
-                   p_table->head -= removed_len;
-                }
-                memcpy(&p_pkg->buf[new_table_head], p_table, sizeof(PK16_TABLE_T));
-                new_table_head += sizeof(PK16_TABLE_T);
-            }
-         }
+        for (i = 0; i < p_pkg->header.n; ++i) {
+           if (i != index) {
+               p_table = pk16_find_table_by_index(p_pkg, i);
+               if (i > index) {
+                   /* Update the trailing table entries with the new data heads */
+                  p_table->head -= removed_len;
+               }
+               memcpy(&p_pkg->buf[new_table_head], p_table, sizeof(PK16_TABLE_T));
+               new_table_head += sizeof(PK16_TABLE_T);
+           }
+        }
 
          --p_pkg->header.n;
 
