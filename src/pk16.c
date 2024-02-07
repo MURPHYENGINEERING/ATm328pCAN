@@ -57,7 +57,9 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
     {
         /* Locate where the table is and where it should be after the new data
          * are added */
+        /* The table is currently located at the end of the header and data. */
         old_table_head = (SIZE_T)( sizeof(PK16_HEADER_T) + p_pkg->header.data_len );
+        /* Its new position should be increased by the length of the new data. */
         new_table_head = (SIZE_T)( old_table_head + len );
 
         /* Move the entire table to make room for the new data */
@@ -67,7 +69,8 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
             sizeof(PK16_TABLE_T) * p_pkg->header.n
         );
 
-        /* Copy in the new data */
+        /* Copy in the new data. The old table head points to the end of the 
+         * existing data. */
         memcpy(&p_pkg->buf[old_table_head], p_data, len);
         /* Add the new data to the header */
         p_pkg->header.data_len += len;
@@ -75,13 +78,17 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
         /* Write the new table entry into the end of the table */
         p_table = pk16_find_table_by_index(p_pkg, p_pkg->header.n);
         strncpy(p_table->path, path, PK16_MAX_PATH_LEN);
-        /* The new entry's data goes where the table was */
+        /* The new entry's data goes where the table was, at the end of the
+         * existing data. */
         p_table->head = old_table_head;
         p_table->len = len;
-        p_table->crc = crc_compute_checksum(p_data, len, (U16_T) 0u);
+        p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
 
         /* Add the new table entry to the header */
         ++p_pkg->header.n;
+
+        /* Write the header */
+        memcpy(p_pkg->buf, &p_pkg->header, sizeof(PK16_HEADER_T));
 
         result = PK16_OK;
     }

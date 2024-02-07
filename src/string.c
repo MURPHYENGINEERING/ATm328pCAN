@@ -16,11 +16,11 @@ SIZE_T strncpy(CSTR_T dst, CSTR_T src, SIZE_T max)
 {
     SIZE_T i;
 
-    for (i = (SIZE_T) 0u; ('\0' != src[i]) && (i < max-1); ++i) {
+    for (i = (SIZE_T) 0u; ((CHAR_T) '\0' != src[i]) && (i < max-1); ++i) {
         dst[i] = src[i];
     }
 
-    dst[i] = (S8_T) '\0';
+    dst[i] = (CHAR_T) '\0';
 
     return i;
 }

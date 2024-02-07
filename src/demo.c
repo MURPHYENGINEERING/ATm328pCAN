@@ -75,6 +75,7 @@ static void demo_pk16(void)
     PK16_RESULT_T result;
     U8_T out_buf[30];
     SIZE_T bytes_read;
+    SIZE_T i;
 
     if (FALSE == initialized) {
         pk16_init(&pkg, buf, 256);
@@ -84,6 +85,12 @@ static void demo_pk16(void)
     result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 21);
     bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
     bytes_read += pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
+
+    spi_begin();
+    for (i = 0; i < 256; ++i) {
+        spi_tx_rx(buf[i]);
+    }
+    spi_end();
 
     if ((13+21) == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);

@@ -24,8 +24,8 @@ typedef struct {
     U16_T head;
     /** Length in bytes of this entry's data in the data buffer. */
     U16_T len;
-    /** CRC16 of this entry's path + data. */
-    U16_T crc;
+    /** Checksum of this entry's path + data. */
+    U32_T checksum;
 } PK16_TABLE_T;
 
 
