@@ -225,7 +225,7 @@ PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
                         + sizeof(PK16_TABLE_T) * index );
 
     if (offset < (p_pkg->size - sizeof(PK16_TABLE_T))) {
-        p_table = (PK16_TABLE_T*)(void*) &p_pkg->buf[offset];
+        p_table = (PK16_TABLE_T*) &p_pkg->buf[offset];
     } else {
         p_table = (PK16_TABLE_T*) NULL;
     }
