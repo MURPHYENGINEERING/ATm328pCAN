@@ -11,19 +11,26 @@
  * \param[out] p_pkg    The package to initialize to the given buffer.
  * \param[in] p_buf     The underlying buffer the package (with header) will be 
  *                      written into.
- * \param[in] len       The length in bytes of the underlying buffer.
+ * \param[in] size      The length in bytes of the underlying buffer.
  ******************************************************************************/
-void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T len)
+void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size)
 {
+    PK16_HEADER_T* p_header;
+
+    /* Clear the package structure */
     memset(p_pkg, (U8_T) 0u, sizeof(PK16_T));
 
-    p_pkg->header.magic = (U16_T) 0xBEEFu;
-    p_pkg->header.version = (U8_T) 1u;
-
+    /* Clear the package buffer */
     p_pkg->buf = p_buf;
-    p_pkg->size = len;
+    memset(p_pkg->buf, (U8_T) 0u, size);
 
-    memset(p_buf, (U8_T) 0u, len);
+    /* Set the package buffer size */
+    p_pkg->size = size;
+
+    /* Clear the package header */
+    p_header = (PK16_HEADER_T*) p_pkg->buf;
+    p_header->magic = (U16_T) 0xBEEFu;
+    p_header->version = (U8_T) 1u;
 }
 
 
@@ -40,25 +47,28 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T len)
 PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
 {
     PK16_RESULT_T result;
+    PK16_HEADER_T* p_header;
     PK16_TABLE_T* p_table; 
     SIZE_T old_table_head;
     SIZE_T new_table_head;
 
     result = PK16_FULL;
 
+    p_header = (PK16_HEADER_T*) p_pkg->buf;
+
     /* If the size of the header + the existing data + this new data
      * + the existing table entries + this new table entry doesn't exceed the
      * underlying buffer size... */
     if ((sizeof(PK16_HEADER_T) 
-        + p_pkg->header.data_len 
+        + p_header->data_len 
         + len 
-        + sizeof(PK16_TABLE_T) * (p_pkg->header.n + 1)
+        + sizeof(PK16_TABLE_T) * (p_header->n + 1)
         ) < p_pkg->size)
     {
         /* Locate where the table is and where it should be after the new data
          * are added */
         /* The table is currently located at the end of the header and data. */
-        old_table_head = (SIZE_T)( sizeof(PK16_HEADER_T) + p_pkg->header.data_len );
+        old_table_head = (SIZE_T)( sizeof(PK16_HEADER_T) + p_header->data_len );
         /* Its new position should be increased by the length of the new data. */
         new_table_head = (SIZE_T)( old_table_head + len );
 
@@ -66,17 +76,17 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
         memcpy(
             &p_pkg->buf[new_table_head], 
             &p_pkg->buf[old_table_head], 
-            sizeof(PK16_TABLE_T) * p_pkg->header.n
+            sizeof(PK16_TABLE_T) * p_header->n
         );
 
         /* Copy in the new data. The old table head points to the end of the 
          * existing data. */
         memcpy(&p_pkg->buf[old_table_head], p_data, len);
         /* Add the new data to the header */
-        p_pkg->header.data_len += len;
+        p_header->data_len += len;
 
         /* Write the new table entry into the end of the table */
-        p_table = pk16_find_table_by_index(p_pkg, p_pkg->header.n);
+        p_table = pk16_find_table_by_index(p_pkg, p_header->n);
         strncpy(p_table->path, path, PK16_MAX_PATH_LEN);
         /* The new entry's data goes where the table was, at the end of the
          * existing data. */
@@ -85,10 +95,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
         p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
 
         /* Add the new table entry to the header */
-        ++p_pkg->header.n;
-
-        /* Write the header */
-        memcpy(p_pkg->buf, &p_pkg->header, sizeof(PK16_HEADER_T));
+        ++p_header->n;
 
         result = PK16_OK;
     }
@@ -107,6 +114,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
 PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
 {
     PK16_RESULT_T result;
+    PK16_HEADER_T* p_header;
     PK16_TABLE_T* p_table; 
     SIZE_T removed_len;
     SIZE_T new_table_head;
@@ -117,26 +125,28 @@ PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
 
     result = PK16_EMPTY;
 
-    if (index < p_pkg->header.n) {
+    p_header = (PK16_HEADER_T*) p_pkg->buf;
+
+    if (index < p_header->n) {
         /* Locate the table entry for this index */
         p_table = pk16_find_table_by_index(p_pkg, index);
 
         removed_len = p_table->len;
 
         old_data_head = (SIZE_T)( p_table->head + removed_len );
-        trailing_data_len = (SIZE_T)( p_pkg->header.data_len - old_data_head );
+        trailing_data_len = (SIZE_T)( p_header->data_len - old_data_head );
         new_data_head = (SIZE_T)( old_data_head - removed_len );
 
         /* Move the trailing data up to fill in the cleared space. */
         memcpy(&p_pkg->buf[new_data_head], &p_pkg->buf[old_data_head], trailing_data_len);
 
-        p_pkg->header.data_len -= removed_len;
+        p_header->data_len -= removed_len;
 
         /* Rewrite every table entry that isn't the removed one onto the end of
          * the data. */
-        new_table_head = sizeof(PK16_HEADER_T) + p_pkg->header.data_len;
+        new_table_head = sizeof(PK16_HEADER_T) + p_header->data_len;
 
-        for (i = 0; i < p_pkg->header.n; ++i) {
+        for (i = 0; i < p_header->n; ++i) {
            if (i != index) {
                p_table = pk16_find_table_by_index(p_pkg, i);
                if (i > index) {
@@ -148,7 +158,7 @@ PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
            }
         }
 
-         --p_pkg->header.n;
+         --p_header->n;
 
         result = PK16_OK;
     }
@@ -170,10 +180,13 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T p_path, U8_T* p_dst, SIZE_T max)
     SIZE_T i;
     SIZE_T bytes_read;
     PK16_TABLE_T* p_table;
+    PK16_HEADER_T* p_header;
 
     bytes_read = (SIZE_T) 0u;
 
-    for (i = 0; i < p_pkg->header.n; ++i) {
+    p_header = (PK16_HEADER_T*) p_pkg->buf;
+
+    for (i = 0; i < p_header->n; ++i) {
         p_table = pk16_find_table_by_index(p_pkg, i);
         if (0 != strncmp(p_path, p_table->path, PK16_MAX_PATH_LEN)) {
             p_table = (PK16_TABLE_T*) NULL; 
@@ -203,9 +216,12 @@ PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
 {
     SIZE_T offset;
     PK16_TABLE_T* p_table;
+    PK16_HEADER_T* p_header;
+
+    p_header = (PK16_HEADER_T*) p_pkg->buf;
 
     offset = (SIZE_T)( sizeof(PK16_HEADER_T) 
-                        + p_pkg->header.data_len 
+                        + p_header->data_len 
                         + sizeof(PK16_TABLE_T) * index );
 
     if (offset < (p_pkg->size - sizeof(PK16_TABLE_T))) {
