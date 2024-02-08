@@ -15,10 +15,9 @@
 TASK_FN_T tasks[SCHEDULER_TASKS_N] = {
     &task_watchdog_strobe,
     &task_cnc_rx,
-    &task_demo_tx,
+    &task_demo,
     &task_can_tx,
     &task_can_rx,
-    &task_demo_rx,
     &task_bit_rom,
     &task_fai,
     &task_empty,
