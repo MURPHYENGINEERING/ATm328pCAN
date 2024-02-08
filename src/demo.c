@@ -84,11 +84,11 @@ static void demo_pk16(void)
     result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 13);
     result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 21);
     bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
-    bytes_read += pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
+    //bytes_read = pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
 
     spi_begin();
-    for (i = 0; i < 256; ++i) {
-        spi_tx_rx(buf[i]);
+    for (i = 0; i < bytes_read; ++i) {
+        spi_tx_rx(out_buf[i]);
     }
     spi_end();
 

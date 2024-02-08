@@ -62,7 +62,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
     if ((sizeof(PK16_HEADER_T) 
         + p_header->data_len 
         + len 
-        + sizeof(PK16_TABLE_T) * (p_header->n + 1)
+        + sizeof(PK16_TABLE_T) * (p_header->n + 1u)
         ) < p_pkg->size)
     {
         /* Locate where the table is and where it should be after the new data
@@ -82,7 +82,8 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
         /* Copy in the new data. The old table head points to the end of the 
          * existing data. */
         memcpy(&p_pkg->buf[old_table_head], p_data, len);
-        /* Add the new data to the header */
+        /* Add the new data to the header. This must be done before
+         * pk16_find_table_by_index because it uses the data length. */
         p_header->data_len += len;
 
         /* Write the new table entry into the end of the table */
@@ -146,7 +147,7 @@ PK16_RESULT_T pk16_remove_by_index(PK16_T* p_pkg, SIZE_T index)
          * the data. */
         new_table_head = sizeof(PK16_HEADER_T) + p_header->data_len;
 
-        for (i = 0; i < p_header->n; ++i) {
+        for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
            if (i != index) {
                p_table = pk16_find_table_by_index(p_pkg, i);
                if (i > index) {
@@ -186,11 +187,12 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T p_path, U8_T* p_dst, SIZE_T max)
 
     p_header = (PK16_HEADER_T*) p_pkg->buf;
 
-    for (i = 0; i < p_header->n; ++i) {
+    for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
         p_table = pk16_find_table_by_index(p_pkg, i);
-        if (0 != strncmp(p_path, p_table->path, PK16_MAX_PATH_LEN)) {
-            p_table = (PK16_TABLE_T*) NULL; 
+        if (0 == strncmp(p_path, p_table->path, PK16_MAX_PATH_LEN)) {
+            break;
         }
+        p_table = (PK16_TABLE_T*) NULL; 
     }
 
     if ((PK16_TABLE_T*) NULL != p_table) {
@@ -224,7 +226,7 @@ PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
                         + p_header->data_len 
                         + sizeof(PK16_TABLE_T) * index );
 
-    if (offset < (p_pkg->size - sizeof(PK16_TABLE_T))) {
+    if ((p_pkg->size - sizeof(PK16_TABLE_T)) > offset) {
         p_table = (PK16_TABLE_T*) &p_pkg->buf[offset];
     } else {
         p_table = (PK16_TABLE_T*) NULL;
