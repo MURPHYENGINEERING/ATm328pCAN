@@ -72,6 +72,8 @@ typedef union {
 extern volatile DSC_BUILTIN_T DDR_BUILTIN;
 /** Port Register for Arduino UNO built-in external peripherals. */
 extern volatile DSC_BUILTIN_T PORT_BUILTIN;
+/** Pin Register for Arduino UNO built-in external peripherals. */
+extern volatile DSC_BUILTIN_T PIN_BUILTIN;
 
 
 /** External peripherals built into the MCP2515 shield. */

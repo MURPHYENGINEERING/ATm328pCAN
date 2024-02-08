@@ -3,12 +3,14 @@
 #include "crc.h"
 #include "fai.h"
 
-
-#define BIT_ROM_START (SIZE_T) 0u
-#define BIT_ROM_LEN   (SIZE_T) 16384u
+/** Located at the starting address of the BIT ROM test. */
+extern volatile U8_T __ld_bit_rom_start;
+/** Located at the final address of the BIT ROM test. */
+extern volatile U8_T __ld_bit_rom_end;
 
 /** `TRUE` if the initial ROM checksum has been computed. */
 BOOL_T g_bit_rom_initial_done;
+/** Checksum of the ROM as computed at start-up. */
 U32_T g_bit_rom_checksum;
 
 /*******************************************************************************
@@ -30,9 +32,9 @@ void task_bit_rom(void)
     U32_T checksum;
 
     checksum = crc_compute_checksum32(
-        (U8_T*)(void*) BIT_ROM_START,
-        BIT_ROM_LEN,
-        0u
+        (U8_T*)(void*) &__ld_bit_rom_start,
+        (SIZE_T)( &__ld_bit_rom_end - &__ld_bit_rom_start ),
+        (U32_T) 0u
     );
 
     if (FALSE == g_bit_rom_initial_done) {
