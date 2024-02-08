@@ -4,11 +4,10 @@
 
 #define FAI_MAX_FAULTS U16_T_MAX
 
-/** Address of the "faults have been initialized" flag in NVM. */
-#define FAI_NVM_INIT_FLAG_ADDRESS (SIZE_T) 0u
-
-/** Base address in the NVM where fault data is stored. */
-#define FAI_NVM_BASE_ADDRESS (SIZE_T) 1u
+/** Located at the address of the "faults have been initialized" flag in NVM. */
+extern volatile U8_T __ld_fai_flag;
+/** Located at the base address in the NVM where fault data is stored. */
+extern volatile U8_T __ld_fai_base;
 
 
 FAI_FAULT_COUNTER_T g_fault_counters[(SIZE_T) FAI_FAULT_ID_N];
@@ -26,7 +25,7 @@ static void fai_write_faults_to_nvm(void);
 void fai_clear_faults(void)
 {
     eeprom_erase(
-        FAI_NVM_BASE_ADDRESS,
+        &__ld_fai_base,
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 
@@ -49,11 +48,11 @@ void fai_init(void)
 
     memset(&g_fai_fault_empty, 0, sizeof(g_fai_fault_empty));
 
-    init_flag = (BOOL_T) eeprom_read_byte(FAI_NVM_INIT_FLAG_ADDRESS);
+    init_flag = (BOOL_T) eeprom_read_byte(&__ld_fai_flag);
     if (FALSE == init_flag) {
         fai_clear_faults();
         init_flag = TRUE;
-        eeprom_write_byte(FAI_NVM_INIT_FLAG_ADDRESS, init_flag);
+        eeprom_write_byte(&__ld_fai_flag, init_flag);
     }
 
     fai_read_faults_from_nvm();
@@ -144,7 +143,7 @@ void task_fai(void)
 static void fai_write_faults_to_nvm(void)
 {
     eeprom_write(
-        FAI_NVM_BASE_ADDRESS, 
+        &__ld_fai_base, 
         (U8_T*)(void*)g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
@@ -157,7 +156,7 @@ static void fai_write_faults_to_nvm(void)
 void fai_read_faults_from_nvm(void)
 {
     eeprom_read(
-        FAI_NVM_BASE_ADDRESS, 
+        &__ld_fai_base, 
         (U8_T*)(void*)g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );

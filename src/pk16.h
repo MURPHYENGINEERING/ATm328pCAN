@@ -12,7 +12,13 @@ typedef enum {
     /** The package is full and the operation cannot complete. */
     PK16_FULL,
     /** The package is empty and the operation cannot complete. */
-    PK16_EMPTY
+    PK16_EMPTY,
+    /** The package already contains ane entry at that path. */
+    PK16_EXISTS,
+    /** The given data buffer does not contain a PK16 package. */
+    PK16_NOT_A_PACKAGE,
+    /** The given PK16 package is of the wrong version. */
+    PK16_WRONG_VERSION
 } PK16_RESULT_T;
 
 

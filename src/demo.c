@@ -50,6 +50,20 @@ void demo_init(void)
 
 
 /*******************************************************************************
+ * Check the strapping configuration and call the appropriate demo function.
+ ******************************************************************************/ 
+void task_demo(void)
+{
+    /** TODO: Test strapping */
+    if (TRUE) {
+        task_demo_tx();
+    } else {
+        task_demo_rx();
+    }
+}
+
+
+/*******************************************************************************
  * Perform the demo transmit task.
  ******************************************************************************/ 
 void task_demo_tx(void)
