@@ -9,7 +9,7 @@
  * \param[in] address   The address to which the byte will be written.
  * \param[in] data      The byte to be written.
  ******************************************************************************/
-void eeprom_write_byte(SIZE_T address, U8_T data)
+void eeprom_write_byte(void* address, U8_T data)
 {
     cli();
     /* Wait for previous write to complete */
@@ -21,7 +21,7 @@ void eeprom_write_byte(SIZE_T address, U8_T data)
     EECR.bits.EEPM1 = TRUE;
 
     /* Set up write */
-    EEAR.byte = (U8_T) address;
+    EEAR.byte = (U8_T)(SIZE_T) address;
     EEDR.byte = data;
 
     /* Enable master write */
@@ -37,7 +37,7 @@ void eeprom_write_byte(SIZE_T address, U8_T data)
  * \param[in] address   The address from which the byte will be read.
  * \return The read byte.
  ******************************************************************************/
-U8_T eeprom_read_byte(SIZE_T address)
+U8_T eeprom_read_byte(void* address)
 {
     cli();
     /* Wait for previous write to complete */
@@ -45,7 +45,7 @@ U8_T eeprom_read_byte(SIZE_T address)
     }
 
     /* Set up read */
-    EEAR.byte = (U8_T) address;
+    EEAR.byte = (U8_T)(SIZE_T) address;
     /* Enable read */
     EECR.bits.EERE = TRUE;
 
@@ -59,7 +59,7 @@ U8_T eeprom_read_byte(SIZE_T address)
  * Erase the byte in EEPROM at the given address (setting its value to 0).
  * \param[in] address The address at which the byte will be erased.
  ******************************************************************************/
-void eeprom_erase_byte(SIZE_T address)
+void eeprom_erase_byte(void* address)
 {
     /* I don't like that erasing sets the value to 0xFF, so we write to 0
     instead. */

@@ -114,7 +114,7 @@ typedef enum {
 } VALID_T;
 
 
-#define NULL 0u
+#define NULL (void*) 0u
 
 
 #endif
