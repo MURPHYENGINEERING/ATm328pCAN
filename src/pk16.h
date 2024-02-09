@@ -51,7 +51,7 @@ typedef struct {
 /** A PK16 package with its header and underlying buffer information. */
 typedef struct {
     /** Pointer to the underlying data buffer in which the package is stored. */
-    U8_T* buf;
+    U8_T* p_buf;
     /** Size in bytes of the underlying data buffer; i.e., the maximum length of
       * the package data + header. */
     SIZE_T size;
@@ -60,6 +60,7 @@ typedef struct {
 
 void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size);
 PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len);
+PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path);
 
 SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max);
 

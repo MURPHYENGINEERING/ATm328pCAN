@@ -1,30 +1,37 @@
-project(atm328p-lib)
+project(murphy-avr)
 
-add_executable(atm328p-lib
-    src/main.c
+add_executable(murphy-avr
+    src/adc.c
     src/bit.c
     src/can.c
     src/cnc.c
+    src/crc.c
     src/demo.c
     src/dsc.c
     src/eeprom.c
     src/fai.c
     src/fifo.c
+    src/filter.c
     src/interrupts.c
+    src/main.c
     src/memory.c
+    src/pk16.c
     src/scheduler.c
     src/serialize.c
+    src/strap.c
     src/spi.c
     src/string.c
     src/timer.c
+    src/twi.c
     src/usart.c
     src/watchdog.c
-    src/pk16.c
+    src/mcp2515/mcp2515_adc.c
     src/mcp2515/mcp2515_can.c
     src/atm328p/atm328p_dsc.c
     src/atm328p/atm328p_eeprom.c
     src/atm328p/atm328p_spi.c
     src/atm328p/atm328p_timer.c
+    src/atm328p/atm328p_twi.c
     src/atm328p/atm328p_usart.c
     src/atm328p/atm328p_watchdog.c
 )
