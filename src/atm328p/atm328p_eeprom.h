@@ -3,22 +3,8 @@
 
 #include "types.h"
 
-/** EEPROM Address Register (Low Byte) */
-typedef union {
-    struct {
-        VBOOL_T EEAR0 : 1;
-        VBOOL_T EEAR1 : 1;
-        VBOOL_T EEAR2 : 1;
-        VBOOL_T EEAR3 : 1;
-        VBOOL_T EEAR4 : 1;
-        VBOOL_T EEAR5 : 1;
-        VBOOL_T EEAR6 : 1;
-        VBOOL_T EEAR7 : 1;
-    } bits;
-    VU8_T byte;
-} EEAR_T;
-/** EEPROM Address Register (Low Byte) */
-extern volatile EEAR_T EEAR;
+/** EEPROM Address Register (Low and High byte) */
+extern volatile HALFWORD_T EEAR;
 
 /** EEPROM Data Register */
 extern volatile REGISTER_T EEDR;
@@ -48,10 +34,6 @@ extern volatile EECR_T EECR;
 #define EECR_EEMPE 2
 #define EECR_EEPE  1
 #define EECR_WRITE (U8_T)( (1u << EECR_EEMPE) | (1u << EECR_EEPE) )
-
-void atm328p_eeprom_write_byte(U8_T address, U8_T data);
-U8_T atm328p_eeprom_read_byte(U8_T address);
-void atm328p_eeprom_erase_byte(U8_T address);
 
 
 #endif
