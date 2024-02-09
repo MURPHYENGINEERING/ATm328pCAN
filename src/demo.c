@@ -91,22 +91,24 @@ static void demo_pk16(void)
     SIZE_T bytes_read;
     SIZE_T i;
 
+
     if (FALSE == initialized) {
         pk16_init(&pkg, buf, 256);
         initialized = TRUE;
+        result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
+        result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
     }
-    result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 13);
-    result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 21);
+
     bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
-    //bytes_read = pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
+    bytes_read = pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
 
     spi_begin();
-    for (i = 0; i < bytes_read; ++i) {
-        spi_tx_rx(out_buf[i]);
+    for (i = 0; i < 256; ++i) {
+        spi_tx_rx(buf[i]);
     }
     spi_end();
 
-    if ((13+21) == bytes_read) { 
+    if (0 == strncmp((CSTR_T) out_buf, "Goodbye, cruel world!", 30)) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);

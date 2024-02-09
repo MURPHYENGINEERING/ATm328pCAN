@@ -5,8 +5,11 @@
 #include "crc.h"
 
 
+/** Magic number identifying an array of bytes as a PK16 package. */
 #define PK16_MAGIC (U16_T) 0xEFBEu
+/** Current version of this PK16 library. */
 #define PK16_VERSION (U8_T) 1u
+
 
 /*******************************************************************************
  * Initialize the given package with the given underlying buffer.
@@ -24,15 +27,17 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size)
 
     /* Clear the package buffer */
     p_pkg->buf = p_buf;
-    memset(p_pkg->buf, (U8_T) 0u, size);
+    memset(p_pkg->buf, (U8_T) 1u, size);
 
     /* Set the package buffer size */
     p_pkg->size = size;
 
     /* Clear the package header */
     p_header = (PK16_HEADER_T*) p_pkg->buf;
-    p_header->magic = (U16_T) 0xBEEFu;
-    p_header->version = (U8_T) 1u;
+    p_header->magic = PK16_MAGIC;
+    p_header->version = PK16_VERSION;
+    p_header->data_len = (U16_T) 0u;
+    p_header->n = (U16_T) 0u;
 }
 
 
@@ -40,13 +45,13 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size)
 /*******************************************************************************
  * Add an entry into the given PK16 package. 
  * \param[out] p_pkg    The package into which to add an entry.
- * \param[in] path      The path at which the given entry can be found.
+ * \param[in] s_path      The s_path at which the given entry can be found.
  * \param[in] p_data    The contents of the entry.
  * \param[in] len       The length in bytes of the `p_data` array.
  * \retval              `PK16_OK` if the entry was added.
  * \retval              `PK16_FULL` if the package is full.
  ******************************************************************************/
-PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
+PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
 {
     PK16_RESULT_T result;
     PK16_HEADER_T* p_header;
@@ -69,7 +74,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
     }
     if (PK16_FULL == result) {
         /* Check if there's an existing entry at this path */
-        p_table = pk16_find_table_by_path(p_pkg, path);
+        p_table = pk16_find_table_by_path(p_pkg, s_path);
 
         if (NULL != p_table) {
             result = PK16_EXISTS;
@@ -97,13 +102,13 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
             new_table_head = (SIZE_T)( old_table_head + len );
             /* Find the tails of the table; this is where we'll copy from and to. */
             old_table_tail = 
-                (SIZE_T)( old_table_head + table_size );
+                (SIZE_T)( old_table_head + table_size - 1 );
             new_table_tail = 
-                (SIZE_T)( new_table_head + table_size );
+                (SIZE_T)( new_table_head + table_size - 1 );
 
             /* Move the entire table to make room for the new data. */
             /* We have to copy from the tail so we don't overwrite before copy. */
-            for (i = 0; (SIZE_T)( table_size ) > i; ++i) {
+            for (i = 0; table_size > i; ++i) {
                 p_pkg->buf[new_table_tail - i] = p_pkg->buf[old_table_tail - i];
             }
 
@@ -115,7 +120,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
 
             /* Write the new table entry into the end of the table */
             p_table = pk16_find_table_by_index(p_pkg, p_header->n);
-            strncpy(p_table->path, path, PK16_MAX_PATH_LEN);
+            strncpy(p_table->s_path, s_path, PK16_MAX_PATH_LEN);
             /* The new entry's data goes where the table was, at the end of the
                 * existing data. */
             p_table->head = old_table_head;
@@ -136,21 +141,17 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T path, U8_T* p_data, SIZE_T len)
 /*******************************************************************************
  * Read the specified entry data from the package.
  * \param[in] pkg   The package to read from.
- * \param[in] path  The path of the entry to read.
+ * \param[in] s_path  The s_path of the entry to read.
  * \param[out] dst  The buffer into which to read the data.
  * \param[in] max   The maximum number of bytes to read.
  * \return          The number of bytes read.
  ******************************************************************************/
 SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 {
-    SIZE_T i;
     SIZE_T bytes_read;
     PK16_TABLE_T* p_table;
-    PK16_HEADER_T* p_header;
 
     bytes_read = (SIZE_T) 0u;
-
-    p_header = (PK16_HEADER_T*) p_pkg->buf;
 
     p_table = pk16_find_table_by_path(p_pkg, s_path);
 
@@ -169,7 +170,7 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 /*******************************************************************************
  * Get a pointer to a table entry given its path in the table.
  * \param[out] p_pkg    The package in which to locate the table entry.
- * \param[in] s_path    The path of the table entry to be located.
+ * \param[in] s_path    The s_path of the table entry to be located.
  * \retval              A pointer to the located table entry.
  * \retval              `NULL` if the given path is not found.
  ******************************************************************************/
@@ -185,7 +186,7 @@ PK16_TABLE_T* pk16_find_table_by_path(PK16_T* p_pkg, CSTR_T s_path)
 
     for (i = 0; i < p_header->n; ++i) {
         p_table = pk16_find_table_by_index(p_pkg, i);
-        if (0 == strncmp(s_path, p_table->path, PK16_MAX_PATH_LEN)) {
+        if (0 == strncmp(s_path, p_table->s_path, PK16_MAX_PATH_LEN)) {
             break;
         }
         p_table = (PK16_TABLE_T*) NULL; 

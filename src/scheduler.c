@@ -21,6 +21,7 @@ TASK_FN_T tasks[SCHEDULER_TASKS_N] = {
     &task_bit_rom,
     &task_fai,
     &task_empty,
+    &task_empty,
     &task_empty
 };
 
