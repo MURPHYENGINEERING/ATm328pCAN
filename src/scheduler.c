@@ -12,13 +12,13 @@
 #include "memory.h"
 
 
-TASK_FN_T tasks[SCHEDULER_TASKS_N] = {
+TASK_FN_T p_tasks[SCHEDULER_TASKS_N] = {
     &task_watchdog_strobe,
     &task_cnc_rx,
+    &task_can_rx,
     &task_demo,
     &task_can_tx,
-    &task_can_rx,
-    &task_bit_rom,
+    &task_bit,
     &task_fai,
     &task_empty,
     &task_empty,
@@ -80,7 +80,7 @@ void scheduler_step(void)
         dsc_led_toggle(DSC_LED_CANBOARD_2);
 
         g_scheduler_state = SCHEDULER_RUNNING;
-        tasks[g_task_idx]();
+        p_tasks[g_task_idx]();
         g_scheduler_state = SCHEDULER_FINISHED;
     }
 }

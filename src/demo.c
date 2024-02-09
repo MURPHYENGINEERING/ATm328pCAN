@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "twi.h"
 #include "pk16.h"
+#include "strap.h"
 
 
 static void demo_pk16(void);
@@ -54,8 +55,7 @@ void demo_init(void)
  ******************************************************************************/ 
 void task_demo(void)
 {
-    /** TODO: Test strapping */
-    if (TRUE) {
+    if (LANE_ID_A == g_this_lane_id) {
         task_demo_tx();
     } else {
         task_demo_rx();
@@ -71,9 +71,7 @@ void task_demo_tx(void)
     demo_pwm();
     demo_can_tx();
     demo_pk16();
-    /*
     demo_adc_over_twi();
-    */
 }
 
 
@@ -86,7 +84,6 @@ static void demo_pk16(void)
     static U8_T buf[256];
     static BOOL_T initialized = FALSE;
 
-    PK16_RESULT_T result;
     U8_T out_buf[30];
     SIZE_T bytes_read;
     SIZE_T i;
@@ -95,12 +92,12 @@ static void demo_pk16(void)
     if (FALSE == initialized) {
         pk16_init(&pkg, buf, 256);
         initialized = TRUE;
-        result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
-        result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
+        pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
+        pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
     }
 
     bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
-    bytes_read = pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
+    bytes_read += pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
 
     spi_begin();
     for (i = 0; i < 256; ++i) {
@@ -108,7 +105,7 @@ static void demo_pk16(void)
     }
     spi_end();
 
-    if (0 == strncmp((CSTR_T) out_buf, "Goodbye, cruel world!", 30)) { 
+    if ((strnlen("Hello, world!", 30) + strnlen("Goodbye, cruel world!", 30) + 2) == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
@@ -175,7 +172,8 @@ static void demo_adc_over_twi(void)
     buf[len] = '\n';
     ++len;
     /* Transmit stringified value over TWI */
-    twi_master_tx((U8_T) 0b10100000u, buf, len);
+    //twi_master_tx((U8_T) 0b10100000u, buf, len);
+    usart_tx(buf, len);
 }
 
 

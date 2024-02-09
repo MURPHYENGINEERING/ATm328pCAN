@@ -3,13 +3,6 @@
 
 #include "types.h"
 
-/** Specifies a port as an output. */
-#define DDR_OUTPUT TRUE
-/** Specifies a port as an input. */
-#define DDR_INPUT FALSE
-
-/** Enables the pull-up resistor on a port. */
-#define PORT_PULLUP TRUE
 
 /** Port B Data Direction Register */
 extern volatile REGISTER_T DDRB;

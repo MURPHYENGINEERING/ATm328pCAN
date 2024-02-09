@@ -38,7 +38,8 @@
             "twi.h": "c",
             "atm328p_twi.h": "c",
             "crc.h": "c",
-            "pk16.h": "c"
+            "pk16.h": "c",
+            "strap.h": "c"
         }
     }
 }

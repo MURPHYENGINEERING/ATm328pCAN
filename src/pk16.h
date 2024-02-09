@@ -30,7 +30,7 @@ typedef struct {
     U16_T head;
     /** Length in bytes of this entry's data in the data buffer. */
     U16_T len;
-    /** Checksum of this entry's path + data. */
+    /** Checksum of this entry's data. */
     U32_T checksum;
 } PK16_TABLE_T;
 

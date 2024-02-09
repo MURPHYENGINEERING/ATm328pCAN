@@ -24,10 +24,19 @@ void bit_init(void)
 
 
 /*******************************************************************************
+ * Perform the BIT task, running all continuous BITs.
+ ******************************************************************************/
+void task_bit(void)
+{
+    bit_rom();
+}
+
+
+/*******************************************************************************
  * Run the ROM BIT, testing the computed CRC32 of the ROM against the stored
  * CRC32 computed at startup. 
  ******************************************************************************/
-void task_bit_rom(void)
+void bit_rom(void)
 {
     U32_T checksum;
 

@@ -3,24 +3,24 @@
 
 
 /*******************************************************************************
- * Copy the `src` string into the `dst` string buffer, up to `max` characters,
+ * Copy the `s_src` string into the `s_dst` string buffer, up to `max` characters,
  * ensuring the resulting string is null terminated.
- * \param[in] dst   The given string to be measured.
- * \param[in] src   The maximum number of bytes to be counted, acting as a range
+ * \param[in] s_dst   The given string to be measured.
+ * \param[in] s_src   The maximum number of bytes to be counted, acting as a range
  *                  bounds in case a null terminator is never found.
  * \param[in] max   The maximum number of characters to be copied, including the
  *                  null terminator.
  * \return          The length of the copied string in characters.
  ******************************************************************************/
-SIZE_T strncpy(CSTR_T dst, CSTR_T src, SIZE_T max)
+SIZE_T strncpy(CSTR_T s_dst, CSTR_T s_src, SIZE_T max)
 {
     SIZE_T i;
 
-    for (i = (SIZE_T) 0u; ((CHAR_T) '\0' != src[i]) && (i < max-1); ++i) {
-        dst[i] = src[i];
+    for (i = (SIZE_T) 0u; ((CHAR_T) '\0' != s_src[i]) && (i < max-1); ++i) {
+        s_dst[i] = s_src[i];
     }
 
-    dst[i] = (CHAR_T) '\0';
+    s_dst[i] = (CHAR_T) '\0';
 
     return i;
 }
@@ -45,19 +45,19 @@ SIZE_T strnlen(CSTR_T s, SIZE_T max)
 }
 
 
-CHAR_T strncmp(CSTR_T lhs, CSTR_T rhs, SIZE_T max)
+CHAR_T strncmp(CSTR_T s_lhs, CSTR_T s_rhs, SIZE_T max)
 {
     CHAR_T cmp;
 
-    while ( (0 < max) && (0 != *lhs) && (*lhs == *rhs) ) {
-        ++lhs;
-        ++rhs;
+    while ( (0 < max) && (0 != *s_lhs) && (*s_lhs == *s_rhs) ) {
+        ++s_lhs;
+        ++s_rhs;
         --max;
     }
     if (0 == max) {
         cmp = 0;
     } else {
-        cmp = *((U8_T*)lhs) - *((U8_T*)rhs);
+        cmp = *((U8_T*)s_lhs) - *((U8_T*)s_rhs);
     }
 
     return cmp;

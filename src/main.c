@@ -7,6 +7,7 @@
 #include "cnc.h"
 #include "demo.h"
 #include "scheduler.h"
+#include "strap.h"
 
 
 /*******************************************************************************
@@ -19,11 +20,10 @@ S16_T main(void)
     /* Disable interrupts until everything is ready */
     cli();
 
-    /* Soft-reset if the watchdog doesn't get strobed in 4 major cycles */
-    watchdog_enable();
-
     /* Initialize fault logging */
     fai_init();
+
+    strap_init();
 
     /* Initialize GPIOs */
     dsc_init();
@@ -36,6 +36,9 @@ S16_T main(void)
 
     /* Start task timing */
     scheduler_init();
+
+    /* Soft-reset if the watchdog doesn't get strobed in 4 major cycles */
+    watchdog_enable();
 
     /* Enable interrupts to allow the scheduler timer and peripherals to run. */
     sei();

@@ -27,7 +27,7 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size)
 
     /* Clear the package buffer */
     p_pkg->buf = p_buf;
-    memset(p_pkg->buf, (U8_T) 1u, size);
+    memset(p_pkg->buf, (U8_T) 0xFFu, size);
 
     /* Set the package buffer size */
     p_pkg->size = size;
@@ -150,17 +150,25 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 {
     SIZE_T bytes_read;
     PK16_TABLE_T* p_table;
+    U32_T checksum;
 
     bytes_read = (SIZE_T) 0u;
 
     p_table = pk16_find_table_by_path(p_pkg, s_path);
 
     if ((PK16_TABLE_T*) NULL != p_table) {
-        if (max > p_table->len) {
-            max = p_table->len;
+        checksum = crc_compute_checksum32(
+                        &p_pkg->buf[p_table->head], 
+                        p_table->len, 
+                        (U32_T) 0u
+                    );
+        if (checksum == p_table->checksum) {
+            if (max > p_table->len) {
+                max = p_table->len;
+            }
+            memcpy(p_dst, &p_pkg->buf[p_table->head], max);
+            bytes_read = max;
         }
-        memcpy(p_dst, &p_pkg->buf[p_table->head], max);
-        bytes_read = max;
     }
 
     return bytes_read;

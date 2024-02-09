@@ -58,10 +58,13 @@ SECTIONS
   EECR          = 0x3F;
   
   /* GPIO D */
-  DDRD          = 0x2A;
-  DDR_CANBOARD  = 0x2A;
-  PORTD         = 0x2B;
-  PORT_CANBOARD = 0x2B;
+  DDRD              = 0x2A;
+  DDR_CANBOARD      = 0x2A;
+  DDR_STRAPPING     = 0x2A;
+  PORTD             = 0x2B;
+  PORT_CANBOARD     = 0x2B;
+  PORT_STRAPPING    = 0x2B;
+  PIN_STRAPPING     = 0x29;
   
   /* GPIO C */
   DDRC          = 0x27;

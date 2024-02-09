@@ -114,6 +114,18 @@ typedef enum {
 } VALID_T;
 
 
+typedef enum {
+    DDR_INPUT = LOW,
+    DDR_OUTPUT = HIGH
+} DDR_T;
+
+
+typedef enum {
+    PORT_PULLDOWN = LOW,
+    PORT_PULLUP = HIGH
+} PORT_T;
+
+
 #define NULL (void*) 0u
 
 
