@@ -13,6 +13,7 @@ BOOL_T g_bit_rom_initial_done;
 /** Checksum of the ROM as computed at start-up. */
 U32_T g_bit_rom_checksum;
 
+
 /*******************************************************************************
  * Initialize the BIT system.
  ******************************************************************************/
@@ -40,10 +41,11 @@ void bit_rom(void)
 {
     U32_T checksum;
 
-    checksum = crc_compute_checksum32(
+    checksum = crc_compute_crc32(
         (U8_T*)(void*) &__ld_bit_rom_start,
         (SIZE_T)( &__ld_bit_rom_end - &__ld_bit_rom_start ),
-        (U32_T) 0u
+        (U32_T) 0u,
+        TRUE
     );
 
     if (FALSE == g_bit_rom_initial_done) {

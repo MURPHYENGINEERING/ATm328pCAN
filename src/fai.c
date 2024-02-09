@@ -55,7 +55,7 @@ void fai_init(void)
         eeprom_write_byte(&__ld_fai_flag, init_flag);
     }
 
-    fai_read_faults_from_nvm();
+    //fai_read_faults_from_nvm();
 
     g_pending_faults = FALSE;
 }
@@ -88,14 +88,10 @@ void fai_pass_fail_logger(
         } else {
             /* Add a fault to the counter for the given ID */
             p_fault->ts_data[p_fault->head] = ts_data;
-            ++p_fault->count;
-            ++p_fault->head;
-            /* Wrap the head so we're always writing fresh data over old data */
-            /* Don't wrap the fault counter so we can count them even if they
-             * aren't stored. */
-            if (FAI_TS_DATA_LEN == p_fault->head) {
-                p_fault->head = (U8_T) 0u;
+            if (p_fault->count < FAI_MAX_FAULTS) {
+                ++p_fault->count;
             }
+            p_fault->head = (U16_T)( (p_fault->head + 1) % FAI_TS_DATA_LEN );
         }
         g_pending_faults = TRUE;
     } else {

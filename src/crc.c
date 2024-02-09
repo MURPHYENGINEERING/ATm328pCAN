@@ -2,7 +2,7 @@
 #include "types.h"
 
 
-const U16_T g_crc_crc16_tbl[256u] = {
+const U16_T g_crc_crc16_tbl[256u] __attribute__((progmem)) = {
     0x0000u,  0x1021u,  0x2042u,  0x3063u,  0x4084u,  0x50A5u,  0x60C6u,  0x70E7u,
     0x8108u,  0x9129u,  0xA14Au,  0xB16Bu,  0xC18Cu,  0xD1ADu,  0xE1CEu,  0xF1EFu,
     0x1231u,  0x0210u,  0x3273u,  0x2252u,  0x52B5u,  0x4294u,  0x72F7u,  0x62D6u,
@@ -38,8 +38,7 @@ const U16_T g_crc_crc16_tbl[256u] = {
 };
 
 
-/*
-const U32_T g_crc_crc32_tbl[256u] = {
+const U32_T g_crc_crc32_tbl[256u] __attribute__((progmem)) = {
     0x00000000u, 0x77073096u, 0xEE0E612Cu, 0x990951BAu, 0x076DC419u, 0x706AF48Fu, 0xE963A535u, 0x9E6495A3u,
     0x0EDB8832u, 0x79DCB8A4u, 0xE0D5E91Eu, 0x97D2D988u, 0x09B64C2Bu, 0x7EB17CBDu, 0xE7B82D07u, 0x90BF1D91u,
     0x1DB71064u, 0x6AB020F2u, 0xF3B97148u, 0x84BE41DEu, 0x1ADAD47Du, 0x6DDDE4EBu, 0xF4D4B551u, 0x83D385C7u,
@@ -73,7 +72,6 @@ const U32_T g_crc_crc32_tbl[256u] = {
     0xBDBDF21Cu, 0xCABAC28Au, 0x53B39330u, 0x24B4A3A6u, 0xBAD03605u, 0xCDD70693u, 0x54DE5729u, 0x23D967BFu,
     0xB3667A2Eu, 0xC4614AB8u, 0x5D681B02u, 0x2A6F2B94u, 0xB40BBE37u, 0xC30C8EA1u, 0x5A05DF1Bu, 0x2D02EF8Du
 };
-*/
 
 
 /*******************************************************************************
@@ -144,7 +142,7 @@ U16_T crc_compute_crc16(U8_T* buf, SIZE_T len, U16_T running_val, BOOL_T final)
     SIZE_T i;
 
     for (i = 0u; i < len; ++i) {
-        running_val = CRC_UPD_CRC16(buf[i], running_val);
+        running_val = CRC_UPD_CRC16(( (U8_T*)buf )[i], running_val);
     }
 
     if (TRUE == final) {
@@ -162,7 +160,6 @@ U16_T crc_compute_crc16(U8_T* buf, SIZE_T len, U16_T running_val, BOOL_T final)
  * \param[in] running_val   An existing CRC-32 to compute from.
  * \param[in] final         `TRUE` if this is the final computation on `running_val`.
  ******************************************************************************/
-/*
 U32_T crc_compute_crc32(void* buf, SIZE_T len, U32_T running_val, BOOL_T final)
 {
     SIZE_T i;
@@ -177,4 +174,3 @@ U32_T crc_compute_crc32(void* buf, SIZE_T len, U32_T running_val, BOOL_T final)
 
     return running_val;
 }
-*/

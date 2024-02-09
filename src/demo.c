@@ -68,10 +68,46 @@ void task_demo(void)
  ******************************************************************************/ 
 void task_demo_tx(void)
 {
+    demo_fai();
     demo_pwm();
     demo_can_tx();
     demo_pk16();
-    demo_adc_over_twi();
+    /* demo_adc_over_twi(); */
+}
+
+
+/*******************************************************************************
+ * Dump the FAI store onto USART.
+ ******************************************************************************/
+void demo_fai(void)
+{
+    SIZE_T i;
+    SIZE_T j;
+    FAI_FAULT_COUNTER_T fault;
+    U8_T buf[128];
+    SIZE_T len;
+
+    len = 0;
+
+    for (i = 0; (SIZE_T) FAI_FAULT_ID_N > i; ++i) {
+        fault = fai_fault_reporter((FAI_FAULT_ID_T) i);
+        len += itoa((CSTR_T)&buf[0], i);
+        buf[len] = ' ';
+        ++len;
+        len += itoa((CSTR_T)&buf[len], fault.count);
+        buf[len] = ' ';
+        ++len;
+        for (j = 0; (j < fault.count) && (127 > len) && (FAI_TS_DATA_LEN > j); ++j) {
+            len += itoa((CSTR_T)&buf[len], fault.ts_data[j]);
+            buf[len] = ' ';
+            ++len;
+        }
+
+        buf[len] = '\n';
+        ++len;
+        usart_tx(buf, len);
+        len = 0;
+    }
 }
 
 
@@ -172,8 +208,7 @@ static void demo_adc_over_twi(void)
     buf[len] = '\n';
     ++len;
     /* Transmit stringified value over TWI */
-    //twi_master_tx((U8_T) 0b10100000u, buf, len);
-    usart_tx(buf, len);
+    /* twi_master_tx((U8_T) 0b10100000u, buf, len); */
 }
 
 

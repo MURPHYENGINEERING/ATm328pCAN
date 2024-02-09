@@ -4,9 +4,6 @@
 #include "types.h"
 
 
-/** CRC-16 Polynomial Table */
-extern const U16_T g_crc_crc16_tbl[256u];
-
 /** CRC-32 table with polynomial 0xEDB88320 */
 extern const U32_T g_crc_crc32_tbl[256u];
 
@@ -21,9 +18,7 @@ extern const U32_T g_crc_crc32_tbl[256u];
 U8_T crc_compute_checksum(U8_T* buf, SIZE_T len, U8_T running_val);
 U16_T crc_compute_checksum16(U8_T* buf, SIZE_T len, U16_T running_val);
 U32_T crc_compute_checksum32(U8_T* buf, SIZE_T len, U32_T running_val);
-/*
 U16_T crc_compute_crc16(U8_T* buf, SIZE_T len, U16_T running_val, BOOL_T final);
 U32_T crc_compute_crc32(void* buf, SIZE_T len, U32_T running_val, BOOL_T final);
-*/
 
 #endif
