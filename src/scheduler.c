@@ -32,8 +32,6 @@ volatile SCHEDULER_STATE_T g_scheduler_state;
 /*******************************************************************************
  * Iterate to the next task on a regular interval, or log a fault if the current
  * task is overrunning its minor cycle period.
- * This function resets the Timer/Counter 1 value to ensure a regular period of
- * 50-ms.
  ******************************************************************************/
 ISR(TIMER1_COMPA_vect)
 {

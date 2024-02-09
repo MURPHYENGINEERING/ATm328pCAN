@@ -31,9 +31,27 @@ typedef union {
 /** EEPROM Control Register */
 extern volatile EECR_T EECR;
 
+/** EEPROM Programming Mode bit 1 position */
+#define EECR_EEPM1 5
+/** EEPROM Programming Mode bit 0 position */
+#define EECR_EEPM0 4
+/** EEPROM Ready Interrupt Enable bit position */
+#define EECR_EERIE 3
+/** EEPROM Master Write Enable bit position */
 #define EECR_EEMPE 2
+/** EEPROM Write Enable bit position */
 #define EECR_EEPE  1
-#define EECR_WRITE (U8_T)( (1u << EECR_EEMPE) | (1u << EECR_EEPE) )
+/** Enable the Master Write bit and disable the Write bit while setting the
+  * programming mode to erase-and-write and disabling interupts. */
+#define EECR_PREPARE_ERASE_AND_WRITE \
+    (U8_T)( (0u << EECR_EEPM0) | (0u << EECR_EEPM1) \
+          | (0u << EECR_EERIE) | (1u << EECR_EEMPE) | (0u << EECR_EEPE) )
+/** Enable the Write bit while setting the programming mode to erase-and-write
+  * and disabling interrupts. Master Write stays enabled after 
+  * `EECR_PREPARE_ERASE_AND_WRITE`.*/
+#define EECR_EXECUTE_ERASE_AND_WRITE \
+    (U8_T)( (0u << EECR_EEPM0) | (0u << EECR_EEPM1) \
+          | (0u << EECR_EERIE) | (1u << EECR_EEMPE) | (1u << EECR_EEPE) )
 
 
 #endif

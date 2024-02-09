@@ -24,10 +24,11 @@ void eeprom_write_byte(SIZE_T address, U8_T data)
     EEAR.halfword = (U16_T) address;
     EEDR.byte = data;
 
-    /* Enable master write */
-    EECR.bits.EEMPE = TRUE;
-    /* Enable write */
-    EECR.bits.EEPE = TRUE;
+    /* These have to occur within 4 clock cycles of each other.
+     * If we use the bit field then it may read, modify, write back, which will
+     * take more than 4 cycles. */
+    EECR.byte = EECR_PREPARE_ERASE_AND_WRITE;
+    EECR.byte = EECR_EXECUTE_ERASE_AND_WRITE;
     sei();
 }
 
@@ -62,5 +63,5 @@ U8_T eeprom_read_byte(SIZE_T address)
 void eeprom_erase_byte(SIZE_T address)
 {
     /* I don't like that erasing writes 0xFF, so we write 0 instead. */
-    eeprom_write_byte(address, (U8_T) 0);
+    eeprom_write_byte(address, (U8_T) 0u);
 }
