@@ -55,7 +55,7 @@ ISR(TIMER1_COMPA_vect)
  ******************************************************************************/
 void scheduler_init(void)
 {
-    g_task_idx = 0u;
+    g_task_idx = (SIZE_T) 0u;
     g_scheduler_state = SCHEDULER_IDLE;
     
     timer1_init(
