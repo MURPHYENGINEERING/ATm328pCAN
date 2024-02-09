@@ -12,6 +12,7 @@
 #include "twi.h"
 #include "pk16.h"
 #include "strap.h"
+#include "filter.h"
 
 
 static void demo_fai(void);
@@ -200,11 +201,11 @@ static void demo_adc_over_twi(void)
 {
     U8_T buf[20];
     SIZE_T len;
-    ADC_RESULT_T adc;
+    static ADC_RESULT_T adc = (ADC_RESULT_T) 0u;
 
-    /* Sample the ADC and stringify the result */
-    adc = adc_sample();
-    len = itoa((S8_T*) buf, (U32_T) adc);
+    /* Sample the ADC, filter the result, and stringify it */
+    adc = (ADC_RESULT_T) filter_iir_1o((FLOAT_T) adc_sample(), (FLOAT_T) adc, 0.5f);
+    len = itoa((CSTR_T) buf, (U32_T) adc);
     /* Add a newline */
     buf[len] = '\n';
     ++len;
