@@ -45,6 +45,10 @@ typedef union {
 /** EEPROM Control Register */
 extern volatile EECR_T EECR;
 
+#define EECR_EEMPE 2
+#define EECR_EEPE  1
+#define EECR_WRITE (U8_T)( (1u << EECR_EEMPE) | (1u << EECR_EEPE) )
+
 void atm328p_eeprom_write_byte(U8_T address, U8_T data);
 U8_T atm328p_eeprom_read_byte(U8_T address);
 void atm328p_eeprom_erase_byte(U8_T address);

@@ -25,7 +25,7 @@ static void fai_write_faults_to_nvm(void);
 void fai_clear_faults(void)
 {
     eeprom_erase(
-        &__ld_fai_base,
+        (void*) &__ld_fai_base,
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 
@@ -48,14 +48,14 @@ void fai_init(void)
 
     memset(&g_fai_fault_empty, 0, sizeof(g_fai_fault_empty));
 
-    init_flag = (BOOL_T) eeprom_read_byte(&__ld_fai_flag);
-    if (FALSE == init_flag) {
+    init_flag = (BOOL_T) eeprom_read_byte((void*) &__ld_fai_flag);
+    if (TRUE == init_flag) {
         fai_clear_faults();
-        init_flag = TRUE;
-        eeprom_write_byte(&__ld_fai_flag, init_flag);
+        init_flag = FALSE;
+        eeprom_write_byte((void*) &__ld_fai_flag, init_flag);
     }
 
-    //fai_read_faults_from_nvm();
+    fai_read_faults_from_nvm();
 
     g_pending_faults = FALSE;
 }
@@ -139,7 +139,7 @@ void task_fai(void)
 static void fai_write_faults_to_nvm(void)
 {
     eeprom_write(
-        &__ld_fai_base, 
+        (void*) &__ld_fai_base, 
         (U8_T*)(void*)g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
@@ -152,8 +152,8 @@ static void fai_write_faults_to_nvm(void)
 void fai_read_faults_from_nvm(void)
 {
     eeprom_read(
-        &__ld_fai_base, 
-        (U8_T*)(void*)g_fault_counters, 
+        (void*) &__ld_fai_base, 
+        (U8_T*)(void*) g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 }

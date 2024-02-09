@@ -17,11 +17,11 @@ void eeprom_write_byte(void* address, U8_T data)
     }
 
     /* Set erase-and-write mode */
-    EECR.bits.EEPM0 = TRUE;
-    EECR.bits.EEPM1 = TRUE;
+    EECR.bits.EEPM0 = FALSE;
+    EECR.bits.EEPM1 = FALSE;
 
     /* Set up write */
-    EEAR.byte = (U8_T)(SIZE_T) address;
+    EEAR.byte = (U8_T) address;
     EEDR.byte = data;
 
     /* Enable master write */
@@ -45,7 +45,7 @@ U8_T eeprom_read_byte(void* address)
     }
 
     /* Set up read */
-    EEAR.byte = (U8_T)(SIZE_T) address;
+    EEAR.byte = (U8_T) address;
     /* Enable read */
     EECR.bits.EERE = TRUE;
 
@@ -61,7 +61,6 @@ U8_T eeprom_read_byte(void* address)
  ******************************************************************************/
 void eeprom_erase_byte(void* address)
 {
-    /* I don't like that erasing sets the value to 0xFF, so we write to 0
-    instead. */
+    /* I don't like that erasing writes 0xFF, so we write 0 instead. */
     eeprom_write_byte(address, (U8_T) 0);
 }

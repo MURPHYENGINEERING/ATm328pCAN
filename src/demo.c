@@ -14,6 +14,7 @@
 #include "strap.h"
 
 
+static void demo_fai(void);
 static void demo_pk16(void);
 static void demo_pwm(void);
 static void demo_can_tx(void);
