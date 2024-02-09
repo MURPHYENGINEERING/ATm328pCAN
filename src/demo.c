@@ -56,7 +56,7 @@ void demo_init(void)
  ******************************************************************************/ 
 void task_demo(void)
 {
-    if (LANE_ID_A == g_this_lane_id) {
+    if (LANE_ID_1 == g_this_lane_id) {
         task_demo_tx();
     } else {
         task_demo_rx();

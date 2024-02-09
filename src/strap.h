@@ -29,8 +29,8 @@ extern volatile STRAPPING_T PIN_STRAPPING;
 
 /** Represents the strapped lane ID for this device. */
 typedef enum {
-    LANE_ID_A = 0u,
-    LANE_ID_B = 1u
+    LANE_ID_1 = 0u,
+    LANE_ID_2 = 1u
 } LANE_ID_T;
 
 

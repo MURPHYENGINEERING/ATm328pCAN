@@ -20,10 +20,10 @@ void strap_init(void)
     }
 
     if (HIGH == PIN_STRAPPING.bits.LANE) {
-        g_this_lane_id = LANE_ID_A;
-        g_other_lane_id = LANE_ID_B;
+        g_this_lane_id = LANE_ID_1;
+        g_other_lane_id = LANE_ID_2;
     } else {
-        g_this_lane_id = LANE_ID_B;
-        g_other_lane_id = LANE_ID_A;
+        g_this_lane_id = LANE_ID_2;
+        g_other_lane_id = LANE_ID_1;
     }
 }
