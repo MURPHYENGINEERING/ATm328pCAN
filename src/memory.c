@@ -7,8 +7,9 @@
  * \param[out] dst  The buffer into which memory will be copied.
  * \param[in] src   The buffer from which memory will be copied.
  * \param[in] len   The number of bytes to be copied from `src` to `dst`.
+ * \return          The number of bytes copied.
  ******************************************************************************/
-void memcpy(void* dst, void* src, SIZE_T len)
+SIZE_T memcpy(void* dst, void* src, SIZE_T len)
 {
     SIZE_T i;
 
@@ -17,6 +18,8 @@ void memcpy(void* dst, void* src, SIZE_T len)
         ++dst;
         ++src;
     }
+
+    return i;
 }
 
 

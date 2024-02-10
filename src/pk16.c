@@ -122,7 +122,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
 
             /* Write the new table entry into the end of the table */
             p_table = pk16_find_table_by_index(p_pkg, p_header->n);
-            strncpy(p_table->s_path, s_path, PK16_MAX_PATH_LEN);
+            p_table->s_path = s_path;
             /* The new entry's data goes where the table was, at the end of the
                 * existing data. */
             p_table->head = (SIZE_T)( p_old_table_head - p_pkg->p_buf );
@@ -264,32 +264,87 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 
 
 /*******************************************************************************
- * Compress the paths in the given package by replacing fixed-length arrays with
- * null-terminated strings.
- * \param[out] p_pkg    The package to be compressed.
- * \param[in]  p_dst    The destination buffer for the compressed data.
- * \param[in]  max      The maximum number of bytes that can be written into the
- *                      destination buffer.
- * \return              The size in bytes of the compressed data written to the
- *                      destination buffer.
+ * Serialize the given package into the given destination buffer, replacing path
+ * pointers with null-terminated strings.
+ * \param[in]  p_pkg        The package to be serialized.
+ * \param[out] p_dst        The destination buffer for the serialized data.
+ * \param[out] final_len    The length in bytes of the serialized data.
+ * \param[in]  max          The maximum number of bytes that can be written into 
+ *                          the destination buffer.
+ * \retval  `PK16_OK` if the package was serialized into the buffer.
+ * \retval  `PK16_FULL` if the buffer is not long enough to store the
+ *          serialized package.
  ******************************************************************************/
-SIZE_T pk16_compress(PK16_T* p_pkg, U8_T* p_dst, SIZE_T max)
+PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE_T max)
 {
+    PK16_RESULT_T result;
+    U8_T* p_start;
+    U8_T* p_end;
     PK16_HEADER_T* p_header;
-    SIZE_T bytes_written;
+    PK16_TABLE_T* p_table;
+    SIZE_T basic_len;
+    SIZE_T i;
+    SIZE_T j;
+    SIZE_T path_len;
+    BOOL_T wrote_whole_path;
 
-    bytes_written = (SIZE_T) 0u;
+    result = PK16_FULL;
+
+    p_start = p_dst;
+    p_end = (U8_T*)( p_dst + max );
 
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
 
-    /* Without some serious computation this is the easiest way to do a bounds
-     * check. Otherwise we'd have to compute the lengths of all the compressed 
-     * paths in a first pass. */
-    if ( (p_header->data_len + sizeof(PK16_TABLE_T) * p_header->n) <= max ) {
-        
+    /* Ensure we can at least write the header, the data, and the packed tables */
+    basic_len = sizeof(PK16_HEADER_T) + p_header->data_len + p_header->n * sizeof(PK16_TABLE_T);
+    if (basic_len <= max) {
+        /* Assume that we're OK until we see that we run out of space while 
+         * expanding path strings. */
+        result = PK16_OK;
+
+        /* Write header */
+        p_dst += memcpy(p_dst, (U8_T*) p_header, sizeof(PK16_HEADER_T));
+        /* Write data */
+        p_dst += memcpy(
+            p_dst, 
+            (U8_T*)( p_pkg->p_buf + sizeof(PK16_HEADER_T) ),
+            p_header->data_len
+        );
+
+        /* Start writing tables until we either finish or run out of space */
+        for (i = (SIZE_T) 0u; (PK16_FULL != result) && (i < p_header->n); ++i) {
+            p_table = pk16_find_table_by_index(p_pkg, i);
+            wrote_whole_path = FALSE;
+            for (j = (SIZE_T) 0u; p_dst < p_end; ++j) {
+                /* Copy the path string into the destination, including the \0 */
+                p_dst = p_table->s_path[j];
+                ++p_dst;
+                if ('\0' == p_table->s_path[j]) {
+                    wrote_whole_path = TRUE;
+                    break;
+                }
+            }
+            if (FALSE == wrote_whole_path) {
+                /* We couldn't write the full path, buffer is full */
+                result = PK16_FULL;
+            } else if ((U8_T*)( 
+                p_dst + sizeof(p_table->head) + sizeof(p_table->len) 
+                + sizeof(p_table->checksum) ) > p_end) 
+            {
+                /* We can't write the rest of the table, buffer is full */
+                result = PK16_FULL;
+            } else {
+                /* We can finish this table */
+                p_dst += memcpy(p_dst, (U8_T*) &p_table->head, sizeof(p_table->head));
+                p_dst += memcpy(p_dst, (U8_T*) &p_table->len, sizeof(p_table->len));
+                p_dst += memcpy(p_dst, (U8_T*) &p_table->checksum, sizeof(p_table->checksum));
+            }
+        }
     }
 
-    return bytes_written;
+    *final_len = (SIZE_T)( p_dst - p_start );
+
+    return result;
 }
 
 

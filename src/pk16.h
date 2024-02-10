@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-#define PK16_MAX_PATH_LEN 32
+#define PK16_MAX_PATH_LEN 256
 
 /** Represents the result of an operation on a PK16 package. */
 typedef enum {
@@ -25,7 +25,7 @@ typedef enum {
 /** A single entry in a PK16 package. */
 typedef struct {
     /** Null-terminated string representing the path of this entry. */
-    CHAR_T s_path[PK16_MAX_PATH_LEN];
+    CSTR_T s_path;
     /** Index into the package data buffer of the start of this entry's data. */
     U16_T head;
     /** Length in bytes of this entry's data in the data buffer. */
