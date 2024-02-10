@@ -26,7 +26,7 @@ void watchdog_enable(void)
      * You absolutely must set ENABLE_WATCHDOG and CHANGE_WATCHDOG first,
      * then must set ENABLE_WATCHDOG and the prescaler at the same time. */
     WDTCSR.byte = WDTCSR_ENABLE_WATCHDOG | WDTCSR_CHANGE_WATCHDOG;
-    WDTCSR.byte = WDTCSR_ENABLE_WATCHDOG | WDTCSR_PRESCALE_TIMEOUT_IN_2S;
+    WDTCSR.byte = WDTCSR_ENABLE_WATCHDOG | WDTCSR_CHANGE_WATCHDOG | WDTCSR_PRESCALE_TIMEOUT_IN_2S;
     sei();
 }
 

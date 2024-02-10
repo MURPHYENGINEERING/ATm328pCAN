@@ -125,7 +125,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
             strncpy(p_table->s_path, s_path, PK16_MAX_PATH_LEN);
             /* The new entry's data goes where the table was, at the end of the
                 * existing data. */
-            p_table->head = old_table_head;
+            p_table->head = (SIZE_T)( p_old_table_head - p_pkg->p_buf );
             p_table->len = len;
             p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
 
@@ -183,9 +183,12 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
         /* Move all the trailing data up to fill the removed space. */ 
         removed_len = p_table->len;
 
-        p_cursor = &pkg->buf[p_table->head];
+        p_cursor = &p_pkg->p_buf[p_table->head];
         p_trailing = (U8_T*)( p_cursor + removed_len );
-        trailing_len = p_header->data_len - p_table->head - removed_len;
+        trailing_len = sizeof(PK16_HEADER_T) 
+                     + p_header->data_len 
+                     - p_table->head 
+                     - removed_len;
 
         for (i = (SIZE_T) 0u; i < trailing_len; ++i) {
             *p_cursor = *p_trailing;
@@ -193,9 +196,10 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
             ++p_trailing;
         }
 
-        p_header->data_len -= removed_len;
-
-        p_cursor = (U8_T*)( p_pkg->p_buf + p_header->data_len );
+        /* Point to the new location for the table */
+        p_cursor = (U8_T*)( 
+            p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len - removed_len
+        );
 
         relocate_heads = FALSE;
         /* Move the table elements up to the end of the data, excluding the
@@ -203,15 +207,19 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
         for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
             p_table = pk16_find_table_by_index(p_pkg, i);
             if ( 0 != strncmp(p_table->s_path, s_path, PK16_MAX_PATH_LEN) ) {
-                memcpy(p_cursor, (U8_T*) p_table, sizeof(PK16_TABLE_T));
-                p_cursor += sizeof(PK16_TABLE_T);
+                /* Make sure we update the head BEFORE moving the table...lol */
                 if (TRUE == relocate_heads) {
                     p_table->head -= removed_len;
                 }
+                memcpy(p_cursor, (U8_T*) p_table, sizeof(PK16_TABLE_T));
+                p_cursor += sizeof(PK16_TABLE_T);
             } else {
                 relocate_heads = TRUE;
             }
         }
+
+        p_header->data_len -= removed_len;
+        --p_header->n;
     }
 
     return result;
@@ -302,7 +310,7 @@ PK16_TABLE_T* pk16_find_table_by_path(PK16_T* p_pkg, CSTR_T s_path)
 
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
 
-    for (i = 0; i < p_header->n; ++i) {
+    for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
         p_table = pk16_find_table_by_index(p_pkg, i);
         if (0 == strncmp(s_path, p_table->s_path, PK16_MAX_PATH_LEN)) {
             break;
@@ -334,7 +342,7 @@ PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
                     + p_header->data_len 
                     + sizeof(PK16_TABLE_T) * index );
 
-    if ( (U8_T*)(p_pkg->p_buf + p_pkg->size) > offset ) {
+    if ( (U8_T*)(p_pkg->p_buf + p_pkg->size) > p_buf ) {
         p_table = (PK16_TABLE_T*) p_buf;
     } else {
         p_table = (PK16_TABLE_T*) NULL;

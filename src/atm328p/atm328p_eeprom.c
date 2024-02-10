@@ -11,15 +11,11 @@
  ******************************************************************************/
 void eeprom_write_byte(SIZE_T address, U8_T data)
 {
-    cli();
     /* Wait for previous write to complete */
     while (TRUE == EECR.bits.EEPE) {
     }
 
-    /* Set erase-and-write mode */
-    EECR.bits.EEPM0 = FALSE;
-    EECR.bits.EEPM1 = FALSE;
-
+    cli();
     /* Set up write */
     EEAR.halfword = (U16_T) address;
     EEDR.byte = data;

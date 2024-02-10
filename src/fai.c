@@ -2,7 +2,7 @@
 #include "eeprom.h"
 #include "memory.h"
 
-#define FAI_MAX_FAULTS U16_T_MAX
+#define FAI_MAX_FAULTS U8_T_MAX
 
 /** Located at the address of the "faults have been initialized" flag in NVM. */
 extern volatile U8_T __ld_fai_flag;
@@ -25,7 +25,7 @@ static void fai_write_faults_to_nvm(void);
 void fai_clear_faults(void)
 {
     eeprom_erase(
-        (void*) &__ld_fai_base,
+        (SIZE_T) &__ld_fai_base,
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
 
@@ -48,11 +48,11 @@ void fai_init(void)
 
     memset(&g_fai_fault_empty, 0, sizeof(g_fai_fault_empty));
 
-    init_flag = (BOOL_T) eeprom_read_byte((void*) &__ld_fai_flag);
+    init_flag = (BOOL_T) eeprom_read_byte((SIZE_T) &__ld_fai_flag);
     if (TRUE == init_flag) {
         fai_clear_faults();
         init_flag = FALSE;
-        eeprom_write_byte((void*) &__ld_fai_flag, init_flag);
+        eeprom_write_byte((SIZE_T) &__ld_fai_flag, init_flag);
     }
 
     fai_read_faults_from_nvm();
@@ -93,7 +93,11 @@ void fai_pass_fail_logger(
             }
             p_fault->head = (U16_T)( (p_fault->head + 1) % FAI_TS_DATA_LEN );
         }
-        g_pending_faults = TRUE;
+        /* We can't trigger a write on task overrun because writing inherently
+         * causes a task overrun :( */
+        if (FAI_FAULT_ID_TASK_OVERRUN != fault_id) {
+            g_pending_faults = TRUE;
+        }
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_BAD_FAULT, FAIL, (U32_T) fault_id);
     }
@@ -139,7 +143,7 @@ void task_fai(void)
 static void fai_write_faults_to_nvm(void)
 {
     eeprom_write(
-        (void*) &__ld_fai_base, 
+        (SIZE_T) &__ld_fai_base, 
         (U8_T*)(void*)g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );
@@ -152,7 +156,7 @@ static void fai_write_faults_to_nvm(void)
 void fai_read_faults_from_nvm(void)
 {
     eeprom_read(
-        (void*) &__ld_fai_base, 
+        (SIZE_T) &__ld_fai_base, 
         (U8_T*)(void*) g_fault_counters, 
         sizeof(FAI_FAULT_COUNTER_T) * (SIZE_T) FAI_FAULT_ID_N
     );

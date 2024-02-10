@@ -49,6 +49,8 @@ void demo_init(void)
     adc_init(ADC_MODE_BLOCKING);
     /* Select the appropriate ADC for sampling */
     adc_select(ADC_0);
+
+    fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) get_pc());
 }
 
 
@@ -70,11 +72,11 @@ void task_demo(void)
  ******************************************************************************/ 
 void task_demo_tx(void)
 {
-    demo_fai();
+    /*demo_fai();*/
     demo_pwm();
     demo_can_tx();
     demo_pk16();
-    /* demo_adc_over_twi(); */
+    /*demo_adc_over_twi();*/
 }
 
 
@@ -132,6 +134,7 @@ static void demo_pk16(void)
         initialized = TRUE;
         pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
         pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
+        pk16_remove(&pkg, "/test.txt");
     }
 
     bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
@@ -143,7 +146,7 @@ static void demo_pk16(void)
     }
     spi_end();
 
-    if ((strnlen("Hello, world!", 30) + strnlen("Goodbye, cruel world!", 30) + 2) == bytes_read) { 
+    if ((22) == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
@@ -183,7 +186,7 @@ static void demo_can_tx(void)
     status = can_tx_q_add(identifier, buf, len);
 
     if (FIFO_OK == status) {
-        fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) get_pc());
+        /* fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) get_pc()); */
     } else {
         fai_pass_fail_logger(
             FAI_FAULT_ID_CAN_TX_BUFFER_OVERFLOW, 
@@ -209,6 +212,7 @@ static void demo_adc_over_twi(void)
     /* Add a newline */
     buf[len] = '\n';
     ++len;
+    usart_tx(buf, len);
     /* Transmit stringified value over TWI */
     /* twi_master_tx((U8_T) 0b10100000u, buf, len); */
 }

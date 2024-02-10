@@ -19,7 +19,8 @@ TASK_FN_T p_tasks[SCHEDULER_TASKS_N] = {
     &task_demo,
     &task_can_tx,
     &task_bit,
-    &task_fai,
+    /*&task_fai,*/
+    &task_empty,
     &task_empty,
     &task_empty,
     &task_empty
