@@ -41,4 +41,6 @@ void adc_init(ADC_MODE_T mode);
 ADC_RESULT_T adc_sample(void);
 void adc_select(ADC_T adc);
 
+FLOAT_T adc_to_volts(ADC_RESULT_T result);
+
 #endif

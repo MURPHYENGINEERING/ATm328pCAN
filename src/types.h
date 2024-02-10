@@ -30,6 +30,8 @@ typedef char CHAR_T;
 typedef CHAR_T* CSTR_T;
 
 typedef float FLOAT_T;
+typedef double DOUBLE_T;
+
 /** Approximately zero equals zero. */
 #define ZERO_EPSILON 0.0001f
 #define EQUALS_ZERO(x) (BOOL_T)( (-ZERO_EPSILON < x) && (ZERO_EPSILON > x) )

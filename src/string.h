@@ -13,6 +13,7 @@ CHAR_T strncmp(CSTR_T s_lhs, CSTR_T s_rhs, SIZE_T max);
 void strreverse(CSTR_T s);
 
 SIZE_T itoa(CSTR_T s, U32_T n);
+SIZE_T dtoa(CSTR_T buf, DOUBLE_T f, U16_T precision);
 
 
 #endif

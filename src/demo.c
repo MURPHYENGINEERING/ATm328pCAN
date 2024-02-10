@@ -37,8 +37,9 @@ void demo_init(void)
     );
     */
 
-    /* Enable the TWI peripheral device. */
     TWI_CFG_T cfg;
+
+    /* Enable the TWI peripheral device. */
     cfg.prescale = TWI_PRESCALE_OVER_1;
     twi_init(cfg);
 
@@ -76,7 +77,7 @@ void task_demo_tx(void)
     demo_pwm();
     demo_can_tx();
     demo_pk16();
-    /*demo_adc_over_twi();*/
+    demo_adc_over_twi();
 }
 
 
@@ -135,9 +136,11 @@ static void demo_pk16(void)
         pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
         pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
         pk16_remove(&pkg, "/test.txt");
+        pk16_add(&pkg, "/hello.txt", (U8_T*) "Hello, world!", (SIZE_T) 13);
     }
 
-    bytes_read = pk16_read(&pkg, "/test.txt", out_buf, 30);
+    bytes_read = pk16_read(&pkg, "/hello.txt", out_buf, 30);
+    bytes_read += pk16_read(&pkg, "/test.txt", out_buf, 30);
     bytes_read += pk16_read(&pkg, "/goodbye.txt", out_buf, 30);
 
     spi_begin();
@@ -146,7 +149,7 @@ static void demo_pk16(void)
     }
     spi_end();
 
-    if ((22) == bytes_read) { 
+    if ((13+22) == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
@@ -204,11 +207,15 @@ static void demo_adc_over_twi(void)
 {
     U8_T buf[20];
     SIZE_T len;
-    static ADC_RESULT_T adc = (ADC_RESULT_T) 0u;
+    ADC_RESULT_T adc;
+    static FLOAT_T v = 0.0f;
 
     /* Sample the ADC, filter the result, and stringify it */
-    adc = (ADC_RESULT_T) filter_iir_1o((FLOAT_T) adc_sample(), (FLOAT_T) adc, 0.5f);
-    len = itoa((CSTR_T) buf, (U32_T) adc);
+    adc = adc_sample();
+    v = filter_iir_1o(adc_to_volts(adc), v, 0.5f);
+
+    len = dtoa((CSTR_T) buf, (DOUBLE_T) v, 2u);
+
     /* Add a newline */
     buf[len] = '\n';
     ++len;
