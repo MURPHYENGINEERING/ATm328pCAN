@@ -3,6 +3,7 @@
 #include "memory.h"
 #include "string.h"
 #include "crc.h"
+#include "usart.h"
 
 
 /** Magic number identifying an array of bytes as a PK16 package. */
@@ -280,12 +281,12 @@ PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE
     PK16_RESULT_T result;
     U8_T* p_start;
     U8_T* p_end;
+    SIZE_T len;
     PK16_HEADER_T* p_header;
     PK16_TABLE_T* p_table;
     SIZE_T basic_len;
     SIZE_T i;
     SIZE_T j;
-    SIZE_T path_len;
     BOOL_T wrote_whole_path;
 
     result = PK16_FULL;
@@ -304,6 +305,7 @@ PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE
 
         /* Write header */
         p_dst += memcpy(p_dst, (U8_T*) p_header, sizeof(PK16_HEADER_T));
+        
         /* Write data */
         p_dst += memcpy(
             p_dst, 
@@ -317,7 +319,7 @@ PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE
             wrote_whole_path = FALSE;
             for (j = (SIZE_T) 0u; p_dst < p_end; ++j) {
                 /* Copy the path string into the destination, including the \0 */
-                p_dst = p_table->s_path[j];
+                *p_dst = p_table->s_path[j];
                 ++p_dst;
                 if ('\0' == p_table->s_path[j]) {
                     wrote_whole_path = TRUE;

@@ -62,6 +62,8 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size);
 PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len);
 PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path);
 
+PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE_T max);
+
 SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max);
 
 PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index);

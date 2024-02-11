@@ -5,11 +5,13 @@
 #include "fifo.h"
 
 
-/* CAN Queues */
+/** CAN transmit FIFO queue underlying buffer. */
 CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
+/** CAN receive FIFO queue underlying buffer. */
 CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
-
+/** CAN transmit FIFO queue. */
 CAN_FIFO_T g_can_tx_q;
+/** CAN receive FIFO queue. */
 CAN_FIFO_T g_can_rx_q;
 
 

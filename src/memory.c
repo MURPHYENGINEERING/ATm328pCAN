@@ -13,7 +13,7 @@ SIZE_T memcpy(void* dst, void* src, SIZE_T len)
 {
     SIZE_T i;
 
-    for (i = 0u; i < len; ++i) {
+    for (i = (SIZE_T) 0u; i < len; ++i) {
         *(U8_T*)dst = *(U8_T*)src;
         ++dst;
         ++src;
@@ -33,7 +33,7 @@ void memset(void* dst, U8_T value, SIZE_T len)
 {
     SIZE_T i;
 
-    for (i = 0u; i < len; ++i) {
+    for (i = (SIZE_T) 0u; i < len; ++i) {
         *(U8_T*)dst = value;
         ++dst;
     }
@@ -54,7 +54,7 @@ S8_T memcmp(void* lhs, void* rhs, SIZE_T len)
     SIZE_T i;
     S8_T result;
 
-    i = 0u;
+    i = (SIZE_T) 0u;
     result = *(S8_T*)lhs - *(S8_T*)rhs;
 
     while ( ((S32_T) 0u == result) && (i < len) ) {

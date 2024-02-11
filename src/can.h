@@ -42,17 +42,6 @@ typedef struct
 } CAN_FIFO_T;
 
 
-/** CAN transmit queue underlying buffer */
-extern CAN_FIFO_ENTRY_T g_can_tx_q_buf[CAN_FIFO_TX_SIZE];
-/** CAN receive queue underlying buffer */
-extern CAN_FIFO_ENTRY_T g_can_rx_q_buf[CAN_FIFO_RX_SIZE];
-
-/** CAN transmit FIFO queue */
-extern CAN_FIFO_T g_can_tx_q;
-/** CAN receive FIFO queue */
-extern CAN_FIFO_T g_can_rx_q;
-
-
 void can_init(void);
 void can_init_hardware(void);
 
