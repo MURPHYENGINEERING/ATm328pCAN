@@ -106,7 +106,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         p_table = (PK16_TABLE_T*) p_new_table_head;
         p_table->data_head = sizeof(PK16_HEADER_T) + p_header->data_len;
         p_table->data_len = len;
-        p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN);
+        p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN) + 1;
         p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
         strncpy((CSTR_T)( p_table + 1u ), s_path, p_table->path_len);
 
