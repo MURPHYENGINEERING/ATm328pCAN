@@ -135,7 +135,7 @@ static void demo_pk16(void)
         pk16_init(&pkg, buf, sizeof(buf));
         initialized = TRUE;
         result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
-        //result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
+        result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
         //pk16_remove(&pkg, "/test.txt");
         //pk16_add(&pkg, "/hello.txt", (U8_T*) "Hello, matt!", (SIZE_T) 13);
     }

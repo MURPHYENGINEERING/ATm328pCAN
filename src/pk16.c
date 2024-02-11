@@ -89,6 +89,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         /* Start the table tail at the table head. For an empty table, these are the same. */
         p_old_table_tail = p_old_table_head;
 
+
         /* Find the end of the tables by stepping over the paths */
         for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
             p_old_table_tail += sizeof(PK16_TABLE_T) + ((PK16_TABLE_T*)p_old_table_tail)->path_len;
@@ -96,6 +97,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
 
         /* This is where we'll move the end of the table to */
         p_new_table_tail = p_old_table_tail + len;
+        p_table = (PK16_TABLE_T*) p_new_table_tail;
 
         tables_len = p_old_table_tail - p_old_table_head;
 
@@ -103,7 +105,6 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
             *(p_new_table_tail - i) = *(p_old_table_tail - i);
         }
 
-        p_table = (PK16_TABLE_T*) p_new_table_head;
         p_table->data_head = sizeof(PK16_HEADER_T) + p_header->data_len;
         p_table->data_len = len;
         p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN) + 1;
