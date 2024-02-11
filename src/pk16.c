@@ -40,6 +40,8 @@ void pk16_init(PK16_T* p_pkg, U8_T* p_buf, SIZE_T size)
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
     p_header->magic = PK16_MAGIC;
     p_header->version = PK16_VERSION;
+    p_header->data_len = (SIZE_T) 0u;
+    p_header->n = (SIZE_T) 0u;
 }
 
 
@@ -61,28 +63,59 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
 {
     PK16_RESULT_T result;
     PK16_HEADER_T* p_header;
-    PK16_TABLE_T* p_tables_start;
-    PK16_TABLE_T* p_tables_tail;
+    U8_T* p_old_table_head;
+    U8_T* p_new_table_head;
+    U8_T* p_old_table_tail;
+    U8_T* p_new_table_tail;
     PK16_TABLE_T* p_table;
     SIZE_T i;
     SIZE_T tables_len;
 
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
 
+    result = PK16_FULL;
+
     if (PK16_MAGIC != p_header->magic) {
         result = PK16_NOT_A_PACKAGE;
     } else if (PK16_VERSION != p_header->version) {
         result = PK16_WRONG_VERSION;
-    } else {
-        /* Move the tables */
-        p_tables_start = (PK16_TABLE_T*)( p_header + sizeof(PK16_HEADER_T) + p_header->data_len );
-        p_table = p_tables_start;
-        /* Compute the length of the tables by summing the header and path lengths */
-        for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
-            p_table += sizeof(PK16_TABLE_T) + p_table->path_len;
-        }
+    } else if (sizeof(PK16_HEADER_T) + p_header->data_len + len + sizeof(PK16_TABLE_T) * (p_header->n + 1)) {
+        /* Locate where the table is and where it should be after the new data are added */
         
-        p_tables_tail = p_table + sizeof(PK16_TABLE_T) + p_table->path_len;
+        /* The table is currently located at the end of the header and data. */
+        p_old_table_head = (U8_T*)( p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len );
+        p_new_table_head = p_old_table_head + len;
+
+        /* Start the table tail at the table head. For an empty table, these are the same. */
+        p_old_table_tail = p_old_table_head;
+
+        /* Find the end of the tables by stepping over the paths */
+        for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
+            p_old_table_tail += sizeof(PK16_TABLE_T) + ((PK16_TABLE_T*)p_old_table_tail)->path_len;
+        }
+
+        /* This is where we'll move the end of the table to */
+        p_new_table_tail = p_old_table_tail + len;
+
+        tables_len = p_old_table_tail - p_old_table_head;
+
+        for (i = (SIZE_T) 0u; i < tables_len; ++i) {
+            *(p_new_table_tail - i) = *(p_old_table_tail - i);
+        }
+
+        p_table = (PK16_TABLE_T*) p_new_table_head;
+        p_table->data_head = sizeof(PK16_HEADER_T) + p_header->data_len;
+        p_table->data_len = len;
+        p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN);
+        p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
+        strncpy((CSTR_T)( p_table + 1u ), s_path, p_table->path_len);
+
+        memcpy(p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len, p_data, len);
+
+        p_header->data_len += len;
+        ++p_header->n;
+
+        result = PK16_OK;
     }
 
     return result;

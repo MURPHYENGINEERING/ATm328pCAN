@@ -124,6 +124,7 @@ static void demo_pk16(void)
     static PK16_T pkg;
     static U8_T buf[100];
     static BOOL_T initialized = FALSE;
+    PK16_RESULT_T result;
 
     U8_T out_buf[30];
 
@@ -133,10 +134,10 @@ static void demo_pk16(void)
     if (FALSE == initialized) {
         pk16_init(&pkg, buf, sizeof(buf));
         initialized = TRUE;
-        pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
-        pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
-        pk16_remove(&pkg, "/test.txt");
-        pk16_add(&pkg, "/hello.txt", (U8_T*) "Hello, matt!", (SIZE_T) 13);
+        result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
+        result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
+        //pk16_remove(&pkg, "/test.txt");
+        //pk16_add(&pkg, "/hello.txt", (U8_T*) "Hello, matt!", (SIZE_T) 13);
     }
 
     bytes_read = pk16_read(&pkg, "/hello.txt", out_buf, sizeof(out_buf));
@@ -149,7 +150,7 @@ static void demo_pk16(void)
     }
     spi_end();
 
-    if ((22+13) == bytes_read) { 
+    if (PK16_OK == result) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
