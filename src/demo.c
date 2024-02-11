@@ -127,10 +127,6 @@ static void demo_pk16(void)
 
     U8_T out_buf[30];
 
-    PK16_RESULT_T serial_result;
-    static U8_T serial_buf[100];
-    SIZE_T serial_len;
-
     SIZE_T bytes_read;
     SIZE_T i;
 
@@ -147,17 +143,13 @@ static void demo_pk16(void)
     bytes_read += pk16_read(&pkg, "/test.txt", out_buf, sizeof(out_buf));
     bytes_read += pk16_read(&pkg, "/goodbye.txt", out_buf, sizeof(out_buf));
 
-    serial_len = (SIZE_T) 0u;
-    memset(serial_buf, (U8_T) 0xFF, sizeof(serial_buf));
-    serial_result = pk16_serialize(&pkg, serial_buf, &serial_len, sizeof(serial_buf));
-
     spi_begin();
-    for (i = (SIZE_T) 0u; i < serial_len; ++i) {
-        spi_tx_rx(serial_buf[i]);
+    for (i = (SIZE_T) 0u; i < sizeof(buf); ++i) {
+        spi_tx_rx(buf[i]);
     }
     spi_end();
 
-    if (PK16_OK == serial_result) { 
+    if ((22+13) == bytes_read) { 
         dsc_led_toggle(DSC_LED_CANBOARD_1);
     } else {
         fai_pass_fail_logger(FAI_FAULT_ID_SW_ERROR, FAIL, (U32_T) 0u);
