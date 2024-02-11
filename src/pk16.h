@@ -22,16 +22,17 @@ typedef enum {
 } PK16_RESULT_T;
 
 
-/** A single entry in a PK16 package. */
+/** A single entry in a PK16 package.
+  * These data are followed by the path representing this entry. */
 typedef struct {
-    /** Null-terminated string representing the path of this entry. */
-    CSTR_T s_path;
     /** Index into the package data buffer of the start of this entry's data. */
-    U16_T head;
+    U16_T data_head;
     /** Length in bytes of this entry's data in the data buffer. */
-    U16_T len;
+    U16_T data_len;
     /** Checksum of this entry's data. */
     U32_T checksum;
+    /** Length in characters of the path following this table header. */
+    U16_T path_len;
 } PK16_TABLE_T;
 
 
