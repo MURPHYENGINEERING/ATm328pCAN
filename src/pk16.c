@@ -215,12 +215,12 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
 
 
 /*******************************************************************************
- * Read the specified entry data from the package.
- * \param[in] pkg   The package to read from.
- * \param[in] s_path  The path of the entry to read.
- * \param[out] dst  The buffer into which to read the data.
- * \param[in] max   The maximum number of bytes to read.
- * \return          The number of bytes read.
+ * Read the data for the specified path from the package.
+ * \param[in] pkg       The package to read from.
+ * \param[in] s_path    The path of the entry to read.
+ * \param[out] dst      The buffer into which to read the data.
+ * \param[in] max       The maximum number of bytes to read.
+ * \return              The number of bytes read.
  ******************************************************************************/
 SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 {
@@ -313,5 +313,5 @@ static PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
  ******************************************************************************/
 static CSTR_T pk16_get_path(PK16_TABLE_T* p_table)
 {
-    return (CSTR_T)( p_table + sizeof(PK16_TABLE_T) );
+    return (CSTR_T)( p_table + 1u );
 }
