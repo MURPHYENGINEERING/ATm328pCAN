@@ -67,8 +67,5 @@ PK16_RESULT_T pk16_serialize(PK16_T* p_pkg, U8_T* p_dst, SIZE_T* final_len, SIZE
 
 SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max);
 
-PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index);
-PK16_TABLE_T* pk16_find_table_by_path(PK16_T* p_pkg, CSTR_T s_path);
-
 
 #endif
