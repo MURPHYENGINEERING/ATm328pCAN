@@ -66,13 +66,12 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
     PK16_RESULT_T result;
     PK16_HEADER_T* p_header;
     U8_T* p_old_table_head;
-    U8_T* p_new_table_head;
     U8_T* p_old_table_tail;
     U8_T* p_new_table_tail;
     PK16_TABLE_T* p_table;
     SIZE_T i;
     SIZE_T tables_len;
-
+    
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
 
     result = PK16_FULL;
@@ -86,8 +85,6 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         
         /* The table is currently located at the end of the header and data. */
         p_old_table_head = (U8_T*)( p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len );
-        /* Its new position is extended by `len` bytes. */
-        p_new_table_head = p_old_table_head + len;
 
         /* Start the table tail at the table head. For an empty table, these are the same. */
         p_old_table_tail = p_old_table_head;
@@ -104,7 +101,7 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         /* Move the existing tables back by `len` bytes */
         tables_len = p_old_table_tail - p_old_table_head;
         for (i = (SIZE_T) 0u; i < tables_len; ++i) {
-            *(p_new_table_tail - i) = *(p_old_table_tail - i);
+            *(p_new_table_tail - 1 - i) = *(p_old_table_tail - 1 - i);
         }
 
         /* Set up the table header */
@@ -143,10 +140,13 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
 {
     PK16_RESULT_T result;
     PK16_HEADER_T* p_header;
-    PK16_TABLE_T* table;
+    PK16_TABLE_T* p_table;
     U8_T* p_cursor;
     U8_T* p_trailing;
     SIZE_T removed_len;
+    SIZE_T trailing_len;
+    BOOL_T relocate_heads;
+    SIZE_T i;
 
     result = PK16_EMPTY;
 
@@ -158,18 +158,18 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
     } else if (PK16_VERSION != p_header->version) {
         result = PK16_WRONG_VERSION;
     } else if ((SIZE_T) 0u < p_header->n) {
-        table = pk16_find_table_by_path(p_pkg, s_path);
+        p_table = pk16_find_table_by_path(p_pkg, s_path);
     }
 
     if (NULL != p_table) {
-        removed_len = p_table->len;
+        removed_len = p_table->data_len;
 
         /* Locate the remaining data before and after the removed data */
-        p_cursor = &p_pkg->p_buf[p_table->head];
+        p_cursor = &p_pkg->p_buf[p_table->data_head];
         p_trailing = (U8_T*)( p_cursor + removed_len);
         trailing_len = sizeof(PK16_HEADER_T)
                      + p_header->data_len
-                     - p_table->head;
+                     - p_table->data_head
                      - removed_len;
 
         /* Move the data after the removed data up by `len` bytes */
@@ -189,10 +189,10 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
         for (i = (SIZE_T) 0u; i < p_header->n; ++i) {
             p_table = pk16_find_table_by_index(p_pkg, i);
             /* Skip the removed table entry */
-            if ( 0 != strncmp(p_table->s_path, s_path, PK16_MAX_PATH_LEN) ) {
+            if ( 0 != strncmp(pk16_get_path(p_table), s_path, PK16_MAX_PATH_LEN) ) {
                 if (TRUE == relocate_heads) {
                     /* This table's data moved up by `removed_len` */
-                    p_table->head -= removed_len;
+                    p_table->data_head -= removed_len;
                 }
                 /* Copy the whole table including the path */
                 memcpy(p_cursor, (U8_T*) p_table, sizeof(PK16_TABLE_T) + p_table->path_len);
@@ -204,7 +204,8 @@ PK16_RESULT_T pk16_remove(PK16_T* p_pkg, CSTR_T s_path)
             }
         }
 
-        p_header->data-len -= removed_len;
+        /* Remove the entry from the table header */
+        p_header->data_len -= removed_len;
         --p_header->n;
 
         result = PK16_OK;
@@ -232,7 +233,7 @@ SIZE_T pk16_read(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_dst, SIZE_T max)
 
     p_table = pk16_find_table_by_path(p_pkg, s_path);
 
-    if ((PK16_TABLE_T*) NULL != p_table) {
+    if (NULL != p_table) {
         checksum = crc_compute_checksum32(
                         &p_pkg->p_buf[p_table->data_head], 
                         p_table->data_len, 
@@ -290,19 +291,19 @@ static PK16_TABLE_T* pk16_find_table_by_path(PK16_T* p_pkg, CSTR_T s_path)
  ******************************************************************************/
 static PK16_TABLE_T* pk16_find_table_by_index(PK16_T* p_pkg, SIZE_T index)
 {
-    PK16_TABLE_T* p_table;
+    U8_T* p_table;
     PK16_HEADER_T* p_header;
     SIZE_T i;
 
     p_header = (PK16_HEADER_T*) p_pkg->p_buf;
-    p_table = (PK16_TABLE_T*) ( p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len );
+    p_table = (U8_T*) ( p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len );
 
     for (i = (SIZE_T) 0u; i < index; ++i) {
         /* Skip the table header + path to point to the next table header */
-        p_table += sizeof(PK16_TABLE_T) + p_table->path_len;
+        p_table += sizeof(PK16_TABLE_T) + ((PK16_TABLE_T*)p_table)->path_len;
     } 
     
-    return p_table;
+    return (PK16_TABLE_T*) p_table;
 }
 
 
