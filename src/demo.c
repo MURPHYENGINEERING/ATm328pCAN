@@ -124,7 +124,6 @@ static void demo_pk16(void)
     static PK16_T pkg;
     static U8_T buf[100];
     static BOOL_T initialized = FALSE;
-    PK16_RESULT_T result;
 
     U8_T out_buf[30];
 
@@ -134,8 +133,8 @@ static void demo_pk16(void)
     if (FALSE == initialized) {
         pk16_init(&pkg, buf, sizeof(buf));
         initialized = TRUE;
-        result = pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
-        result = pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
+        pk16_add(&pkg, "/test.txt", (U8_T*) "Hello, world!", (SIZE_T) 14);
+        pk16_add(&pkg, "/goodbye.txt", (U8_T*) "Goodbye, cruel world!", (SIZE_T) 22);
         pk16_remove(&pkg, "/test.txt");
         pk16_add(&pkg, "/hello.txt", (U8_T*) "Hello, matt!", (SIZE_T) 13);
         pk16_remove(&pkg, "/goodbye.txt");

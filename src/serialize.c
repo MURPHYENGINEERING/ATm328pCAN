@@ -19,6 +19,7 @@ U8_T* serialize_U32(U8_T* buf, U32_T val)
     return (U8_T*)( buf + 4u );
 }
 
+
 /*******************************************************************************
  * Serialize the given FAI fault into the given buffer in big-endian order.
  * \param[in] buf       The buffer into which the serialized value will be written.
@@ -42,6 +43,7 @@ U8_T* serialize_fault(U8_T* buf, FAI_FAULT_ID_T fault_id, FAI_FAULT_COUNTER_T* f
     return p_buf;
 }
 
+
 /*******************************************************************************
  * Deserialized a 16-bit integer from the given buffer in big-endian order.
  * \param[in] buf   The buffer from which the deserialized value will be read.
@@ -57,6 +59,7 @@ U16_T deserialize_U16(U8_T* buf)
 
     return val;
 }
+
 
 /*******************************************************************************
  * Deserialized a CAN message identifier integer from the given buffer in 
