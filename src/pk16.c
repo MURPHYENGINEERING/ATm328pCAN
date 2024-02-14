@@ -80,9 +80,10 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         result = PK16_NOT_A_PACKAGE;
     } else if (PK16_VERSION != p_header->version) {
         result = PK16_WRONG_VERSION;
-    } else if (sizeof(PK16_HEADER_T) + p_header->data_len + len + sizeof(PK16_TABLE_T) * (p_header->n + 1)) {
+    } else if (NULL != pk16_find_table_by_path(p_pkg, s_path)) {
+        result = PK16_EXISTS;
+    } else if (p_pkg->size >= (sizeof(PK16_HEADER_T) + p_header->data_len + len + sizeof(PK16_TABLE_T) * (p_header->n + 1u))) {
         /* Locate where the table is and where it should be after the new data are added */
-        
         /* The table is currently located at the end of the header and data. */
         p_old_table_head = (U8_T*)( p_pkg->p_buf + sizeof(PK16_HEADER_T) + p_header->data_len );
 
@@ -107,9 +108,10 @@ PK16_RESULT_T pk16_add(PK16_T* p_pkg, CSTR_T s_path, U8_T* p_data, SIZE_T len)
         /* Set up the table header */
         p_table->data_head = sizeof(PK16_HEADER_T) + p_header->data_len;
         p_table->data_len = len;
-        p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN) + 1;
+        p_table->path_len = strnlen(s_path, PK16_MAX_PATH_LEN) + 1u; /* + \0 */
         p_table->checksum = crc_compute_checksum32(p_data, len, (U32_T) 0u);
         /* Copy in the path at the end of the table header */
+        /** TODO: check if we're gonna overrun the package buffer */
         strncpy((CSTR_T)( p_table + 1u ), s_path, p_table->path_len);
 
         /* Copy in the data */
